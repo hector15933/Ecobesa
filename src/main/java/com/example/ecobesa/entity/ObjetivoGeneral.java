@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -31,12 +33,16 @@ public class ObjetivoGeneral implements Serializable{
 	
 	private Integer presupuestoGeneral;
 	
-	@OneToMany
-	private Set<ObjetivoEspecifico> objetivoEspecificoLista;
+	@ManyToOne
+    @JoinColumn(name="programaAnual_id", nullable=false)
+	private ProgramaAnual programaAnual;
+	
+	@OneToMany(mappedBy="objetivoGeneral")
+	private Set<ObjetivoEspecifico> objetivoEspecifico;
 	
 	
-	@OneToMany
-	private Set<Actividad> actividadesLista;
+	@OneToMany(mappedBy="objetivoGeneral")
+	private Set<Actividad> actividad;
 	
 	
 	

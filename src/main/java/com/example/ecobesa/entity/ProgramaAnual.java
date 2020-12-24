@@ -33,8 +33,8 @@ public class ProgramaAnual implements Serializable{
 	
 	private Integer id_elaborado;
 	
-	@OneToMany()
-	private Set<ObjetivoGeneral> objetivoGeneralLista;
+	@OneToMany(mappedBy="programaAnual")
+	private Set<ObjetivoGeneral> objetivoGeneral;
 
 	public Long getId() {
 		return id;
@@ -76,13 +76,7 @@ public class ProgramaAnual implements Serializable{
 		this.id_elaborado = id_elaborado;
 	}
 
-	public Set<ObjetivoGeneral> getObjetivoGeneralLista() {
-		return objetivoGeneralLista;
-	}
 
-	public void setObjetivoGeneralLista(Set<ObjetivoGeneral> objetivoGeneralLista) {
-		this.objetivoGeneralLista = objetivoGeneralLista;
-	}
 
 	
 	

@@ -1,44 +1,41 @@
 package com.example.ecobesa.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="objetivo_generales")
-public class ObjetivoGeneral implements Serializable{
-	
+@Table(name="actividades")
+public class Actividad implements Serializable{
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	private String nombre;
 	
-	private String meta;
+	private Date fechaInicio;
 	
-	private String recursos;
+	private Date fechaFin;
 	
-	private Integer presupuestoGeneral;
-	
-	@OneToMany
-	private Set<ObjetivoEspecifico> objetivoEspecificoLista;
-	
-	
-	@OneToMany
-	private Set<Actividad> actividadesLista;
+	@ManyToMany
+	@JoinTable(name = "actividades_responsables")
+	private Set<User> responsablesUsers;
 	
 	
 	
-
 }

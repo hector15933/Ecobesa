@@ -1,7 +1,10 @@
 package com.example.ecobesa.entity;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,6 +32,9 @@ public class ProgramaAnual implements Serializable{
 	private Integer id_revisado;
 	
 	private Integer id_elaborado;
+	
+	@OneToMany()
+	private Set<ObjetivoGeneral> objetivoGeneralLista;
 
 	public Long getId() {
 		return id;
@@ -69,6 +75,15 @@ public class ProgramaAnual implements Serializable{
 	public void setId_elaborado(Integer id_elaborado) {
 		this.id_elaborado = id_elaborado;
 	}
+
+	public Set<ObjetivoGeneral> getObjetivoGeneralLista() {
+		return objetivoGeneralLista;
+	}
+
+	public void setObjetivoGeneralLista(Set<ObjetivoGeneral> objetivoGeneralLista) {
+		this.objetivoGeneralLista = objetivoGeneralLista;
+	}
+
 	
 	
 	

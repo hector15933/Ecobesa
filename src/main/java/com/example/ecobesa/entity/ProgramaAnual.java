@@ -40,6 +40,14 @@ public class ProgramaAnual implements Serializable{
 		return id;
 	}
 
+	public Set<ObjetivoGeneral> getObjetivoGeneral() {
+		return objetivoGeneral;
+	}
+
+	public void setObjetivoGeneral(Set<ObjetivoGeneral> objetivoGeneral) {
+		this.objetivoGeneral = objetivoGeneral;
+	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}

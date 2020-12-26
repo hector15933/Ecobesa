@@ -43,6 +43,86 @@ public class ObjetivoGeneral implements Serializable{
 	
 	@OneToMany(mappedBy="objetivoGeneral")
 	private Set<Actividad> actividad;
+
+
+	public Long getId() {
+		return id;
+	}
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+	public String getNombre() {
+		return nombre;
+	}
+
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+
+	public String getMeta() {
+		return meta;
+	}
+
+
+	public void setMeta(String meta) {
+		this.meta = meta;
+	}
+
+
+	public String getRecursos() {
+		return recursos;
+	}
+
+
+	public void setRecursos(String recursos) {
+		this.recursos = recursos;
+	}
+
+
+	public Integer getPresupuestoGeneral() {
+		return presupuestoGeneral;
+	}
+
+
+	public void setPresupuestoGeneral(Integer presupuestoGeneral) {
+		this.presupuestoGeneral = presupuestoGeneral;
+	}
+
+
+	public ProgramaAnual getProgramaAnual() {
+		return programaAnual;
+	}
+
+
+	public void setProgramaAnual(ProgramaAnual programaAnual) {
+		this.programaAnual = programaAnual;
+	}
+
+
+	public Set<ObjetivoEspecifico> getObjetivoEspecifico() {
+		return objetivoEspecifico;
+	}
+
+
+	public void setObjetivoEspecifico(Set<ObjetivoEspecifico> objetivoEspecifico) {
+		this.objetivoEspecifico = objetivoEspecifico;
+	}
+
+
+	public Set<Actividad> getActividad() {
+		return actividad;
+	}
+
+
+	public void setActividad(Set<Actividad> actividad) {
+		this.actividad = actividad;
+	}
 	
 	
 	

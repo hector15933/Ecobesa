@@ -13,7 +13,7 @@
 				<tr>
 					<th>Id</th>
 					<th>Nombre</th>
-					<th>Año</th>
+					<th>AÃ±o</th>
 					<th>Id_Aprobado</th>
 					<th>Acciones</th>
 
@@ -23,7 +23,6 @@
 				<tr th:each="programaAnual: ${programaAnuales}">
 					<td th:text="${programaAnual.id}"></td>
 					<td th:text="${programaAnual.nombre}"></td>
-					<td th:text="${programaAnual.año}"></td>
 					<td th:text="${programaAnual.id_aprobado}"></td>
 					<td><a class="btn btn-warning  btn-sm	" th:text="Actualizar"
 						th:href="@{/programaAnual/listar/} + ${programaAnual.id}"></a></td>
@@ -38,6 +37,58 @@
 
 		</table>
 	</div>
-	<footer th:replace="layout/layout :: footer"></footer>
+
+	<div class="container mt-5">
+		<div class="d-flex justify-content-between align-items-end mb-3">
+			<h3 class="pb-1">Programas</h3>
+			<a class="btn btn-dark" th:href="@{/programaAnual/form/}">
+				Aperturar Programa Anual </a>
+		</div>
+		<div class="table-responsive-lg">
+			<table class="table table-sm">
+				<thead class="thead-dark">
+					<tr>
+						<th>Id</th>
+						<th>Nombre</th>
+						<th>Gerencia/Sede</th>
+						<th>Acciones</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="programaAnual: ${programaAnuales}">
+						<td th:text="${programaAnual.id}"></td>
+						<td th:text="${programaAnual.nombre}"></td>
+						<td th:text="${programaAnual.id_aprobado}"></td>
+						<td>
+							<a
+							href="#"
+							class="btn btn-outline-secondary btn-sm"><span
+								class="fa fa-eye" title="Detalle"></span>
+							</a> 
+							<a class="btn btn-outline-secondary btn-sm"
+							th:href="@{/programaAnual/listar/} + ${programaAnual.id}">
+							<span
+								class="fa fa-pencil-alt" title="Editar">
+							</span> 
+							</a> 
+							<a
+							class="btn btn-outline-danger btn-sm"
+							th:href="@{/programaAnual/eliminar/} + ${programaAnual.id}">
+							<span
+								class="fa fa-trash" title="Eliminar">
+							</span> 
+							</a>
+							<a
+							th:href="@{/objetivos-generales/} + ${programaAnual.id}" 
+							class="btn btn-outline-secondary btn-sm ml-3"><span
+								class="fa fa-list" title="Objetivos Generales"></span>
+							</a> 
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<header th:replace="layout/layout :: footer"></header>
 </body>
 </html>

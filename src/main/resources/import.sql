@@ -31,3 +31,5 @@ INSERT INTO objetivo_especificos(nombre,objetivo_general_id) VALUES(' Asegurar e
 
 
 
+
+

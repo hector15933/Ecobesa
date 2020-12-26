@@ -1,6 +1,7 @@
 package com.example.ecobesa.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -32,6 +33,8 @@ public class ProgramaAnual implements Serializable{
 	private Integer id_revisado;
 	
 	private Integer id_elaborado;
+	
+	private Integer año;
 	
 	@OneToMany(mappedBy="programaAnual")
 	private Set<ObjetivoGeneral> objetivoGeneral;
@@ -76,9 +79,21 @@ public class ProgramaAnual implements Serializable{
 		this.id_elaborado = id_elaborado;
 	}
 
+	public Set<ObjetivoGeneral> getObjetivoGeneral() {
+		return objetivoGeneral;
+	}
+
+	public void setObjetivoGeneral(Set<ObjetivoGeneral> objetivoGeneral) {
+		this.objetivoGeneral = objetivoGeneral;
+	}
+
+	public Integer getAño() {
+		return año;
+	}
+
+	public void setAño(Integer año) {
+		this.año = año;
+	}
 
 
-	
-	
-	
 }

@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: head">
+<meta charset="UTF-8">
+<title>Title</title>
+</head>
+<body>
+
+	<header th:replace="layout/layout :: header"></header>
+
+
+	<div class="container-fluid py-4">
+		<div></div>
+		<div class="row">
+			
+			<div class="col-sm-6">
+				<p class="ml-4">
+					<img alt="plan-act" class="icon-info"
+						src="img/planificacion-actividades.png"> Planificación de
+					Actividades
+				</p>
+				<div class="card py-2">
+					<div class="row">
+						<div class="col-md-4">
+
+							<div style="width: 150px; text-align: center; margin: auto;">
+								<div>
+									<a href="menu/actividad/listar"> <img height="70px"
+										class="icon-info" src="img/ver-actividades.png">
+									</a>
+								</div>
+								<div>
+									<a href="menu/actividad/listar"> Ver Actividades </a>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div style="width: 150px; text-align: center; margin: auto;">
+								<div>
+									<a href="menu/actividad/form"> <img height="70px"
+										class="icon-info" src="img/planificar-actividades.png">
+									</a>
+								</div>
+								<div>
+									<a href="menu/actividad/form"> Planificar Actividades </a>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div style="width: 150px; text-align: center; margin: auto;">
+								<div>
+									<a href="admin/my_activities_controller"> <img
+										height="70px" class="icon-info"
+										src="img/DB-realizar-actividades.png">
+									</a>
+								</div>
+								<div>
+									<a href="menu/actividad/listar2"> Mis Actividades </a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<p class="ml-4">
+					<img alt="contr-prev" class="icon-info"
+						src="img/controles-preventivos.png"> Controles Preventivos
+				</p>
+				<div class="col-md-12" style="break-inside: avoid-column">
+					<ul class="nav nav-tabs "
+						style="margin-top: -38px; margin-left: 250px;">
+
+						<li class="pull-right active"><a id="active-export"
+							class="btn btn-warning ml-2" data-toggle="tab" href="#menu2">
+								EXPORTAR </a></li>
+
+						<li class="pull-right"><a id="active-ver/ver"
+							data-toggle="tab" class="btn btn-warning ml-2" href="#home">
+								VER </a></li>
+						<li class="pull-right "><a data-toggle="tab"
+							id="active-reportar" class="btn btn-warning ml-2" href="#menu1">
+								REPORTAR </a></li>
+
+					</ul>
+
+					<div class="tab-content" style="padding: 20px;">
+						<!--Ver controles Preventivos -->
+						<div id="home" class="tab-pane fade">
+							<div class="row">
+								<div class="row">
+									<div class="row-eq-height col-md-4">
+										<div style="width: 150px; text-align: center; margin: auto;">
+											<div>
+												<a href="menu/hallazgo"> <img
+													style="height: 70px" alt="ver/ver-hallazgos.png"
+													class="icon-info" src="img/ver/ver-hallazgos.png">
+
+												</a>
+											</div>
+											<div>
+												<a href="menu/hallazgo"
+													style="text-align: center;"> Hallazgo </a>
+											</div>
+										</div>
+									</div>
+									<div class="row-eq-height col-md-4">
+										<div style="width: 150px; text-align: center; margin: auto;">
+											<div>
+												<a href="admin/securitywalks/list_data"> <img
+													style="height: 70px" alt="ver/ver-caminata-seg.png"
+													class="icon-info" src="img/ver/ver-caminata-seg.png">
+
+												</a>
+											</div>
+											<div>
+												<a href="admin/securitywalks/list_data"
+													style="text-align: center;"> Inspecciones de Seguridad
+												</a>
+											</div>
+										</div>
+									</div>
+									<div class="row-eq-height col-md-4">
+										<div style="width: 150px; text-align: center; margin: auto;">
+											<div>
+												<a href="admin/bo/list_data"> <img style="height: 70px"
+													alt="ver/ver-ops.png" class="icon-info"
+													src="img/ver/ver-ops.png">
+
+												</a>
+											</div>
+											<div>
+												<a href="admin/bo/list_data" style="text-align: center;">
+													Observaciones de Conducta </a>
+											</div>
+										</div>
+									</div>
+									<div class="row-eq-height col-md-4">
+										<div style="width: 150px; text-align: center; margin: auto;">
+											<div>
+												<a href="admin/ast/list_data"> <img style="height: 70px"
+													alt="ver/ver-revision-ast.png" class="icon-info"
+													src="img/ver/ver-revision-ast.png">
+
+												</a>
+											</div>
+											<div>
+												<a href="admin/ast/list_data" style="text-align: center;">
+													Controles de Calidad ART </a>
+											</div>
+										</div>
+									</div>
+									<div class="row-eq-height col-md-4">
+										<div style="width: 150px; text-align: center; margin: auto;">
+											<div>
+												<a href="admin/checklist/viewChecklist"> <img
+													style="height: 70px" alt="ver/ver-checklist.png"
+													class="icon-info" src="img/ver/ver-checklist.png">
+
+												</a>
+											</div>
+											<div>
+												<a href="admin/checklist/viewChecklist"
+													style="text-align: center;"> Listas de Verificación </a>
+											</div>
+										</div>
+									</div>
+									<div class="row-eq-height col-md-4">
+										<div style="width: 150px; text-align: center; margin: auto;">
+											<div>
+												<a href="admin/trainingRecords/view"> <img
+													style="height: 70px" alt="ver/ver-capacitaciones.png"
+													class="icon-info" src="img/ver/ver-capacitaciones.png">
+
+												</a>
+											</div>
+											<div>
+												<a href="admin/trainingRecords/view"
+													style="text-align: center;"> Capacitaciones </a>
+											</div>
+										</div>
+									</div>
+									<div class="row-eq-height col-md-4">
+										<div style="width: 150px; text-align: center; margin: auto;">
+											<div>
+												<a href="admin/fixedAssetList/asset_control"> <img
+													style="height: 70px" alt="ver/ver-inspeccion-activos.png"
+													class="icon-info" src="img/ver/ver-inspeccion-activos.png">
+
+												</a>
+											</div>
+											<div>
+												<a href="admin/fixedAssetList/asset_control"
+													style="text-align: center;"> Control de Activos </a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--reportar controles Preventivos -->
+						<div id="menu1" class="tab-pane fade active in">
+
+							<div class="row">
+
+								<div class="row-eq-height col-md-4">
+									<div style="width: 150px; text-align: center; margin: auto;">
+										<div>
+											<a href="menu/hallazgo/form"> <img
+												style="height: 70px" alt="reportar-hallazgos.png"
+												class="icon-info" src="img/reportar-hallazgos.png">
+											</a>
+										</div>
+										<div>
+											<a href="menu/hallazgo/form" style="text-align: center;">
+												Hallazgo </a>
+										</div>
+									</div>
+								</div>
+								<div class="row-eq-height col-md-4">
+									<div style="width: 150px; text-align: center; margin: auto;">
+										<div>
+											<a href="admin/securitywalks/report"> <img
+												style="height: 70px" alt="reportar-caminata-seguridad.png"
+												class="icon-info" src="img/reportar-caminata-seguridad.png">
+											</a>
+										</div>
+										<div>
+											<a href="admin/securitywalks/report"
+												style="text-align: center;"> Inspecciones de Seguridad </a>
+										</div>
+									</div>
+								</div>
+								<div class="row-eq-height col-md-4">
+									<div style="width: 150px; text-align: center; margin: auto;">
+										<div>
+											<a href="admin/bos/new"> <img style="height: 70px"
+												alt="reportar-ops.png" class="icon-info"
+												src="img/reportar-ops.png">
+											</a>
+										</div>
+										<div>
+											<a href="admin/bos/new" style="text-align: center;">
+												Observaciones de Conducta </a>
+										</div>
+									</div>
+								</div>
+								<div class="row-eq-height col-md-4">
+									<div style="width: 150px; text-align: center; margin: auto;">
+										<div>
+											<a href="admin/asts/new"> <img style="height: 70px"
+												alt="reportar-ast.png" class="icon-info"
+												src="img/reportar-ast.png">
+											</a>
+										</div>
+										<div>
+											<a href="admin/asts/new" style="text-align: center;">
+												Controles de Calidad ART </a>
+										</div>
+									</div>
+								</div>
+								<div class="row-eq-height col-md-4">
+									<div style="width: 150px; text-align: center; margin: auto;">
+										<div>
+											<a href="admin/checklist/create"> <img
+												style="height: 70px" alt="reportar-checklist.png"
+												class="icon-info" src="img/reportar-checklist.png">
+											</a>
+										</div>
+										<div>
+											<a href="admin/checklist/create" style="text-align: center;">
+												Listas de Verificación </a>
+										</div>
+									</div>
+								</div>
+								<div class="row-eq-height col-md-4">
+									<div style="width: 150px; text-align: center; margin: auto;">
+										<div>
+											<a href="admin/trainingRecords/create"> <img
+												style="height: 70px" alt="reportar-capacitaciones.png"
+												class="icon-info" src="img/reportar-capacitaciones.png">
+											</a>
+										</div>
+										<div>
+											<a href="admin/trainingRecords/create"
+												style="text-align: center;"> Capacitaciones </a>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+						<!-- Exportar controles preventivo-->
+
+						<div id="menu2" class="tab-pane fade">
+
+							<div class="row">
+
+								<div class="row-eq-height col-md-4">
+									<div style="width: 150px; text-align: center; margin: auto;">
+										<div>
+											<a href="admin/export/alerts"> <img style="height: 70px"
+												alt="exportar-hallazgos.png" class="icon-info"
+												src="img/exportar/exportar-hallazgos.png">
+											</a>
+										</div>
+										<div>
+											<a href="admin/export/alerts" style="text-align: center;">
+												Hallazgo </a>
+										</div>
+									</div>
+								</div>
+								<div class="row-eq-height col-md-4">
+									<div style="width: 150px; text-align: center; margin: auto;">
+										<div>
+											<a href="admin/export/securitywalks"> <img
+												style="height: 70px" alt="exportar-caminata.png"
+												class="icon-info" src="img/exportar/exportar-caminata.png">
+											</a>
+										</div>
+										<div>
+											<a href="admin/export/securitywalks"
+												style="text-align: center;"> Inspecciones de Seguridad </a>
+										</div>
+									</div>
+								</div>
+								<div class="row-eq-height col-md-4">
+									<div style="width: 150px; text-align: center; margin: auto;">
+										<div>
+											<a href="admin/export/bos"> <img style="height: 70px"
+												alt="exportar-ops.png" class="icon-info"
+												src="img/exportar/exportar-ops.png">
+											</a>
+										</div>
+										<div>
+											<a href="admin/export/bos" style="text-align: center;">
+												Observaciones de Conducta </a>
+										</div>
+									</div>
+								</div>
+								<div class="row-eq-height col-md-4">
+									<div style="width: 150px; text-align: center; margin: auto;">
+										<div>
+											<a href="admin/export/ast"> <img style="height: 70px"
+												alt="exportar-revision-ast.png" class="icon-info"
+												src="img/exportar/exportar-revision-ast.png">
+											</a>
+										</div>
+										<div>
+											<a href="admin/export/ast" style="text-align: center;">
+												Controles de Calidad ART </a>
+										</div>
+									</div>
+								</div>
+								<div class="row-eq-height col-md-4">
+									<div style="width: 150px; text-align: center; margin: auto;">
+										<div>
+											<a href="admin/export/checklist"> <img
+												style="height: 70px" alt="exportar-checklist.png"
+												class="icon-info" src="img/exportar/exportar-checklist.png">
+											</a>
+										</div>
+										<div>
+											<a href="admin/export/checklist" style="text-align: center;">
+												Listas de Verificación </a>
+										</div>
+									</div>
+								</div>
+								<div class="row-eq-height col-md-4">
+									<div style="width: 150px; text-align: center; margin: auto;">
+										<div>
+											<a href="admin/export/training_records"> <img
+												style="height: 70px" alt="exportar-capacitaciones.png"
+												class="icon-info"
+												src="img/exportar/exportar-capacitaciones.png">
+											</a>
+										</div>
+										<div>
+											<a href="admin/export/training_records"
+												style="text-align: center;"> Capacitaciones </a>
+										</div>
+									</div>
+								</div>
+								<div class="row-eq-height col-md-4">
+									<div style="width: 150px; text-align: center; margin: auto;">
+										<div>
+											<a href="admin/export/fixedAsset"> <img
+												style="height: 70px" alt="exportar-inspeccion-activos.png"
+												class="icon-info"
+												src="img/exportar/exportar-inspeccion-activos.png">
+											</a>
+										</div>
+										<div>
+											<a href="admin/export/fixedAsset" style="text-align: center;">
+												Control de Activos </a>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+
+
+
+						<!--Fin exportar  -->
+					</div>
+				</div>
+
+			</div>
+			<!-- /.col-->
+			<div class="col-sm-6">
+				<p>
+					<img class="icon-info" src="img/safety-intelligence.png">
+					Safety Intelligence / Reportabilidad
+				</p>
+				<div class="card py-4">
+					<div class="row">
+
+						<div class="col-md-4">
+							<div style="width: 150px; text-align: center; margin: auto;">
+								<div>
+									<a href="admin/insights"> <img style="height: 70px"
+										alt="DB-cumplimiento-por-organigrama.png" class="icon-info"
+										src="img/DB-cumplimiento-por-organigrama.png">
+
+									</a>
+								</div>
+								<div>
+									<a href="admin/insights" style="text-align: center;">
+										Cumplimiento por Organigrama </a>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div style="width: 150px; text-align: center; margin: auto;">
+								<div>
+									<a href="admin/powerbi/open_dashboard/safety_intelligence">
+										<img style="height: 70px" alt="DB-analisis-estadistico.png"
+										class="icon-info" src="img/DB-analisis-estadistico.png">
+
+									</a>
+								</div>
+								<div>
+									<a href="admin/powerbi/open_dashboard/safety_intelligence"
+										style="text-align: center;"> Dashboard Safety Intelligence
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div style="width: 150px; text-align: center; margin: auto;">
+								<div>
+									<a href="admin/powerbi/open_dashboard/covid19"> <img
+										style="height: 70px" alt="DB-dashboard-covid19.png"
+										class="icon-info" src="img/DB-dashboard-covid19.png">
+
+									</a>
+								</div>
+								<div>
+									<a href="admin/powerbi/open_dashboard/covid19"
+										style="text-align: center;"> Dashboard / COVID-19 </a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /.col-->
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		window.onload = function() {
+			document.getElementById("active-reportar").click();
+
+		};
+	</script>
+	<!-- CoreUI and necessary plugins-->
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+
+</html>

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="layout/layout :: head">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Title</title>
 </head>
 <body>
-<header></header>
+<header th:replace="layout/layout :: header"></header>
 
 	<div class="container py-4">
 
@@ -18,7 +18,10 @@
 					<div class="form-group row">
 						<label class="col-sm-2 col-form-label">Nombre</label>
 						<div class="col-sm-6">
-							<input type="text" th:field="*{nombre}" class="form-control"/> 
+							<input type="text" th:field="*{nombre}" class="form-control"/> <small
+										class="form-text text-danger"
+										th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Name
+										Error</small>
 						</div>
 					</div>
 			
@@ -32,6 +35,6 @@
 			</div>
 		</div>
 	</div>
-
+	<footer th:replace="layout/layout :: footer"></footer>
 </body>
 </html>

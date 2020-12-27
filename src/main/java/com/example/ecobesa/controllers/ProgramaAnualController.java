@@ -4,6 +4,7 @@ package com.example.ecobesa.controllers;
 import java.io.IOException;
 import java.util.Map;
 
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -45,7 +46,7 @@ public class ProgramaAnualController {
 		ProgramaAnual programaAnual = new ProgramaAnual();
 		model.put("programaAnual", programaAnual);
 		model.put("titulo", "Crear ProgramaAnual");
-		return "form";
+		return "programaAnual/form";
 	}
 	
 	
@@ -65,8 +66,14 @@ public class ProgramaAnualController {
 	}
 	
 	@PostMapping(value = "/programaAnual/form")
-	public String guardar( ProgramaAnual programaAnual, Model model, RedirectAttributes flash) {
-
+	public String guardar(@Valid ProgramaAnual programaAnual,BindingResult bindingResult, Model model, RedirectAttributes flash) {
+		
+		if(bindingResult.hasErrors()){	
+			model.addAttribute("programaAnual", programaAnual);
+			model.addAttribute("titulo", "Crear ProgramaAnual");
+			return "programaAnual/form";
+		}
+		flash.addFlashAttribute("success", "Area creado correctamente");
 		programaAnualService.save(programaAnual);
 		return "redirect:/programaAnual/listar";
 	}

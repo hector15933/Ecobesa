@@ -41,9 +41,16 @@
 				style="background: #f19a1f;"> <i class="fa fa-cog"></i><strong>Administracion</strong>
 			</a>
 				<div class="dropdown-menu dropdown " aria-labelledby="navbarDropdownMenuLink" style="max-height: 600px; overflow:scroll;">
-						<div class="dropdown-header "><i class="fa fa-bars"></i>
-						<strong>Administrar Personas</strong>
-					</div>
+						<div class="dropdown-header ">
+							<i class="fa fa-bars"></i> <strong>Administrar Programa Anual</strong>
+						</div>
+						<a class="dropdown-item" th:href="@{/programaAnual/listar}">Programa Anual</a> 
+						<a class="dropdown-item" th:href="@{/admin/empleado/listar}">Dotacion/Trabajadores</a>	
+						<a class="dropdown-item" th:href="@{/admin/usuario/listar}">Usuarios</a>
+						
+						<div class="dropdown-header ">
+							<i class="fa fa-bars"></i> <strong>Administrar Personas</strong>
+						</div>
 						<a class="dropdown-item" th:href="@{/admin/cargo/listar}">Cargo</a> 
 						<a class="dropdown-item" th:href="@{/admin/empleado/listar}">Dotacion/Trabajadores</a>	
 						<a class="dropdown-item" th:href="@{/admin/usuario/listar}">Usuarios</a>

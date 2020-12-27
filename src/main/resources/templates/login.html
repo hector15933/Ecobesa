@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: head">
+<meta charset="UTF-8">
+<title>Title</title>
+</head>
+<body class="app flex-row align-items-center">
+	<header >
+
+	</header>		
+	<div class="container">
+		
+		<div class="row justify-content-center">
+			<div class="col-md-8">
+				<div class="card-group">
+					<div class="card p-4">
+						<div class="card-body">
+							<h1>Login</h1>
+							<p class="text-muted">Sign In to your account</p>
+								<div class="alert alert-success" th:if="${success != null}" th:text="${success}"></div>
+								<div class="alert alert-danger" th:if="${error != null}" th:text="${error}"></div>
+								<div class="alert alert-warning" th:if="${warning != null}" th:text="${warning}"></div>
+								<div class="alert alert-info" th:if="${info != null}" th:text="${info}"></div>
+							<form th:action="@{/login}" method="post" id="loginForm">
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<span class="input-group-text"> <i class="icon-user"></i>
+										</span>
+									</div>
+									<input class="form-control" type="text" name="username" id="username"
+										placeholder="Usuario" autofocus required>
+								</div>
+								<div class="input-group mb-4">
+									<div class="input-group-prepend">
+										<span class="input-group-text"> <i class="icon-lock"></i>
+										</span>
+									</div>
+									<input class="form-control" type="password" name="password" id="password"
+										placeholder="Contraseña" required>
+								</div>
+								<div class="row">
+									<div class="col-6">
+										<button type="submit" form="loginForm"
+											class="btn btn-primary px-4" >Entrar</button>
+									</div>
+									<div class="col-6 text-right">
+										<button class="btn btn-link px-0" type="button">Forgot
+											password?</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="card text-white bg-primary py-5 d-md-down-none"
+						 style="width: 44%; background-image: url('/img/login.jpg');">
+					
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- CoreUI and necessary plugins-->
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+
+</html>

@@ -35,3 +35,12 @@ INSERT INTO actividades(nombre,objetivo_general_id) VALUES('APROBAR EL PROGRAMA 
 
 
 
+INSERT INTO cargos(nombre) VALUES('ADMINISTRADOR');
+
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,cargo_id) VALUES('Hector17','Apellido01 Apellido02','user@gmail.com',true,78021293,995707476,'user123','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1);
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,cargo_id) VALUES('Jose17','Apellido01 Apellido02','user@gmail.com',true,78021293,995707476,'user234','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1);
+
+
+INSERT INTO roles(authority,user_id) VALUES('ROLE_ADMIN',1)
+INSERT INTO roles(authority,user_id) VALUES('ROLE_USER',2)
+

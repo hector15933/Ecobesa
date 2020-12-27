@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
@@ -31,7 +32,8 @@ public class ProgramaAnual implements Serializable{
 	@NotEmpty
 	private String nombre;
 	
-	private Integer id_aprobado;
+	@ManyToOne
+	private User id_aprobado;
 	
 	private Integer id_revisado;
 	
@@ -58,13 +60,6 @@ public class ProgramaAnual implements Serializable{
 		this.nombre = nombre;
 	}
 
-	public Integer getId_aprobado() {
-		return id_aprobado;
-	}
-
-	public void setId_aprobado(Integer id_aprobado) {
-		this.id_aprobado = id_aprobado;
-	}
 
 	public Integer getId_revisado() {
 		return id_revisado;
@@ -96,6 +91,14 @@ public class ProgramaAnual implements Serializable{
 
 	public void setAño(Integer año) {
 		this.año = año;
+	}
+
+	public User getId_aprobado() {
+		return id_aprobado;
+	}
+
+	public void setId_aprobado(User id_aprobado) {
+		this.id_aprobado = id_aprobado;
 	}
 
 

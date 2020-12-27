@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+<meta charset="UTF-8">
+<title>Title</title>
+</head>
+<body>
+	<div>
+        <br>
+        <div class="row">
+            <div class="col-2 py-2">
+                <img src="Ecobesa.png">
+            </div>
+            <div class="col-7 text-center">
+               
+            </div>
+            <div class="col-3">
+                <h6 th:text="${programaAnual.id_aprobado}">Aprobado por: Walter Reaños Arcilla</h6>
+                <div class="row">
+                    <div class="col-6">N° Versión: 002</div>
+                    <div class="col-6">F. Ver.: 30/01/2020</div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="text-center">
+            <h4 th:text="${programaAnual.nombre}">PROGRAMA ANUAL DE SEGURIDAD Y SALUD EN EL TRABAJO 2020 ECOBESA</h4>
+            <h4>PASST-2020 ECOBESA</h4>
+            <br>
+        </div>
+        <div class="row border border-dar ">
+            <div class="col-2 bg-danger text-wrap badge border border-dar text-light">
+                <p>RAZÓN SOCIAL DE LA EMPRESA:</p>
+            </div>
+            <div class="col-4 badge border border-dar">
+                <p>EMPRESA COMERCIALIZADORA DE BEBIDAS SOCIEDAD ANÓNIMA CERRADA</p>
+            </div>
+            <div class="col-1 bg-danger text-wrap badge border border-dar text-light">
+                <p>RUC</p>
+            </div>
+            <div class="col-1 badge border border-dar">
+                <p>20557079441</p>
+            </div>
+            <div class="col-1 bg-danger text-wrap badge border border-dar text-light">
+                <p>DOMICILIO:</p>
+            </div>
+            <div class="col-2 badge border border-dar">
+                <p>JR. CAJAMARCA 371 RIMAC , LIMA</p>
+            </div>
+            <div class="col-1 badge bg-danger text-wrap text-light">
+                <p>PASST - 2020</p>
+            </div>
+        </div>
+        <div class="row border border-dar ">
+        	
+            <div class="col-2 bg-danger text-wrap badge border border-dar text-light">
+                <p>ACTIVIDAD ECONÓMICA PRINCIPAL:</p>
+            </div>
+            <div class="col-4 badge border border-dar">
+                <p>COMERCIALIZACIÓN DE BEBIDAS NO ALCOHÓLICAS</p>
+            </div>
+            <div class="col-2 bg-danger text-wrap badge border border-dar text-light">
+                <p>N° DE TRABAJADORES EN EL CENTRO DE LABORES:</p>
+            </div>
+            <div class="col-3 badge border border-dar">
+                <p>APROXIMADAMENTE 1410 TRABAJADORES</p>
+            </div>
+            <div class="col-1 badge bg-success text-wrap ">
+                <p>90.39%</p>
+            </div>
+        </div>
+        
+        <div th:each="objetivosGeneral: ${programaAnual.objetivoGeneral}">
+        	<div class="row">
+        		<div class="col-2 bg-danger text-wrap badge border border-dar text-light">
+                <p>OBJETIVO GENERAL</p>
+            </div>
+				<div class="col-10">
+					<h4 th:text="${objetivosGeneral.nombre}"></h4>
+
+
+				</div>
+				
+        </div>
+        
+        <div class="row">
+        	<div class="col-2 bg-danger text-wrap badge border border-dar text-light">
+                <p>OBJETIVO Especifico</p>
+            </div>
+            <div class="col-10">
+            	<ul th:each="objetivoEspecifico2 : ${objetivosGeneral.objetivoEspecifico}" >
+        		
+        		<li th:text="${objetivoEspecifico2.nombre}"></li>
+				
+        		</ul>
+            </div>
+        </div>
+       			 
+        
+        </div>
+</body>
+</html>

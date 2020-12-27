@@ -6,14 +6,27 @@ INSERT INTO frecuencia(nombre) VALUES('PERMANENTE');
 INSERT INTO frecuencia(nombre) VALUES('PERSONALIZADO');
 
 
-INSERT INTO programa_anuales(nombre,id_aprobado) VALUES('PROGRAMA ANUAL DE SEGURIDAD Y SALUD EN EL TRABAJO 2020 ECOBESA',1);
-INSERT INTO programa_anuales(nombre,id_aprobado) VALUES('PROGRAMA ANUAL DE SEGURIDAD Y SALUD EN EL TRABAJO 2020 ECOBESA',2);
-INSERT INTO programa_anuales(nombre,id_aprobado) VALUES('PROGRAMA ANUAL DE SEGURIDAD Y SALUD EN EL TRABAJO 2020 ECOBESA',3);
+
+INSERT INTO cargos(nombre) VALUES('ADMINISTRADOR');
+
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,cargo_id) VALUES('Hector17','Apellido01 Apellido02','user@gmail.com',true,78021293,995707476,'user123','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1);
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,cargo_id) VALUES('Jose17','Apellido01 Apellido02','user@gmail.com',true,78021293,995707476,'user234','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1);
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,cargo_id) VALUES('Walter','Reaños Arcilla','user@gmail.com',true,78021293,995707476,'user234','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1);
+
+
+INSERT INTO roles(authority,user_id) VALUES('ROLE_ADMIN',1)
+INSERT INTO roles(authority,user_id) VALUES('ROLE_USER',2)
+INSERT INTO roles(authority,user_id) VALUES('ROLE_ADMIN',3)
+
+
+INSERT INTO programa_anuales(nombre,id_aprobado_id) VALUES('PROGRAMA ANUAL DE SEGURIDAD Y SALUD EN EL TRABAJO 2020 ECOBESA',1);
+INSERT INTO programa_anuales(nombre,id_aprobado_id) VALUES('PROGRAMA ANUAL DE SEGURIDAD Y SALUD EN EL TRABAJO 2020 ECOBESA',1);
+INSERT INTO programa_anuales(nombre,id_aprobado_id) VALUES('PROGRAMA ANUAL DE SEGURIDAD Y SALUD EN EL TRABAJO 2020 ECOBESA',1);
 
 
 INSERT INTO empresa(razon_social,actividad_economica,numero_trabajadores,ruc) VALUES('EMPRESA COMERCIALIZADORA DE BEBIDAS SOCIEDAD ANÓNIMA CERRADA','COMERCIALIZACIÓN DE BEBIDAS NO ALCOHÓLICAS',14010,'20557079441');
 
-INSERT INTO objetivo_generales(nombre,meta,recursos,presupuesto_general,programa_anual_id) VALUES('CUMPLIR CON LA LEGISLACIÓN VIGENTE EN SEGURIDAD Y SALUD EN EL TRABAJO','100% de cumplimiento','Recursos humanos y procedimientos',25000,2)
+INSERT INTO objetivo_generales(nombre,meta,recursos,presupuesto_general,programa_anual_id) VALUES('CUMPLIR CON LA LEGISLACIÓN VIGENTE EN SEGURIDAD Y SALUD EN EL TRABAJO','100% de cumplimiento','Recursos humanos y procedimientos',25000,1)
 INSERT INTO objetivo_generales(nombre,meta,recursos,presupuesto_general,programa_anual_id) VALUES('CUMPLIR CON LOS INDICADORES DE SEGURIDAD EN BASE A LA CANTIDAD DE ACCIDENTES E INCIDENTES DE TRABAJO','100% de cumplimiento','Recursos humanos y procedimientos',25000,1)
 INSERT INTO objetivo_generales(nombre,meta,recursos,presupuesto_general,programa_anual_id) VALUES('ESTABLECER Y CUMPLIR CON EL PLAN DE RESPUESTA ANTE EMERGENCIA','100% de cumplimiento','Recursos humanos y procedimientos',25000,1)
 
@@ -30,17 +43,9 @@ INSERT INTO objetivo_especificos(nombre,objetivo_general_id) VALUES(' Entrenar a
 INSERT INTO objetivo_especificos(nombre,objetivo_general_id) VALUES(' Asegurar el funcionamiento de los equipos de emergencia',3)
 
 
-INSERT INTO actividades(nombre,objetivo_general_id) VALUES('APROBAR EL PROGRAMA ANUAL DE SEGURIDAD Y SALUD EN EL TRABAJO - PASST',1	)
-INSERT INTO actividades(nombre,objetivo_general_id) VALUES('APROBAR EL PROGRAMA ANUAL DE SEGURIDAD Y SALUD EN EL TRABAJO - PASST',1	)
+INSERT INTO actividades(nombre,objetivo_general_id) VALUES('APROBAR EL PROGRAMA ANUAL DE SEGURIDAD Y SALUD EN EL TRABAJO - PASST',1)
+INSERT INTO actividades(nombre,objetivo_general_id) VALUES('APROBAR EL PROGRAMA ANUAL DE SEGURIDAD Y SALUD EN EL TRABAJO - PASST',1)
 
 
 
-INSERT INTO cargos(nombre) VALUES('ADMINISTRADOR');
-
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,cargo_id) VALUES('Hector17','Apellido01 Apellido02','user@gmail.com',true,78021293,995707476,'user123','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1);
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,cargo_id) VALUES('Jose17','Apellido01 Apellido02','user@gmail.com',true,78021293,995707476,'user234','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1);
-
-
-INSERT INTO roles(authority,user_id) VALUES('ROLE_ADMIN',1)
-INSERT INTO roles(authority,user_id) VALUES('ROLE_USER',2)
 

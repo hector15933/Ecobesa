@@ -95,5 +95,13 @@ public class ProgramaAnualController {
 		return "form";
 	}
 	
+	@GetMapping(value="programaAnual/ver/{id}")
+	public String ver(Model model,@PathVariable(value="id") Long id,Map<String,Object> model2) {
+		
+		model.addAttribute("programaAnual",programaAnualService.findById(id));
+
+		return "programaAnual/ver";
+	}
+	
 	
 }

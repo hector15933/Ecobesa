@@ -28,7 +28,7 @@
 						<td th:text="${programaAnual.id_aprobado}"></td>
 						<td>
 							<a
-							href="#"
+							th:href="@{/programaAnual/ver/} + ${programaAnual.id}"
 							class="btn btn-outline-dark btn-sm"><span
 								class="fa fa-eye" title="Detalle"></span>
 							</a> 

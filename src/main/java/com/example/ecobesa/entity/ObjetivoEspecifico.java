@@ -38,6 +38,12 @@ public class ObjetivoEspecifico implements Serializable{
 	public void setObjetivoGeneral(ObjetivoGeneral objetivoGeneral) {
 		this.objetivoGeneral = objetivoGeneral;
 	}
+	public Long getId() {
+		return Id;
+	}
+	public void setId(Long id) {
+		Id = id;
+	}
 	
 	
 }

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container py-4">
+
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+
+				<!--h4 class="card-title">
+					<a th:href="@{/empresa/form}" class="btn btn-primary">crear cliente</a>
+				</h4-->
+
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Razon Social</th>
+							<th>Ruc</th>
+							<th>Actividad Economica</th>
+							<th>Domicilio</th>
+							<th>editar</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="empresa: ${empresas}">
+							<td><a class="btn btn-primary btn-xs" th:href="@{/empresa/ver/} + ${empresa.id}" th:text="${empresa.id}"></a></td>
+							<td th:text="${empresa.razonSocial}"></td>
+							<td th:text="${empresa.ruc}"></td>
+							<td th:text="${empresa.actividadEconomica}"></td>
+							<td th:text="${empresa.domicilio}"></td>
+							<td><a class="btn btn-primary btn-sm"
+								th:href="@{/empresa/form/} + ${empresa.id}" th:text="'editar'"></a></td>
+							<td>
+							
+							</td>
+						</tr>
+						
+						
+					</tbody>
+
+				</table>
+			
+			</div>
+		</div>
+		
+	</div>
+	
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

@@ -35,9 +35,11 @@ public class ProgramaAnual implements Serializable{
 	@ManyToOne
 	private User id_aprobado;
 	
-	private Integer id_revisado;
+	@ManyToOne
+	private User id_revisado;
 	
-	private Integer id_elaborado;
+	@ManyToOne
+	private User id_elaborado;
 	
 	private Integer año;
 	
@@ -61,19 +63,19 @@ public class ProgramaAnual implements Serializable{
 	}
 
 
-	public Integer getId_revisado() {
+	public User getId_revisado() {
 		return id_revisado;
 	}
 
-	public void setId_revisado(Integer id_revisado) {
+	public void setId_revisado(User id_revisado) {
 		this.id_revisado = id_revisado;
 	}
 
-	public Integer getId_elaborado() {
+	public User getId_elaborado() {
 		return id_elaborado;
 	}
 
-	public void setId_elaborado(Integer id_elaborado) {
+	public void setId_elaborado(User id_elaborado) {
 		this.id_elaborado = id_elaborado;
 	}
 

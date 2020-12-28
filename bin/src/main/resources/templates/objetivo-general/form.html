@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css}"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	crossorigin="anonymous" />
+<link rel="stylesheet"
+	th:href="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css}"
+	integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw=="
+	crossorigin="anonymous" />
+<link
+	th:href="@{https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css}"
+	rel="stylesheet" />
+<style>
+.title-form {
+	margin-top: -2px;
+	border-bottom: 1px solid transparent;
+	margin-bottom: 1rem;
+	margin-top: 1.5rem;
+}
+
+.title-form h5 {
+	font-family: "Montserrat", sans-serif;
+	display: inline-block;
+	margin-bottom: -2px;
+	line-height: 2rem;
+	border-bottom: 2px solid #000000;
+	font-weight: 400;
+}
+</style>
+</head>
+<body>
+	<div class="container p-5">
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+				
+			</div>
+		</div>
+	</div>
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

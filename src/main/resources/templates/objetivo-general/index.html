@@ -4,70 +4,74 @@
 <body>
 	<header th:replace="layout/layout :: header"></header>
 	<div class="container mt-5">
+		<h3 class="mb-3 mb-md-5 text-center" th:text="${programaAnual.nombre}">
+		</h3>
 		<div class="d-flex justify-content-between align-items-end mb-3">
 			<h3 class="pb-1">Objetivos Generales</h3>
-			<a class="btn btn-dark" th:href="@{/objetivos-generales/form}">
+			<a class="btn btn-dark" th:href="@{/objetivos-generales/crear/}+${programaAnual.id}">
 				Nuevo Objetivo General</a>
 		</div>
-		<div class="table-responsive-lg">
+		<div class="table-responsive">
 			<table class="table table-sm table-responsive">
 				<thead class="thead-dark">
 					<tr>
-						<th>Id</th>
+						<th>#</th>
 						<th>Nombre</th>
-						<th>Meta</th>
+						<!-- <th>Meta</th>
 						<th>Presupuesto</th>
-						<th>Recursos</th>
+						<th>Recursos</th> -->
 						<th>Acciones</th>
+						<th class="text-center">Objetivos Específicos</th>
+						<th>Actividades</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:each="objetivo: ${objetivosGenerales}">
 						<td th:text="${objetivo.id}"></td>
 						<td th:text="${objetivo.nombre}"></td>
-						<td th:text="${objetivo.meta}"></td>
+						<!-- <td th:text="${objetivo.meta}"></td>
 						<td th:text="${'S/ '+objetivo.presupuestoGeneral}"></td>
-						<td th:text="${objetivo.recursos}"></td>
-						<td class="text-right">
-							<a
-							href="#"
-							class="btn btn-outline-secondary btn-sm"><span
+						<td th:text="${objetivo.recursos}"></td> -->
+						<td class="text-left">
+							<button
+							th:onclick="modal('/objetivos-generales/show/[[${objetivo.id}]]','Detalle del Objetivo General')"
+
+							class="btn btn-outline-dark btn-sm"><span
 								class="fa fa-eye" title="Detalle"></span>
-							</a> 
-							<a class="btn btn-outline-secondary btn-sm"
-							th:href="@{/objetivos-generales/form/} + ${objetivo.id}">
+							</button> 
+							<a class="btn btn-outline-dark btn-sm"
+							th:href="@{/objetivos-generales/editar/} + ${objetivo.id}">
 							<span
 								class="fa fa-pencil-alt" title="Editar">
 							</span> 
 							</a> 
-							<a
-							class="btn btn-outline-danger btn-sm"
-							href="#">
+							<button
+							th:onclick="deleteRegister('/objetivos-generales/eliminar/[[${objetivo.id}]]')"
+							class="btn btn-outline-danger btn-sm">
 							<span
 								class="fa fa-trash" title="Eliminar">
 							</span> 
+							</button>
+						</td>
+						<td class="text-center">
+							<a
+							th:href="@{/objetivos-especificos/} + ${objetivo.id}" 
+							class="btn btn-outline-success btn-sm"><span
+								class="fa fa-list" title="Objetivos Específicos"></span>
 							</a>
+						</td>
+						<td class="text-center">
 							<a
 							th:href="@{/actividades/} + ${objetivo.id}" 
-							class="btn btn-outline-secondary btn-sm"><span
+							class="btn btn-outline-success btn-sm"><span
 								class="fa fa-list" title="Actividades"></span>
-							</a> 
+							</a>
 						</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 	</div>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-		crossorigin="anonymous"></script>
+	<header th:replace="layout/layout :: footer"></header>
 </body>
 </html>

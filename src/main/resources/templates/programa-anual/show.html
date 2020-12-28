@@ -1,0 +1,46 @@
+<div class="container p-sm-4">
+	<div class="row mb-2">
+		<div class="col-3" >
+			Nombre:
+		</div>
+		<div class="col-9">
+		<input class="form-control" th:value="${programaAnual.nombre}" readonly/>
+		</div>
+	</div>
+	
+	<div class="row mb-2">
+		<div class="col-3" >
+			Elaborado por:
+		</div>
+		<div class="col-9">
+		<input class="form-control" th:value="${programaAnual.id_elaborado.nombres+' '+programaAnual.id_elaborado.nombres}" readonly/>
+		</div>
+	</div>
+	
+	<div class="row mb-2">
+		<div class="col-3" >
+			Revisado por:
+		</div>
+		<div class="col-9">
+		<input class="form-control" th:value="${programaAnual.id_revisado.apellidos+' '+programaAnual.id_revisado.nombres}" readonly/>
+		</div>
+	</div>
+	
+	<div class="row mb-2">
+		<div class="col-3" >
+			Aprobado por:
+		</div>
+		<div class="col-9">
+		<input class="form-control" th:value="${programaAnual.id_aprobado.nombres+' '+programaAnual.id_aprobado.nombres}" readonly/>
+		</div>
+	</div>
+	
+	<div class="row mb-2">
+		<div class="col-3" >
+			Año:
+		</div>
+		<div class="col-9">
+		<input class="form-control" th:value="F" readonly/>
+		</div>
+	</div>
+</div>

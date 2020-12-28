@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+<meta charset="UTF-8">
+<title>Title</title>
+</head>
+<body>
+<header th:replace="layout/layout :: header"></header>
+
+	<div class="container py-4">
+		<div class="card bg-light ">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+				<form th:action="@{/objetivos-especificos/form}" th:object="${objetivoEspecifico}" method="post">
+					
+					<input type="hidden" th:field="*{id}" value="${objetivoEspecifico.getId()}"/>				
+					
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label" for="nombre">Nombre</label>
+						<div class="col-sm-10">
+							<textarea class="form-control rounded-0" th:field="*{nombre}" id="nombre" rows="3"></textarea>
+							 <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">
+							</small>
+						</div>
+					</div>
+					
+					<input type="hidden" th:field="*{objetivoGeneral}" value="${objetivoEspecifico.getObjetivoGeneral().getId()}"/>
+			
+					<div class="form-group row">
+						<div class="col-sm-6">
+							<input type="submit" th:value="${btn}"
+								class="btn btn-dark" />
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

@@ -7,48 +7,62 @@
 	
 	<div class="container mt-5">
 		<div class="d-flex justify-content-between align-items-end mb-3">
-			<h3 class="pb-1">Programas</h3>
+			<h3 class="pb-1">Programas Anuales</h3>
 			<a class="btn btn-dark" th:href="@{/programaAnual/form/}">
-				Aperturar Programa Anual </a>
+				Aperturar Programa Anual</a>
 		</div>
 		<div class="table-responsive-lg">
 			<table class="table table-sm">
 				<thead class="thead-dark">
 					<tr>
-						<th>Id</th>
+						<th>#</th>
 						<th>Nombre</th>
-						<th>Gerencia/Sede</th>
+						<!-- <th>Aprobado por:</th> -->
+						<th>Año</th>
 						<th>Acciones</th>
+						<th>Objetivos Generales</th>
+						<th>Reporte</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:each="programaAnual: ${programaAnuales}">
 						<td th:text="${programaAnual.id}"></td>
 						<td th:text="${programaAnual.nombre}"></td>
-						<td th:text="${programaAnual.id_aprobado}"></td>
+						<!-- <td th:text="${programaAnual.id_aprobado.nombres+' '+programaAnual.id_aprobado.apellidos}"></td> -->
+						<td th:text="2020"></td>
 						<td>
 							<a
-							th:href="@{/programaAnual/ver/} + ${programaAnual.id}"
+							th:onclick="modal('/programas-anuales/show/[[${programaAnual.id}]]','Detalle del Programa Anual')"
 							class="btn btn-outline-dark btn-sm"><span
 								class="fa fa-eye" title="Detalle"></span>
 							</a> 
-							<a class="btn btn-outline-secondary btn-sm"
-							th:href="@{/programaAnual/listar/} + ${programaAnual.id}">
+							<a class="btn btn-outline-dark btn-sm"
+							th:href="@{/programaAnual/editar/} + ${programaAnual.id}">
 							<span
 								class="fa fa-pencil-alt" title="Editar">
 							</span> 
 							</a> 
-							<a
+							<button
 							class="btn btn-outline-danger btn-sm"
-							th:href="@{/programaAnual/eliminar/} + ${programaAnual.id}">
+							th:onclick="deleteRegister('/programaAnual/eliminar/[[${programaAnual.id}]]')"							
+							>
 							<span
 								class="fa fa-trash" title="Eliminar">
 							</span> 
-							</a>
+							</button>
+						</td>
+						<td>
 							<a
 							th:href="@{/objetivos-generales/} + ${programaAnual.id}" 
-							class="btn btn-outline-secondary btn-sm ml-3"><span
-								class="fa fa-list" title="Objetivos Generales"></span>
+							class="btn btn-outline-primary btn-sm ml-3"><span
+								class="fas fa-bullseye" title="Objetivos Generales"></span>
+							</a> 
+						</td>
+						<td>
+							<a
+							th:href="@{/programaAnual/ver/} + ${programaAnual.id}"
+							class="btn btn-outline-success btn-sm"><span
+								class="far fa-file-pdf" title="Reporte"></span>
 							</a> 
 						</td>
 					</tr>

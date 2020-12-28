@@ -1,0 +1,24 @@
+<div class="container p-sm-4">
+	<div class="row mb-2">
+		<div class="col-3" >
+			Nombre:
+		</div>
+		<div class="col-9">
+		<input class="form-control" th:value="${actividad.nombre}" readonly/>
+		</div>
+	</div>
+	
+	<div class="row mb-2">
+		<div class="col-3" >
+			Responsables:
+		</div>
+		<div class="col-9">
+			<ul>
+				<li th:each="responsable : ${actividad.responsablesUsers}" th:text="${responsable.apellidos+' '+responsable.nombres}">
+				
+				</li>
+			</ul>
+		</div>
+	</div>
+	
+</div>

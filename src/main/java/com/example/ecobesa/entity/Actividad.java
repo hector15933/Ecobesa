@@ -40,6 +40,54 @@ public class Actividad implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="objetivoGeneral_id", nullable=false)
 	private ObjetivoGeneral objetivoGeneral;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public Date getFechaInicio() {
+		return fechaInicio;
+	}
+
+	public void setFechaInicio(Date fechaInicio) {
+		this.fechaInicio = fechaInicio;
+	}
+
+	public Date getFechaFin() {
+		return fechaFin;
+	}
+
+	public void setFechaFin(Date fechaFin) {
+		this.fechaFin = fechaFin;
+	}
+
+	public Set<User> getResponsablesUsers() {
+		return responsablesUsers;
+	}
+
+	public void setResponsablesUsers(Set<User> responsablesUsers) {
+		this.responsablesUsers = responsablesUsers;
+	}
+
+	public ObjetivoGeneral getObjetivoGeneral() {
+		return objetivoGeneral;
+	}
+
+	public void setObjetivoGeneral(ObjetivoGeneral objetivoGeneral) {
+		this.objetivoGeneral = objetivoGeneral;
+	}
 	
 	
 	

@@ -22,8 +22,10 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.ecobesa.entity.ObjetivoGeneral;
 import com.example.ecobesa.entity.ProgramaAnual;
 import com.example.ecobesa.service.IProgramaAnualService;
+import com.example.ecobesa.service.IUserService;
 
 
 @SessionAttributes("programaAnual")
@@ -32,37 +34,45 @@ public class ProgramaAnualController {
 	
 	@Autowired
 	private IProgramaAnualService programaAnualService;
+	@Autowired
+	private IUserService userService;
 	
 	@GetMapping("/programaAnual/listar")
-	public String listar(Model model,Map<String,Object> model2) {
-		
+	public String listar(Model model) {
 		model.addAttribute("programaAnuales", programaAnualService.findAll());
 		return "ProgramaAnual";
 	}
 	
-	@GetMapping(value = "/programaAnual/form")
-	public String crear(Map<String, Object> model) {
-
-		ProgramaAnual programaAnual = new ProgramaAnual();
+	@GetMapping(value = "/programas-anuales/show/{id}")
+	public String show(@PathVariable(value = "id") Long id,Map<String, Object> model) {
+		ProgramaAnual programaAnual = programaAnualService.findById(id);
 		model.put("programaAnual", programaAnual);
-		model.put("titulo", "Crear ProgramaAnual");
-		return "programaAnual/form";
+		return "programa-anual/show";
 	}
 	
+	@GetMapping(value = "/programaAnual/form")
+	public String crear(Map<String, Object> model) {
+		ProgramaAnual programaAnual = new ProgramaAnual();
+		model.put("programaAnual", programaAnual);
+		model.put("titulo", "Crear Programa Anual");
+		model.put("btn", "Registrar");
+		model.put("users", userService.findAll(Sort.by(Sort.Direction.ASC, "apellidos")));
+		return "programa-anual/form";
+	}
 	
-	@GetMapping(value="/programaAnual/eliminar/{id}")
-	public String eliminar(@PathVariable(value = "id") Long id) {
-		
-		try {
-			if (id > 0) {
-				ProgramaAnual programaAnual=programaAnualService.findById(id);
-				programaAnualService.delete(id);
-			}
-			return "redirect:/programaAnual/listar";
-		} catch (Exception e) {
+	@RequestMapping(value="/programaAnual/editar/{id}")
+	public String editar(@PathVariable(value="id") Long id,Map<String,Object> model) {
+		ProgramaAnual programaAnual=null;
+		if(id>0){
+			programaAnual = programaAnualService.findById(id);
+		}else {
 			return "redirect:/programaAnual/listar";
 		}
-		
+		model.put("titulo", "Editar Programa Anual");
+		model.put("programaAnual",programaAnual);
+		model.put("btn","Actualizar");
+		model.put("users", userService.findAll(Sort.by(Sort.Direction.ASC, "apellidos")));
+		return "programa-anual/form";
 	}
 	
 	@PostMapping(value = "/programaAnual/form")
@@ -70,29 +80,27 @@ public class ProgramaAnualController {
 		
 		if(bindingResult.hasErrors()){	
 			model.addAttribute("programaAnual", programaAnual);
-			model.addAttribute("titulo", "Crear ProgramaAnual");
-			return "programaAnual/form";
+			model.addAttribute("titulo", "Crear Programa Anual");
+			model.addAttribute("btn", "Guardar");
+			return "programa-anual/form";
 		}
-		flash.addFlashAttribute("success", "Area creado correctamente");
+		flash.addFlashAttribute("success", "Programa Anual creado correctamente");
 		programaAnualService.save(programaAnual);
 		return "redirect:/programaAnual/listar";
 	}
 	
-	
-	@RequestMapping(value="/programaAnual/listar/{id}")
-	public String editar(Model model,@PathVariable(value="id") Long id,Map<String,Object> model2) {
-		
-		model.addAttribute("programaAnual",programaAnualService.findById(id));
-		ProgramaAnual programaAnual=null;
-		if(id>0){
-			programaAnual = programaAnualService.findById(id);
-		}else {
-			return "redirect:/admin/cargo/listar";
+	@GetMapping(value="/programaAnual/eliminar/{id}")
+	public String eliminar(@PathVariable(value = "id") Long id,RedirectAttributes flash) {
+		try {
+			if (id > 0) {
+				programaAnualService.delete(id);
+				flash.addFlashAttribute("success", "Programa Anual eliminado correctamente");
+			}
+			return "redirect:/programaAnual/listar";
+		} catch (Exception e) {
+			flash.addFlashAttribute("success", "Ocurrió un error al tratar de eliminar el Programa Anual");
+			return "redirect:/programaAnual/listar";
 		}
-		model2.put("titulo", "Guardar");
-		model2.put("programaAnual",programaAnual);
-		
-		return "form";
 	}
 	
 	@GetMapping(value="programaAnual/ver/{id}")
@@ -100,7 +108,7 @@ public class ProgramaAnualController {
 		
 		model.addAttribute("programaAnual",programaAnualService.findById(id));
 
-		return "programaAnual/ver";
+		return "programa-anual/ver";
 	}
 	
 	

@@ -7,6 +7,21 @@ INSERT INTO frecuencia(nombre) VALUES('PERSONALIZADO');
 
 
 
+INSERT INTO programa_actividades(nombre,status) VALUES('Plan de Acción de Investigación de Incidentes',true);
+INSERT INTO programa_actividades(nombre,status) VALUES('Programa de Comité Paritario Santiago',true);
+INSERT INTO programa_actividades(nombre,status) VALUES('Programa de Compromisos',true);
+INSERT INTO programa_actividades(nombre,status) VALUES('Programa de Inspección de Activos',true);
+INSERT INTO programa_actividades(nombre,status) VALUES('Programa de Prevención',true);
+
+
+INSERT INTO tipo_actividad(nombre) VALUES('Hallazgo');
+INSERT INTO tipo_actividad(nombre) VALUES('Check List');
+INSERT INTO tipo_actividad(nombre) VALUES('Capacitacion');
+INSERT INTO tipo_actividad(nombre) VALUES('Observacion Preventiva de Seguridad');
+INSERT INTO tipo_actividad(nombre) VALUES('Revision AST');
+
+
+
 INSERT INTO cargos(nombre) VALUES('ADMINISTRADOR');
 
 INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,cargo_id) VALUES('Hector17','Apellido01 Apellido02','user@gmail.com',true,78021293,995707476,'user123','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1);

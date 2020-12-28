@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+	<table  th:fragment="itemsFactura" class="d-none">
+
+		<tbody  id="plantillaItemsFactura">
+			<tr th:field="${actividad.users}" id="row_{ID}">
+				<td class="d-none"><input type="hidden" value="{ID}"
+					name="users" /></td>	
+				<td th:value="'{ID}'" >{NOMBRE}</td>
+				<td>{APELLIDOS}</td>
+				<td>{EMAIL}</td>
+				<td><a href="#" class="btn btn-danger btn-xs" onclick="itemsHelper.eliminarLineaFactura({ID});">x</a></td>
+			</tr>
+
+		</tbody>
+
+	</table>
+
+</body>
+</html>

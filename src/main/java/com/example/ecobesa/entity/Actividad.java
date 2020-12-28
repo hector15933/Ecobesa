@@ -14,6 +14,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+
+
+
+
+
 @Entity
 @Table(name="actividades")
 public class Actividad implements Serializable{
@@ -33,13 +38,30 @@ public class Actividad implements Serializable{
 	
 	private Date fechaFin;
 	
-	@ManyToMany
+	private Integer repeticiones;
+	
+	
+	@ManyToOne
 	@JoinTable(name = "actividades_responsables")
-	private Set<User> responsablesUsers;
+	private User responsableUser;
 	
 	@ManyToOne
 	@JoinColumn(name="objetivoGeneral_id", nullable=false)
 	private ObjetivoGeneral objetivoGeneral;
+	
+	
+	@ManyToOne
+	private ProgramaActividad programaActividad;
+	
+	@ManyToOne
+	private TipoActividad tipoActividad;
+	
+	@ManyToMany
+	@JoinTable(
+	  name = "actividad_users", 
+	  joinColumns = @JoinColumn(name = "actividad_id"), 
+	  inverseJoinColumns = @JoinColumn(name = "user_id"))
+	private Set<User> users;
 
 	public Long getId() {
 		return id;
@@ -73,14 +95,6 @@ public class Actividad implements Serializable{
 		this.fechaFin = fechaFin;
 	}
 
-	public Set<User> getResponsablesUsers() {
-		return responsablesUsers;
-	}
-
-	public void setResponsablesUsers(Set<User> responsablesUsers) {
-		this.responsablesUsers = responsablesUsers;
-	}
-
 	public ObjetivoGeneral getObjetivoGeneral() {
 		return objetivoGeneral;
 	}
@@ -88,6 +102,48 @@ public class Actividad implements Serializable{
 	public void setObjetivoGeneral(ObjetivoGeneral objetivoGeneral) {
 		this.objetivoGeneral = objetivoGeneral;
 	}
+
+	public Set<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(Set<User> users) {
+		this.users = users;
+	}
+
+	public ProgramaActividad getProgramaActividad() {
+		return programaActividad;
+	}
+
+	public void setProgramaActividad(ProgramaActividad programaActividad) {
+		this.programaActividad = programaActividad;
+	}
+
+	public TipoActividad getTipoActividad() {
+		return tipoActividad;
+	}
+
+	public void setTipoActividad(TipoActividad tipoActividad) {
+		this.tipoActividad = tipoActividad;
+	}
+
+	public User getResponsableUser() {
+		return responsableUser;
+	}
+
+	public void setResponsableUser(User responsableUser) {
+		this.responsableUser = responsableUser;
+	}
+
+	public Integer getRepeticiones() {
+		return repeticiones;
+	}
+
+	public void setRepeticiones(Integer repeticiones) {
+		this.repeticiones = repeticiones;
+	}
+
+	
 	
 	
 	

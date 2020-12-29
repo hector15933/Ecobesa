@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+
+
+</head>
+<body>
+
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container py-4">
+
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+
+
+				<form th:action="@{/menu/actividad/form}" th:object="${actividad}"
+					method="post" enctype="multipart/form-data">
+
+
+
+					<div class="form-group row">
+						<label for="objetivo" class="col-sm-2 col-form-label"><strong>
+								Objetivo General :</strong></label>
+						<div class="col-sm-6">
+							<select th:field="*{objetivoGeneral}" class="form-control"
+								th:errorclass="'form-control alert-danger'">
+								<option th:each="objetivoGeneral : ${objetivoGeneral}"
+									th:value="${objetivoGeneral.id}"
+									th:text=${objetivoGeneral.nombre}></option>
+							</select> <small class="form-text text-danger"
+								th:if="${#fields.hasErrors('objetivoGeneral')}"
+								th:errors="*{objetivoGeneral}">Objetivo Error Error</small> <br />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="tipoActividad" class="col-sm-2 col-form-label"><strong>
+								Tipo Actividad :</strong></label>
+						<div class="col-sm-6">
+							<select th:field="*{tipoActividad}" class="form-control"
+								th:errorclass="'form-control alert-danger'">
+								<option th:each="tipoAct : ${tipoActividad}"
+									th:value="${tipoAct.id}" th:text=${tipoAct.nombre}></option>
+							</select> <small class="form-text text-danger"
+								th:if="${#fields.hasErrors('tipoActividad')}"
+								th:errors="*{tipoActividad}">Tipo Actividad Error</small> <br />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="tipoActividad" class="col-sm-2 col-form-label"><strong>
+								Programa Actividad :</strong></label>
+						<div class="col-sm-6">
+							<select th:field="*{programaActividad}" class="form-control"
+								th:errorclass="'form-control alert-danger'">
+								<option th:each="programaAct: ${programaActividad}"
+									th:value="${programaAct.id}" th:text=${programaAct.nombre}></option>
+							</select> <small class="form-text text-danger"
+								th:if="${#fields.hasErrors('tipoActividad')}"
+								th:errors="*{programaActividad}">Tipo Actividad Error</small> <br />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="responsableUser" class="col-sm-2 col-form-label"><strong>
+								Responsable :</strong></label>
+						<div class="col-sm-6">
+							<select th:field="*{responsableUser}" class="form-control"
+								th:errorclass="'form-control alert-danger'">
+								<option th:each="userResponsable : ${userId}"
+									th:value="${userResponsable.id}"
+									th:text=${userResponsable.nombres}></option>
+							</select> <small class="form-text text-danger"
+								th:if="${#fields.hasErrors('responsableUser')}"
+								th:errors="*{responsableUser}">Responsable Error Error</small> <br />
+						</div>
+					</div>
+
+
+
+					<div class="form-group row">
+						<label for="nombre" class="col-sm-2 col-form-label"><strong>Descripcion
+								:</strong> </label>
+						<div class="col-sm-6">
+							<textarea rows="" cols="" th:field="*{nombre}"
+								class="form-control" th:errorclass="'form-control alert-danger'"></textarea>
+							<!-- input style="height:150px;"   type="text" th:field="*{descripcion}" class="form-control bg-light"
+										th:errorclass="'form-control alert-danger'" /-->
+							<small class="form-text text-danger"
+								th:if="${#fields.hasErrors('nombre')}" th:errors="nombre">Name
+								Error</small> <br />
+						</div>
+
+					</div>
+					
+					
+
+
+					<div class="form-group row">
+						<label for="usuarios" class="col-sm-2 col-form-label"><strong>
+								Seleccionar Usuarios :</strong></label>
+						<div class="col-sm-6">
+							<select th:field="${actividad.users}"
+								class="js-example-basic-multiple col-sm-12" name="states[]"
+								multiple="multiple">
+								<option th:each="user : ${users}" th:value="${user.id}"
+									th:text="${user.nombres} +' '+ ${user.apellidos}"></option>
+							</select>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label for="fechaInicio" class="col-sm-2 col-form-label"><strong>FechaInicial
+								:</strong> </label>
+						<div class="col-sm-6">
+							<input type="date" th:field="*{fechaInicio}"
+								class="form-control" th:errorclass="'form-control alert-danger'">
+							<!-- input style="height:150px;"   type="text" th:field="*{descripcion}" class="form-control bg-light"
+										th:errorclass="'form-control alert-danger'" /-->
+							<small class="form-text text-danger"
+								th:if="${#fields.hasErrors('fechaInicio')}" th:errors="*{fechaInicio}">Name
+								Error</small> <br />
+						</div>
+
+					</div>
+					
+					<div class="form-group row">
+						<label for="tipofrec" class="col-sm-2 col-form-label"><strong>Tipo
+								De Frecuencia :</strong> </label>
+						<div class="col-sm-6">
+							<select class="col-sm-12"  id="tipofrec" th:field="*{frecuencia}">
+								<option value="DIARIO">Diario</option>
+								<option value="SEMANAL">Semanal</option>
+								<option value="MENSUAL">Mensual</option>
+								<option value="SEMESTRAL">Semestral</option>
+								<option value="PERMANENTE">Anual</option>
+								<option value="ANUAL">Anual</option>
+							</select>
+						</div>
+					</div>
+
+					<!--  div class="form-group row">
+						<label for="repeticiones" class="col-sm-2 col-form-label"><strong>Repeticones
+								:</strong> </label>
+						<div class="col-sm-6">
+							<input type="number" th:field="*{repeticiones}"
+								class="form-control" th:errorclass="'form-control alert-danger'" />
+							<small class="form-text text-danger"
+								th:if="${#fields.hasErrors('repeticiones')}"
+								th:errors="*{repeticiones}"></small>
+						</div>
+					</div-->
+
+					<div class="form-group row"></div>
+
+					<div class="form-group row">
+						<div class="col-sm-10">
+							<input type="submit" th:value="${titulo}"
+								class="btn btn-secondary" />
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"
+		integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ=="
+		crossorigin="anonymous"></script>
+
+	<script th:src="@{../../dist/js/select2.min.js}"></script>
+
+	<script>
+		$('.input-daterange input').each(function() {
+			$(this).datepicker('clearDates');
+		});
+
+		$(document).ready(function() {
+			$('.js-example-basic-multiple').select2();
+		});
+	</script>
+	<script
+		th:replace="menu/actividad/js/autocomplete-usuario :: javascript"></script>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+</body>
+</html>

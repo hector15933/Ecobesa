@@ -10,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +25,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.ecobesa.service.IEmpresaService;
 import com.example.ecobesa.service.IUploadFileService;
+import com.example.ecobesa.service.IUserService;
 
 @Controller
 public class LoginController {
@@ -30,6 +34,9 @@ public class LoginController {
 	
 	@Autowired
 	private IUploadFileService uploadFileService;
+	
+	@Autowired
+	private IUserService userService;
 	
 	@GetMapping(value="/uploads/{filename:.+}")
 	public ResponseEntity<Resource> verFoto(@PathVariable String filename){
@@ -67,9 +74,16 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = { "/principal" }, method = RequestMethod.GET)
-	public String principal(HttpServletRequest request,HttpSession session) {
+	public ModelAndView overViewPage(HttpServletRequest request,HttpSession session) {
 		Long id=(long) 1;
 		session.setAttribute("RazonSocial", empresaService.findById(id).getFoto());
-		return "principal";
+		
+		ModelAndView model = new ModelAndView(); 
+    	Authentication auth = SecurityContextHolder.getContext().getAuthentication(); 
+    	UserDetails userDetail = (UserDetails) auth.getPrincipal(); 
+    	com.example.ecobesa.entity.User u = userService.findByUsuario(userDetail.getUsername()); 
+    	request.getSession().setAttribute("userId", u.getId()); 
+    	
+    	return model;
 	}
 }

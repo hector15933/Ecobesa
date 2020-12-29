@@ -62,7 +62,7 @@ public class User implements Serializable{
     private List<Role> roles;
     
     @ManyToMany
-    @JoinTable(name = "actividades_responsables")
+    @JoinTable(name = "actividad_users")
     private Set<Actividad> actividad;
 
 	public Long getId() {

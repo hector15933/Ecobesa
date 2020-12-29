@@ -1,9 +1,25 @@
 INSERT INTO frecuencia(nombre) VALUES('ANUAL');
 INSERT INTO frecuencia(nombre) VALUES('DIARIO');
+INSERT INTO frecuencia(nombre) VALUES('SEMANAL');
 INSERT INTO frecuencia(nombre) VALUES('SEMESTRAL');
 INSERT INTO frecuencia(nombre) VALUES('MENSUAL');
 INSERT INTO frecuencia(nombre) VALUES('PERMANENTE');
 INSERT INTO frecuencia(nombre) VALUES('PERSONALIZADO');
+
+
+
+INSERT INTO programa_actividades(nombre,status) VALUES('Plan de Acción de Investigación de Incidentes',true);
+INSERT INTO programa_actividades(nombre,status) VALUES('Programa de Comité Paritario Santiago',true);
+INSERT INTO programa_actividades(nombre,status) VALUES('Programa de Compromisos',true);
+INSERT INTO programa_actividades(nombre,status) VALUES('Programa de Inspección de Activos',true);
+INSERT INTO programa_actividades(nombre,status) VALUES('Programa de Prevención',true);
+
+
+INSERT INTO tipo_actividad(nombre) VALUES('Hallazgo');
+INSERT INTO tipo_actividad(nombre) VALUES('Check List');
+INSERT INTO tipo_actividad(nombre) VALUES('Capacitacion');
+INSERT INTO tipo_actividad(nombre) VALUES('Observacion Preventiva de Seguridad');
+INSERT INTO tipo_actividad(nombre) VALUES('Revision AST');
 
 
 
@@ -43,22 +59,12 @@ INSERT INTO objetivo_especificos(nombre,objetivo_general_id) VALUES(' Entrenar a
 INSERT INTO objetivo_especificos(nombre,objetivo_general_id) VALUES(' Asegurar el funcionamiento de los equipos de emergencia',3)
 
 
-INSERT INTO actividades(nombre,objetivo_general_id) VALUES('APROBAR EL PROGRAMA ANUAL DE SEGURIDAD Y SALUD EN EL TRABAJO - PASST',1)
-INSERT INTO actividades(nombre,objetivo_general_id) VALUES('APROBAR EL PROGRAMA ANUAL DE SEGURIDAD Y SALUD EN EL TRABAJO - PASST',1)
-INSERT INTO actividades(nombre,objetivo_general_id) VALUES('APROBAR EL PROGRAMA ANUAL DE SEGURIDAD Y SALUD EN EL TRABAJO - PASST',1)
-INSERT INTO actividades(nombre,objetivo_general_id) VALUES('APROBAR EL PROGRAMA ANUAL DE SEGURIDAD Y SALUD EN EL TRABAJO - PASST',1)
-INSERT INTO actividades(nombre,objetivo_general_id) VALUES('APROBAR EL PROGRAMA ANUAL DE SEGURIDAD Y SALUD EN EL TRABAJO - PASST',1)
-INSERT INTO actividades(nombre,objetivo_general_id) VALUES('APROBAR EL PROGRAMA ANUAL DE SEGURIDAD Y SALUD EN EL TRABAJO - PASST',1)
-INSERT INTO actividades(nombre,objetivo_general_id) VALUES('APROBAR EL PROGRAMA ANUAL DE SEGURIDAD Y SALUD EN EL TRABAJO - PASST',1)
-INSERT INTO actividades(nombre,objetivo_general_id) VALUES('APROBAR EL PROGRAMA ANUAL DE SEGURIDAD Y SALUD EN EL TRABAJO - PASST',1)
-INSERT INTO actividades(nombre,objetivo_general_id) VALUES('APROBAR EL PROGRAMA ANUAL DE SEGURIDAD Y SALUD EN EL TRABAJO - PASST',1)
-INSERT INTO actividades(nombre,objetivo_general_id) VALUES('APROBAR EL PROGRAMA ANUAL DE SEGURIDAD Y SALUD EN EL TRABAJO - PASST',1)
-INSERT INTO actividades(nombre,objetivo_general_id) VALUES('APROBAR EL PROGRAMA ANUAL DE SEGURIDAD Y SALUD EN EL TRABAJO - PASST',1)
-INSERT INTO actividades(nombre,objetivo_general_id) VALUES('APROBAR EL PROGRAMA ANUAL DE SEGURIDAD Y SALUD EN EL TRABAJO - PASST',1)
-INSERT INTO actividades(nombre,objetivo_general_id) VALUES('APROBAR EL PROGRAMA ANUAL DE SEGURIDAD Y SALUD EN EL TRABAJO - PASST',1)
-INSERT INTO actividades(nombre,objetivo_general_id) VALUES('APROBAR EL PROGRAMA ANUAL DE SEGURIDAD Y SALUD EN EL TRABAJO - PASST',1)
-INSERT INTO actividades(nombre,objetivo_general_id) VALUES('APROBAR EL PROGRAMA ANUAL DE SEGURIDAD Y SALUD EN EL TRABAJO - PASST',1)
-INSERT INTO actividades(nombre,objetivo_general_id) VALUES('APROBAR EL PROGRAMA ANUAL DE SEGURIDAD Y SALUD EN EL TRABAJO - PASST',1)
+INSERT INTO actividades(nombre,objetivo_general_id,programa_actividad_id,responsable_user_id,tipo_actividad_id,fecha_inicio) VALUES('APROBAR EL PROGRAMA ANUAL DE SEGURIDAD Y SALUD EN EL TRABAJO - PASST',1,1,1,1,'1/12/2021')
+
+
+
+
+
 
 INSERT INTO sedes(nombre) VALUES('Amazonas')
 INSERT INTO sedes(nombre) VALUES('Áncash')
@@ -81,6 +87,10 @@ INSERT INTO empleados(nombres,apellidos,dni,telefono,nacionalidad,sexo,fecha_nac
 INSERT INTO empleados(nombres,apellidos,dni,telefono,nacionalidad,sexo,fecha_nacimiento,foto,estado,sede_id) VALUES('Empleado 10','Apellido 10',78787810,747474710,'peruano',false,'1999/04/04',null,false,6)
 INSERT INTO empleados(nombres,apellidos,dni,telefono,nacionalidad,sexo,fecha_nacimiento,foto,estado,sede_id) VALUES('Empleado 11','Apellido 11',78787811,747474711,'peruano',false,'1999/04/04',null,false,5)
 INSERT INTO empleados(nombres,apellidos,dni,telefono,nacionalidad,sexo,fecha_nacimiento,foto,estado,sede_id) VALUES('Empleado 12','Apellido 12',78787411,747474711,'peruano',false,'1999/04/01',null,false,7)
+
+
+
+
 
 
 

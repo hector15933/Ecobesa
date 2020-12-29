@@ -1,80 +1,130 @@
 package com.example.ecobesa.controllers;
 
-
+import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.ecobesa.entity.Actividad;
-import com.example.ecobesa.entity.ObjetivoGeneral;
-import com.example.ecobesa.entity.ProgramaAnual;
+import com.example.ecobesa.entity.User;
 import com.example.ecobesa.service.IActividadService;
+import com.example.ecobesa.service.IEmpresaService;
 import com.example.ecobesa.service.IObjetivoGeneralService;
+import com.example.ecobesa.service.IProgramaActividadService;
+import com.example.ecobesa.service.ITipoActividadService;
+import com.example.ecobesa.service.IUserService;
+
 
 @Controller
+@RequestMapping("/menu")
 public class ActividadController {
 	
 	@Autowired
-	private IObjetivoGeneralService objetivoGeneralService;
-	@Autowired
 	private IActividadService actividadService;
+	@Autowired
+	private IObjetivoGeneralService objetivoService; 
+	@Autowired
+	private IEmpresaService empresaService;
+	@Autowired
+	private IUserService userService;
 	
-	@GetMapping(value="/actividades/{id}")
-	public String index(@PathVariable(value = "id") Long id, Map<String, Object> model) {
-		model.put("actividades", objetivoGeneralService.findById(id).getActividad());
-		model.put("objetivoGeneral", objetivoGeneralService.findById(id));
-		return "actividad/index";
+	@Autowired
+	private IProgramaActividadService programaActividadService;
+	
+	@Autowired
+	private ITipoActividadService tipoActividadService;
+	
+	
+	@GetMapping("/actividad/listar")
+	public String listar(Model model,Map<String,Object> model2) {
+		
+		
+		Long a = (long) 1;
+		
+		Actividad actividad = actividadService.findById(a);
+		actividad.sumarDiasAFecha();
+		model.addAttribute("titulo","Lista Actividades");
+		model.addAttribute("actividades",actividadService.findAll(Sort.by("id")));
+		model.addAttribute("arreglo", actividad.sumarDiasAFecha());
+		
+		return "menu/actividad/listar";
 	}
 	
-	@GetMapping(value = "/actividades/show/{id}")
-	public String show(@PathVariable(value = "id") Long id,Map<String, Object> model) {
-		Actividad actividad = actividadService.findById(id);
-		model.put("actividad", actividad);
-		return "actividad/show";
+	@GetMapping("/actividad/listar2")
+	public String listar2(Model model,Map<String,Object> model2,HttpServletRequest request) {
+		
+		Long userId2=(Long) request.getSession().getAttribute("userId");
+		model.addAttribute("titulo","Lista Actividades");
+		long id=1;
+		model.addAttribute("empresa",empresaService.findById(id));
+		model.addAttribute("usuarios",userService.findAll(Sort.by("id")));
+		model.addAttribute("actividades",actividadService.findAllByUsersId(userId2));
+		return "menu/actividad/listar2";
 	}
 	
-	@GetMapping(value = "/actividades/crear/{id}")
-	public String crear(@PathVariable(value = "id") Long id,Map<String, Object> model) {
-		ObjetivoGeneral objetivoGeneral = objetivoGeneralService.findById(id);
-		Actividad actividad = new Actividad();
-		actividad.setObjetivoGeneral(objetivoGeneral);
-		model.put("actividad", actividad);
-		model.put("titulo", "Crear Actividad");
-		model.put("btn", "Crear");
-		return "actividad/form";
+	
+	@PostMapping(value="/actividad/form")
+	public String guardar(@Valid Actividad actividad ,BindingResult bindingResult,Model model,Map<String, Object> model2,RedirectAttributes flash) {
+		if(bindingResult.hasErrors()){
+			model2.put("titulo", "Crear Actividad de Trabajo");
+			return "menu/actividad/form";
+		}
+		flash.addFlashAttribute("success", "Actividad creada correctamente");
+		actividadService.save(actividad);
+		return "redirect:listar";
+		
+	}
+	@RequestMapping("/actividad/form")
+	public String crear(Map<String,Object> model,HttpServletRequest request) {
+		
+		Long userId = (Long) request.getSession().getAttribute("userId"); 
+		
+		Actividad actividad = new Actividad();	
+		model.put("actividad",actividad);
+		model.put("titulo","Crear Actividad");	
+		model.put("objetivoGeneral", objetivoService.findAll());
+		model.put("tipoActividad", tipoActividadService.findAll());
+		model.put("programaActividad", programaActividadService.findAll(Sort.by("id")));
+		model.put("users", userService.findAll(Sort.by("id")));
+		model.put("userId", userService.findById(userId));
+		
+		return "menu/actividad/form";
+	}
+	/*Metodo para el jquery*/
+	@GetMapping(value="/actividad/cargar-usuarios/{term}",produces = {"application/json"})
+	public @ResponseBody List<User> cargarUsers(@PathVariable String term){
+		
+		return actividadService.findByNombres(term);
 	}
 	
-	@RequestMapping(value="/actividades/editar/{id}")
-	public String editar(@PathVariable(value="id") Long id,Map<String,Object> model) {
+	
+	@GetMapping("/actividad/form/{id}")
+	public String editar(Model model,@PathVariable(value="id") Long id,Map<String,Object> model2,RedirectAttributes flash) {
+		
 		Actividad actividad=null;
 		if(id>0){
 			actividad = actividadService.findById(id);
 		}else {
-			
+			return "redirect:/menu/adtividad/form";
 		}
-		model.put("titulo", "Editar");
-		model.put("actividad",actividad);
-		model.put("btn","Actualizar");
-		return "actividad/form";
+		model2.put("titulo","Editar Actividad");	
+		model2.put("actividad",actividad);
+		return "menu/actividad/form";
 	}
 	
-	@GetMapping(value="/actividades/eliminar/{id}")
-	public String eliminar(@PathVariable(value = "id") Long id,RedirectAttributes flash) {
-		//Validar que el id exista en la tabla actividad
-		Long objetivoGeneralId=actividadService.findById(id).getObjetivoGeneral().getId();
-		String ruta="redirect:/actividades/"+objetivoGeneralId;
-		try {
-			actividadService.delete(id);
-			flash.addFlashAttribute("success", "Actividad eliminada correctamente");
-			return ruta;
-		} catch (Exception e) {
-			flash.addFlashAttribute("error", "Ocurrió un error al tratar de eliminar la actividad");
-			return ruta;
-		}
-	}
+	
+	
 }

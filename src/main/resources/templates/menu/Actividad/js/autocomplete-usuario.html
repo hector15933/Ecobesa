@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<script type="text/javascript" th:fragment="javascript">
+
+$(document).ready(function(){
+	
+	$("#buscar_usuario").autocomplete({
+		
+		source: function(request,response){
+			$.ajax({
+				url:"/menu/actividad/cargar-usuarios/" + request.term,
+				dataType:"json",
+				data:{
+					term: request.term
+				},
+				success: function(data){
+					response($.map(data, function(item){
+						return {
+							value: item.id,
+							label: item.nombres,
+							apellidos: item.apellidos,
+							email: item.email,
+						};
+					}));
+				},
+			});
+		},
+		select: function(event,ui){
+			//$("#buscar_usuario").val(ui.item.label);
+			var linea = $("#plantillaItemsFactura").html();
+					
+					linea = linea.replace(/{ID}/g, ui.item.value);
+					linea = linea.replace(/{NOMBRE}/g, ui.item.label);
+					linea = linea.replace(/{APELLIDOS}/g, ui.item.apellidos);
+					linea = linea.replace(/{EMAIL}/g, ui.item.email);
+					
+					$("#cargarItemProductos tbody").append(linea);
+					itemsHelper.calcularImporte(ui.item.value, ui.item.precio, 1);
+
+			return false;
+		}
+		
+	});
+	
+	$("form").submit(function(){
+		$("#plantillaItemsFactura").remove();
+		return;
+	});
+		
+});
+
+	var itemsHelper={
+			eliminarLineaFactura: function(id){
+				$("#row_" + id).remove();
+				this.calcularGranTotal();
+			},	
+	}
+
+
+</script>
+
+</body>
+</html>

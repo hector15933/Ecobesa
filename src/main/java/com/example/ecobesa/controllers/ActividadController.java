@@ -1,5 +1,6 @@
 package com.example.ecobesa.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -51,14 +52,16 @@ public class ActividadController {
 	@GetMapping("/actividad/listar")
 	public String listar(Model model,Map<String,Object> model2) {
 		
-		
-		Long a = (long) 1;
-		
-		Actividad actividad = actividadService.findById(a);
-		actividad.sumarDiasAFecha();
 		model.addAttribute("titulo","Lista Actividades");
+		
+		List<Actividad> acti = new ArrayList<Actividad>();
+		acti=actividadService.findAll(Sort.by("id"));
+		
+		List<String> fechas = new ArrayList<String>();
+		
+
+		
 		model.addAttribute("actividades",actividadService.findAll(Sort.by("id")));
-		model.addAttribute("arreglo", actividad.sumarDiasAFecha());
 		
 		return "menu/actividad/listar";
 	}

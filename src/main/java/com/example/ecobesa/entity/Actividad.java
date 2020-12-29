@@ -19,6 +19,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -36,7 +37,8 @@ public class Actividad implements Serializable {
 	private Long id;
 
 	private String nombre;
-
+	
+	@NotNull
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fechaInicio;
 
@@ -46,6 +48,8 @@ public class Actividad implements Serializable {
 	private Integer repeticiones;
 
 	private String frecuencia;
+	
+	private String arregloFechas;
 
 	@ManyToOne
 	private User responsableUser;
@@ -151,7 +155,12 @@ public class Actividad implements Serializable {
 	public void setFrecuencia(String frecuencia) {
 		this.frecuencia = frecuencia;
 	}
+	
+	
+	
+	//================================================================================
 
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -174,22 +183,24 @@ public class Actividad implements Serializable {
 		DateFormat formatoFecha = new SimpleDateFormat("yyyy/MM/dd");
 		List<String> arregloDias = new ArrayList<String>();
 
-		String fecha_ini = formatoFecha.format(fechaInicio);
+		String fecha_ini = formatoFecha.format(this.fechaInicio);
 
 		SimpleDateFormat format1 = new SimpleDateFormat("yyyy/MM/dd");
 
 		Integer dias;
-		String frecuencia = this.frecuencia;
+		String frecuencia =  this.getFrecuencia();
 
 		try {
 			Date fecha_ini2 = format1.parse(fecha_ini);
 
 			Calendar calendar = Calendar.getInstance();
+			arregloDias.add(formatoFecha.format(this.fechaInicio));
+			
+			
+			if (frecuencia.equals("MENSUAL")) {
 
-			if (frecuencia == "MENSUAL") {
-
-				dias = 30;
-				for (int i = 0; i < 12; i++) {
+				dias = 32;
+				for (int i = 0; i < 11; i++) {
 					calendar.setTime(fecha_ini2);
 					calendar.add(Calendar.DAY_OF_YEAR, dias);
 					arregloDias.add(formatoFecha.format(calendar.getTime()));
@@ -198,7 +209,45 @@ public class Actividad implements Serializable {
 				}
 
 				return arregloDias;
-			} else {
+			} else if (frecuencia.equals("SEMANAL")) {
+
+				dias = 32;
+				for (int i = 0; i < 11; i++) {
+					calendar.setTime(fecha_ini2);
+					calendar.add(Calendar.DAY_OF_YEAR, dias);
+					arregloDias.add(formatoFecha.format(calendar.getTime()));
+					fecha_ini2 = calendar.getTime();
+
+				}
+
+				return arregloDias;
+			} else if (frecuencia.equals("SEMESTRAL")) {
+
+				dias = 180;
+				for (int i = 0; i < 1; i++) {
+					calendar.setTime(fecha_ini2);
+					calendar.add(Calendar.DAY_OF_YEAR, dias);
+					arregloDias.add(formatoFecha.format(calendar.getTime()));
+					fecha_ini2 = calendar.getTime();
+
+				}
+
+				return arregloDias;
+			} else if (frecuencia.equals("PERMANENTE")) {
+
+				dias = 32;
+				for (int i = 0; i < 11; i++) {
+					calendar.setTime(fecha_ini2);
+					calendar.add(Calendar.DAY_OF_YEAR, dias);
+					arregloDias.add(formatoFecha.format(calendar.getTime()));
+					fecha_ini2 = calendar.getTime();
+
+				}
+
+				return arregloDias;
+			}
+
+			else {
 				dias = 12;
 				for (int i = 0; i < dias; i++) {
 					calendar.setTime(fecha_ini2);

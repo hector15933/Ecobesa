@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<style>
+.c-avatar {
+	position: relative;
+	display: -ms-inline-flexbox;
+	display: inline-flex;
+	-ms-flex-align: center;
+	align-items: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	border-radius: 50em;
+	width: 36px;
+	height: 36px;
+	font-size: 14.4px
+}
+
+.c-avatar .c-avatar-status {
+	width: 10px;
+	height: 10px
+}
+
+.c-avatar-img {
+	width: 50px;
+	height: auto;
+	border-radius: 50em
+}
+
+.c-avatar-status {
+	position: absolute;
+	bottom: 0;
+	display: block;
+	border: 1px solid #fff;
+	border-radius: 50em
+}
+
+html:not([dir=rtl]) .c-avatar-status {
+	right: 0
+}
+
+*[dir=rtl] .c-avatar-status {
+	left: 0
+}
+</style>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<div class="container mt-5">
+		<div class="d-flex justify-content-between align-items-end mb-3">
+			<h3 class="pb-1">Empleados</h3>
+			<a class="btn btn-dark" th:href="@{/admin/empleados/crear/}">
+				Registrar Nuevo Empleado
+			</a>
+		</div>
+
+		<table
+			class="table table-responsive-sm table-hover table-outline mb-0">
+			<thead class="thead-light">
+				<tr>
+					<th>#</th>
+					<th class="text-center">Foto</th>
+					<th>Nombre</th>
+					<th class="text-center">Nacionalidad</th>
+					<th class="text-center">Perfil</th>
+					<th class="text-center">Sede</th>
+					<th class="text-center">Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="empleado : ${empleados}">
+					<td class="text-center">
+						<div th:text="${empleado.id}"></div>
+					</td>
+					<td class="text-center">
+						<div class="c-avatar">
+							<img
+								th:src="${empleado.foto} ? @{|/img/empleados/${empleado.foto}|} : @{/img/empleados/default.png}"
+								class="c-avatar-img" alt="empleado-img"><img /><span
+								class="c-avatar-status" th:classappend="${empleado.estado} ? bg-success : bg-danger"></span>
+						</div>
+					</td>
+					<td>
+						<div th:text="${empleado.nombres+' '+empleado.apellidos}"></div>
+						<!-- <div class="small text-muted">
+							<span th:text="${empleado.cargo.nombre}"></span> | Registered: Jan 1, 2015
+						</div-->
+					</td>
+					<td class="text-center" th:text="${empleado.nacionalidad}"></td>
+					<td class="text-center">
+						<div class="small text-muted" th:text="${empleado.sexo} ? 'Hombre' : 'Mujer'"></div> 
+						<strong>25 años</strong>
+					</td>
+					<td class="text-center" th:text="${empleado.sede.nombre}">Sede</td>
+					<td class="text-center">
+						<button
+							th:onclick="modal('/admin/empleados/show/[[${empleado.id}]]','Detalle del Empleado')"
+							class="btn btn-outline-dark btn-sm"><span class="fa fa-eye"
+								title="Detalle"></span> 
+						</button> 
+						<a class="btn btn-outline-dark btn-sm"
+							th:href="@{/admin/empleados/editar/} + ${empleado.id}"> <span
+								class="fa fa-pencil-alt" title="Editar"> </span>
+						</a>
+						<button class="btn btn-outline-danger btn-sm"
+							th:onclick="deleteRegister('/admin/empleados/eliminar/[[${empleado.id}]]')">
+							<span class="fa fa-trash" title="Eliminar"> </span>
+						</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="row">
+			<div class="col-md-2">
+			</div>
+			<div class="col-md-8">
+				<nav aria-label="Pagination">
+					<ul class="pagination justify-content-center mt-2 mt-md-4">
+						<li class="page-item" th:classappend="${actualPage-1==0 ? 'disabled' : ''}">
+							<a class="page-link" th:href="@{|/admin/empleados?page=${actualPage-1}|}" aria-label="Previous">
+								<span aria-hidden="true">«</span>
+								<span class="sr-only">Anterior</span>
+							</a>
+						</li>
+						<li class="page-item" th:classappend="${actualPage}==${page} ? 'active' : ''" th:each="page : ${pages}">
+							<a class="page-link" th:href="@{|/admin/empleados?page=${page}|}" th:text="${page}"></a>
+						</li>
+						<li class="page-item" th:classappend="${actualPage}==${totalPage} ? 'disabled' : ''">
+							<a class="page-link" th:href="@{|/admin/empleados?page=${actualPage+1}|}" aria-label="Next">
+								<span aria-hidden="true">»</span>
+								<span class="sr-only">Siguiente</span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+			<div class="col-md-2">
+			</div>
+		</div>
+	</div>
+	<header th:replace="layout/layout :: footer"></header>
+</body>
+</html>

@@ -40,7 +40,7 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<a class="navbar-brand" href="#"> <img class="navbar-brand-full"
-			 th:src="@{'../uploads/' + ${session.RazonSocial}}" width="80px" 
+			 th:src="@{/img/brand/logo.svg}" width="80px" 
 			alt="CoreUI Logo"> <img class="navbar-brand-minimized"
 			th:src="@{/img/brand/sygnet.svg}" width="30" height="30"
 			alt="CoreUI Logo">
@@ -68,16 +68,16 @@
 						<div class="dropdown-header ">
 							<i class="fa fa-bars"></i> <strong>Administrar Programa Anual</strong>
 						</div>
-						<a class="dropdown-item" th:href="@{/programaAnual/listar}">Programa Anual</a> 
-						<a class="dropdown-item" th:href="@{/admin/empleado/listar}">Dotacion/Trabajadores</a>	
-						<a class="dropdown-item" th:href="@{/admin/usuario/listar}">Usuarios</a>
+						<a class="dropdown-item" th:href="@{/programaAnual/listar}">Programas Anuales</a> 
+						<!--<a class="dropdown-item" th:href="@{/admin/empleados}">Dotacion/Trabajadores</a>	
+						<a class="dropdown-item" th:href="@{/admin/usuarios}">Usuarios</a-->
 						
 						<div class="dropdown-header ">
 							<i class="fa fa-bars"></i> <strong>Administrar Personas</strong>
 						</div>
 						<a class="dropdown-item" th:href="@{/admin/cargo/listar}">Cargo</a> 
-						<a class="dropdown-item" th:href="@{/admin/empleado/listar}">Dotacion/Trabajadores</a>	
-						<a class="dropdown-item" th:href="@{/admin/usuario/listar}">Usuarios</a>
+						<a class="dropdown-item" th:href="@{/admin/empleados}">Dotacion/Trabajadores</a>	
+						<a class="dropdown-item" th:href="@{/admin/usuarios}">Usuarios</a>
 						
 						<div class="dropdown-header "><i class="fa fa-bars"></i>
 						<strong>Administrar Instalaciones y Proceso</strong>
@@ -189,6 +189,9 @@
 		<!-- BootBox -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"></script>
 		<script th:src="@{/js/functions.js}"></script>
-	</footer>
+		<!--select2 -->
+		<script
+			src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+		</footer>
 </body>
 </html>

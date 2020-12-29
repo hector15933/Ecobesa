@@ -64,3 +64,37 @@ INSERT INTO actividades(nombre,objetivo_general_id,programa_actividad_id,respons
 
 
 
+
+
+
+INSERT INTO sedes(nombre) VALUES('Amazonas')
+INSERT INTO sedes(nombre) VALUES('Áncash')
+INSERT INTO sedes(nombre) VALUES('Apurímac')
+INSERT INTO sedes(nombre) VALUES('Arequipa')
+INSERT INTO sedes(nombre) VALUES('Ayacucho')
+INSERT INTO sedes(nombre) VALUES('Cajamarca')
+INSERT INTO sedes(nombre) VALUES('Callao')
+INSERT INTO sedes(nombre) VALUES('Chiclayo')
+
+INSERT INTO empleados(nombres,apellidos,dni,telefono,nacionalidad,sexo,fecha_nacimiento,foto,estado,sede_id) VALUES('Empleado 1','Apellido 1',78787871,747474771,'peruano',true,'1999/04/04','1.jpg',true,1)
+INSERT INTO empleados(nombres,apellidos,dni,telefono,nacionalidad,sexo,fecha_nacimiento,foto,estado,sede_id) VALUES('Empleado 2','Apellido 2',78787872,747474772,'peruano',false,'1999/04/04','2.jpg',false,2)
+INSERT INTO empleados(nombres,apellidos,dni,telefono,nacionalidad,sexo,fecha_nacimiento,foto,estado,sede_id) VALUES('Empleado 3','Apellido 3',78787873,747474773,'argentino',true,'1999/04/05','3.jpg',false,3)
+INSERT INTO empleados(nombres,apellidos,dni,telefono,nacionalidad,sexo,fecha_nacimiento,foto,estado,sede_id) VALUES('Empleado 4','Apellido 4',78787874,747474774,'chileno',false,'1999/04/04','4.jpg',true,4)
+INSERT INTO empleados(nombres,apellidos,dni,telefono,nacionalidad,sexo,fecha_nacimiento,foto,estado,sede_id) VALUES('Empleado 5','Apellido 5',78787875,747474775,'venezolano',false,'1999/04/04',null,false,5)
+INSERT INTO empleados(nombres,apellidos,dni,telefono,nacionalidad,sexo,fecha_nacimiento,foto,estado,sede_id) VALUES('Empleado 6','Apellido 6',78787876,747474776,'peruano',false,'1999/04/04',null,false,6)
+INSERT INTO empleados(nombres,apellidos,dni,telefono,nacionalidad,sexo,fecha_nacimiento,foto,estado,sede_id) VALUES('Empleado 7','Apellido 7',78787877,747474777,'peruano',false,'1999/04/04',null,true,7)
+INSERT INTO empleados(nombres,apellidos,dni,telefono,nacionalidad,sexo,fecha_nacimiento,foto,estado,sede_id) VALUES('Empleado 8','Apellido 8',78787878,747474778,'peruano',false,'1999/04/04',null,false,8)
+INSERT INTO empleados(nombres,apellidos,dni,telefono,nacionalidad,sexo,fecha_nacimiento,foto,estado,sede_id) VALUES('Empleado 9','Apellido 9',78787879,747474779,'peruano',false,'1999/04/04',null,false,7)
+INSERT INTO empleados(nombres,apellidos,dni,telefono,nacionalidad,sexo,fecha_nacimiento,foto,estado,sede_id) VALUES('Empleado 10','Apellido 10',78787810,747474710,'peruano',false,'1999/04/04',null,false,6)
+INSERT INTO empleados(nombres,apellidos,dni,telefono,nacionalidad,sexo,fecha_nacimiento,foto,estado,sede_id) VALUES('Empleado 11','Apellido 11',78787811,747474711,'peruano',false,'1999/04/04',null,false,5)
+INSERT INTO empleados(nombres,apellidos,dni,telefono,nacionalidad,sexo,fecha_nacimiento,foto,estado,sede_id) VALUES('Empleado 12','Apellido 12',78787411,747474711,'peruano',false,'1999/04/01',null,false,7)
+
+
+
+
+
+
+
+
+
+

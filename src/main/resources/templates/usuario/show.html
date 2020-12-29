@@ -1,0 +1,84 @@
+<div class="container p-sm-4">
+<div class="row mb-2">
+		<div class="col-5">
+		</div>
+		<div class="col-2" >
+			<img th:src="${user.foto} ? @{/img/${user.foto}} : @{/img/user.png}" width="100%" alt="user-img"/>
+		</div>
+	</div>
+	
+	<div class="row mb-2">
+		<div class="col-3" >
+			Nombre:
+		</div>
+		<div class="col-9">
+		<input class="form-control" th:value="${user.nombres+' '+user.apellidos}" readonly/>
+		</div>
+	</div>
+	
+	<div class="row mb-2">
+		<div class="col-3" >
+			Cargo:
+		</div>
+		<div class="col-9">
+		<input class="form-control" th:value="${user.cargo.nombre}" readonly/>
+		</div>
+	</div>
+	
+	<div class="row mb-2">
+		<div class="col-3" >
+			DNI:
+		</div>
+		<div class="col-9">
+		<input class="form-control" th:value="${user.dni}" readonly/>
+		</div>
+	</div>
+	
+	<div class="row mb-2">
+		<div class="col-3" >
+			E-mail:
+		</div>
+		<div class="col-9">
+		<input class="form-control" th:value="${user.email}" readonly/>
+		</div>
+	</div>
+	
+	<div class="row mb-2">
+		<div class="col-3" >
+			Teléfono:
+		</div>
+		<div class="col-9">
+		<input class="form-control" th:value="${user.telefono}" readonly/>
+		</div>
+	</div>
+	
+	<div class="row mb-2">
+		<div class="col-3" >
+			Estado:
+		</div>
+		<div class="col-9">
+		<input class="form-control" th:value="${user.estado} ? 'Activo' : 'Inactivo'" readonly/>
+		</div>
+	</div>
+	
+	<div class="row mb-2">
+		<div class="col-3" >
+			Usuario:
+		</div>
+		<div class="col-9">
+		<input class="form-control" th:value="${user.usuario}" readonly/>
+		</div>
+	</div>
+	
+	<div class="row mb-2">
+		<div class="col-3" >
+			Roles:
+		</div>
+		<div class="col-9">
+			<ul>
+				<li th:each="rol : ${user.roles}" th:text="${rol.authority}=='ROLE_ADMIN' ? 'Administrador' : 'Usuario'">
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

@@ -4,13 +4,29 @@
 <body>
 	<header th:replace="layout/layout :: header"></header>
 	<div class="container mt-5">
+	
+		<div class="my-2 my-md-4">
+			<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+				<a th:href="@{/programaAnual/listar/}" class="text-primary">
+					Programas Anuales
+					<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+				</a>
+	
+				<span class="text-dark">
+					Objetivos Generales
+				</span>
+			</div>
+		</div>
+	
 		<h3 class="mb-3 mb-md-5 text-center" th:text="${programaAnual.nombre}">
 		</h3>
+		
 		<div class="d-flex justify-content-between align-items-end mb-3">
 			<h3 class="pb-1">Objetivos Generales</h3>
 			<a class="btn btn-dark" th:href="@{/objetivos-generales/crear/}+${programaAnual.id}">
 				Nuevo Objetivo General</a>
 		</div>
+		
 		<div class="table-responsive">
 			<table class="table table-sm table-responsive">
 				<thead class="thead-dark">
@@ -56,15 +72,15 @@
 						<td class="text-center">
 							<a
 							th:href="@{/objetivos-especificos/} + ${objetivo.id}" 
-							class="btn btn-outline-success btn-sm"><span
-								class="fa fa-list" title="Objetivos Específicos"></span>
+							class="btn btn-outline-primary btn-sm"><span
+								class="fas fa-crosshairs" title="Objetivos Específicos"></span>
 							</a>
 						</td>
 						<td class="text-center">
 							<a
 							th:href="@{/actividades/} + ${objetivo.id}" 
 							class="btn btn-outline-success btn-sm"><span
-								class="fa fa-list" title="Actividades"></span>
+								class="fas fa-hiking" title="Actividades"></span>
 							</a>
 						</td>
 					</tr>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+<meta charset="UTF-8">
+<title>Title</title>
+</head>
+<body>
+<header th:replace="layout/layout :: header"></header>
+
+	<div class="container py-4">
+
+		<div class="card bg-light ">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+				<form th:action="@{/usuarios}" th:object="${user}" method="post"
+					enctype="multipart/form-data">
+					
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Nombres</label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{nombres}" class="form-control"/> <small
+										class="form-text text-danger"
+										th:if="${#fields.hasErrors('nombres')}" th:errors="*{nombres}"></small>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Apellidos</label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{apellidos}" class="form-control"/> <small
+										class="form-text text-danger"
+										th:if="${#fields.hasErrors('apellidos')}" th:errors="*{apellidos}"></small>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label" for="foto">Foto:</label>
+						<input class="form-control col-sm-6" type="file" id="foto"/>
+					</div>
+					
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label" for="firma">Firma:</label>
+						<input class="form-control col-sm-6" type="file" id="firma"/>
+					</div>
+					
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">E-mail</label>
+						<div class="col-sm-6">
+							<input type="email" th:field="*{email}" class="form-control"/> <small
+										class="form-text text-danger"
+										th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Teléfono</label>
+						<div class="col-sm-6">
+							<input type="number" th:field="*{telefono}" class="form-control"/> <small
+										class="form-text text-danger"
+										th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></small>
+						</div>
+					</div>
+			
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">DNI</label>
+						<div class="col-sm-6">
+							<input type="number" th:field="*{dni}" class="form-control"/> <small
+										class="form-text text-danger"
+										th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}"></small>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Usuario</label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{usuario}" class="form-control"/> <small
+										class="form-text text-danger"
+										th:if="${#fields.hasErrors('usuario')}" th:errors="*{usuario}"></small>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Contraseña</label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{password}" class="form-control"/> <small
+										class="form-text text-danger"
+										th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></small>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Estado:</label>
+						<select th:field="*{estado}" class="col-sm-6 form-control">
+							<option th:text="Activo" th:value="true"></option>
+							<option th:text="Inactivo" th:value="false"></option>							
+						</select>
+					</div>
+					
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Cargo:</label>
+						<select th:field="*{cargo}" class="col-sm-6 form-control">
+							<option th:each="cargo : ${cargos}" th:text="${cargo.nombre}" th:value="${cargo.id}"></option>							
+						</select>
+					</div>
+					
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label" for="selectRoles">Roles:</label>	
+						<select  id="selectRoles" class="col-sm-6 form-control"
+							name="roles[]" multiple="multiple" th:field="*{roles}">
+							<option th:each="rol : ${roles}" th:text="${rol.authority}" th:value="${rol.id}">Lunes</option>
+						</select>
+					</div>
+			
+					<div class="form-group row">
+						<div class="col-sm-6">
+							<input type="submit" th:value="${btn}"
+								class="btn btn-dark" />
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="layout/layout :: footer"></footer>
+	<script>
+		$('#selectRoles').select2();
+	</script>
+</body>
+</html>

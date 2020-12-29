@@ -16,7 +16,6 @@ public interface IUserDao extends PagingAndSortingRepository<User, Long>{
 	
 	public User findByUsuario(String usuario);
 	public List<User> findAll(Sort sort);
-
 	 
 	public List<User> findByNombresLikeIgnoreCase(String term);
 	

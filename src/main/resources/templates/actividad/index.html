@@ -4,6 +4,25 @@
 <body>
 	<header th:replace="layout/layout :: header"></header>
 	<div class="container mt-5">
+	
+		<div class="my-2 my-md-4">
+			<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+				<a th:href="@{/programaAnual/listar/}" class="text-primary">
+					Programas Anuales
+					<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+				</a>
+				
+				<a th:href="@{/objetivos-generales/}+${objetivoGeneral.programaAnual.id}" class="text-primary">
+					Objetivos Generales
+					<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+				</a>
+	
+				<span class="text-dark">
+					Actividades
+				</span>
+			</div>
+		</div>
+	
 		<h3 class="mb-3 mb-md-5 text-center" th:text="${objetivoGeneral.nombre}">
 		</h3>
 		<div class="d-flex justify-content-between align-items-end mb-3">

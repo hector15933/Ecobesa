@@ -1,5 +1,9 @@
 package com.example.ecobesa;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -16,6 +20,8 @@ public class EcobesaApplication implements CommandLineRunner{
 
 	public static void main(String[] args) {
 		SpringApplication.run(EcobesaApplication.class, args);
+		
+		
 	}
 	
 	@Override
@@ -29,5 +35,18 @@ public class EcobesaApplication implements CommandLineRunner{
 			String bcryptPassword = passwordEncoder.encode(password);
 			System.out.println(bcryptPassword);
 		}
+		
+		 
+        SimpleDateFormat format1 = new SimpleDateFormat("yyyy/MM/dd");
+        
+        Date fecha_ini = format1.parse("2021/05/01");
+        
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(fecha_ini); 
+        calendar.add(Calendar.DAY_OF_YEAR, 180);
+        System.out.println(calendar.getTime());
+		
 	}
+	
+	
 }

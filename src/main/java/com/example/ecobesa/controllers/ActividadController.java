@@ -51,8 +51,14 @@ public class ActividadController {
 	@GetMapping("/actividad/listar")
 	public String listar(Model model,Map<String,Object> model2) {
 		
+		
+		Long a = (long) 1;
+		
+		Actividad actividad = actividadService.findById(a);
+		actividad.sumarDiasAFecha();
 		model.addAttribute("titulo","Lista Actividades");
 		model.addAttribute("actividades",actividadService.findAll(Sort.by("id")));
+		model.addAttribute("arreglo", actividad.sumarDiasAFecha());
 		
 		return "menu/actividad/listar";
 	}

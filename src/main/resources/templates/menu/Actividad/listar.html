@@ -49,23 +49,25 @@
 									<th>Titulo de Actividad</th>
 									<th>Tipo de Programa</th>
 									<th>Usuario Responsable</th>
-									<th>Fecha de Programacion</th>
-									<th>Atraso</th>
-									<th>Comentarios</th>
+									<th>Fecha de Inicio</th>
+									<th class="col-2">Fechas</th>
 									<!--th sec:authorize="hasRole('ROLE_ADMIN')">Acciones</th-->
 								</tr>
 							</thead>
 							<tbody>
 								<tr th:each="actividad: ${actividades}">
 									<td th:text="${actividad.id}"></td>
-									<td th:text="${actividad.meta}"></td>
-									<td th:text="${actividad.programaActividad.nombre 	}"></td>
+									<td th:text="${actividad.nombre}"></td>
+									<td th:text="${actividad.programaActividad.nombre}"></td>
 									<td th:text="${actividad.responsableUser.nombres}"></td>
 									<td
-										th:text="${#dates.format(actividad.fechaInicio, 'dd-MMM-yyyy')}"><input
-										type="date"></td>
-									<td th:text="${actividad.obtenerDias()}"></td>
-									<td th:text="${actividad.comentario}"></td>
+										th:text="${#dates.format(actividad.fechaInicio, 'dd-MMM-yyyy')}"></td>
+									<td class="col-2">
+										<ol >
+											<li th:each="totalFechas : ${actividad.sumarDiasAFecha()}" th:text="${#dates.format(totalFechas, 'dd-MMM-yyyy')}"></li>
+										</ol>
+									
+									</td>
 									<!--  td sec:authorize="hasRole('ROLE_ADMIN')"><a
 										class="btn  btn-light btn-sm"
 										th:href="@{/menu/actividad/form/} + ${actividad.id}">Editar</a>

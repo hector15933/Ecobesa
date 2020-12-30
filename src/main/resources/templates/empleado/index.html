@@ -81,11 +81,11 @@ html:not([dir=rtl]) .c-avatar-status {
 					</td>
 					<td>
 						<div th:text="${empleado.nombres+' '+empleado.apellidos}"></div>
-						<!-- <div class="small text-muted">
-							<span th:text="${empleado.cargo.nombre}"></span> | Registered: Jan 1, 2015
-						</div-->
+						<div class="small text-muted">
+							<!--<span th:text="${empleado.cargo.nombre}"></span--> | Registered: Jan 1, 2015
+						</div>
 					</td>
-					<td class="text-center" th:text="${empleado.nacionalidad}"></td>
+					<td class="text-center" th:text="${empleado.nacionalidad.substring(0,1).toUpperCase() + empleado.nacionalidad.substring(1)}"></td>
 					<td class="text-center">
 						<div class="small text-muted" th:text="${empleado.sexo} ? 'Hombre' : 'Mujer'"></div> 
 						<strong>25 años</strong>

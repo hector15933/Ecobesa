@@ -1,10 +1,19 @@
 package com.example.ecobesa.controllers;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,8 +22,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.ecobesa.entity.Empleado;
 import com.example.ecobesa.entity.ProgramaAnual;
 import com.example.ecobesa.entity.User;
 import com.example.ecobesa.service.ICargoService;
@@ -32,8 +44,18 @@ public class UserController {
 	private IRoleService rolService;
 	
 	@GetMapping("/admin/usuarios")
-	public String index(Model model) {
-		model.addAttribute("users", userService.findAll(Sort.by(Sort.Direction.DESC, "id")));
+	public String index(@RequestParam Map<String,Object> params, Model model) {
+		int page = params.get("page") != null ? (Integer.valueOf(params.get("page").toString())-1) : 0;
+		PageRequest pageRequest = PageRequest.of(page, 10, Sort.by("id").descending());
+		Page<User> users = userService.findAll(pageRequest);
+		int totalPage=users.getTotalPages();
+		if(totalPage>0) {
+			List<Integer> pages = IntStream.rangeClosed(1, totalPage).boxed().collect(Collectors.toList());
+			model.addAttribute("pages", pages);
+		}
+		model.addAttribute("users", users.getContent());
+		model.addAttribute("actualPage", page+1);
+		model.addAttribute("totalPage", totalPage);
 		return "usuario/index";
 	}
 	
@@ -52,7 +74,6 @@ public class UserController {
 		model.put("roles", rolService.findAll());
 		model.put("titulo", "Registrar Nuevo Usuario");
 		model.put("btn", "Registrar");
-		//model.put("users", userService.findAll(Sort.by(Sort.Direction.ASC, "apellidos")));
 		return "usuario/form";
 	}
 	
@@ -70,7 +91,7 @@ public class UserController {
 	}
 	
 	@PostMapping(value = "/admin/usuarios")
-	public String guardar(@Valid User user,BindingResult bindingResult, Model model, RedirectAttributes flash) {
+	public String guardar(@RequestParam("img") MultipartFile foto, @Valid User user,BindingResult bindingResult, Model model, RedirectAttributes flash) throws IOException {
 		
 		if(bindingResult.hasErrors()){	
 			model.addAttribute("user", user);
@@ -78,8 +99,22 @@ public class UserController {
 			model.addAttribute("btn", "Guardar");
 			return "usuario/form";
 		}
-		flash.addFlashAttribute("success", "Usuario creado correctamente");
+		if(user.getId()!=null && foto.isEmpty()) {
+			User oldUser = userService.findById(user.getId());
+			user.setFoto(oldUser.getFoto());
+		}else {
+			if(!foto.isEmpty()) {
+				byte[] fotoBytes = foto.getBytes();
+				StringBuilder builder = new StringBuilder();
+				builder.append("C:\\Spring\\Ecobesa\\src\\main\\resources\\static\\img\\usuarios\\");
+				builder.append(foto.getOriginalFilename());
+				Path path=Paths.get(builder.toString());
+				Files.write(path, fotoBytes);
+				user.setFoto(foto.getOriginalFilename());
+			}
+		}
 		userService.save(user);
+		flash.addFlashAttribute("success", "Usuario creado correctamente");
 		return "redirect:/admin/usuarios";
 	}
 	

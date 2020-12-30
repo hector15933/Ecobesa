@@ -33,15 +33,15 @@ public class JpaUserDetailService implements UserDetailsService{
 	public UserDetails loadUserByUsername(String usuario) throws UsernameNotFoundException {
 		// TODO Auto-generated method stub
 		
-		com.example.ecobesa.entity.User usuarios = usuarioDao.findByUsuario(usuario);
+		com.example.ecobesa.entity.User user = usuarioDao.findByUsuario(usuario);
 		
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 		
-		for(Role role: usuarios.getRoles()) {
-			authorities.add(new SimpleGrantedAuthority(role.getAuthority()));
-		}
+		//for(Role role: usuarios.getRoles()) {
+			authorities.add(new SimpleGrantedAuthority(user.getRole().getAuthority()));
+		//}
 		
-		return new org.springframework.security.core.userdetails.User(usuarios.getUsuario(), usuarios.getPassword(), usuarios.getEstado(), true, true, true, authorities);
+		return new org.springframework.security.core.userdetails.User(user.getUsuario(), user.getPassword(), user.getEstado(), true, true, true, authorities);
 	}
 
 }

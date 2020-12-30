@@ -9,20 +9,22 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name="empleados")
 public class Empleado {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long Id;
-	
+	private Long id;
 	private String nombres;
-	private String Apellidos;
+	private String apellidos;
 	private Integer dni;
 	private Integer telefono;
 	private String nacionalidad;
 	private boolean sexo;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fecha_nacimiento;
 	private String foto;
 	private boolean estado;
@@ -34,12 +36,15 @@ public class Empleado {
 		
 	}
 	
+	
 	public Long getId() {
-		return Id;
+		return id;
 	}
+
 	public void setId(Long id) {
-		Id = id;
+		this.id = id;
 	}
+
 	public String getNombres() {
 		return nombres;
 	}
@@ -47,10 +52,10 @@ public class Empleado {
 		this.nombres = nombres;
 	}
 	public String getApellidos() {
-		return Apellidos;
+		return apellidos;
 	}
 	public void setApellidos(String apellidos) {
-		Apellidos = apellidos;
+		this.apellidos = apellidos;
 	}
 	public Integer getDni() {
 		return dni;

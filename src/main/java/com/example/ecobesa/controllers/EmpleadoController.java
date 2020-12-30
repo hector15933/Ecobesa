@@ -1,7 +1,10 @@
 package com.example.ecobesa.controllers;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -17,21 +20,29 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.ecobesa.entity.Empleado;
 import com.example.ecobesa.service.IEmpleadoService;
+import com.example.ecobesa.service.ISedeService;
 
 @Controller
 public class EmpleadoController {
 	
 	@Autowired
 	IEmpleadoService empleadoService;
+	@Autowired
+	ISedeService sedeService;
 	
 	@GetMapping("/admin/empleados")
 	public String index(@RequestParam Map<String,Object> params, Model model) {
 		int page = params.get("page") != null ? (Integer.valueOf(params.get("page").toString())-1) : 0;
-		PageRequest pageRequest = PageRequest.of(page, 10);
+		PageRequest pageRequest = PageRequest.of(page, 10, Sort.by("id").descending());
 		Page<Empleado> empleados = empleadoService.findAll(pageRequest);
 		int totalPage=empleados.getTotalPages();
 		if(totalPage>0) {
@@ -44,62 +55,66 @@ public class EmpleadoController {
 		return "empleado/index";
 	}
 	
-	/*@GetMapping(value = "/usuarios/show/{id}")
+	@GetMapping(value = "/admin/empleados/show/{id}")
 	public String show(@PathVariable(value = "id") Long id,Model model) {
-		User user = userService.findById(id);
-		model.addAttribute("user", user);
-		return "usuario/show";
+		Empleado empleado = empleadoService.findById(id);
+		model.addAttribute("empleado", empleado);
+		return "empleado/show";
 	}
 	
-	@GetMapping(value = "/usuarios/crear")
+	@GetMapping(value = "/admin/empleados/crear")
 	public String create(Map<String, Object> model) {
-		User user = new User();
-		model.put("user", user);
-		model.put("cargos", cargoService.findAll());
-		model.put("roles", rolService.findAll());
-		model.put("titulo", "Registrar Nuevo Usuario");
+		Empleado empleado = new Empleado();
+		model.put("empleado", empleado);
+		model.put("sedes", sedeService.findAll());
+		model.put("titulo", "Registrar Nuevo Empleado");
 		model.put("btn", "Registrar");
-		//model.put("users", userService.findAll(Sort.by(Sort.Direction.ASC, "apellidos")));
-		return "usuario/form";
+		//model.put("Empleados", EmpleadoService.findAll(Sort.by(Sort.Direction.ASC, "apellidos")));
+		return "empleado/form";
 	}
 	
-	@RequestMapping(value="/usuarios/editar/{id}")
-	public String editar(@PathVariable(value="id") Long id,Map<String,Object> model) {
-		//Validar que el id exista en la tabla usuarios
-		User user = userService.findById(id);
-		model.put("titulo", "Editar Usuario");
-		model.put("user",user);
-		model.put("cargos", cargoService.findAll());
-		model.put("roles", rolService.findAll());
+	@RequestMapping(value="/admin/empleados/editar/{id}")
+	public String edit(@PathVariable(value="id") Long id,Map<String,Object> model) {
+		//Validar que el id exista en la tabla empleados
+		Empleado empleado = empleadoService.findById(id);
+		model.put("titulo", "Editar Empleado");
+		model.put("empleado",empleado);
+		model.put("sedes", sedeService.findAll());
 		model.put("btn","Actualizar");
-		//model.put("users", userService.findAll(Sort.by(Sort.Direction.ASC, "apellidos")));
-		return "usuario/form";
+		return "empleado/form";
 	}
 	
-	@PostMapping(value = "/usuarios")
-	public String guardar(@Valid User user,BindingResult bindingResult, Model model, RedirectAttributes flash) {
-		
-		if(bindingResult.hasErrors()){	
-			model.addAttribute("user", user);
-			model.addAttribute("titulo", "Crear Usuario");
-			model.addAttribute("btn", "Guardar");
-			return "usuario/form";
+	@PostMapping(value = "/admin/empleados")
+	public String guardar(@RequestParam("foto") MultipartFile foto,@Valid Empleado empleado,BindingResult bindingResult, Model model, RedirectAttributes flash) throws IOException {
+		if(empleado.getId()!=null && foto.isEmpty()) {
+			Empleado oldEmpleado = empleadoService.findById(empleado.getId());
+			empleado.setFoto(oldEmpleado.getFoto());
+		}else {
+			if(!foto.isEmpty()) {
+				byte[] fotoBytes = foto.getBytes();
+				StringBuilder builder = new StringBuilder();
+				builder.append("C:\\Spring\\Ecobesa\\src\\main\\resources\\static\\img\\empleados\\");
+				builder.append(foto.getOriginalFilename());
+				Path path=Paths.get(builder.toString());
+				Files.write(path, fotoBytes);
+				empleado.setFoto(foto.getOriginalFilename());
+			}
 		}
-		flash.addFlashAttribute("success", "Usuario creado correctamente");
-		userService.save(user);
-		return "redirect:/usuarios";
+		empleadoService.save(empleado);
+		flash.addFlashAttribute("success", "Acción realizada correctamente");
+		return "redirect:/admin/empleados";
 	}
 	
-	@GetMapping(value="/usuarios/eliminar/{id}")
+	@GetMapping(value="/admin/empleados/eliminar/{id}")
 	public String eliminar(@PathVariable(value = "id") Long id,RedirectAttributes flash) {
-		//validar que el id exista en la tabla users
+		//validar que el id exista en la tabla Empleados
 		try {
-			userService.delete(id);
-			flash.addFlashAttribute("success", "Usuario eliminado correctamente");
-			return "redirect:/usuarios";
+			empleadoService.delete(id);
+			flash.addFlashAttribute("success", "Empleado eliminado correctamente");
+			return "redirect:/admin/empleados";
 		} catch (Exception e) {
 			flash.addFlashAttribute("error", "Ocurrió un error al tratar de eliminar el usuario");
-			return "redirect:/usuarios";
+			return "redirect:/admin/empleados";
 		}
-	}*/
+	}
 }

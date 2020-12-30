@@ -3,7 +3,7 @@
 		<div class="col-5">
 		</div>
 		<div class="col-2" >
-			<img th:src="${user.foto} ? @{/img/${user.foto}} : @{/img/user.png}" width="100%" alt="user-img"/>
+			<img th:src="${user.foto} ? @{/img/usuarios/}+${user.foto} : @{/img/usuarios/user.png}" width="100%" alt="user-img"/>
 		</div>
 	</div>
 	

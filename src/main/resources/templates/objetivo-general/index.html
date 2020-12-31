@@ -4,89 +4,74 @@
 <body>
 	<header th:replace="layout/layout :: header"></header>
 	<div class="container mt-5">
-	
+
 		<div class="my-2 my-md-4">
 			<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
 				<a th:href="@{/programaAnual/listar/}" class="text-primary">
-					Programas Anuales
-					<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-				</a>
-	
-				<span class="text-dark">
-					Objetivos Generales
-				</span>
+					Programas Anuales <i class="fa fa-angle-right m-l-9 m-r-10"
+					aria-hidden="true"></i>
+				</a> <span class="text-dark"> Objetivos Generales </span>
 			</div>
 		</div>
-	
+
 		<h3 class="mb-3 mb-md-5 text-center" th:text="${programaAnual.nombre}">
 		</h3>
-		
+
 		<div class="d-flex justify-content-between align-items-end mb-3">
 			<h3 class="pb-1">Objetivos Generales</h3>
-			<a class="btn btn-dark" th:href="@{/objetivos-generales/crear/}+${programaAnual.id}">
+			<a class="btn btn-dark"
+				th:href="@{/objetivos-generales/crear/}+${programaAnual.id}">
 				Nuevo Objetivo General</a>
 		</div>
-		
-		<div class="table-responsive">
-			<table class="table table-sm table-responsive">
-				<thead class="thead-dark">
-					<tr>
-						<th>#</th>
-						<th>Nombre</th>
-						<!-- <th>Meta</th>
+
+		<table
+			class="table table-responsive-sm table-hover table-outline mb-0">
+			<thead class="thead-dark">
+				<tr>
+					<th class="text-center">#</th>
+					<th class="text-center">Nombre</th>
+					<!-- <th>Meta</th>
 						<th>Presupuesto</th>
 						<th>Recursos</th> -->
-						<th>Acciones</th>
-						<th class="text-center">Objetivos Específicos</th>
-						<th>Actividades</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="objetivo: ${objetivosGenerales}">
-						<td th:text="${objetivo.id}"></td>
-						<td th:text="${objetivo.nombre}"></td>
-						<!-- <td th:text="${objetivo.meta}"></td>
+					<th class="text-center">Acciones</th>
+					<th class="text-center">Objetivos Específicos</th>
+					<th class="text-center">Actividades</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="objetivo: ${objetivosGenerales}">
+					<td class="text-center" th:text="${objetivo.id}"></td>
+					<td th:text="${objetivo.nombre}"></td>
+					<!-- <td th:text="${objetivo.meta}"></td>
 						<td th:text="${'S/ '+objetivo.presupuestoGeneral}"></td>
 						<td th:text="${objetivo.recursos}"></td> -->
-						<td class="text-left">
-							<button
+					<td class="text-center">
+						<button
 							th:onclick="modal('/objetivos-generales/show/[[${objetivo.id}]]','Detalle del Objetivo General')"
-
-							class="btn btn-outline-dark btn-sm"><span
-								class="fa fa-eye" title="Detalle"></span>
-							</button> 
-							<a class="btn btn-outline-dark btn-sm"
-							th:href="@{/objetivos-generales/editar/} + ${objetivo.id}">
-							<span
-								class="fa fa-pencil-alt" title="Editar">
-							</span> 
-							</a> 
-							<button
+							class="btn btn-outline-dark btn-sm">
+							<span class="fa fa-eye" title="Detalle"></span>
+						</button> <a class="btn btn-outline-dark btn-sm"
+						th:href="@{/objetivos-generales/editar/} + ${objetivo.id}"> <span
+							class="fa fa-pencil-alt" title="Editar"> </span>
+					</a>
+						<button
 							th:onclick="deleteRegister('/objetivos-generales/eliminar/[[${objetivo.id}]]')"
 							class="btn btn-outline-danger btn-sm">
-							<span
-								class="fa fa-trash" title="Eliminar">
-							</span> 
-							</button>
-						</td>
-						<td class="text-center">
-							<a
-							th:href="@{/objetivos-especificos/} + ${objetivo.id}" 
-							class="btn btn-outline-primary btn-sm"><span
-								class="fas fa-crosshairs" title="Objetivos Específicos"></span>
-							</a>
-						</td>
-						<td class="text-center">
-							<a
-							th:href="@{/actividades/} + ${objetivo.id}" 
-							class="btn btn-outline-success btn-sm"><span
-								class="fas fa-hiking" title="Actividades"></span>
-							</a>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+							<span class="fa fa-trash" title="Eliminar"> </span>
+						</button>
+					</td>
+					<td class="text-center"><a
+						th:href="@{/objetivos-especificos/} + ${objetivo.id}"
+						class="btn btn-outline-primary btn-sm"><span
+							class="fas fa-crosshairs" title="Objetivos Específicos"></span> </a>
+					</td>
+					<td class="text-center"><a
+						th:href="@{/actividades/} + ${objetivo.id}"
+						class="btn btn-outline-success btn-sm"><span
+							class="fas fa-hiking" title="Actividades"></span> </a></td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 	<header th:replace="layout/layout :: footer"></header>
 </body>

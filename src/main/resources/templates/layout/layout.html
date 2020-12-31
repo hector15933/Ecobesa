@@ -193,5 +193,35 @@
 		<script
 			src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 		</footer>
+		
+		<!-- Sections -->
+		<!-- Pagination -->
+		<div class="row" th:fragment="pagination(route)">
+			<div class="col-md-2">
+			</div>
+			<div class="col-md-8">
+				<nav aria-label="Pagination">
+					<ul class="pagination justify-content-center mt-2 mt-md-4">
+						<li class="page-item" th:classappend="${actualPage-1==0 ? 'disabled' : ''}">
+							<a class="page-link" th:href="@{|${route}?page=${actualPage-1}|}" aria-label="Previous">
+								<span aria-hidden="true">«</span>
+								<span class="sr-only">Anterior</span>
+							</a>
+						</li>
+						<li class="page-item" th:classappend="${actualPage}==${page} ? 'active' : ''" th:each="page : ${pages}">
+							<a class="page-link" th:href="@{|${route}?page=${page}|}" th:text="${page}"></a>
+						</li>
+						<li class="page-item" th:classappend="${actualPage}==${totalPage} ? 'disabled' : ''">
+							<a class="page-link" th:href="@{|${route}?page=${actualPage+1}|}" aria-label="Next">
+								<span aria-hidden="true">»</span>
+								<span class="sr-only">Siguiente</span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+			<div class="col-md-2">
+			</div>
+		</div>
 </body>
 </html>

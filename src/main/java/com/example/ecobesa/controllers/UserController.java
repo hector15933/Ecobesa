@@ -113,6 +113,10 @@ public class UserController {
 				user.setFoto(foto.getOriginalFilename());
 			}
 		}
+		if(user.getId()!=null && user.getPassword().isEmpty()) {
+			User oldUser = userService.findById(user.getId());
+			user.setPassword(oldUser.getPassword());
+		}
 		userService.save(user);
 		flash.addFlashAttribute("success", "Usuario creado correctamente");
 		return "redirect:/admin/usuarios";

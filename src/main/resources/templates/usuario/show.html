@@ -75,10 +75,7 @@
 			Roles:
 		</div>
 		<div class="col-9">
-			<ul>
-				<li th:each="rol : ${user.roles}" th:text="${rol.authority}=='ROLE_ADMIN' ? 'Administrador' : 'Usuario'">
-				</li>
-			</ul>
+		<input class="form-control" th:value="${user.role.authority}" readonly/>
 		</div>
 	</div>
 </div>

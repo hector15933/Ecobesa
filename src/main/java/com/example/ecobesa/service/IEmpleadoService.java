@@ -13,7 +13,6 @@ public interface IEmpleadoService {
 	public List<Empleado> findAll();
 	public Iterable<Empleado> findAll(Sort sort);
 	public Page<Empleado> findAll(Pageable pageable);
-	//public List<Empleado> findAll(Sort sort,Pageable page);
 	public Empleado findById(Long id);
 	public void save(Empleado empleado);
 	public void delete(Long id);

@@ -154,11 +154,6 @@ INSERT INTO objetivo_especificos(nombre,objetivo_general_id) VALUES(' Entrenar a
 INSERT INTO objetivo_especificos(nombre,objetivo_general_id) VALUES(' Asegurar el funcionamiento de los equipos de emergencia',3)
 
 
-INSERT INTO actividades(nombre,objetivo_general_id,programa_actividad_id,responsable_user_id,tipo_actividad_id,fecha_inicio,frecuencia) VALUES('APROBAR EL PROGRAMA ANUAL DE SEGURIDAD Y SALUD EN EL TRABAJO - PASST',1,1,1,1,'4/01/2021','MENSUAL')
-INSERT INTO actividades(nombre,objetivo_general_id,programa_actividad_id,responsable_user_id,tipo_actividad_id,fecha_inicio,frecuencia) VALUES('ELABORAR Y APROBAR EL PROGRAMA ANUAL DE CAPACITACIÓN DE SSO (PAC-SSO)',1,1,1,1,'06/02/2021','SEMESTRAL')
-
-
-
 
 
 INSERT INTO sedes(nombre) VALUES('Amazonas')

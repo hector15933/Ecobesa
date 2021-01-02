@@ -58,9 +58,8 @@
 													</div>
 													<div class="modal-body">
 														<ol>
-															<li
-																th:each="totalFechas : ${actividad.sumarDiasAFecha()}"
-																th:text="${#dates.format(totalFechas, 'dd-MMM-yyyy')}"></li>
+															
+															<li th:each="totalFechas : ${actividad.fecha}" th:text="${#dates.format(totalFechas.fecha, 'dd-MMM-yyyy')}"></li>
 														</ol>
 													</div>
 													<div class="modal-footer">

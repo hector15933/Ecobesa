@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,6 +19,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -30,7 +33,14 @@ public class Actividad implements Serializable {
 	/**
 	 * 
 	 */
+	
+	
+	
 	private static final long serialVersionUID = 1L;
+
+	public Actividad() {
+		super();
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,7 +59,6 @@ public class Actividad implements Serializable {
 
 	private String frecuencia;
 	
-	private String arregloFechas;
 
 	@ManyToOne
 	private User responsableUser;
@@ -67,6 +76,12 @@ public class Actividad implements Serializable {
 	@ManyToMany
 	@JoinTable(name = "actividad_users", joinColumns = @JoinColumn(name = "actividad_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
 	private Set<User> users;
+	
+	
+	@OneToMany(mappedBy="actividad",cascade = {CascadeType.ALL})
+	
+	private List<Fecha> fecha= new ArrayList<Fecha>();
+	
 
 	public Long getId() {
 		return id;
@@ -155,12 +170,18 @@ public class Actividad implements Serializable {
 	public void setFrecuencia(String frecuencia) {
 		this.frecuencia = frecuencia;
 	}
-	
-	
-	
+	public List<Fecha> getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(List<Fecha> fecha) {
+		this.fecha = fecha;
+	}
+
 	//================================================================================
 
-	
+
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -177,14 +198,12 @@ public class Actividad implements Serializable {
 			return false;
 		return true;
 	}
-
-	public List<String> sumarDiasAFecha() {
+	
+	@PrePersist
+	public void sumarDiasAFecha() {
 
 		DateFormat formatoFecha = new SimpleDateFormat("yyyy/MM/dd");
-		List<String> arregloDias = new ArrayList<String>();
-
 		String fecha_ini = formatoFecha.format(this.fechaInicio);
-
 		SimpleDateFormat format1 = new SimpleDateFormat("yyyy/MM/dd");
 
 		Integer dias;
@@ -192,72 +211,46 @@ public class Actividad implements Serializable {
 
 		try {
 			Date fecha_ini2 = format1.parse(fecha_ini);
-
 			Calendar calendar = Calendar.getInstance();
-			arregloDias.add(formatoFecha.format(this.fechaInicio));
 			
+			Fecha fechaObjeto01 = new Fecha(fecha_ini2,Actividad.this);
+			fecha.add(fechaObjeto01);
 			
 			if (frecuencia.equals("MENSUAL")) {
 
-				dias = 32;
+				dias = 30;
 				for (int i = 0; i < 11; i++) {
 					calendar.setTime(fecha_ini2);
 					calendar.add(Calendar.DAY_OF_YEAR, dias);
-					arregloDias.add(formatoFecha.format(calendar.getTime()));
+					Fecha fechaObjeto = new Fecha(calendar.getTime(),Actividad.this);
+					fecha.add(fechaObjeto);
 					fecha_ini2 = calendar.getTime();
 
 				}
 
-				return arregloDias;
+				
 			} else if (frecuencia.equals("SEMANAL")) {
 
-				dias = 32;
-				for (int i = 0; i < 11; i++) {
-					calendar.setTime(fecha_ini2);
-					calendar.add(Calendar.DAY_OF_YEAR, dias);
-					arregloDias.add(formatoFecha.format(calendar.getTime()));
-					fecha_ini2 = calendar.getTime();
+			
 
-				}
-
-				return arregloDias;
+				
 			} else if (frecuencia.equals("SEMESTRAL")) {
 
-				dias = 180;
-				for (int i = 0; i < 1; i++) {
-					calendar.setTime(fecha_ini2);
-					calendar.add(Calendar.DAY_OF_YEAR, dias);
-					arregloDias.add(formatoFecha.format(calendar.getTime()));
-					fecha_ini2 = calendar.getTime();
+			
 
-				}
-
-				return arregloDias;
+				
 			} else if (frecuencia.equals("PERMANENTE")) {
 
-				dias = 32;
-				for (int i = 0; i < 11; i++) {
-					calendar.setTime(fecha_ini2);
-					calendar.add(Calendar.DAY_OF_YEAR, dias);
-					arregloDias.add(formatoFecha.format(calendar.getTime()));
-					fecha_ini2 = calendar.getTime();
+			
 
-				}
-
-				return arregloDias;
+				
 			}
 
 			else {
 				dias = 12;
-				for (int i = 0; i < dias; i++) {
-					calendar.setTime(fecha_ini2);
-					calendar.add(Calendar.DAY_OF_YEAR, dias);
-					arregloDias.add(formatoFecha.format(calendar.getTime()));
-					fecha_ini2 = calendar.getTime();
+				
 
-				}
-
-				return arregloDias;
+				
 			}
 
 		} catch (ParseException e) {
@@ -265,7 +258,7 @@ public class Actividad implements Serializable {
 			e.printStackTrace();
 		}
 
-		return arregloDias;
+	
 	}
 
 }

@@ -85,8 +85,10 @@ public class ActividadController {
 			model2.put("titulo", "Crear Actividad de Trabajo");
 			return "menu/actividad/form";
 		}
+		
 		flash.addFlashAttribute("success", "Actividad creada correctamente");
 		actividadService.save(actividad);
+	
 		return "redirect:listar";
 		
 	}

@@ -230,17 +230,43 @@ public class Actividad implements Serializable {
 
 				
 			} else if (frecuencia.equals("SEMANAL")) {
+				dias = 7;
+				for (int i = 0; i < 51; i++) {
+					calendar.setTime(fecha_ini2);
+					calendar.add(Calendar.DAY_OF_YEAR, dias);
+					Fecha fechaObjeto = new Fecha(calendar.getTime(),Actividad.this);
+					fecha.add(fechaObjeto);
+					fecha_ini2 = calendar.getTime();
 
+				}
 			
 
 				
 			} else if (frecuencia.equals("SEMESTRAL")) {
+				
+				dias = 180;
+				for (int i = 0; i < 1; i++) {
+					calendar.setTime(fecha_ini2);
+					calendar.add(Calendar.DAY_OF_YEAR, dias);
+					Fecha fechaObjeto = new Fecha(calendar.getTime(),Actividad.this);
+					fecha.add(fechaObjeto);
+					fecha_ini2 = calendar.getTime();
 
+				}
 			
 
 				
 			} else if (frecuencia.equals("PERMANENTE")) {
+				
+				dias = 1;
+				for (int i = 0; i < 360; i++) {
+					calendar.setTime(fecha_ini2);
+					calendar.add(Calendar.DAY_OF_YEAR, dias);
+					Fecha fechaObjeto = new Fecha(calendar.getTime(),Actividad.this);
+					fecha.add(fechaObjeto);
+					fecha_ini2 = calendar.getTime();
 
+				}
 			
 
 				

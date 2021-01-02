@@ -18,48 +18,31 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
-
-
-
-
 @Entity
 @Table(name="users")
 public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
-	
-	
+
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String nombres;
-
     private String apellidos;
-	
-    private Integer dni;
-
+    private String dni;
     private String usuario;
-	
     private String password;
-	
 	private String foto;
-	
 	private String firma;
-	
-	
     private String email;
-
-    private Integer telefono;
-	
+    private String telefono;
     private Boolean estado;
     
     @ManyToOne
     private Cargo cargo;
     
-    @OneToMany(fetch = FetchType.LAZY , cascade= CascadeType.ALL)
-    @JoinColumn(name="user_id")
-    private List<Role> roles;
+    @ManyToOne
+    private Role role;
     
     @ManyToMany
     @JoinTable(name = "actividad_users")
@@ -89,11 +72,11 @@ public class User implements Serializable{
 		this.apellidos = apellidos;
 	}
 
-	public Integer getDni() {
+	public String getDni() {
 		return dni;
 	}
 
-	public void setDni(Integer dni) {
+	public void setDni(String dni) {
 		this.dni = dni;
 	}
 
@@ -137,11 +120,11 @@ public class User implements Serializable{
 		this.email = email;
 	}
 
-	public Integer getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
 
-	public void setTelefono(Integer telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 
@@ -152,8 +135,6 @@ public class User implements Serializable{
 	public void setEstado(Boolean estado) {
 		this.estado = estado;
 	}
-
-
 
 	public Set<Actividad> getActividad() {
 		return actividad;
@@ -171,14 +152,12 @@ public class User implements Serializable{
 		this.cargo = cargo;
 	}
 
-	public List<Role> getRoles() {
-		return roles;
+	public Role getRole() {
+		return role;
 	}
 
-	public void setRoles(List<Role> roles) {
-		this.roles = roles;
+	public void setRole(Role role) {
+		this.role = role;
 	}
-    
-    
     
 }

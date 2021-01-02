@@ -20,10 +20,22 @@ public class UserServiceImpl implements IUserService{
 	private IUserDao userDao;
 	
 	@Override
-	@Transactional(readOnly = true)
-	public List<User> findAll(Sort sort) {
+	public List<User> findAll() {
 		// TODO Auto-generated method stub
 		return (List<User>)userDao.findAll();
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public Iterable<User> findAll(Sort sort) {
+		// TODO Auto-generated method stub
+		return userDao.findAll();
+	}
+	
+	@Override
+	public Page<User> findByNombresStartsWith(String nombres, Pageable page) {
+		// TODO Auto-generated method stub
+		return userDao.findByNombresStartsWith(nombres, page);
 	}
 
 	
@@ -69,11 +81,6 @@ public class UserServiceImpl implements IUserService{
 		return userDao.findByUsuario(usuario);
 	} 
 	
-	@Override
-	public Page<User> findByNombresStartsWith(String nombres, Pageable page) {
-		// TODO Auto-generated method stub
-		return userDao.findByNombresStartsWith(nombres, page);
-	}
 	@Override
 	public Page<User> findByApellidosStartsWith(String apellidos, Pageable page) {
 		// TODO Auto-generated method stub

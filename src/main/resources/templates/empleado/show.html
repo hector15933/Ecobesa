@@ -1,0 +1,81 @@
+<div class="container p-sm-4">
+	<div class="row mb-2">
+		<div class="col-5">
+		</div>
+		<div class="col-2" >
+			<img th:src="${empleado.foto} ? @{/img/empleados/}+${empleado.foto} : @{/img/empleados/default.png}" width="100%" alt="empleado-img"/>
+		</div>
+	</div>
+	
+	<div class="row mb-2">
+		<div class="col-3" >
+			Nombre:
+		</div>
+		<div class="col-9">
+		<input class="form-control" th:value="${empleado.nombres+' '+empleado.apellidos}" readonly/>
+		</div>
+	</div>
+	
+	<div class="row mb-2">
+		<div class="col-3" >
+			Nacionalidad:
+		</div>
+		<div class="col-9">
+		<input class="form-control" th:value="${empleado.nacionalidad.substring(0,1).toUpperCase() + empleado.nacionalidad.substring(1)}" readonly/>
+		</div>
+	</div>
+	
+	<div class="row mb-2">
+		<div class="col-3" >
+			DNI:
+		</div>
+		<div class="col-9">
+		<input class="form-control" th:value="${empleado.dni}" readonly/>
+		</div>
+	</div>
+	
+	<div class="row mb-2">
+		<div class="col-3" >
+			Sexo:
+		</div>
+		<div class="col-9">
+		<input class="form-control" th:value="${empleado.sexo} ? 'Hombre' : 'Mujer'" readonly/>
+		</div>
+	</div>
+	
+	<div class="row mb-2">
+		<div class="col-3" >
+			Fecha de Nacimiento:
+		</div>
+		<div class="col-9">
+		<input class="form-control" th:value="${empleado.fecha_nacimiento}" readonly/>
+		</div>
+	</div>
+	
+	<div class="row mb-2">
+		<div class="col-3" >
+			Teléfono:
+		</div>
+		<div class="col-9">
+		<input class="form-control" th:value="${empleado.telefono}" readonly/>
+		</div>
+	</div>
+	
+	<div class="row mb-2">
+		<div class="col-3" >
+			Sede:
+		</div>
+		<div class="col-9">
+		<input class="form-control" th:value="${empleado.sede.nombre}" readonly/>
+		</div>
+	</div>
+	
+	<div class="row mb-2">
+		<div class="col-3" >
+			Estado:
+		</div>
+		<div class="col-9">
+		<input class="form-control" th:value="${empleado.estado} ? 'Activo' : 'Inactivo'" readonly/>
+		</div>
+	</div>
+</div>

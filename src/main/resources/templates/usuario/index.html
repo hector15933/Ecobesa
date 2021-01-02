@@ -49,21 +49,21 @@ html:not([dir=rtl]) .c-avatar-status {
 		<div class="d-flex justify-content-between align-items-end mb-3">
 			<h3 class="pb-1">Usuarios</h3>
 			<a class="btn btn-dark" th:href="@{/admin/usuarios/crear/}"> Crear
-				Usuario</a>
+				Usuarios</a>
 		</div>
 
 		<table
 			class="table table-responsive-sm table-hover table-outline mb-0">
 			<thead class="thead-light">
 				<tr>
-					<th>#</th>
+					<th class="text-center">#</th>
 					<th class="text-center">Foto</th>
-					<th>Nombre</th>
+					<th class="text-center">Nombre</th>
 					<th class="text-center">Sede</th>
 					<th class="text-center">E-mail</th>
 					<!-- <th>Usage</th> -->
-					<th>Roles</th>
-					<th>Acciones</th>
+					<th class="text-center">Rol</th>
+					<th class="text-center">Acciones</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -74,7 +74,7 @@ html:not([dir=rtl]) .c-avatar-status {
 					<td class="text-center">
 						<div class="c-avatar">
 							<img
-								th:src="${user.foto} ? @{/img/${user.foto}} : @{/img/user.png}"
+								th:src="${user.foto} ? @{/img/usuarios/}+${user.foto} : @{/img/usuarios/user.png}"
 								class="c-avatar-img" alt="user-img"><img /><span
 								class="c-avatar-status" th:classappend="${user.estado} ? bg-success : bg-danger"></span>
 						</div>
@@ -103,7 +103,7 @@ html:not([dir=rtl]) .c-avatar-status {
 						</div>
 					</td-->
 					<td>
-						<div class="small" th:each="rol : ${user.roles}" th:text="${rol.authority}=='ROLE_ADMIN' ? 'Administrador' : 'Usuario'">Last login</div> 
+						<div class="small" th:text="${user.role.authority}=='ROLE_ADMIN' ? 'Administrador' : 'Usuario'">Last login</div> 
 					</td>
 					<!--<td>
 						<div class="small text-muted">Last login</div> <strong>10
@@ -127,7 +127,7 @@ html:not([dir=rtl]) .c-avatar-status {
 				</tr>
 			</tbody>
 		</table>
-
+		<div th:replace="layout/layout :: pagination(|/admin/usuarios/|)"></div>
 	</div>
 	<header th:replace="layout/layout :: footer"></header>
 </body>

@@ -8,50 +8,49 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.example.ecobesa.dao.IEmpleadoDao;
-import com.example.ecobesa.entity.Empleado;
+import com.example.ecobesa.dao.ISedeDao;
+import com.example.ecobesa.entity.Sede;
 
 @Service
-public class EmpleadoServiceImpl implements IEmpleadoService{
-	
+public class SedeServiceImpl implements ISedeService{
+
 	@Autowired
-	private IEmpleadoDao empleadoDao;
-
+	ISedeDao sedeDao;
+	
 	@Override
-	public List<Empleado> findAll() {
+	public List<Sede> findAll() {
 		// TODO Auto-generated method stub
-		return (List<Empleado>)empleadoDao.findAll();
+		return (List<Sede>) sedeDao.findAll();
 	}
 
 	@Override
-	public Iterable<Empleado> findAll(Sort sort) {
+	public Iterable<Sede> findAll(Sort sort) {
 		// TODO Auto-generated method stub
-		return empleadoDao.findAll(sort);
+		return null;
 	}
 
 	@Override
-	public Page<Empleado> findAll(Pageable pageable) {
+	public Page<Sede> findAll(Pageable pageable) {
 		// TODO Auto-generated method stub
-		return empleadoDao.findAll(pageable);
+		return null;
 	}
 
 	@Override
-	public Empleado findById(Long id) {
+	public Sede findById(Long id) {
 		// TODO Auto-generated method stub
-		return empleadoDao.findById(id).orElse(null);
+		return null;
 	}
 
 	@Override
-	public void save(Empleado empleado) {
+	public void save(Sede sede) {
 		// TODO Auto-generated method stub
-		empleadoDao.save(empleado);
+		
 	}
 
 	@Override
 	public void delete(Long id) {
 		// TODO Auto-generated method stub
-		empleadoDao.deleteById(id);
+		
 	}
-
 	
 }

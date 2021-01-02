@@ -3,7 +3,7 @@
 		<div class="col-5">
 		</div>
 		<div class="col-2" >
-			<img th:src="${user.foto} ? @{/img/${user.foto}} : @{/img/user.png}" width="100%" alt="user-img"/>
+			<img th:src="${user.foto} ? @{/img/usuarios/}+${user.foto} : @{/img/usuarios/user.png}" width="100%" alt="user-img"/>
 		</div>
 	</div>
 	
@@ -75,10 +75,7 @@
 			Roles:
 		</div>
 		<div class="col-9">
-			<ul>
-				<li th:each="rol : ${user.roles}" th:text="${rol.authority}=='ROLE_ADMIN' ? 'Administrador' : 'Usuario'">
-				</li>
-			</ul>
+		<input class="form-control" th:value="${user.role.authority}" readonly/>
 		</div>
 	</div>
 </div>

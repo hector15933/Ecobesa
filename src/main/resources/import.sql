@@ -1,6 +1,7 @@
 INSERT INTO frecuencia(nombre) VALUES('ANUAL');
 INSERT INTO frecuencia(nombre) VALUES('DIARIO');
 INSERT INTO frecuencia(nombre) VALUES('SEMANAL');
+INSERT INTO frecuencia(nombre) VALUES('QUINCENAl');
 INSERT INTO frecuencia(nombre) VALUES('SEMESTRAL');
 INSERT INTO frecuencia(nombre) VALUES('MENSUAL');
 INSERT INTO frecuencia(nombre) VALUES('PERMANENTE');
@@ -270,7 +271,26 @@ INSERT INTO empleados(nombres,apellidos,dni,telefono,nacionalidad,sexo,fecha_nac
 
 
 
+INSERT INTO actividades(fecha_inicio,frecuencia,nombre,objetivo_general_id,programa_actividad_id,responsable_user_id,tipo_actividad_id) VALUES('01/01/2021','ANUAL','APROBAR EL PROGRAMA ANUAL DE SEGURIDAD Y SALUD EN EL TRABAJO - PASST',1,3,1,1);
+INSERT INTO fechas(estado,fecha,actividad_id) VALUES(false,'2021/02/01',1);
 
+INSERT INTO actividades(fecha_inicio,frecuencia,nombre,objetivo_general_id,programa_actividad_id,responsable_user_id,tipo_actividad_id) VALUES('01/01/2021','ANUAL','ELABORAR Y APROBAR EL PROGRAMA ANUAL DE CAPACITACIÓN DE SSO (PAC-SSO)',1,3,1,1);
+INSERT INTO fechas(estado,fecha,actividad_id) VALUES(false,'2021/02/01',2);
+
+
+INSERT INTO actividades(fecha_inicio,frecuencia,nombre,objetivo_general_id,programa_actividad_id,responsable_user_id,tipo_actividad_id) VALUES('01/01/2021','MENSUAL','REUNIÓN MENSUAL DEL CSST Y EL CONTROL DE LOS ACUERDOS DEL LIBRO DE ACTAS',1,3,1,1);
+INSERT INTO fechas(estado,fecha,actividad_id) VALUES(true,'2021/01/01',3);
+INSERT INTO fechas(estado,fecha,actividad_id) VALUES(false,'2021/02/01',3);
+INSERT INTO fechas(estado,fecha,actividad_id) VALUES(false,'2021/03/01',3);
+INSERT INTO fechas(estado,fecha,actividad_id) VALUES(false,'2021/04/01',3);
+INSERT INTO fechas(estado,fecha,actividad_id) VALUES(false,'2021/05/01',3);
+INSERT INTO fechas(estado,fecha,actividad_id) VALUES(false,'2021/06/01',3);
+INSERT INTO fechas(estado,fecha,actividad_id) VALUES(false,'2021/07/01',3);
+INSERT INTO fechas(estado,fecha,actividad_id) VALUES(false,'2021/08/01',3);
+INSERT INTO fechas(estado,fecha,actividad_id) VALUES(false,'2021/09/01',3);
+INSERT INTO fechas(estado,fecha,actividad_id) VALUES(false,'2021/10/01',3);
+INSERT INTO fechas(estado,fecha,actividad_id) VALUES(false,'2021/11/01',3);
+INSERT INTO fechas(estado,fecha,actividad_id) VALUES(false,'2021/12/01',3);	
 
 
 

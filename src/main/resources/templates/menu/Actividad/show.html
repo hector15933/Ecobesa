@@ -1,0 +1,40 @@
+
+
+		<!-- Modal content-->
+		<div class="modal-content">
+		
+			<div class="modal-body">
+				<table>
+					<thead>
+						<tr>
+							<th>Fecha</th>
+							<th>Estado</th>
+					</thead>
+					<tbody>
+						<tr th:each="totalFechas : ${actividad.fecha}">
+							<td th:text="${#dates.format(totalFechas.fecha, 'dd-MMM-yyyy')}"></td>
+							<td>
+							<a class="btn btn-primary btn-xs" th:href="@{/menu/actividad/cambiar/fecha/}  + ${totalFechas.id}"   th:text="${totalFechas.id}"></a>
+							
+							
+							<a th:if="${totalFechas.estado == true}"
+								class="btn btn-success active btn-sm	" th:text="Realizado"
+								th:href="@{/menu/actividad/eliminar/} + ${actividad.id}">Realizado</a>
+
+
+									
+								<a th:unless="${totalFechas.estado == true}"
+								class="btn btn-warning btn-sm" th:text="Realizar"></a>
+								
+								
+								</td>
+						</tr>
+					</tbody>
+
+
+				</table>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>

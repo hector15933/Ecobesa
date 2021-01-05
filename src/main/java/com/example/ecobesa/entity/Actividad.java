@@ -59,6 +59,7 @@ public class Actividad implements Serializable {
 
 	private String frecuencia;
 	
+	private Double indicadorParcial;
 
 	@ManyToOne
 	private User responsableUser;
@@ -79,7 +80,6 @@ public class Actividad implements Serializable {
 	
 	
 	@OneToMany(mappedBy="actividad",cascade = {CascadeType.ALL})
-	
 	private List<Fecha> fecha= new ArrayList<Fecha>();
 	
 
@@ -178,9 +178,23 @@ public class Actividad implements Serializable {
 		this.fecha = fecha;
 	}
 
+	
+	
+	
+	
+	
+	
 	//================================================================================
 
 
+
+	public Double getIndicadorParcial() {
+		return indicadorParcial;
+	}
+
+	public void setIndicadorParcial(Double indicadorParcial) {
+		this.indicadorParcial = indicadorParcial;
+	}
 
 	@Override
 	public boolean equals(Object obj) {
@@ -226,7 +240,7 @@ public class Actividad implements Serializable {
 					fecha.add(fechaObjeto);
 					fecha_ini2 = calendar.getTime();
 
-				}
+				}	
 
 				
 			} else if (frecuencia.equals("SEMANAL")) {

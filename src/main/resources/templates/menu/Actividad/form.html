@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout/layout :: head">
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+<link
+	href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css"
+	rel="stylesheet" />
 
 
 </head>
@@ -92,8 +94,8 @@
 						</div>
 
 					</div>
-					
-					
+
+
 
 
 					<div class="form-group row">
@@ -108,27 +110,11 @@
 							</select>
 						</div>
 					</div>
-					
-					<div class="form-group row">
-						<label for="fechaInicio" class="col-sm-2 col-form-label"><strong>FechaInicial
-								:</strong> </label>
-						<div class="col-sm-6">
-							<input type="date" th:field="*{fechaInicio}"
-								class="form-control" th:errorclass="'form-control alert-danger'">
-							<!-- input style="height:150px;"   type="text" th:field="*{descripcion}" class="form-control bg-light"
-										th:errorclass="'form-control alert-danger'" /-->
-							<small class="form-text text-danger"
-								th:if="${#fields.hasErrors('fechaInicio')}" th:errors="*{fechaInicio}">Name
-								Error</small> <br />
-						</div>
-
-					</div>
-					
 					<div class="form-group row">
 						<label for="tipofrec" class="col-sm-2 col-form-label"><strong>Tipo
 								De Frecuencia :</strong> </label>
 						<div class="col-sm-6">
-							<select class="col-sm-12"  id="tipofrec" th:field="*{frecuencia}">
+							<select class="col-sm-12" id="tipofrec" th:field="*{frecuencia}">
 								<option value="DIARIO">Diario</option>
 								<option value="SEMANAL">Semanal</option>
 								<option value="MENSUAL">Mensual</option>
@@ -138,7 +124,36 @@
 							</select>
 						</div>
 					</div>
-					
+					<div class="form-group row">
+						<label for="fechaInicio" class="col-sm-2 col-form-label"><strong>Fecha
+								Inicial :</strong> </label>
+						<div class="col-sm-6">
+							<input id="datepicker"  type="date" th:field="*{fechaInicio}" class="form-control"
+								th:errorclass="'form-control alert-danger'">
+							<!-- input style="height:150px;"   type="text" th:field="*{descripcion}" class="form-control bg-light"
+										th:errorclass="'form-control alert-danger'" /-->
+							<small class="form-text text-danger"
+								th:if="${#fields.hasErrors('fechaInicio')}"
+								th:errors="*{fechaInicio}">Name Error</small> <br />
+						</div>
+
+					</div>
+					<div class="form-group row">
+						<label for="fechaFin" class="col-sm-2 col-form-label"><strong>Fecha
+								Final :</strong> </label>
+						<div class="col-sm-6">
+							<input type="date" th:field="*{fechaFin}" value="2017-11-31"
+								class="form-control" th:errorclass="'form-control alert-danger'">
+							<!-- input style="height:150px;"   type="text" th:field="*{descripcion}" class="form-control bg-light"
+										th:errorclass="'form-control alert-danger'" /-->
+							<small class="form-text text-danger"
+								th:if="${#fields.hasErrors('fechaFin')}" th:errors="*{fechaFin}">Name
+								Error</small> <br />
+						</div>
+
+					</div>
+
+
 					<!--  div class="form-group row">
 						<label for="repeticiones" class="col-sm-2 col-form-label"><strong>Repeticones
 								:</strong> </label>
@@ -174,6 +189,8 @@
 	<script th:src="@{../../dist/js/select2.min.js}"></script>
 
 	<script>
+	
+		
 		$('.input-daterange input').each(function() {
 			$(this).datepicker('clearDates');
 		});
@@ -181,11 +198,17 @@
 		$(document).ready(function() {
 			$('.js-example-basic-multiple').select2();
 		});
+		
+		
 	</script>
-	<script
-		th:replace="menu/actividad/js/autocomplete-usuario :: javascript"></script>
+
+
+	<script >
+		
+	</script>
 
 	<footer th:replace="layout/layout :: footer"></footer>
-	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 </body>
 </html>

@@ -32,6 +32,7 @@
 									<th scope="col">Usuario Responsable</th>
 									<th scope="col">Fecha de Inicio</th>
 									<th scope="col">Fechas</th>
+									
 									<!--th sec:authorize="hasRole('ROLE_ADMIN')">Acciones</th-->
 								</tr>
 							</thead>
@@ -43,36 +44,17 @@
 									<td th:text="${actividad.responsableUser.nombres}"></td>
 									<td
 										th:text="${#dates.format(actividad.fechaInicio, 'dd-MMM-yyyy')}"></td>
+									
+									
 									<td>
-										<button type="button" class="btn btn-warning btn-sm"
-											data-toggle="modal" data-target="#myModal">Ver
-											Fechas</button> <!-- Modal -->
-										<div id="myModal" class="modal fade" role="dialog">
-											<div class="modal-dialog">
-
-												<!-- Modal content-->
-												<div class="modal-content">
-													<div class="modal-header">
-														<button type="button" class="close" data-dismiss="modal">&times;</button>
-														<h4 class="modal-title">Programacion de la Actividad</h4>
-													</div>
-													<div class="modal-body">
-														<ol>
-															
-															<li th:each="totalFechas : ${actividad.fecha}" th:text="${#dates.format(totalFechas.fecha, 'dd-MMM-yyyy')}"></li>
-														</ol>
-													</div>
-													<div class="modal-footer">
-														<button type="button" class="btn btn-default"
-															data-dismiss="modal">Close</button>
-													</div>
-												</div>
-
-											</div>
-										</div>
-
-
+										<button
+											th:onclick="modal('/menu/actividad/show/[[${actividad.id}]]','Programacion Actividades')"
+											type="button" class="btn btn-warning btn-sm"> Ver Fechas
+										</button> 
+									
 									</td>
+									
+									
 									<!--  td sec:authorize="hasRole('ROLE_ADMIN')"><a
 										class="btn  btn-light btn-sm"
 										th:href="@{/menu/actividad/form/} + ${actividad.id}">Editar</a>
@@ -98,25 +80,38 @@
 	</div>
 	<div id="datepicker"></div>
 	<script>
-    $(function() {
-        var events = ['15-1-2011', '16-1-2011', '17-1-2011', '18-1-2011'];
-    
-        $( "#datepicker" ).datepicker({
-            showWeek: true,
-            firstDay: 1,
-            beforeShowDay: function(date) {
-                var current  = date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
-                return jQuery.inArray(current, events) == -1
-                ? [true, '']
-                : [true, 'css-class-to-highlight', 'tool-tip-text'];
-            }
-        });
-        
-        /*$(".ui-datepicker-calendar td:contains('13')").addClass('ui-state-hover');
-        $(".ui-datepicker-calendar td:contains('25')").addClass('ui-state-hover');
-        $(".ui-datepicker-calendar td:contains('02')").addClass('ui-state-hover');*/
-    });
-    </script>
+		$(function() {
+			var events = [ '15-1-2011', '16-1-2011', '17-1-2011', '18-1-2011' ];
+
+			$("#datepicker")
+					.datepicker(
+							{
+								showWeek : true,
+								firstDay : 1,
+								beforeShowDay : function(date) {
+									var current = date.getDate() + '-'
+											+ (date.getMonth() + 1) + '-'
+											+ date.getFullYear();
+									return jQuery.inArray(current, events) == -1 ? [
+											true, '' ]
+											: [ true, 'css-class-to-highlight',
+													'tool-tip-text' ];
+								}
+							});
+
+			/*$(".ui-datepicker-calendar td:contains('13')").addClass('ui-state-hover');
+			$(".ui-datepicker-calendar td:contains('25')").addClass('ui-state-hover');
+			$(".ui-datepicker-calendar td:contains('02')").addClass('ui-state-hover');*/
+		});
+	</script>
+
+	<script type="text/javascript">
+		function cambiarboton() {
+			var i = document.getElementById("boton").value = "Mundo";
+
+		}
+		window.onload = cambiarboton();
+	</script>
 
 	<footer th:replace="layout/layout :: footer"></footer>
 

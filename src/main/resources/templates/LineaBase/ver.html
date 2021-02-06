@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+<meta charset="UTF-8">
+<title>Title</title>
+
+</head>
+<style>
+	.cuadrito01{
+		
+	}
+	.tono-plomo{
+	
+		background-color:#8D9194!important;
+	}
+
+</style>
+
+
+<body style="background-color: white !important">
+	
+		<br>
+		<div class="row">
+			<div class="col-2 py-2">
+				<img th:src="@{'../../uploads/' + ${session.RazonSocial}}"
+					style="height:80px;width:150px">
+			</div>
+			<div class="col-7 text-center"></div>
+			<!--div class="col-3">
+				<h6 th:text="${programaAnual.id_aprobado.nombres + ' '+ programaAnual.id_aprobado.apellidos}">Aprobado
+					por: Walter Reaños Arcilla</h6>
+				<div class="row">
+					<div class="col-6">N° Versión: 002</div>
+					<div class="col-6">F. Ver.: 30/01/2020</div>
+				</div>
+			</div-->
+		</div>
+		<br>
+		<div class="text-center">	
+			<h4 th:text="${lineaBase.nombre}">PROGRAMA ANUAL DE
+				SEGURIDAD Y SALUD EN EL TRABAJO 2020 ECOBESA</h4>
+			<h4>PASST-2020 ECOBESA</h4>
+			<br>
+		</div>
+
+		<div align="right">
+			<button type="button" id="add_button" data-toggle="modal"
+				data-target="#userModal" class="btn btn-info btn-lg"
+				onClick="javascript:myFunction();">REPORTE</button>
+		</div>
+		<br>
+		<div class="row border border-dar ">
+			<div
+				class="col-2 bg-danger text-wrap badge border border-dar text-light">
+				<p>RAZÓN SOCIAL DE LA EMPRESA:</p>
+			</div>
+			<div class="col-4 badge border border-dar">
+				<p>EMPRESA COMERCIALIZADORA DE BEBIDAS SOCIEDAD ANÓNIMA CERRADA</p>
+			</div>
+			<div
+				class="col-1 bg-danger text-wrap badge border border-dar text-light">
+				<p>RUC</p>
+			</div>
+			<div class="col-1 badge border border-dar">
+				<p>20557079441</p>
+			</div>
+			<div
+				class="col-1 bg-danger text-wrap badge border border-dar text-light">
+				<p>DOMICILIO:</p>
+			</div>
+			<div class="col-2 badge border border-dar">
+				<p>JR. CAJAMARCA 371 RIMAC , LIMA</p>
+			</div>
+			<div class="col-1 badge bg-danger text-wrap text-light">
+				<p>PASST - 2020</p>
+			</div>
+		</div>
+		<div class="row border border-dar ">
+
+			<div
+				class="col-2 bg-danger text-wrap badge border border-dar text-light">
+				<p>ACTIVIDAD ECONÓMICA PRINCIPAL:</p>
+			</div>
+			<div class="col-4 badge border border-dar">
+				<p>COMERCIALIZACIÓN DE BEBIDAS NO ALCOHÓLICAS</p>
+			</div>
+			<div
+				class="col-2 bg-danger text-wrap badge border border-dar text-light">
+				<p>N° DE TRABAJADORES EN EL CENTRO DE LABORES:</p>
+			</div>
+			<div class="col-3 badge border border-dar">
+				<p>APROXIMADAMENTE 1410 TRABAJADORES</p>
+			</div>
+			<div class="col-1 badge bg-success text-wrap ">
+				<p>90.39%</p>
+			</div>
+		</div>
+
+		<div th:each="listaVerificacion1: ${lineaBase.listaVerificacion}">
+			<div class="row">
+
+				<div class="col-10">
+					<h4 th:text="${listaVerificacion1.nombre}"></h4>
+
+
+				</div>
+
+			</div>
+
+
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th class="tono-plomo  text-light  border border-dark ">Item</th>
+						<th class="tono-plomo  text-light    border border-dark ">Lineamiento</th>
+						<th class="tono-plomo  text-light  border border-dark ">Indicador</th>
+						<th class="tono-plomo  text-light  border border-dark ">En proceso</th>
+						<th class="tono-plomo  text-light   border border-dark " style="width:200px">Puntuacion</th>
+						<th class="tono-plomo  text-light border border-dark ">% Cumplimiento</th>
+						<th class="tono-plomo  text-light  border border-dark ">Observacion</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="listaVerificacionItems1 : ${listaVerificacion1.listaVerificacionItems}">
+						<th th:text="${listaVerificacionItems1.item}"></th>
+						<th th:text="${listaVerificacionItems1.lineamiento.nombre}"></th>
+						<td th:text="${listaVerificacionItems1.indicador}"></td>
+						
+						<td   th:text="${listaVerificacionItems1.proceso}"></td>
+						
+						<td th:text="${listaVerificacionItems1.puntuacion}"></td>
+						
+						<div th:switch="${listaVerificacionItems1.puntuacion}">
+						
+						<td th:case="'4'" th:text="${listaVerificacionItems1.CalcularAvanze()+'%'}" class="bg-success border border-dark text-dark" ></td>
+						<td th:case="'3'" th:text="${listaVerificacionItems1.CalcularAvanze()+'%'}" class="bg-warning border border-dark text-dark" ></td>
+						<td th:case="'2'" th:text="${listaVerificacionItems1.CalcularAvanze()+'%'}" class="bg-warning border border-dark text-dark" ></td>
+						<td th:case="'1'" th:text="${listaVerificacionItems1.CalcularAvanze()+'%'}" class="bg-warning border border-dark text-dark" ></td>
+						<td th:case="'0'" th:text="${listaVerificacionItems1.CalcularAvanze()+'%'}" class="bg-danger border border-dark text-dark" ></td>
+						
+						</div>
+						<td th:text="${listaVerificacionItems1.observacion}"><strong></strong> </td>
+					</tr>
+					<tr class="bg-secondary">
+					<td></td>
+					<td></td>
+					<td>Puntaje Parcial  Obtenido</td>
+					<td></td>
+					<td></td>
+					<td  th:text="${listaVerificacion1.PuntajeParcial()+'%'}"></td>
+					<td></td>
+					</tr>
+				</tbody>
+				
+			</table>
+
+
+
+
+
+		</div>
+
+
+		<script type="text/javascript">
+			function myFunction() {
+				window.print();
+			}
+		</script>
+</body>
+</html>

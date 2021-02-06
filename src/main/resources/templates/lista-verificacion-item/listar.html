@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: head"></head>
+
+<style>
+.rombo-rojo {
+	width: 20px;
+	height: 20px;
+	border: 1px solid #555;
+	background: #f63c3a;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+
+.rombo-amarillo {
+	width: 20px;
+	height: 20px;
+	border: 1px solid #555;
+	background: #ffc107;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+
+.rombo-verde {
+	width: 20px;
+	height: 20px;
+	border: 1px solid #555;
+	background: #4dbd74;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+
+.rombo-blanco {
+	width: 20px;
+	height: 20px;
+	border: 1px solid #555;
+	background: #fff;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+</style>
+<body>
+
+	<div id="i18n_eliminar_user" th:text="#{text.user.eliminarOk}"
+		style="display: none;"></div>
+
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container-fluid py-4">
+		<div class="row">
+			<div class="col-sm-7">
+				<div class="card ">
+					<div class="card-header">
+						<h6 th:text="${titulo}"></h6>
+					</div>
+					<div class="card-body ">
+
+
+						<table class="table table-striped table-bordered table-sm">
+							<thead>
+								<tr>
+									<th>Id</th>
+									<th>Ver</th>
+									<th>Archivo</th>
+									<th>Estado</th>
+									<th>Nombre</th>
+
+									<th sec:authorize="hasRole('ROLE_ADMIN')">Acciones</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="listaVerificacionItem: ${listaVerificacionItems}">
+
+									<td th:text="${listaVerificacionItem.id}"></td>
+									<td>
+										<button
+												th:onclick="modal('/objetivos-generales/show/[[${listaVerificacionItem.id}]]','Detalle del Objetivo General')"
+												class="btn btn-outline-dark btn-sm">
+												<span class="fa fa-search-plus" title="items de lo referente a los que se debe hacer para cumplir ."></span>
+											</button>
+									</td>
+									<td class="text-center"><a th:if="${listaVerificacionItem.evicendia01==null}"
+										href="#"> <span class="fas fa-times"
+											title="No hay archivos."></span>
+									</a> <a th:unless="${listaVerificacionItem.evicendia01==null}"
+										th:href="@{'../uploads/' + ${listaVerificacionItem.evicendia01}}">
+											<span class="fas fa-search-plus"
+											title="items de lo referente a los que se debe hacer para cumplir ."></span>
+									</a></td>
+
+
+									<td th:switch="${listaVerificacionItem.puntuacion}" class=""
+										style="margin: auto">
+
+										<div th:case="'0'" class="rombo-rojo" style="margin: auto"></div>
+										<div th:case="'1'" class="rombo-amarillo" style="margin: auto"></div>
+										<div th:case="'2'" class="rombo-verde" style="margin: auto"></div>
+										<div th:case="'3'" class="rombo-blanco" style="margin: auto"></div>
+
+									</td>
+									<td th:text="${listaVerificacionItem.indicador}"></td>
+
+									<td sec:authorize="hasRole('ROLE_ADMIN')"><a
+										class="btn  btn-light btn-sm"
+										th:href="@{/lista-verificacion-items/listar/} +${idListaVerificacion}+ '/'+ ${listaVerificacionItem.id}">Editar</a>
+
+									</td>
+
+
+
+								</tr>
+							</tbody>
+
+						</table>
+					</div>
+				</div>
+
+			</div>
+			<div class="col-sm-5" sec:authorize="hasRole('ROLE_ADMIN')">
+
+				<div class="card ">
+					<div class="card-header">
+						<h6 th:text="${titulo2}"></h6>
+					</div>
+					<div class="card-body">
+
+						<form
+							th:action="@{/lista-verificacion-items/listar}+'/'+ ${idListaVerificacion}"
+							th:object="${listaVerificacionItem}" method="post"
+							enctype="multipart/form-data">
+							<div class="form-group row">
+
+
+								<div class="col-sm-9 invisible" style="display: none">
+									<select th:field="*{listaVerificacion}"
+										class="form-control bg-light"
+										th:errorclass="'form-control alert-danger'">
+										<option th:value="${idListaVerificacion}">hola</option>
+									</select> <small class="form-text text-danger"
+										th:if="${#fields.hasErrors('lineamiento')}"
+										th:errors="*{lineamiento}">Sede Error Error</small> <br />
+								</div>
+
+
+								<label for="lineamiento" class="col-sm-3 col-form-label">Lineamiento
+									: </label>
+								<div class="col-sm-9">
+									<select th:field="*{lineamiento}" class="form-control bg-light"
+										th:errorclass="'form-control alert-danger'">
+										<option th:each="lineamiento : ${lineamientos}"
+											th:value="${lineamiento.id}" th:text=${lineamiento.nombre}>
+										</option>
+									</select> <small class="form-text text-danger"
+										th:if="${#fields.hasErrors('lineamiento')}"
+										th:errors="*{lineamiento}">Sede Error Error</small> <br />
+								</div>
+							
+								<label class="col-sm-3 col-form-label" for="indicador">Indicador:</label>
+								<div class="col-sm-9">
+									<textarea class="form-control bg-light" th:field="*{indicador}"
+										id="indicador" rows="3"></textarea>
+									<small class="form-text text-danger"
+										th:if="${#fields.hasErrors('indicador')}" th:errors="*{indicador}">
+									</small>
+								</div>
+								<br><br><br><br><br>
+								<label for="nombre" class="col-sm-3 col-form-label">Puntuacion
+									: </label>
+								<div class="col-sm-9">
+									<select th:field="*{puntuacion}" class="form-control bg-light"
+										th:errorclass="'form-control alert-danger'">
+										<option th:value="0">Rojo</option>
+										<option th:value="1">Amarillo</option>
+										<option th:value="2">Verde</option>
+										<option th:value="3">Blanco(no - cumple)</option>
+									</select> <small class="form-text text-danger"
+										th:if="${#fields.hasErrors('puntuacion')}"
+										th:errors="*{puntuacion}">Puntuacion Error Error</small> <br />
+
+
+
+								</div>
+							
+								
+								<label class="col-sm-3 col-form-label" for="nombre">Observacion:</label>
+								<div class="col-sm-9">
+									<textarea class="form-control bg-light" th:field="*{observacion}"
+										id="indicador" rows="3"></textarea>
+									<small class="form-text text-danger"
+										th:if="${#fields.hasErrors('observacion')}" th:errors="*{observacion}">
+									</small>
+								</div>
+								<br><br><br><br><br>
+								<label for="file" class="col-sm-3 col-form-label">Evidencia
+									: </label>
+
+								<div class="col-sm-9">
+									<input type="file" name="file" class="form-control" />
+								</div>
+
+
+
+								<div class="col-sm-6 mx-auto">
+									<br> <br> <input
+										th:if="${titulo3== 'Editar listaVerificacionItem de Trabajo'}"
+										class="btn btn-primary btn-sm" type="submit"
+										th:value="${titulo3}" /> <input
+										th:unless="${titulo3== 'Editar listaVerificacionItem de Trabajo'}"
+										type="submit" th:value="${titulo3}"
+										class="btn  btn-secondary btn-sm" />
+								</div>
+							</div>
+
+							<input type="hidden" th:field="*{id}" />
+						</form>
+
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		document.getElementById("tbFormControll").value = "true";
+	</script>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

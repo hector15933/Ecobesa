@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: head"></head>
+<body>
+
+	<div id="i18n_eliminar_user" th:text="#{text.user.eliminarOk}"
+		style="display: none;"></div>
+
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container-fluid py-4">
+		<div class="row">
+			<div class="col-sm-7">
+				<div class="card bg-light">
+					<div class="card-header">
+						<h6 th:text="${titulo}"></h6>
+					</div>
+					<div class="card-body ">
+
+
+						<table class="table table-striped table-bordered table-sm">
+							<thead>
+								<tr>
+									<th>Id</th>
+									<th>Nombre</th>
+									<th sec:authorize="hasRole('ROLE_ADMIN')"> Acciones</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="cargo: ${cargos}">
+									<td th:text="${cargo.id}"></td>
+									<td th:text="${cargo.nombre}"></td>
+									<td sec:authorize="hasRole('ROLE_ADMIN')"><a   class="btn  btn-light btn-sm" 
+										th:href="@{/admin/cargo/listar/} + ${cargo.id}" 
+										>Editar</a> 
+										
+										<a
+										th:if="${cargo.estado == true}" class="btn btn-danger active btn-sm	" 
+										th:text="Desactivar"
+										th:href="@{/admin/cargo/eliminar/} + ${cargo.id}">Desactivar</a> 
+										<a
+										th:unless="${cargo.estado == true}"
+										class="btn btn-outline-success btn-sm" th:text="Activar"></a></td>
+
+
+
+								</tr>
+							</tbody>
+
+						</table>
+					</div>
+				</div>
+
+			</div>
+			<div class="col-sm-5" sec:authorize="hasRole('ROLE_ADMIN')">
+			
+				<div class="card ">
+					<div class="card-header">
+						<h6 th:text="${titulo2}"></h6>
+					</div>
+					<div class="card-body">
+					
+						<form th:action="@{/admin/cargo/listar}" th:object="${cargo}" method="post">
+							<div class="form-group row">
+								<label for="nombre" class="col-sm-3 col-form-label">Nombre : </label>
+								<div class="col-sm-6">
+									<input type="text" th:field="*{nombre}" class="form-control bg-light"
+										th:errorclass="'form-control alert-danger'" /> <small
+										class="form-text text-danger"
+										th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">nombre
+										Error</small>
+									<br/>
+								</div>
+								
+								<input id="tbFormControll" type="hidden"   th:field="*{estado}"  />
+									
+									<div class="col-sm-6 mx-auto">
+								
+									<input th:if="${titulo3== 'Editar Cargo de Trabajo'}" class="btn btn-primary btn-sm" 
+									
+									type="submit" th:value="${titulo3}"
+									/>
+										
+									<input th:unless="${titulo3== 'Editar Cargo de Trabajo'}"
+									
+									type="submit" th:value="${titulo3}"
+										class="btn  btn-secondary btn-sm" />
+								</div>
+							</div>
+							
+							<input type="hidden" th:field="*{id}" />
+						</form>
+						
+					</div>
+				</div>
+
+			
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+	 document.getElementById("tbFormControll").value = "true";
+</script>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

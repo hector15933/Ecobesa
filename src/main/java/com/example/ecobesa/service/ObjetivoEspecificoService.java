@@ -2,6 +2,7 @@ package com.example.ecobesa.service;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.example.ecobesa.dao.IObjetivoEspecificoDao;
@@ -13,9 +14,9 @@ public class ObjetivoEspecificoService implements IObjetivoEspecificoService{
 	private IObjetivoEspecificoDao objetivoEspecificoDao; 
 
 	@Override
-	public List<ObjetivoEspecifico> findAll() {
+	public List<ObjetivoEspecifico> findAll(Sort sort) {
 		// TODO Auto-generated method stub
-		return (List<ObjetivoEspecifico>) objetivoEspecificoDao.findAll();
+		return (List<ObjetivoEspecifico>) objetivoEspecificoDao.findAll(sort);
 	}
 
 	@Override

@@ -38,6 +38,9 @@ public class LoginController {
 	@Autowired
 	private IUserService userService;
 	
+	@Autowired
+	private IEmpresaService empresaService;
+	
 	@GetMapping(value="/uploads/{filename:.+}")
 	public ResponseEntity<Resource> verFoto(@PathVariable String filename){
 		
@@ -53,13 +56,15 @@ public class LoginController {
 			.header(HttpHeaders.CONTENT_DISPOSITION,"attachment; filename=\""+recurso.getFilename()+"\"")
 			.body(recurso);
 	}
-	@Autowired
-	private IEmpresaService empresaService;
+
 
 	@GetMapping({ "/login", "/" })
 	public String login(@RequestParam(value = "error", required = false) String error, Model model, Principal principal,
 			RedirectAttributes flash) {
-
+		Long id=(long) 1;
+		
+		model.addAttribute("pantallaInicio", empresaService.findById(id).getPantallaInicio());
+		model.addAttribute("empresaLogo", empresaService.findById(id).getFoto());
 		if (principal != null) {
 
 			return "redirect:/principal";

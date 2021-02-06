@@ -7,6 +7,23 @@ INSERT INTO frecuencia(nombre) VALUES('MENSUAL');
 INSERT INTO frecuencia(nombre) VALUES('PERMANENTE');
 INSERT INTO frecuencia(nombre) VALUES('PERSONALIZADO');
 
+INSERT INTO sedes(nombre,estado) VALUES('Amazonas',true)
+INSERT INTO sedes(nombre,estado) VALUES('Áncash',true)
+INSERT INTO sedes(nombre,estado) VALUES('Apurímac',true)
+INSERT INTO sedes(nombre,estado) VALUES('Arequipa',true)
+INSERT INTO sedes(nombre,estado) VALUES('Ayacucho',true)
+INSERT INTO sedes(nombre,estado) VALUES('Cajamarca',true)
+INSERT INTO sedes(nombre,estado) VALUES('Callao',true)
+INSERT INTO sedes(nombre,estado) VALUES('Chiclayo',true)
+
+
+INSERT INTO areas(nombre,sede_id,status) VALUES('Produccion',1,true);
+INSERT INTO areas(nombre,sede_id,status) VALUES('SSO',1,true);
+INSERT INTO areas(nombre,sede_id,status) VALUES('Almacenamiento',1,true);
+INSERT INTO areas(nombre,sede_id,status) VALUES('Distribucion',1,true);
+INSERT INTO areas(nombre,sede_id,status) VALUES('Ventas',1,true);
+
+
 
 
 INSERT INTO programa_actividades(nombre,status) VALUES('Plan de Acción de Investigación de Incidentes',true);
@@ -22,113 +39,68 @@ INSERT INTO tipo_actividad(nombre) VALUES('Capacitacion');
 INSERT INTO tipo_actividad(nombre) VALUES('Observacion Preventiva de Seguridad');
 INSERT INTO tipo_actividad(nombre) VALUES('Revision AST');
 
-INSERT INTO cargos(nombre) VALUES('Gerente');
-INSERT INTO cargos(nombre) VALUES('Administrador');
-INSERT INTO cargos(nombre) VALUES('Secretario');
+INSERT INTO cargos(nombre,estado) VALUES('Gerente',true);
+INSERT INTO cargos(nombre,estado) VALUES('Administrador',true);
+INSERT INTO cargos(nombre,estado) VALUES('Secretario',true);
 
 INSERT INTO roles(authority) VALUES('ROLE_ADMIN')
 INSERT INTO roles(authority) VALUES('ROLE_USER')
-INSERT INTO roles(authority) VALUES('ROLE_ADMIN')
+INSERT INTO roles(authority) VALUES('ROLE_NIVEL3')
 
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Hector17','Apellido01 Apellido02','user@gmail.com',true,'78021293','995707476','user123','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1);
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Jose17','Apellido01 Apellido02','user@gmail.com',true,'78021293','995707476','user234','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,1);
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Walter','Reaños Arcilla','user@gmail.com',true,'78021293','995707476','user234','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,1);
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 4','Primero Segundo 4','user4@ecobesa.com',true,'19194','1616161','user4','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 5','Primero Segundo 5','user5@ecobesa.com',false,'19195','1616161','user5','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 6','Primero Segundo 6','user6@ecobesa.com',true,'19196','1616161','user6','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 7','Primero Segundo 7','user7@ecobesa.com',false,'19197','1616161','user7','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 8','Primero Segundo 8','user8@ecobesa.com',true,'19198','1616161','user8','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 9','Primero Segundo 9','user9@ecobesa.com',false,'19199','1616161','user9','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 10','Primero Segundo 10','user10@ecobesa.com',true,'191910','1616161','user10','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 11','Primero Segundo 11','user11@ecobesa.com',false,'191911','1616161','user11','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 12','Primero Segundo 12','user12@ecobesa.com',true,'191912','1616161','user12','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 13','Primero Segundo 13','user13@ecobesa.com',false,'191913','1616161','user13','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 14','Primero Segundo 14','user14@ecobesa.com',true,'191914','1616161','user14','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 15','Primero Segundo 15','user15@ecobesa.com',false,'191915','1616161','user15','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 16','Primero Segundo 16','user16@ecobesa.com',true,'191916','1616161','user16','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 17','Primero Segundo 17','user17@ecobesa.com',false,'191917','1616161','user17','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 18','Primero Segundo 18','user18@ecobesa.com',true,'191918','1616161','user18','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 19','Primero Segundo 19','user19@ecobesa.com',false,'191919','1616161','user19','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 20','Primero Segundo 20','user20@ecobesa.com',true,'191920','1616161','user20','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 21','Primero Segundo 21','user21@ecobesa.com',false,'191921','1616161','user21','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 22','Primero Segundo 22','user22@ecobesa.com',true,'191922','1616161','user22','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 23','Primero Segundo 23','user23@ecobesa.com',false,'191923','1616161','user23','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 24','Primero Segundo 24','user24@ecobesa.com',true,'191924','1616161','user24','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 25','Primero Segundo 25','user25@ecobesa.com',false,'191925','1616161','user25','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 26','Primero Segundo 26','user26@ecobesa.com',true,'191926','1616161','user26','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 27','Primero Segundo 27','user27@ecobesa.com',false,'191927','1616161','user27','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 28','Primero Segundo 28','user28@ecobesa.com',true,'191928','1616161','user28','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 29','Primero Segundo 29','user29@ecobesa.com',false,'191929','1616161','user29','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 30','Primero Segundo 30','user30@ecobesa.com',true,'191930','1616161','user30','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 31','Primero Segundo 31','user31@ecobesa.com',false,'191931','1616161','user31','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 32','Primero Segundo 32','user32@ecobesa.com',true,'191932','1616161','user32','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 33','Primero Segundo 33','user33@ecobesa.com',false,'191933','1616161','user33','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 34','Primero Segundo 34','user34@ecobesa.com',true,'191934','1616161','user34','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 35','Primero Segundo 35','user35@ecobesa.com',false,'191935','1616161','user35','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 36','Primero Segundo 36','user36@ecobesa.com',true,'191936','1616161','user36','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 37','Primero Segundo 37','user37@ecobesa.com',false,'191937','1616161','user37','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 38','Primero Segundo 38','user38@ecobesa.com',true,'191938','1616161','user38','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 39','Primero Segundo 39','user39@ecobesa.com',false,'191939','1616161','user39','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 40','Primero Segundo 40','user40@ecobesa.com',true,'191940','1616161','user40','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 41','Primero Segundo 41','user41@ecobesa.com',false,'191941','1616161','user41','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 42','Primero Segundo 42','user42@ecobesa.com',true,'191942','1616161','user42','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 43','Primero Segundo 43','user43@ecobesa.com',false,'191943','1616161','user43','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 44','Primero Segundo 44','user44@ecobesa.com',true,'191944','1616161','user44','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 45','Primero Segundo 45','user45@ecobesa.com',false,'191945','1616161','user45','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 46','Primero Segundo 46','user46@ecobesa.com',true,'191946','1616161','user46','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 47','Primero Segundo 47','user47@ecobesa.com',false,'191947','1616161','user47','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 48','Primero Segundo 48','user48@ecobesa.com',true,'191948','1616161','user48','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 49','Primero Segundo 49','user49@ecobesa.com',false,'191949','1616161','user49','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 50','Primero Segundo 50','user50@ecobesa.com',true,'191950','1616161','user50','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 51','Primero Segundo 51','user51@ecobesa.com',false,'191951','1616161','user51','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 52','Primero Segundo 52','user52@ecobesa.com',true,'191952','1616161','user52','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 53','Primero Segundo 53','user53@ecobesa.com',false,'191953','1616161','user53','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 54','Primero Segundo 54','user54@ecobesa.com',true,'191954','1616161','user54','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 55','Primero Segundo 55','user55@ecobesa.com',false,'191955','1616161','user55','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 56','Primero Segundo 56','user56@ecobesa.com',true,'191956','1616161','user56','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 57','Primero Segundo 57','user57@ecobesa.com',false,'191957','1616161','user57','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 58','Primero Segundo 58','user58@ecobesa.com',true,'191958','1616161','user58','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 59','Primero Segundo 59','user59@ecobesa.com',false,'191959','1616161','user59','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 60','Primero Segundo 60','user60@ecobesa.com',true,'191960','1616161','user60','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 61','Primero Segundo 61','user61@ecobesa.com',false,'191961','1616161','user61','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 62','Primero Segundo 62','user62@ecobesa.com',true,'191962','1616161','user62','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 63','Primero Segundo 63','user63@ecobesa.com',false,'191963','1616161','user63','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 64','Primero Segundo 64','user64@ecobesa.com',true,'191964','1616161','user64','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 65','Primero Segundo 65','user65@ecobesa.com',false,'191965','1616161','user65','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 66','Primero Segundo 66','user66@ecobesa.com',true,'191966','1616161','user66','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 67','Primero Segundo 67','user67@ecobesa.com',false,'191967','1616161','user67','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 68','Primero Segundo 68','user68@ecobesa.com',true,'191968','1616161','user68','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 69','Primero Segundo 69','user69@ecobesa.com',false,'191969','1616161','user69','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 70','Primero Segundo 70','user70@ecobesa.com',true,'191970','1616161','user70','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 71','Primero Segundo 71','user71@ecobesa.com',false,'191971','1616161','user71','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 72','Primero Segundo 72','user72@ecobesa.com',true,'191972','1616161','user72','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 73','Primero Segundo 73','user73@ecobesa.com',false,'191973','1616161','user73','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 74','Primero Segundo 74','user74@ecobesa.com',true,'191974','1616161','user74','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 75','Primero Segundo 75','user75@ecobesa.com',false,'191975','1616161','user75','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 76','Primero Segundo 76','user76@ecobesa.com',true,'191976','1616161','user76','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 77','Primero Segundo 77','user77@ecobesa.com',false,'191977','1616161','user77','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 78','Primero Segundo 78','user78@ecobesa.com',true,'191978','1616161','user78','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 79','Primero Segundo 79','user79@ecobesa.com',false,'191979','1616161','user79','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 80','Primero Segundo 80','user80@ecobesa.com',true,'191980','1616161','user80','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 81','Primero Segundo 81','user81@ecobesa.com',false,'191981','1616161','user81','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 82','Primero Segundo 82','user82@ecobesa.com',true,'191982','1616161','user82','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 83','Primero Segundo 83','user83@ecobesa.com',false,'191983','1616161','user83','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 84','Primero Segundo 84','user84@ecobesa.com',true,'191984','1616161','user84','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 85','Primero Segundo 85','user85@ecobesa.com',false,'191985','1616161','user85','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 86','Primero Segundo 86','user86@ecobesa.com',true,'191986','1616161','user86','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 87','Primero Segundo 87','user87@ecobesa.com',false,'191987','1616161','user87','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 88','Primero Segundo 88','user88@ecobesa.com',true,'191988','1616161','user88','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 89','Primero Segundo 89','user89@ecobesa.com',false,'191989','1616161','user89','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 90','Primero Segundo 90','user90@ecobesa.com',true,'191990','1616161','user90','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 91','Primero Segundo 91','user91@ecobesa.com',false,'191991','1616161','user91','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 92','Primero Segundo 92','user92@ecobesa.com',true,'191992','1616161','user92','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 93','Primero Segundo 93','user93@ecobesa.com',false,'191993','1616161','user93','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 94','Primero Segundo 94','user94@ecobesa.com',true,'191994','1616161','user94','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 95','Primero Segundo 95','user95@ecobesa.com',false,'191995','1616161','user95','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 96','Primero Segundo 96','user96@ecobesa.com',true,'191996','1616161','user96','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 97','Primero Segundo 97','user97@ecobesa.com',false,'191997','1616161','user97','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 98','Primero Segundo 98','user98@ecobesa.com',true,'191998','1616161','user98','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2)
-INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id) VALUES('Nombre 99','Primero Segundo 99','user99@ecobesa.com',false,'191999','1616161','user99','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Hector17','Apellido01 Apellido02','user@gmail.com',true,'78021293','995707476','user123','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1,1);
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Jose17','Apellido01 Apellido02','user@gmail.com',true,'78021293','995707476','user234','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2,1);
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Walter','Reaños Arcilla','user@gmail.com',true,'78021293','995707476','user234','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,1,1);
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 4','Primero Segundo 4','user4@ecobesa.com',true,'19194','1616161','user4','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1,2)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 5','Primero Segundo 5','user5@ecobesa.com',false,'19195','1616161','user5','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2,3)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 6','Primero Segundo 6','user6@ecobesa.com',true,'19196','1616161','user6','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3,4)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 7','Primero Segundo 7','user7@ecobesa.com',false,'19197','1616161','user7','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1,5)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 8','Primero Segundo 8','user8@ecobesa.com',true,'19198','1616161','user8','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2,6)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 9','Primero Segundo 9','user9@ecobesa.com',false,'19199','1616161','user9','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3,7)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 10','Primero Segundo 10','user10@ecobesa.com',true,'191910','1616161','user10','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1,8)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 11','Primero Segundo 11','user11@ecobesa.com',false,'191911','1616161','user11','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,1,1)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 12','Primero Segundo 12','user12@ecobesa.com',true,'191912','1616161','user12','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3,2)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 13','Primero Segundo 13','user13@ecobesa.com',false,'191913','1616161','user13','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1,2)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 14','Primero Segundo 14','user14@ecobesa.com',true,'191914','1616161','user14','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2,3)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 15','Primero Segundo 15','user15@ecobesa.com',false,'191915','1616161','user15','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3,4)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 16','Primero Segundo 16','user16@ecobesa.com',true,'191916','1616161','user16','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1,5)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 17','Primero Segundo 17','user17@ecobesa.com',false,'191917','1616161','user17','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2,6)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 18','Primero Segundo 18','user18@ecobesa.com',true,'191918','1616161','user18','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3,7)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 19','Primero Segundo 19','user19@ecobesa.com',false,'191919','1616161','user19','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1,8)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 20','Primero Segundo 20','user20@ecobesa.com',true,'191920','1616161','user20','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2,1)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 21','Primero Segundo 21','user21@ecobesa.com',false,'191921','1616161','user21','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3,2)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 22','Primero Segundo 22','user22@ecobesa.com',true,'191922','1616161','user22','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1,3)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 23','Primero Segundo 23','user23@ecobesa.com',false,'191923','1616161','user23','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2,4)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 24','Primero Segundo 24','user24@ecobesa.com',true,'191924','1616161','user24','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3,5)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 25','Primero Segundo 25','user25@ecobesa.com',false,'191925','1616161','user25','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1,6)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 26','Primero Segundo 26','user26@ecobesa.com',true,'191926','1616161','user26','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2,7)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 27','Primero Segundo 27','user27@ecobesa.com',false,'191927','1616161','user27','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3,8)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 28','Primero Segundo 28','user28@ecobesa.com',true,'191928','1616161','user28','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1,1)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 29','Primero Segundo 29','user29@ecobesa.com',false,'191929','1616161','user29','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2,2)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 30','Primero Segundo 30','user30@ecobesa.com',true,'191930','1616161','user30','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3,3)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 31','Primero Segundo 31','user31@ecobesa.com',false,'191931','1616161','user31','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1,4)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 32','Primero Segundo 32','user32@ecobesa.com',true,'191932','1616161','user32','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2,5)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 33','Primero Segundo 33','user33@ecobesa.com',false,'191933','1616161','user33','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3,6)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 34','Primero Segundo 34','user34@ecobesa.com',true,'191934','1616161','user34','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1,7)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 35','Primero Segundo 35','user35@ecobesa.com',false,'191935','1616161','user35','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2,8)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 36','Primero Segundo 36','user36@ecobesa.com',true,'191936','1616161','user36','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3,1)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 37','Primero Segundo 37','user37@ecobesa.com',false,'191937','1616161','user37','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1,2)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 38','Primero Segundo 38','user38@ecobesa.com',true,'191938','1616161','user38','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2,3)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 39','Primero Segundo 39','user39@ecobesa.com',false,'191939','1616161','user39','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3,4)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 40','Primero Segundo 40','user40@ecobesa.com',true,'191940','1616161','user40','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1,5)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 41','Primero Segundo 41','user41@ecobesa.com',false,'191941','1616161','user41','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2,6)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 42','Primero Segundo 42','user42@ecobesa.com',true,'191942','1616161','user42','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3,7)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 43','Primero Segundo 43','user43@ecobesa.com',false,'191943','1616161','user43','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1,8)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 44','Primero Segundo 44','user44@ecobesa.com',true,'191944','1616161','user44','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2,1)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 45','Primero Segundo 45','user45@ecobesa.com',false,'191945','1616161','user45','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3,2)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 46','Primero Segundo 46','user46@ecobesa.com',true,'191946','1616161','user46','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1,3)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 47','Primero Segundo 47','user47@ecobesa.com',false,'191947','1616161','user47','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2,4)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 48','Primero Segundo 48','user48@ecobesa.com',true,'191948','1616161','user48','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3,5)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 49','Primero Segundo 49','user49@ecobesa.com',false,'191949','1616161','user49','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1,6)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 50','Primero Segundo 50','user50@ecobesa.com',true,'191950','1616161','user50','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',2,2,7)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 51','Primero Segundo 51','user51@ecobesa.com',false,'191951','1616161','user51','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',3,3,8)
+INSERT INTO users(nombres,apellidos,email,estado,dni,telefono,usuario,password,role_id,cargo_id,sede_id) VALUES('Nombre 52','Primero Segundo 52','user52@ecobesa.com',true,'191952','1616161','user52','$2a$10$DDNB/kjudd5GvexibmBfk.IsI5l6KTmXPLZdx3O7i3Q5v8m7xbPg6',1,1,1)
+
+
 
 
 INSERT INTO programa_anuales(nombre,id_aprobado_id,id_revisado_id,id_elaborado_id) VALUES('PROGRAMA ANUAL DE SEGURIDAD Y SALUD EN EL TRABAJO 2020 ECOBESA',1,1,1);
@@ -136,7 +108,7 @@ INSERT INTO programa_anuales(nombre,id_aprobado_id,id_revisado_id,id_elaborado_i
 INSERT INTO programa_anuales(nombre,id_aprobado_id,id_revisado_id,id_elaborado_id) VALUES('PROGRAMA ANUAL DE SEGURIDAD Y SALUD EN EL TRABAJO 2020 ECOBESA',1,1,1);
 
 
-INSERT INTO empresa(razon_social,actividad_economica,numero_trabajadores,ruc,foto,domicilio) VALUES('EMPRESA COMERCIALIZADORA DE BEBIDAS SOCIEDAD ANÓNIMA CERRADA','COMERCIALIZACIÓN DE BEBIDAS NO ALCOHÓLICAS',14010,'20557079441','de0bb7ee-8420-4b57-94b4-0becf43a87c7_Ecobesa.png','JR. CAJAMARCA 371 RIMAC , LIMA');
+INSERT INTO empresa(razon_social,actividad_economica,numero_trabajadores,ruc,foto,domicilio,pantalla_inicio) VALUES('EMPRESA COMERCIALIZADORA DE BEBIDAS SOCIEDAD ANÓNIMA CERRADA','COMERCIALIZACIÓN DE BEBIDAS NO ALCOHÓLICAS',14010,'20557079441','111cb499-dbde-4ce6-a1f8-8592ae3b0b79_foto123.jpeg','JR. CAJAMARCA 371 RIMAC , LIMA','94e060f2-d230-4103-94f5-856832c87de2_1594772896-banner-1-4.png');
 
 INSERT INTO objetivo_generales(nombre,meta,recursos,presupuesto_general,programa_anual_id) VALUES('CUMPLIR CON LA LEGISLACIÓN VIGENTE EN SEGURIDAD Y SALUD EN EL TRABAJO','100% de cumplimiento','Recursos humanos y procedimientos',25000,1)
 INSERT INTO objetivo_generales(nombre,meta,recursos,presupuesto_general,programa_anual_id) VALUES('CUMPLIR CON LOS INDICADORES DE SEGURIDAD EN BASE A LA CANTIDAD DE ACCIDENTES E INCIDENTES DE TRABAJO','100% de cumplimiento','Recursos humanos y procedimientos',25000,1)
@@ -157,14 +129,7 @@ INSERT INTO objetivo_especificos(nombre,objetivo_general_id) VALUES(' Asegurar e
 
 
 
-INSERT INTO sedes(nombre) VALUES('Amazonas')
-INSERT INTO sedes(nombre) VALUES('Áncash')
-INSERT INTO sedes(nombre) VALUES('Apurímac')
-INSERT INTO sedes(nombre) VALUES('Arequipa')
-INSERT INTO sedes(nombre) VALUES('Ayacucho')
-INSERT INTO sedes(nombre) VALUES('Cajamarca')
-INSERT INTO sedes(nombre) VALUES('Callao')
-INSERT INTO sedes(nombre) VALUES('Chiclayo')
+
 
 INSERT INTO empleados(nombres,apellidos,dni,telefono,nacionalidad,sexo,fecha_nacimiento,foto,estado,sede_id) VALUES('Empleado 1','Apellido 1',78787871,747474771,'peruano',true,'1999/04/04','1.jpg',true,1)
 INSERT INTO empleados(nombres,apellidos,dni,telefono,nacionalidad,sexo,fecha_nacimiento,foto,estado,sede_id) VALUES('Empleado 2','Apellido 2',78787872,747474772,'peruano',false,'1999/04/04','2.jpg',false,2)
@@ -275,22 +240,128 @@ INSERT INTO actividades(fecha_inicio,frecuencia,nombre,objetivo_general_id,progr
 INSERT INTO fechas(estado,fecha,actividad_id) VALUES(false,'2021/02/01',1);
 
 INSERT INTO actividades(fecha_inicio,frecuencia,nombre,objetivo_general_id,programa_actividad_id,responsable_user_id,tipo_actividad_id) VALUES('01/01/2021','ANUAL','ELABORAR Y APROBAR EL PROGRAMA ANUAL DE CAPACITACIÓN DE SSO (PAC-SSO)',1,3,1,1);
-INSERT INTO fechas(estado,fecha,actividad_id) VALUES(false,'2021/02/01',2);
+INSERT INTO fechas(estado,fecha,actividad_id) VALUES(true,'2021/02/01',2);
+
+
+INSERT INTO actividades(fecha_inicio,frecuencia,nombre,objetivo_general_id,programa_actividad_id,responsable_user_id,tipo_actividad_id) VALUES('01/02/2021','ANUAL','ELABORAR Y APROBAR EL PROGRAMA ANUAL DE INSPECCIÓN DE SST',1,3,1,1);
+INSERT INTO fechas(estado,fecha,actividad_id) VALUES(true,'2021/02/01',3);
 
 
 INSERT INTO actividades(fecha_inicio,frecuencia,nombre,objetivo_general_id,programa_actividad_id,responsable_user_id,tipo_actividad_id) VALUES('01/01/2021','MENSUAL','REUNIÓN MENSUAL DEL CSST Y EL CONTROL DE LOS ACUERDOS DEL LIBRO DE ACTAS',1,3,1,1);
-INSERT INTO fechas(estado,fecha,actividad_id) VALUES(true,'2021/01/01',3);
-INSERT INTO fechas(estado,fecha,actividad_id) VALUES(false,'2021/02/01',3);
-INSERT INTO fechas(estado,fecha,actividad_id) VALUES(false,'2021/03/01',3);
-INSERT INTO fechas(estado,fecha,actividad_id) VALUES(false,'2021/04/01',3);
-INSERT INTO fechas(estado,fecha,actividad_id) VALUES(false,'2021/05/01',3);
-INSERT INTO fechas(estado,fecha,actividad_id) VALUES(false,'2021/06/01',3);
-INSERT INTO fechas(estado,fecha,actividad_id) VALUES(false,'2021/07/01',3);
-INSERT INTO fechas(estado,fecha,actividad_id) VALUES(false,'2021/08/01',3);
-INSERT INTO fechas(estado,fecha,actividad_id) VALUES(false,'2021/09/01',3);
-INSERT INTO fechas(estado,fecha,actividad_id) VALUES(false,'2021/10/01',3);
-INSERT INTO fechas(estado,fecha,actividad_id) VALUES(false,'2021/11/01',3);
-INSERT INTO fechas(estado,fecha,actividad_id) VALUES(false,'2021/12/01',3);	
+INSERT INTO fechas(estado,fecha,actividad_id) VALUES(true,'2021/01/01',4);
+INSERT INTO fechas(estado,fecha,actividad_id) VALUES(true,'2021/02/01',4);
+INSERT INTO fechas(estado,fecha,actividad_id) VALUES(true,'2021/03/01',4);
+INSERT INTO fechas(estado,fecha,actividad_id) VALUES(true,'2021/04/01',4);
+INSERT INTO fechas(estado,fecha,actividad_id) VALUES(false,'2021/05/01',4);
+INSERT INTO fechas(estado,fecha,actividad_id) VALUES(false,'2021/06/01',4);
+INSERT INTO fechas(estado,fecha,actividad_id) VALUES(false,'2021/07/01',4);
+INSERT INTO fechas(estado,fecha,actividad_id) VALUES(false,'2021/08/01',4);
+INSERT INTO fechas(estado,fecha,actividad_id) VALUES(false,'2021/09/01',4);
+INSERT INTO fechas(estado,fecha,actividad_id) VALUES(false,'2021/10/01',4);
+INSERT INTO fechas(estado,fecha,actividad_id) VALUES(false,'2021/11/01',4);
+INSERT INTO fechas(estado,fecha,actividad_id) VALUES(false,'2021/12/01',4);	
+
+
+INSERT INTO actividad_users(user_id,actividad_id) VALUES(1,1)
+INSERT INTO actividad_users(user_id,actividad_id) VALUES(2,1)
+INSERT INTO actividad_users(user_id,actividad_id) VALUES(3,1)
+
+INSERT INTO actividad_users(user_id,actividad_id) VALUES(1,2)
+INSERT INTO actividad_users(user_id,actividad_id) VALUES(2,2)
+INSERT INTO actividad_users(user_id,actividad_id) VALUES(3,2)
+
+INSERT INTO actividad_users(user_id,actividad_id) VALUES(1,3)
+INSERT INTO actividad_users(user_id,actividad_id) VALUES(2,3)
+INSERT INTO actividad_users(user_id,actividad_id) VALUES(3,3)
+
+INSERT INTO actividad_users(user_id,actividad_id) VALUES(1,4)
+INSERT INTO actividad_users(user_id,actividad_id) VALUES(2,4)
+INSERT INTO actividad_users(user_id,actividad_id) VALUES(3,4)
+
+
+INSERT INTO lineamientos(nombre) VALUES('principios');
+INSERT INTO lineamientos(nombre) VALUES('politica');
+INSERT INTO lineamientos(nombre) VALUES('direccion');
+INSERT INTO lineamientos(nombre) VALUES('liderazgo');
+INSERT INTO lineamientos(nombre) VALUES('organizacion');
+INSERT INTO lineamientos(nombre) VALUES('competencia');
+INSERT INTO lineamientos(nombre) VALUES('diagnostico');
+INSERT INTO lineamientos(nombre) VALUES('Planeamiento para la identificación de peligros, evaluación y control de riesgos');
+INSERT INTO lineamientos(nombre) VALUES('Objetivos');
+INSERT INTO lineamientos(nombre) VALUES('Programa de seguridad y salud en el trabajo');
+INSERT INTO lineamientos(nombre) VALUES('Estructura y responsabilidades');
+INSERT INTO lineamientos(nombre) VALUES('Capacitación');
+INSERT INTO lineamientos(nombre) VALUES('Medidas de prevención');
+INSERT INTO lineamientos(nombre) VALUES('Preparación y respuestas ante emergencias');
+INSERT INTO lineamientos(nombre) VALUES('Contratistas, Subcontratistas, empresa, entidad pública o privada, de servicios y cooperativas');
+INSERT INTO lineamientos(nombre) VALUES('Consulta y comunicación');
+INSERT INTO lineamientos(nombre) VALUES('Requisitos legales y de otro tipo');
+INSERT INTO lineamientos(nombre) VALUES('Supervisión, monitoreo y seguimiento de desempeño');
+INSERT INTO lineamientos(nombre) VALUES('Salud en el trabajo');
+INSERT INTO lineamientos(nombre) VALUES('Accidentes, incidentes peligrosos e incidentes, no conformidad, acción correctiva y preventiva');
+INSERT INTO lineamientos(nombre) VALUES('Investigación de accidentes y enfermedades ocupacionales');
+INSERT INTO lineamientos(nombre) VALUES('Control de las operaciones');
+INSERT INTO lineamientos(nombre) VALUES('Gestión del cambio');
+INSERT INTO lineamientos(nombre) VALUES('Auditorias');
+INSERT INTO lineamientos(nombre) VALUES('Documentos');
+INSERT INTO lineamientos(nombre) VALUES('Control de la documentación y de los datos');
+INSERT INTO lineamientos(nombre) VALUES('Gestión de los registros');
+INSERT INTO lineamientos(nombre) VALUES('Gestión de la mejora continua');
+
+
+
+INSERT INTO linea_bases(nombre) VALUES('LISTA DE VERIFICACIÓN DE LINEAMIENTOS DEL SISTEMA DE GESTIÓN DE SEGURIDAD Y SALUD EN EL TRABAJO');
+INSERT INTO linea_bases(nombre) VALUES('LISTA DE VERIFICACIÓN DE LINEAMIENTOS DEL SSGT');
+
+
+
+
+/*INSERT INTO lista_verificaciones(linea_base_id,nombre) VALUES(1,'I. Compromiso e Involucramiento');
+*INSERT INTO lista_verificaciones(linea_base_id,nombre) VALUES(1,'II. Política de Seguridad y Salud Ocupacional');
+*INSERT INTO lista_verificaciones(linea_base_id,nombre) VALUES(1,'III. Planeamiento y Aplicación');
+* INTO lista_verificaciones(linea_base_id,nombre) VALUES(1,'IV. Implementación y Operación');
+*INSERT INTO lista_verificaciones(linea_base_id,nombre) VALUES(1,'V. Evaluación Normativa');
+*INSERT INTO lista_verificaciones(linea_base_id,nombre) VALUES(1,'VI. Verificación');
+*INSERT INTO lista_verificaciones(linea_base_id,nombre) VALUES(1,'VII. Control de Información y Documentos');
+*INSERT INTO lista_verificaciones(linea_base_id,nombre) VALUES(1,'VIII. Revisión por la dirección');
+
+*INSERT INTO lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(1,1.1,1,'el CDA proporciona los recursos necesarios para que se implemente un sistema de gestión de seguridad y salud en el trabajo.',true,1);
+*INSERT INTO lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(1,1.2,1,'Se ha cumplido lo planificado en los diferentes programas de seguridad y salud en el trabajo.',true,1);
+*INSERT INTO lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(1,1.3,1,'Se implementan acciones preventivas de seguridad y salud en el trabajo para asegurar la mejora continua.',true,3);
+*INSERT INTO lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(1,1.4,1,'Se reconoce el desempeño del trabajador para mejorar la autoestima y se fomenta el trabajo en equipo.',true,1);
+*INSERT INTO lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(1,1.5,1,'Se realizan actividades para fomentar una cultura de prevención de riesgos del trabajo en todo el CDA.',true,0);
+*INSERT INTO lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(1,1.6,1,'Se  promueve  un  buen  clima  laboral  para  reforzar  la  empatía  entre empleador y trabajador y viceversa.',true,2);
+*INSERT INTO lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(1,1.7,1,'Existen medios que permiten el aporte de los trabajadores al empleador en materia de seguridad y salud en el trabajo.',true,1);
+*INSERT INTO lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(1,1.8,1,'Existen mecanismos de reconocimiento del personal proactivo interesado en el mejoramiento continuo de la seguridad y salud en el trabajo.',true,1);
+*INSERT INTO lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(1,1.9,1,'Se tiene evaluado los principales riesgos que ocasionan mayores pérdidas.',true,1);
+*INSERT INTO lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(1,1.10,1,'Se fomenta la participación de los representantes de trabajadores y de las organizaciones sindicales en las decisiones sobre la seguridad y salud en el trabajo.',true,1);
+
+/*lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(2,2.1,2,'Existe una política documentada en materia de seguridad y salud en el trabajo, específica y apropiada para la empresa.',true,4);
+*lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(2,2.2,2,'La política de seguridad y salud en el trabajo está firmada por la máxima autoridad de el CDA.',true,0);
+*lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(2,2.3,2,'Los trabajadores conocen y están comprometidos con lo establecido en la política de seguridad y salud en el trabajo.',true,1);
+*lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(2,2.4,2,'Su contenido comprende:El compromiso de protección de todos los miembros de la  Cumplimiento de la normatividad. Garantía de protección, participación, consulta y participación en los elementos del sistema de gestión de seguridad y salud en el trabajo organización. por parte de los trabajadores y sus representantes. La mejora continua en materia de seguridad y salud en el trabajo Integración del Sistema de Gestión de Seguridad y Salud en el Trabajo con otros sistemas de ser el caso.',true,4);
+
+*lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(2,2.5,3,'Se  toman  decisiones  en  base al  análisis  de  inspecciones,  auditorias, informes de investigación de accidentes, informe de estadísticas,  avances de programas de seguridad y salud en el trabajo y opiniones de trabajadores, dando el seguimiento de las mismas.',true,4);
+*lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(2,2.6,3,'el CDA  delega  funciones  y  autoridad  al  personal  encargado  de implementar el sistema de gestión de Seguridad y Salud en el Trabajo.',true,4);
+
+*lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(2,2.7,4,'el CDA asume el liderazgo  en la gestión de la seguridad y salud en el trabajo.',true,3);
+*lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(2,2.8,4,'el CDA dispone los recursos necesarios para mejorar la gestión de la seguridad y salud en el trabajo.',true,4);
+
+*lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(2,2.9,6,'Existen responsabilidades específicas en seguridad y salud en el trabajo de los niveles de mando de la empresa, entidad pública o privada.',true,4);
+*lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(2,2.10,6,'Se ha destinado presupuesto para implementar o mejorar el sistema de gestión de seguridad y salud el trabajo.',true,0);
+*lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(2,2.11,6,'El Comité o Supervisor de Seguridad y Salud en el Trabajo participa en la definición de estímulos y sanciones.',true,1);
+
+*lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(2,2.12,7,'el CDA ha definido los requisitos de competencia necesarios para cada puesto de trabajo y adopta disposiciones de capacitación en materia de seguridad y salud en el trabajo para que éste asuma sus deberes con responsabilidad.',true,4);
+
+*lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(3,3.1,7,'el CDA ha definido los requisitos de competencia necesarios para cada puesto de trabajo y adopta disposiciones de capacitación en materia de seguridad y salud en el trabajo para que éste asuma sus deberes con responsabilidad.',true,4);
+*lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(3,3.3,7,'el CDA ha definido los requisitos de competencia necesarios para cada puesto de trabajo y adopta disposiciones de capacitación en materia de seguridad y salud en el trabajo para que éste asuma sus deberes con responsabilidad.',true,4);
+*lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(3,3.4,7,'el CDA ha definido los requisitos de competencia necesarios para cada puesto de trabajo y adopta disposiciones de capacitación en materia de seguridad y salud en el trabajo para que éste asuma sus deberes con responsabilidad.',true,4);
+*lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(3,3.5,7,'el CDA ha definido los requisitos de competencia necesarios para cada puesto de trabajo y adopta disposiciones de capacitación en materia de seguridad y salud en el trabajo para que éste asuma sus deberes con responsabilidad.',true,4);
+*lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(3,3.6,7,'el CDA ha definido los requisitos de competencia necesarios para cada puesto de trabajo y adopta disposiciones de capacitación en materia de seguridad y salud en el trabajo para que éste asuma sus deberes con responsabilidad.',true,4);
+
+*/
+
+
 
 
 

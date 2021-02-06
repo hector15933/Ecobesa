@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
@@ -39,6 +42,14 @@ public class Fecha implements Serializable{
 		this.fecha = fecha;
 		this.actividad = actividad;
 	}
+	
+
+
+
+	public Fecha(Actividad actividad) {
+		super();
+		this.actividad = actividad;
+	}
 
 
 
@@ -52,12 +63,14 @@ public class Fecha implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date fecha;
 	
 	private Boolean estado;
 	
 	
-	@ManyToOne
+	@ManyToOne()
 	@JoinColumn(name="actividad_id", nullable=false)
 	private Actividad actividad;
 

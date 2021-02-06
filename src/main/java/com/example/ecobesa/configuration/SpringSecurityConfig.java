@@ -2,6 +2,7 @@ package com.example.ecobesa.configuration;
 
 
 
+import javax.servlet.ServletContext;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,8 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.User.UserBuilder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
+import org.springframework.web.multipart.support.MultipartFilter;
 
 import com.example.ecobesa.service.JpaUserDetailService;
 
@@ -42,7 +45,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 		
 		http
 		.authorizeRequests()
-		.antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/img/**","/node_modules/**","/notifications/**"
+		.antMatchers("/uploads/**","/resources/**", "/static/**", "/css/**", "/js/**", "/img/**","/node_modules/**","/notifications/**"
 				,"/icons/**","/vendors").permitAll()
 		/*.antMatchers("/").permitAll()
 		.antMatchers("/h2-console/**").permitAll()
@@ -77,7 +80,13 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 		.withUser(userBuilder.username("hector").password("123456").roles("ADMINISTRATOR"));*/
 	}
 	
-    
+    public class SecurityApplicationInitializer extends AbstractSecurityWebApplicationInitializer {
+
+        @Override
+        protected void beforeSpringSecurityFilterChain(ServletContext servletContext) {
+            insertFilters(servletContext, new MultipartFilter());
+        }
+    }
     
     
     

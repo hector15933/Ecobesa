@@ -6,7 +6,7 @@ import com.example.ecobesa.entity.Empresa;
 
 
 public interface IEmpresaService {
-	public List<com.example.ecobesa.entity.Empresa> findAll();
+	public List<Empresa> findAll();
 	
 	public Empresa findById(Long id);
 	

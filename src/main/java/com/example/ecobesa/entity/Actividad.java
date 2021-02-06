@@ -7,11 +7,13 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -41,6 +43,17 @@ public class Actividad implements Serializable {
 	public Actividad() {
 		super();
 	}
+	
+	
+	
+
+	public Actividad(List<Fecha> fecha) {
+		super();
+		this.fecha = fecha;
+	}
+
+
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,7 +61,7 @@ public class Actividad implements Serializable {
 
 	private String nombre;
 	
-	@NotNull
+
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fechaInicio;
 
@@ -58,6 +71,8 @@ public class Actividad implements Serializable {
 	private Integer repeticiones;
 
 	private String frecuencia;
+	
+	private String observacion;
 	
 	private Double indicadorParcial;
 
@@ -79,7 +94,7 @@ public class Actividad implements Serializable {
 	private Set<User> users;
 	
 	
-	@OneToMany(mappedBy="actividad",cascade = {CascadeType.ALL})
+	@OneToMany(mappedBy="actividad",cascade = CascadeType.ALL)
 	private List<Fecha> fecha= new ArrayList<Fecha>();
 	
 
@@ -170,18 +185,30 @@ public class Actividad implements Serializable {
 	public void setFrecuencia(String frecuencia) {
 		this.frecuencia = frecuencia;
 	}
+	
+	
+	public String getObservacion() {
+		return observacion;
+	}
+
+	public void setObservacion(String observacion) {
+		this.observacion = observacion;
+	}
+	
+
 	public List<Fecha> getFecha() {
 		return fecha;
 	}
 
 	public void setFecha(List<Fecha> fecha) {
+		
 		this.fecha = fecha;
 	}
-
 	
-	
-	
-	
+	public void addFecha(Fecha fecha) {
+	    this.fecha.add(fecha);
+	     
+	}
 	
 	
 	//================================================================================
@@ -213,6 +240,10 @@ public class Actividad implements Serializable {
 		return true;
 	}
 	
+	
+	
+
+	/*
 	@PrePersist
 	public void sumarDiasAFecha() {
 
@@ -299,6 +330,36 @@ public class Actividad implements Serializable {
 		}
 
 	
-	}
+	}*/
+	
+	public String CalcularAvanze() {
+		
+		String avanze;
+		
+		int size= fecha.size();
+		
+		int aux=0;
+		
+		
+		for (int i = 0; i < size; i++) {
+			
+			if(fecha.get(i).getEstado()==true) {
+				aux++;
+				
+			}
+			
+			
+		}
+		if(aux!=0.0) {
+			avanze=  aux*100/size + "%";
+		}else {
+			avanze="0%";
+		}
+		
 
+		return avanze;
+	}
+	
+
+	
 }

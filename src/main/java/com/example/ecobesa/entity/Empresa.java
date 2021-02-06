@@ -26,6 +26,8 @@ public class Empresa implements Serializable{
 	
 	private String foto;
 	
+	private String pantallaInicio;
+	
 	@Column(name="actividadEconomica")
 	private String actividadEconomica;
 	
@@ -91,6 +93,16 @@ public class Empresa implements Serializable{
 	public void setNumeroTrabajadores(Integer numeroTrabajadores) {
 		this.numeroTrabajadores = numeroTrabajadores;
 	}
+
+	public String getPantallaInicio() {
+		return pantallaInicio;
+	}
+
+	public void setPantallaInicio(String pantallaInicio) {
+		this.pantallaInicio = pantallaInicio;
+	}
+
+	
 	
 	
 	

@@ -119,7 +119,8 @@ public class EmpresaController {
 	
 	@RequestMapping(value = "/form", method = RequestMethod.POST)
 	public String guardar(@Valid Empresa empresa,BindingResult result, Model model,
-			@RequestParam("file") MultipartFile foto, RedirectAttributes flash, SessionStatus status) {
+			@RequestParam("file") MultipartFile foto,
+			@RequestParam("file2") MultipartFile pantallaInicio, RedirectAttributes flash, SessionStatus status) {
 		
 		if(result.hasErrors()) {
 			model.addAttribute("titulo", "Formulario Empresa");
@@ -144,6 +145,27 @@ public class EmpresaController {
 			flash.addFlashAttribute("info", "Has subido correctamente  '"+uniqueFilename +"'");
 			
 			empresa.setFoto(uniqueFilename);
+			
+		}
+		if(!pantallaInicio.isEmpty()) {
+			if(empresa.getId() != null && empresa.getId()>0 && empresa.getPantallaInicio()!=null
+					&& empresa.getPantallaInicio().length()>0) {	
+				
+				uploadFileService.delete(empresa.getPantallaInicio());
+				
+			}
+			
+			String uniqueFilename2 = null;
+			
+			try {
+				uniqueFilename2 = uploadFileService.copy(pantallaInicio);
+				
+			}catch(IOException e) {
+				e.printStackTrace();
+			}
+			
+			flash.addFlashAttribute("info", "Has subido correctamente  '"+uniqueFilename2 +"'");
+			empresa.setPantallaInicio(uniqueFilename2);
 			
 		}
 		

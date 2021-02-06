@@ -2,12 +2,16 @@ package com.example.ecobesa.controllers;
 
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.Map;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,6 +29,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.example.ecobesa.entity.ObjetivoGeneral;
 import com.example.ecobesa.entity.ProgramaAnual;
 import com.example.ecobesa.service.IProgramaAnualService;
+import com.example.ecobesa.service.IUploadFileService;
 import com.example.ecobesa.service.IUserService;
 
 
@@ -36,6 +41,12 @@ public class ProgramaAnualController {
 	private IProgramaAnualService programaAnualService;
 	@Autowired
 	private IUserService userService;
+	
+	
+	
+
+	
+	
 	
 	@GetMapping("/programaAnual/listar")
 	public String listar(Model model) {

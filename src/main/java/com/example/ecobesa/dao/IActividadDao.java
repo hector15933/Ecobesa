@@ -10,10 +10,9 @@ import com.example.ecobesa.entity.Actividad;
 
 public interface IActividadDao extends PagingAndSortingRepository<Actividad, Long>{
 	
-public List<Actividad> findAll(Sort sort);
+	public List<Actividad> findAll(Sort sort);
 	
 	public List<Actividad> findAllByUsersId(Long param);
 	
 
-	
 }

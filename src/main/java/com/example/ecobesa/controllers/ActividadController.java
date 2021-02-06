@@ -1,6 +1,7 @@
 package com.example.ecobesa.controllers;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -52,7 +53,7 @@ public class ActividadController {
 
 	@Autowired
 	private ITipoActividadService tipoActividadService;
-
+	
 	@GetMapping("/actividad/listar")
 	public String listar(Model model, Map<String, Object> model2) {
 
@@ -89,6 +90,17 @@ public class ActividadController {
 		}
 
 		flash.addFlashAttribute("success", "Actividad creada correctamente");
+			
+	
+		/*
+		for(int i=0; i<aFecha.size();i++) {
+			
+			
+		}*/
+		  for(Fecha b : actividad.getFecha()) {
+	            b.setActividad(actividad);
+	      }
+	
 		actividadService.save(actividad);
 
 		return "redirect:listar";
@@ -101,9 +113,17 @@ public class ActividadController {
 		Long userId = (Long) request.getSession().getAttribute("userId");
 
 		Actividad actividad = new Actividad();
+		
+		for (int i = 1; i <= 3; i++) {
+			actividad.addFecha(new Fecha());
+	    }
+		
+		
+		List<Fecha> aFecha = new  ArrayList<Fecha>();
 		model.put("actividad", actividad);
+		model.put("aFecha", aFecha);
 		model.put("titulo", "Crear Actividad");
-		model.put("objetivoGeneral", objetivoService.findAll());
+		model.put("objetivoGeneral", objetivoService.findAll(Sort.by("id")));
 		model.put("tipoActividad", tipoActividadService.findAll());
 		model.put("programaActividad", programaActividadService.findAll(Sort.by("id")));
 		model.put("users", userService.findAll(Sort.by("id")));
@@ -141,7 +161,7 @@ public class ActividadController {
 		return "menu/actividad/show";
 	}
 
-	@PutMapping(value = "/actividad/cambiar/fecha/{id}")
+	@GetMapping(value = "/actividad/cambiar/fecha/{id}")
 	public String cambiarEstado(@PathVariable(value = "id") Long id, Model model) {
 
 		Fecha fecha = fechaService.findById(id);

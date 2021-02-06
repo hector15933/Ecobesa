@@ -97,12 +97,25 @@
 
 
 
-
-					<div class="form-group row">
+					<div class="form-group">
+						<label><strong>Defina el método por el que se seleccionará los
+							usuarios</strong>:</label> <select class="form-control" id="selectResponsablesMethod"
+							onchange="selectResponsablesChange()">
+							<option value="completeList">A partir de la lista
+								completa de usuarios</option>
+							<option value="userLevel">Por nivel de usuario</option>
+							<option value="position">Por Cargo</option>
+							<option value="workPlace">Por lugar de trabajo</option>
+							<option value="management">Por Gerencia/Zona</option>
+						</select>
+						<div id="divSelectResponsables" class="mt-3 ml-3"></div>
+					</div>
+					
+					<div class="form-group row" id="completa_usuarios" >
 						<label for="usuarios" class="col-sm-2 col-form-label"><strong>
 								Seleccionar Usuarios :</strong></label>
 						<div class="col-sm-6">
-							<select th:field="${actividad.users}"
+							<select th:field="${actividad.users}" id="select001"
 								class="js-example-basic-multiple col-sm-12" name="states[]"
 								multiple="multiple">
 								<option th:each="user : ${users}" th:value="${user.id}"
@@ -110,7 +123,59 @@
 							</select>
 						</div>
 					</div>
-					<div class="form-group row">
+					
+					<div class="form-group row" id="cargo_usuarios" style="display: none">
+						<label for="usuarios" class="col-sm-2 col-form-label"><strong>
+								Seleccionar Usuarios :</strong></label>
+						<div class="col-sm-6">
+							<select th:field="${actividad.users}" id="select002" style="width:519px"
+								class="js-example-basic-multiple col-sm-12" name="states2[]"
+								multiple="multiple">
+								<option th:each="user : ${users}" th:value="${user.id}" 
+									th:text="${user.cargo.nombre}+' ' +${user.nombres} +' '+ ${user.apellidos}"></option>
+							</select>
+						</div>
+					</div>
+					
+					<div class="form-group row" id="nivel_usuarios" style="display: none">
+						<label for="usuarios" class="col-sm-2 col-form-label"><strong>
+								Seleccionar Usuarios :</strong></label>
+						<div class="col-sm-6">
+							<select th:field="${actividad.users}" id="select003" style="width:519px"
+								class="js-example-basic-multiple col-sm-12" name="states2[]"
+								multiple="multiple">
+								<option th:each="user : ${users}" th:value="${user.id}" 
+									th:text="${user.role.authority}+' ' +${user.nombres} +' '+ ${user.apellidos}"></option>
+							</select>
+						</div>
+					</div>
+					
+					<div class="form-group row" id="lugar_usuarios" style="display: none">
+						<label for="usuarios" class="col-sm-2 col-form-label"><strong>
+								Seleccionar Usuarios :</strong></label>
+						<div class="col-sm-6">
+							<select th:field="${actividad.users}" id="select004" style="width:519px"
+								class="js-example-basic-multiple col-sm-12" name="states2[]"
+								multiple="multiple">
+								<option th:each="user : ${users}" th:value="${user.id}" 
+									th:text="${user.sede.nombre}+' ' +${user.nombres} +' '+ ${user.apellidos}"></option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group row" id="gerencia_usuarios" style="display: none">
+						<label for="usuarios" class="col-sm-2 col-form-label"><strong>
+								Seleccionar Usuarios :</strong></label>
+						<div class="col-sm-6">
+							<select th:field="${actividad.users}" id="select005" style="width:519px"
+								class="js-example-basic-multiple col-sm-12" name="states2[]"
+								multiple="multiple">
+								<option th:each="user : ${users}" th:value="${user.id}" 
+									th:text="${user.sede.nombre}+' ' +${user.nombres} +' '+ ${user.apellidos}"></option>
+							</select>
+						</div>
+					</div>
+					
+					<!-- div class="form-group row">
 						<label for="tipofrec" class="col-sm-2 col-form-label"><strong>Tipo
 								De Frecuencia :</strong> </label>
 						<div class="col-sm-6">
@@ -119,7 +184,7 @@
 								<option value="SEMANAL">Semanal</option>
 								<option value="MENSUAL">Mensual</option>
 								<option value="SEMESTRAL">Semestral</option>
-								<option value="PERMANENTE">Anual</option>
+								<option value="PERMANENTE">Permanente</option>
 								<option value="ANUAL">Anual</option>
 							</select>
 						</div>
@@ -130,9 +195,7 @@
 						<div class="col-sm-6">
 							<input id="datepicker"  type="date" th:field="*{fechaInicio}" class="form-control"
 								th:errorclass="'form-control alert-danger'">
-							<!-- input style="height:150px;"   type="text" th:field="*{descripcion}" class="form-control bg-light"
-										th:errorclass="'form-control alert-danger'" /-->
-							<small class="form-text text-danger"
+							< small class="form-text text-danger"
 								th:if="${#fields.hasErrors('fechaInicio')}"
 								th:errors="*{fechaInicio}">Name Error</small> <br />
 						</div>
@@ -144,15 +207,96 @@
 						<div class="col-sm-6">
 							<input type="date" th:field="*{fechaFin}" value="2017-11-31"
 								class="form-control" th:errorclass="'form-control alert-danger'">
-							<!-- input style="height:150px;"   type="text" th:field="*{descripcion}" class="form-control bg-light"
-										th:errorclass="'form-control alert-danger'" /-->
+							
 							<small class="form-text text-danger"
 								th:if="${#fields.hasErrors('fechaFin')}" th:errors="*{fechaFin}">Name
 								Error</small> <br />
 						</div>
 
+					</div-->
+					<!-- div class="form-group" id="idFecha" th:each="fechaxd, itemStat : *{fecha}">
+					
+						
+						<input type="date"  th:field="*{fecha[__${itemStat.index}__].fecha}" class="form-control" />
+					
+					</div-->
+					<div class="form-group" id="idFecha" >	
 					</div>
-
+					<div class="form-group" id="idSemana" >	
+					</div>
+					<div class="form-group" id="idMes" >	
+					</div>
+		       
+					
+					<input type="date" class="form-control" th:each="fechaList01 : ${fecha}" th:field="*{fecha.fecha}" />
+					
+					<div class="form-group">
+						<label for="selectFrecuency">Frecuencia</label> <select th:field="*{frecuencia}"
+							class="form-control" id="selectFrecuency"
+							onchange="frecuencyChange()">
+							<option value="daily">Diario</option>
+							<option value="weekly">Semanal</option>
+							<option value="monthly">Mensual</option>
+							<option value="range">Rango de Fecha</option>
+							<option value="personalized">Personalizado</option>
+						</select>
+					</div>
+					
+				
+					<div class="form-group ml-3 row" id="divDaily">
+					
+						<select  id="selectFechasDias" 
+								class="js-example-basic-multiple col-sm-12" name="states2[]"
+								multiple="multiple">
+								
+						</select>
+						<br>		
+						<input type="date" class="form-control col-sm-12" id="inputDias"  
+							 onchange="agregarFechas()">
+					</div>
+					
+					<div class="form-group ml-3" id="divWeekly" style="display: none;">
+						<select  id="selectFechasSemanas" style="width:100%"
+								class="js-example-basic-multiple col-sm-8" name="states2[]"
+								multiple="multiple">
+								
+						</select>
+						<br>
+						<input type="week" class="form-control" id="inputSemanas"  onchange="agregarFechaSemana()">
+					</div>
+					
+					<div class="form-group ml-3" id="divMonth" style="display: none;">
+						<select  id="selectFechasMeses" style="width:100%"
+								class="js-example-basic-multiple col-sm-8" name="states2[]"
+								multiple="multiple">
+								
+						</select>
+						<br>
+						<input type="month" class="form-control" id="inputMeses"  onchange="agregarFechaMeses()">
+					</div>
+					
+					
+					<div class="form-group form-row ml-3" id="divRange"
+						style="display: none;">
+						<div class="col-6">
+							<input type="date" class="form-control" autocomplete="off"
+								name="from" id="input_from" placeholder="Desde">
+						</div>
+						<div class="col-6">
+							<input type="date" class="form-control" autocomplete="off"
+								name="to" id="input_to" placeholder="Hasta">
+						</div>
+						
+					</div>
+					<div class="form-group ml-3" id="divPersonalized" style="display: none;">
+						<input type="text" id="inputPersonalizado" class="form-control"
+							placeholder="Elegir los d�as en los que se realizar� la actividad">
+					</div>
+					<div class="form-group">
+						<label for="exampleFormControlSelect1">Cantidad de
+							Repetición</label>
+							<input type="number" class="form-control" value="1">
+					</div>
 
 					<!--  div class="form-group row">
 						<label for="repeticiones" class="col-sm-2 col-form-label"><strong>Repeticones
@@ -186,7 +330,7 @@
 		integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ=="
 		crossorigin="anonymous"></script>
 
-	<script th:src="@{../../dist/js/select2.min.js}"></script>
+	<script th:src="@{../../js/select2.min.js}"></script>
 
 	<script>
 	
@@ -197,6 +341,9 @@
 
 		$(document).ready(function() {
 			$('.js-example-basic-multiple').select2();
+		});
+		$(document).ready(function() {
+			$('.js-example-basic-multiple2').select2();
 		});
 		
 		
@@ -210,5 +357,159 @@
 	<footer th:replace="layout/layout :: footer"></footer>
 	<script
 		src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+		
+	<script th:inline="javascript">
+	
+
+		
+        $('#input_from').datepicker();
+        $('#input_to').datepicker();
+        $('#inputPersonalizado').datepicker({
+            multidate: true,
+        });
+        function frecuencyChange() {
+            const val = $("#selectFrecuency").val();
+            if (val == 'daily') {
+            	
+            	
+            	$("#divMonth").hide();
+                $("#divWeekly").hide();
+                $("#divRange").hide();
+                $("#divPersonalized").hide();
+                $("#divDaily").fadeIn();
+            }
+            if (val == 'weekly') {
+            	$("#divMonth").hide();
+                $("#divRange").hide();
+                $("#divPersonalized").hide();
+                $("#divDaily").hide();
+                $("#divWeekly").fadeIn();
+            }
+            if (val == 'monthly') {
+                $("#divWeekly").hide();
+                $("#divRange").hide();
+                $("#divPersonalized").hide();
+                $("#divDaily").hide();
+                $("#divMonth").fadeIn();
+            }
+            if (val == 'range') {
+            	$("#divMonth").hide();
+            	$("#divWeekly").hide();
+                $("#divWeekly").hide();
+                $("#divPersonalized").hide();
+                $("#divDaily").hide();
+                $("#divRange").fadeIn();
+            }
+            if (val == 'personalized') {
+            	$("#divMonth").hide();
+                $("#divWeekly").hide();
+                $("#divDaily").hide();
+                $("#divRange").hide();
+                $("#divPersonalized").fadeIn();
+            }
+        }
+        $('#selectWeekly').select2();
+        function selectResponsablesChange(){
+        
+        	const val = $("#selectResponsablesMethod").val();
+        	
+    		
+        	if (val == 'completeList') {
+        		
+        		$("#gerencia_usuarios").hide();
+        		$("#lugar_usuarios").hide();
+        		$("#nivel_usuarios").hide();
+        		$("#cargo_usuarios").hide();
+        		$("#completa_usuarios").fadeIn();
+        	}
+        
+        	if (val == 'userLevel') {
+        		$("#gerencia_usuarios").hide();
+        		$("#lugar_usuarios").hide();
+        		$("#nivel_usuarios").hide();
+        		$("#completa_usuarios").hide();
+        		$("#cargo_usuarios").fadeIn();
+        	}
+        	if (val == 'position') {
+        		$("#gerencia_usuarios").hide();
+        		$("#lugar_usuarios").hide();
+        		$("#completa_usuarios").hide();
+        		$("#cargo_usuarios").hide();
+        		$("#nivel_usuarios").fadeIn();
+        	}
+        	if (val == 'workPlace') {
+        		$("#gerencia_usuarios").hide();
+        		$("#completa_usuarios").hide();
+        		$("#cargo_usuarios").hide();
+        		$("#nivel_usuarios").hide();
+        		$("#lugar_usuarios").fadeIn();
+        	}
+			if (val == 'management') {
+        		
+        		$("#completa_usuarios").hide();
+        		$("#cargo_usuarios").hide();
+        		$("#nivel_usuarios").hide();
+        		$("#lugar_usuarios").hide();
+        		$("#gerencia_usuarios").fadeIn();
+        	}
+        	
+        	
+        }
+       
+        function agregarFechas(){
+        	
+        	var contador = document.getElementById('idFecha').getElementsByTagName('input').length ;
+
+        	var x = $("#inputDias").val();
+        	$("#selectFechasDias").append('<option  selected="selected" >'+x+'</option>');
+        	
+        	$("#idFecha").append('<input id="fecha'+contador+'.fecha" type="date" name="fecha['+contador+'].fecha"  value="'+x+'" class="form-control d-none" />');			 
+        	
+        							
+        }
+        function agregarFechaSemana(){
+        	
+        	var contador = document.getElementById('idSemana').getElementsByTagName('input').length ;
+        	var x = $("#inputSemanas").val();
+        	$("#selectFechasSemanas").append('<option selected="selected" value='+x+'>'+x+'</option>');
+        	
+        	var y= x.split("-W");
+        	
+        	
+        	var year=Number(y[0]);
+        	var week=Number(y[1]);
+        	
+        	var f = new Date(year, 0, (week - 1) * 7 + 1);
+        	
+        	if((f.getMonth() +1)<11 && f.getDate()<10){
+        		lunes = f.getFullYear() + "-0" + (f.getMonth() +1) + "-0" +  f.getDate();
+
+        	}else if(f.getDate()<11 && f.getDate()>=10){
+        		lunes = f.getFullYear() + "-" + (f.getMonth() +1) + "-0" +  f.getDate();
+
+        	}else{
+        		lunes = f.getFullYear() + "-" + (f.getMonth() +1) + "-" +  f.getDate();
+
+        	}
+        	
+        	
+        	alert(lunes);
+        	
+        	$("#idSemana").append('<input id="fecha'+contador+'.fecha" type="date" name="fecha['+contador+'].fecha"  value="'+lunes+'" class="form-control" />');			 
+     
+        }
+        function agregarFechaMeses(){
+        	var contador = document.getElementById('idMes').getElementsByTagName('input').length ;
+        	var x = $("#inputMeses").val();
+        	$("#selectFechasMeses").append('<option selected="selected" value='+x+'>'+x+'</option>');
+        	
+        	$("#idMes").append('<input id="fecha'+contador+'.fecha" type="date" name="fecha['+contador+'].fecha"  value="'+x+'" class="form-control d-none" />');			 
+        	$("#idMes").append('<input id="fecha'+contador+'.fecha" type="date" name="fecha['+contador+'].fecha"  value="'+x+'" class="form-control d-none" />');	
+        	$("#idMes").append('<input id="fecha'+contador+'.fecha" type="date" name="fecha['+contador+'].fecha"  value="'+x+'" class="form-control d-none" />');	
+        	$("#idMes").append('<input id="fecha'+contador+'.fecha" type="date" name="fecha['+contador+'].fecha"  value="'+x+'" class="form-control d-none" />');	
+        	$("#idMes").append('<input id="fecha'+contador+'.fecha" type="date" name="fecha['+contador+'].fecha"  value="'+x+'" class="form-control d-none" />');	
+     
+        }
+    </script>
 </body>
 </html>

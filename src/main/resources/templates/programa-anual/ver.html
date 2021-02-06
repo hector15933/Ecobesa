@@ -3,100 +3,169 @@
 <head th:replace="layout/layout :: head">
 <meta charset="UTF-8">
 <title>Title</title>
+
+
+<style>
+	.cuadrito01{
+		
+	}
+
+</style>
+
+
 </head>
-<body>
-	<div>
-        <br>
-        <div class="row">
-            <div class="col-2 py-2">
-                <img  th:src="@{'../../uploads/' + ${session.RazonSocial}}" height="100%" >
-            </div>
-            <div class="col-7 text-center">
-               
-            </div>
-            <div class="col-3">
-                <h6 th:text="${programaAnual.id_aprobado}">Aprobado por: Walter Reaños Arcilla</h6>
-                <div class="row">
-                    <div class="col-6">N° Versión: 002</div>
-                    <div class="col-6">F. Ver.: 30/01/2020</div>
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="text-center">
-            <h4 th:text="${programaAnual.nombre}">PROGRAMA ANUAL DE SEGURIDAD Y SALUD EN EL TRABAJO 2020 ECOBESA</h4>
-            <h4>PASST-2020 ECOBESA</h4>
-            <br>
-        </div>
-        <div class="row border border-dar ">
-            <div class="col-2 bg-danger text-wrap badge border border-dar text-light">
-                <p>RAZÓN SOCIAL DE LA EMPRESA:</p>
-            </div>
-            <div class="col-4 badge border border-dar">
-                <p>EMPRESA COMERCIALIZADORA DE BEBIDAS SOCIEDAD ANÓNIMA CERRADA</p>
-            </div>
-            <div class="col-1 bg-danger text-wrap badge border border-dar text-light">
-                <p>RUC</p>
-            </div>
-            <div class="col-1 badge border border-dar">
-                <p>20557079441</p>
-            </div>
-            <div class="col-1 bg-danger text-wrap badge border border-dar text-light">
-                <p>DOMICILIO:</p>
-            </div>
-            <div class="col-2 badge border border-dar">
-                <p>JR. CAJAMARCA 371 RIMAC , LIMA</p>
-            </div>
-            <div class="col-1 badge bg-danger text-wrap text-light">
-                <p>PASST - 2020</p>
-            </div>
-        </div>
-        <div class="row border border-dar ">
-        	
-            <div class="col-2 bg-danger text-wrap badge border border-dar text-light">
-                <p>ACTIVIDAD ECONÓMICA PRINCIPAL:</p>
-            </div>
-            <div class="col-4 badge border border-dar">
-                <p>COMERCIALIZACIÓN DE BEBIDAS NO ALCOHÓLICAS</p>
-            </div>
-            <div class="col-2 bg-danger text-wrap badge border border-dar text-light">
-                <p>N° DE TRABAJADORES EN EL CENTRO DE LABORES:</p>
-            </div>
-            <div class="col-3 badge border border-dar">
-                <p>APROXIMADAMENTE 1410 TRABAJADORES</p>
-            </div>
-            <div class="col-1 badge bg-success text-wrap ">
-                <p>90.39%</p>
-            </div>
-        </div>
-        
-        <div th:each="objetivosGeneral: ${programaAnual.objetivoGeneral}">
-        	<div class="row">
-        		<div class="col-2 bg-danger text-wrap badge border border-dar text-light">
-                <p>OBJETIVO GENERAL</p>
-            </div>
+<body style="background-color: white !important">
+	
+		<br>
+		<div class="row">
+			<div class="col-2 py-2">
+				<img th:src="@{'../../uploads/' + ${session.RazonSocial}}"
+					style="height:80px;width:150px">
+			</div>
+			<div class="col-7 text-center"></div>
+			<div class="col-3">
+				<h6 th:text="${programaAnual.id_aprobado.nombres + ' '+ programaAnual.id_aprobado.apellidos}">Aprobado
+					por: Walter Reaños Arcilla</h6>
+				<div class="row">
+					<div class="col-6">N° Versión: 002</div>
+					<div class="col-6">F. Ver.: 30/01/2020</div>
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="text-center">
+			<h4 th:text="${programaAnual.nombre}">PROGRAMA ANUAL DE
+				SEGURIDAD Y SALUD EN EL TRABAJO 2020 ECOBESA</h4>
+			<h4>PASST-2020 ECOBESA</h4>
+			<br>
+		</div>
+
+		<div align="right">
+			<button type="button" id="add_button" data-toggle="modal"
+				data-target="#userModal" class="btn btn-info btn-lg"
+				onClick="javascript:myFunction();">REPORTE</button>
+		</div>
+		<br>
+		<div class="row border border-dar ">
+			<div
+				class="col-2 bg-danger active  text-wrap badge border border-dar text-light">
+				<p>RAZÓN SOCIAL DE LA EMPRESA:</p>
+			</div>
+			<div class="col-4 badge border border-dar">
+				<p>EMPRESA COMERCIALIZADORA DE BEBIDAS SOCIEDAD ANÓNIMA CERRADA</p>
+			</div>
+			<div
+				class="col-1 bg-danger active  text-wrap badge border border-dar text-light">
+				<p>RUC</p>
+			</div>
+			<div class="col-1 badge border border-dar">
+				<p>20557079441</p>
+			</div>
+			<div
+				class="col-1 bg-danger active  text-wrap badge border border-dar text-light">
+				<p>DOMICILIO:</p>
+			</div>
+			<div class="col-2 badge border border-dar">
+				<p>JR. CAJAMARCA 371 RIMAC , LIMA</p>
+			</div>
+			<div class="col-1 badge bg-danger active  text-wrap text-light">
+				<p>PASST - 2020</p>
+			</div>
+		</div>
+		<div class="row border border-dar ">
+
+			<div
+				class="col-2 bg-danger active  text-wrap badge border border-dar text-light">
+				<p>ACTIVIDAD ECONÓMICA PRINCIPAL:</p>
+			</div>
+			<div class="col-4 badge border border-dar">
+				<p>COMERCIALIZACIÓN DE BEBIDAS NO ALCOHÓLICAS</p>
+			</div>
+			<div
+				class="col-2 bg-danger active  text-wrap badge border border-dar text-light">
+				<p>N° DE TRABAJADORES EN EL CENTRO DE LABORES:</p>
+			</div>
+			<div class="col-3 badge border border-dar">
+				<p>APROXIMADAMENTE 1410 TRABAJADORES</p>
+			</div>
+			<div class="col-1 badge bg-success text-wrap ">
+				<p>90.39%</p>
+			</div>
+		</div>
+
+		<div th:each="objetivosGeneral: ${programaAnual.objetivoGeneral}">
+			<div class="row">
+				<div
+					class="col-2 bg-danger active  text-wrap badge border border-dar text-light">
+					<p>OBJETIVO GENERAL</p>
+				</div>
 				<div class="col-10">
 					<h4 th:text="${objetivosGeneral.nombre}"></h4>
 
 
 				</div>
-				
-        </div>
-        
-        <div class="row">
-        	<div class="col-2 bg-danger text-wrap badge border border-dar text-light">
-                <p>OBJETIVO Especifico</p>
-            </div>
-            <div class="col-10">
-            	<ul th:each="objetivoEspecifico2 : ${objetivosGeneral.objetivoEspecifico}" >
-        		
-        		<li th:text="${objetivoEspecifico2.nombre}"></li>
-				
-        		</ul>
-            </div>
-        </div>
-       			 
-        
-        </div>
+
+			</div>
+
+			<div class="row">
+				<div
+					class="col-2 bg-danger active  text-wrap badge border border-dar text-light">
+					<p>OBJETIVO Especifico</p>
+				</div>
+				<div class="col-10">
+					<ol>
+
+						<li
+							th:each="objetivoEspecifico2 : ${objetivosGeneral.objetivoEspecifico}"
+							th:text="${objetivoEspecifico2.nombre}"></li>
+
+					</ol>
+				</div>
+			</div>
+	
+
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th class="bg-danger active    border  text-dark">Actividades</th>
+						<th class="bg-danger active    border border-dark text-dark">Frecuencia</th>
+						<th class="bg-danger active    border border-dark text-dark">Responsables</th>
+						<th class="bg-danger active    border border-dark text-dark">Avanze</th>
+						<th class="bg-danger active    border border-dark text-dark" style="width:200px">Fechas</th>
+						<th class="bg-danger active    border border-dark text-dark">Observacion</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="actividades2 : ${objetivosGeneral.actividad}">
+						<th th:text="${actividades2.nombre}"></th>
+						<td  th:text="${actividades2.frecuencia}"></td>
+						<td >
+								
+								<span  th:each="responsables2 : ${actividades2.users}"  th:text="${responsables2.cargo.nombre + ' /'}"></span>
+							
+						</td>
+						<td th:text="${actividades2.CalcularAvanze()}"></td>
+						<td  style="max-width:200px;">
+							
+							<span  th:each="fecha2 : ${actividades2.fecha}"  th:if="${fecha2.estado == true}"  style="background-color: green; border-color: black; border-style: solid;" class="cuadrito01" th:text="." >  </span>
+							<span th:each="fecha2 : ${actividades2.fecha}"  th:unless="${fecha2.estado == true}"  style="background-color: red; border-color: black; border-style: solid;" class="cuadrito01" th:text="." >  </span>
+						</td>
+						<td th:text="${actividades2.observacion}"> </td>
+					</tr>
+				</tbody>
+			</table>
+
+
+
+
+
+		</div>
+
+
+		<script type="text/javascript">
+			function myFunction() {
+				window.print();
+			}
+		</script>
 </body>
 </html>

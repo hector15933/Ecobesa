@@ -44,6 +44,10 @@ public class User implements Serializable{
     @ManyToOne
     private Role role;
     
+    
+    @ManyToOne
+    private Sede sede;
+    
     @ManyToMany
     @JoinTable(name = "actividad_users")
     private Set<Actividad> actividad;
@@ -159,5 +163,14 @@ public class User implements Serializable{
 	public void setRole(Role role) {
 		this.role = role;
 	}
+
+	public Sede getSede() {
+		return sede;
+	}
+
+	public void setSede(Sede sede) {
+		this.sede = sede;
+	}
+	
     
 }

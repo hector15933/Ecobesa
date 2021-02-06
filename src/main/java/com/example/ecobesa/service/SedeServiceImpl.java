@@ -24,9 +24,9 @@ public class SedeServiceImpl implements ISedeService{
 	}
 
 	@Override
-	public Iterable<Sede> findAll(Sort sort) {
+	public List<Sede> findAll(Sort sort) {
 		// TODO Auto-generated method stub
-		return null;
+		return (List<Sede>) sedeDao.findAll(sort);
 	}
 
 	@Override

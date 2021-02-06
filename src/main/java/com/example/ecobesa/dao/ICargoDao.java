@@ -1,9 +1,13 @@
 package com.example.ecobesa.dao;
 
-import org.springframework.data.repository.CrudRepository;
+import java.util.List;
+
+import org.springframework.data.domain.Sort;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.example.ecobesa.entity.Cargo;
 
-public interface ICargoDao extends CrudRepository<Cargo, Long>{
-
+public interface ICargoDao extends PagingAndSortingRepository<Cargo, Long>{
+	
+	public List<Cargo> findAll(Sort sort);
 }

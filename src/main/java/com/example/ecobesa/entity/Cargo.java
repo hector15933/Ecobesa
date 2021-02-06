@@ -24,6 +24,9 @@ public class Cargo implements Serializable{
 	
 
 	private String nombre;
+	
+	private Boolean estado;
+	
 
 	public Long getId() {
 		return id;
@@ -41,5 +44,14 @@ public class Cargo implements Serializable{
 		this.nombre = nombre;
 	}
 
+	public Boolean getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
+	}
+	
+	
 }
 

@@ -20,11 +20,19 @@
 					<li class="list-group-item" th:text="${empresa.ruc}"></li>
 					<li class="list-group-item" th:text="${empresa.actividadEconomica}"></li>
 				</ul>
+				
+				<img th:if="${empresa.pantallaInicio != null && #strings.length(empresa.pantallaInicio) > 0}" 
+					style="max-width: 100%;" th:src="@{'../uploads/' + ${empresa.pantallaInicio}}"
+					th:alt="${empresa.pantallaInicio}" />
 			</div>
 		</div>
+	
+	
 
 	</div>
+	
 
+		
 	<footer th:replace="layout/layout :: footer"></footer>
 </body>
 </html>

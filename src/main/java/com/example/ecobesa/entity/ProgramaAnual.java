@@ -43,7 +43,7 @@ public class ProgramaAnual implements Serializable{
 	
 	private Integer año;
 	
-	@OneToMany(mappedBy="programaAnual")
+	@OneToMany(mappedBy="programaAnual",cascade = {CascadeType.ALL})
 	private Set<ObjetivoGeneral> objetivoGeneral;
 
 	public Long getId() {

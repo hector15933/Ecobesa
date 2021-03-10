@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: head">
+
+
+</head>
+<body>
+
+	<div id="i18n_eliminar_user" th:text="#{text.user.eliminarOk}"
+		style="display: none;"></div>
+
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container-fluid py-4">
+		<div class="row">
+
+			<div class="col-sm-12">
+				<div class="card bg-light">
+					<div class="card-header">
+						<h6 th:text="${titulo}"></h6>
+					</div>
+					<div class="card-body ">
+
+
+						<table class="table table-striped table-bordered table-sm">
+							<thead>
+								<tr>
+									<th scope="col">Id</th>
+									<th scope="col">Titulo de Actividad</th>
+									<th scope="col">Tipo de Programa</th>
+									<th scope="col">Usuario Responsable</th>
+									<th scope="col">Fecha de Inicio</th>
+									<th scope="col">Fechas</th>
+									
+									<!--th sec:authorize="hasRole('ROLE_ADMIN')">Acciones</th-->
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="actividad: ${actividades}">
+									<td th:text="${actividad.id}"></td>
+									<td th:text="${actividad.nombre}"></td>
+									<td th:text="${actividad.programaActividad.nombre}"></td>
+									<td th:text="${actividad.responsableUser.nombres}"></td>
+									<td
+										th:text="${#dates.format(actividad.fechaInicio, 'dd-MMM-yyyy')}"></td>
+									
+									
+									<td>
+										<button
+											th:onclick="modal('/menu/actividad/show/[[${actividad.id}]]','Programacion Actividades')"
+											type="button" class="btn btn-warning btn-sm"> Ver Fechas
+										</button> 
+									
+									</td>
+									
+									
+									<!--  td sec:authorize="hasRole('ROLE_ADMIN')"><a
+										class="btn  btn-light btn-sm"
+										th:href="@{/menu/actividad/form/} + ${actividad.id}">Editar</a>
+
+										<a th:if="${actividad.status == true}"
+										class="btn btn-danger active btn-sm	" th:text="Desactivar"
+										th:href="@{/menu/actividad/eliminar/} + ${actividad.id}">Desactivar</a>
+										<a th:unless="${actividad.status == true}"
+										class="btn btn-warning btn-sm" th:text="Realizar"></a> <a
+										class="btn  btn-danger active btn-sm"
+										th:href="@{/menu/actividad/listar/} + ${actividad.id}">Eliminar</a>
+									</td-->
+
+								</tr>
+							</tbody>
+
+						</table>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<div id="datepicker"></div>
+	<script>
+		$(function() {
+			var events = [ '15-1-2011', '16-1-2011', '17-1-2011', '18-1-2011' ];
+
+			$("#datepicker")
+					.datepicker(
+							{
+								showWeek : true,
+								firstDay : 1,
+								beforeShowDay : function(date) {
+									var current = date.getDate() + '-'
+											+ (date.getMonth() + 1) + '-'
+											+ date.getFullYear();
+									return jQuery.inArray(current, events) == -1 ? [
+											true, '' ]
+											: [ true, 'css-class-to-highlight',
+													'tool-tip-text' ];
+								}
+							});
+
+			/*$(".ui-datepicker-calendar td:contains('13')").addClass('ui-state-hover');
+			$(".ui-datepicker-calendar td:contains('25')").addClass('ui-state-hover');
+			$(".ui-datepicker-calendar td:contains('02')").addClass('ui-state-hover');*/
+		});
+	</script>
+
+	<script type="text/javascript">
+		function cambiarboton() {
+			var i = document.getElementById("boton").value = "Mundo";
+
+		}
+		window.onload = cambiarboton();
+	</script>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+
+
+</body>
+</html>

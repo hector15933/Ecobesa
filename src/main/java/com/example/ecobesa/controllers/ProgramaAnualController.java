@@ -28,6 +28,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.ecobesa.entity.ObjetivoGeneral;
 import com.example.ecobesa.entity.ProgramaAnual;
+import com.example.ecobesa.service.IEmpresaService;
 import com.example.ecobesa.service.IProgramaAnualService;
 import com.example.ecobesa.service.IUploadFileService;
 import com.example.ecobesa.service.IUserService;
@@ -41,7 +42,8 @@ public class ProgramaAnualController {
 	private IProgramaAnualService programaAnualService;
 	@Autowired
 	private IUserService userService;
-	
+	@Autowired
+	private IEmpresaService empresaService;
 	
 	
 
@@ -51,6 +53,8 @@ public class ProgramaAnualController {
 	@GetMapping("/programaAnual/listar")
 	public String listar(Model model) {
 		model.addAttribute("programaAnuales", programaAnualService.findAll());
+		long id2=1;
+		model.addAttribute("empresa", empresaService.findById(id2));
 		return "ProgramaAnual";
 	}
 	
@@ -118,6 +122,8 @@ public class ProgramaAnualController {
 	public String ver(Model model,@PathVariable(value="id") Long id,Map<String,Object> model2) {
 		
 		model.addAttribute("programaAnual",programaAnualService.findById(id));
+		long id2=1;
+		model.addAttribute("empresa", empresaService.findById(id2));
 
 		return "programa-anual/ver";
 	}

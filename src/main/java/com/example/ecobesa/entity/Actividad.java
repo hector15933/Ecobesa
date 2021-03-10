@@ -91,11 +91,14 @@ public class Actividad implements Serializable {
 
 	@ManyToMany
 	@JoinTable(name = "actividad_users", joinColumns = @JoinColumn(name = "actividad_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
-	private Set<User> users;
+	private List<User> users;
 	
 	
 	@OneToMany(mappedBy="actividad",cascade = CascadeType.ALL)
 	private List<Fecha> fecha= new ArrayList<Fecha>();
+	
+	@OneToMany(mappedBy="actividad",cascade = CascadeType.ALL)
+	private List<ActividadSemanas> actividadSemana=new ArrayList<ActividadSemanas>();
 	
 
 	public Long getId() {
@@ -138,13 +141,21 @@ public class Actividad implements Serializable {
 		this.objetivoGeneral = objetivoGeneral;
 	}
 
-	public Set<User> getUsers() {
+	
+
+	public List<User> getUsers() {
 		return users;
 	}
 
-	public void setUsers(Set<User> users) {
+
+
+
+	public void setUsers(List<User> users) {
 		this.users = users;
 	}
+
+
+
 
 	public ProgramaActividad getProgramaActividad() {
 		return programaActividad;
@@ -211,7 +222,24 @@ public class Actividad implements Serializable {
 	}
 	
 	
+	
+	
+	
 	//================================================================================
+
+
+
+	public List<ActividadSemanas> getActividadSemana() {
+		return actividadSemana;
+	}
+
+
+
+
+	public void setActividadSemana(List<ActividadSemanas> actividadSemana) {
+		this.actividadSemana = actividadSemana;
+	}
+
 
 
 
@@ -239,11 +267,23 @@ public class Actividad implements Serializable {
 			return false;
 		return true;
 	}
+
 	
-	
+	/*
+	@PrePersist
+	public void asignarSemanas() {
+		
+		
+		DateFormat formatoFecha = new SimpleDateFormat("yyyy/MM/dd");
+		String fecha_ini = formatoFecha.format(this.fechaInicio);
+		SimpleDateFormat format1 = new SimpleDateFormat("yyyy/MM/dd");
+
+		Integer dias;
+		
+	}
 	
 
-	/*
+	
 	@PrePersist
 	public void sumarDiasAFecha() {
 

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: head"></head>
+<body >
+
+	<div id="i18n_eliminar_user" th:text="#{text.user.eliminarOk}"
+		style="display: none;"></div>
+
+	<header th:replace="layout/layout :: header"></header>
+
+
+	<div class="container py-4">
+		<div class="row">
+			<div class="col-sm-4">
+				<div class="card-header text-center shadow rounded">
+					<h3 >Atrasados</h3>
+				</div>
+				<div class="card bg-danger mt-4  "
+					th:each="plannerSafety1: ${plannerSafetysMesAtrasados}">
+					<div class="card-body ">
+						<strong><span th:text="${plannerSafety1.getDayOfTheWeek()}"></span></strong>
+						<strong><span  th:text="${#dates.format(plannerSafety1.fecha, 'dd/MM/yyyy')}"></span></strong>
+						<strong><span   th:text="${#dates.format(plannerSafety1.hora, 'HH:mm')}"></span></strong>
+						<br>
+						<span th:text="${plannerSafety1.titulo}"></span>
+						<strong><span th:text="${plannerSafety1.obtenerDias()}"></span></strong>
+
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="card-header text-center shadow rounded">
+					<h3 >Para este Mes</h6>
+				</div>
+				<div class="card bg-warning mt-4"
+					th:each="plannerSafety2: ${plannerSafetysMesActual}">
+					<div class="card-body ">
+						<strong><span th:text="${plannerSafety2.getDayOfTheWeek()}"></span></strong>
+						<strong><span th:text="${#dates.format(plannerSafety2.fecha, 'dd/MM/yyyy')}"></span></strong>
+						<strong><span   th:text="${#dates.format(plannerSafety2.hora, 'HH:mm')}"></span></strong>
+						<br>
+						<span th:text="${plannerSafety2.titulo}"></span>
+						<strong><span th:text="${plannerSafety2.obtenerDias()}"></span></strong>
+
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4"> 
+				<div class="card-header text-center shadow rounded">
+					<h3>Para el siguiente Mes</h3>
+				</div>
+				<div class="card  mt-4" th:each="plannerSafety3: ${plannerSafetysMesSiguiente}">
+					<div class="card-body ">
+						<strong><span th:text="${plannerSafety3.getDayOfTheWeek()}"></span></strong>
+							<strong><span class="text-dark"  th:text="${#dates.format(plannerSafety3.fecha, 'dd/MM/yyyy')}"></span></strong>
+									<strong><span   th:text="${#dates.format(plannerSafety3.hora, 'HH:mm')}"></span></strong>
+									<br>
+						<span th:text="${plannerSafety3.titulo}"></span>
+						<strong><span th:text="${plannerSafety3.obtenerDias()}"></span></strong>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+	<div class="container-fluid py-4">
+		<div class="row">
+			<div class="col-sm-7">
+				<div class="card bg-light">
+					<div class="card-header">
+						<h6 th:text="${titulo}"></h6>
+					</div>
+					<div class="card-body ">
+
+
+						<table class="table table-striped table-bordered table-sm">
+							<thead>
+								<tr>
+									<th>Id</th>
+									<th>Nombre</th>
+									<th sec:authorize="hasRole('ROLE_ADMIN')">Acciones</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="plannerSafety: ${plannerSafetys}">
+									<td th:text="${plannerSafety.id}"></td>
+									<td th:text="${plannerSafety.titulo}"></td>
+									<td sec:authorize="hasRole('ROLE_ADMIN')"><a
+										class="btn  btn-light btn-sm"
+										th:href="@{/admin/plannerSafety/listar/} + ${plannerSafety.id}">Editar</a>
+
+										<a th:if="${plannerSafety.estado == true}"
+										class="btn btn-danger active btn-sm	" th:text="Desactivar"
+										th:href="@{/admin/plannerSafety/eliminar/} + ${plannerSafety.id}">Desactivar</a>
+										<a th:unless="${plannerSafety.estado == true}"
+										class="btn btn-outline-success btn-sm" th:text="Activar"></a></td>
+
+
+
+								</tr>
+							</tbody>
+
+						</table>
+					</div>
+				</div>
+
+			</div>
+			<div class="col-sm-5" sec:authorize="hasRole('ROLE_ADMIN')">
+
+				<div class="card ">
+					<div class="card-header">
+						<h6 th:text="${titulo2}"></h6>
+					</div>
+					<div class="card-body">
+
+						<form th:action="@{/plannerSafety/listar}"
+							th:object="${plannerSafety}" method="post">
+							<div class="form-group row">
+								<label for="titulo" class="col-sm-3 col-form-label">Nombre
+									: </label>
+								<div class="col-sm-9">
+									<input type="text" th:field="*{titulo}"
+										class="form-control bg-light"
+										th:errorclass="'form-control alert-danger'" /> <small
+										class="form-text text-danger"
+										th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}">titulo
+										Error</small> <br />
+								</div>
+								<label for="hora" class="col-sm-3 col-form-label">Fecha Programacion
+									: </label>
+								<div class="col-sm-9">
+									<input type="date" th:field="*{fecha}"
+										class="form-control bg-light"
+										th:errorclass="'form-control alert-danger'" /> <small
+										class="form-text text-danger"
+										th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}">titulo
+										Error</small> <br />
+								</div>
+								<label for="hora" class="col-sm-3 col-form-label">Hora
+									: </label>
+								<div class="col-sm-9">
+									<input type="time" th:field="*{hora}"
+										class="form-control bg-light"
+										th:errorclass="'form-control alert-danger'" /> <small
+										class="form-text text-danger"
+										th:if="${#fields.hasErrors('hora')}" th:errors="*{hora}">titulo
+										Error</small> <br />
+								</div>
+
+								<input id="tbFormControll" type="hidden" th:field="*{estado}" />
+
+								<div class="col-sm-6 mx-auto">
+
+									<input th:if="${titulo3== 'Editar Cargo de Trabajo'}"
+										class="btn btn-primary btn-sm" type="submit"
+										th:value="${titulo3}" /> <input
+										th:unless="${titulo3== 'Editar Cargo de Trabajo'}"
+										type="submit" th:value="${titulo3}"
+										class="btn  btn-secondary btn-sm" />
+								</div>
+							</div>
+
+							<input type="hidden" th:field="*{id}" />
+						</form>
+
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		document.getElementById("tbFormControll").value = "true";
+	</script>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

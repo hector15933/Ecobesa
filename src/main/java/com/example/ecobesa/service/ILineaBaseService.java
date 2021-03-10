@@ -12,7 +12,7 @@ import com.example.ecobesa.entity.LineaBase;
 
 public interface ILineaBaseService {
 	
-public List<LineaBase> findAll();
+	public List<LineaBase> findAll();
 	
 	public List<LineaBase> findAll(Sort sort);
 	

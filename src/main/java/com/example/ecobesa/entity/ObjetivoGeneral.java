@@ -1,6 +1,7 @@
 package com.example.ecobesa.entity;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -38,11 +39,11 @@ public class ObjetivoGeneral implements Serializable{
 	private ProgramaAnual programaAnual;
 	
 	@OneToMany(mappedBy="objetivoGeneral")
-	private Set<ObjetivoEspecifico> objetivoEspecifico;
+	private List<ObjetivoEspecifico> objetivoEspecifico;
 	
 	
 	@OneToMany(mappedBy="objetivoGeneral")
-	private Set<Actividad> actividad;
+	private List<Actividad> actividad;
 
 
 	public Long getId() {
@@ -105,24 +106,27 @@ public class ObjetivoGeneral implements Serializable{
 	}
 
 
-	public Set<ObjetivoEspecifico> getObjetivoEspecifico() {
+	public List<ObjetivoEspecifico> getObjetivoEspecifico() {
 		return objetivoEspecifico;
 	}
 
 
-	public void setObjetivoEspecifico(Set<ObjetivoEspecifico> objetivoEspecifico) {
+	public void setObjetivoEspecifico(List<ObjetivoEspecifico> objetivoEspecifico) {
 		this.objetivoEspecifico = objetivoEspecifico;
 	}
 
 
-	public Set<Actividad> getActividad() {
+	public List<Actividad> getActividad() {
 		return actividad;
 	}
 
 
-	public void setActividad(Set<Actividad> actividad) {
+	public void setActividad(List<Actividad> actividad) {
 		this.actividad = actividad;
 	}
+
+
+
 	
 	
 	

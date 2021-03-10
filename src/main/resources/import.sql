@@ -261,6 +261,225 @@ INSERT INTO fechas(estado,fecha,actividad_id) VALUES(false,'2021/10/01',4);
 INSERT INTO fechas(estado,fecha,actividad_id) VALUES(false,'2021/11/01',4);
 INSERT INTO fechas(estado,fecha,actividad_id) VALUES(false,'2021/12/01',4);	
 
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(1,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(2,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(3,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(4,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(5,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(6,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(7,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(8,1,true,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(9,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(10,1,false,false);
+
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(11,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(12,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(13,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(14,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(15,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(16,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(17,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(18,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(19,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(20,1,false,false);
+
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(21,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(22,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(23,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(24,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(25,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(26,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(27,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(28,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(29,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(30,1,false,false);
+
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(31,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(32,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(33,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(34,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(35,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(36,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(37,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(38,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(39,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(40,1,false,false);
+
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(41,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(42,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(43,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(44,1,false,false);
+
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(45,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(46,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(47,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(48,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(49,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(50,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(51,1,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(52,1,false,false);
+
+
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(1,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(2,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(3,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(4,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(5,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(6,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(7,2,true,true);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(8,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(9,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(10,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(11,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(12,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(13,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(14,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(15,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(16,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(17,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(18,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(19,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(20,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(21,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(22,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(23,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(24,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(25,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(26,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(27,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(28,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(29,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(30,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(31,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(32,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(33,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(34,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(35,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(36,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(37,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(38,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(39,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(40,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(41,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(42,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(43,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(44,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(45,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(46,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(47,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(48,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(49,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(50,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(51,2,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(52,2,false,false);
+
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(1,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(2,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(3,3,true,true);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(4,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(5,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(6,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(7,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(8,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(9,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(10,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(11,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(12,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(13,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(14,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(15,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(16,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(17,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(18,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(19,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(20,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(21,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(22,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(23,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(24,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(25,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(26,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(27,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(28,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(29,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(30,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(31,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(32,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(33,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(34,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(35,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(36,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(37,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(38,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(39,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(40,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(41,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(42,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(43,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(44,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(45,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(46,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(47,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(48,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(49,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(50,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(51,3,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(52,3,false,false);
+
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(1,4,true,true);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(2,4,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(3,4,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(4,4,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(5,4,true,true);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(6,4,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(7,4,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(8,4,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(9,4,true,true);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(10,4,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(11,4,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(12,4,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(13,4,true,true);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(14,4,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(15,4,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(16,4,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(17,4,true,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(18,4,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(19,4,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(20,4,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(21,4,true,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(22,4,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(23,4,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(24,4,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(25,4,true,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(26,4,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(27,4,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(28,4,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(29,4,true,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(30,4,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(31,4,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(32,4,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(33,4,true,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(34,4,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(35,4,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(36,4,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(37,4,true,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(38,4,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(39,4,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(40,4,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(41,4,true,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(42,4,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(43,4,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(44,4,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(45,4,true,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(46,4,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(47,4,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(48,4,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(49,4,true,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(50,4,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(51,4,false,false);
+INSERT INTO actividad_semanas(numero_semana,actividad_id,asignado,realizado) VALUES(52,4,false,false);
+
+
 
 INSERT INTO actividad_users(user_id,actividad_id) VALUES(1,1)
 INSERT INTO actividad_users(user_id,actividad_id) VALUES(2,1)
@@ -314,54 +533,22 @@ INSERT INTO linea_bases(nombre) VALUES('LISTA DE VERIFICACIÓN DE LINEAMIENTOS D
 INSERT INTO linea_bases(nombre) VALUES('LISTA DE VERIFICACIÓN DE LINEAMIENTOS DEL SSGT');
 
 
+INSERT INTO rango_ley(nombre) VALUES('Decreto Supremo');
+INSERT INTO rango_ley(nombre) VALUES('Ley');
+INSERT INTO rango_ley(nombre) VALUES('Resolucion Ministerial');
 
-
-/*INSERT INTO lista_verificaciones(linea_base_id,nombre) VALUES(1,'I. Compromiso e Involucramiento');
-*INSERT INTO lista_verificaciones(linea_base_id,nombre) VALUES(1,'II. Política de Seguridad y Salud Ocupacional');
-*INSERT INTO lista_verificaciones(linea_base_id,nombre) VALUES(1,'III. Planeamiento y Aplicación');
-* INTO lista_verificaciones(linea_base_id,nombre) VALUES(1,'IV. Implementación y Operación');
-*INSERT INTO lista_verificaciones(linea_base_id,nombre) VALUES(1,'V. Evaluación Normativa');
-*INSERT INTO lista_verificaciones(linea_base_id,nombre) VALUES(1,'VI. Verificación');
-*INSERT INTO lista_verificaciones(linea_base_id,nombre) VALUES(1,'VII. Control de Información y Documentos');
-*INSERT INTO lista_verificaciones(linea_base_id,nombre) VALUES(1,'VIII. Revisión por la dirección');
-
-*INSERT INTO lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(1,1.1,1,'el CDA proporciona los recursos necesarios para que se implemente un sistema de gestión de seguridad y salud en el trabajo.',true,1);
-*INSERT INTO lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(1,1.2,1,'Se ha cumplido lo planificado en los diferentes programas de seguridad y salud en el trabajo.',true,1);
-*INSERT INTO lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(1,1.3,1,'Se implementan acciones preventivas de seguridad y salud en el trabajo para asegurar la mejora continua.',true,3);
-*INSERT INTO lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(1,1.4,1,'Se reconoce el desempeño del trabajador para mejorar la autoestima y se fomenta el trabajo en equipo.',true,1);
-*INSERT INTO lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(1,1.5,1,'Se realizan actividades para fomentar una cultura de prevención de riesgos del trabajo en todo el CDA.',true,0);
-*INSERT INTO lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(1,1.6,1,'Se  promueve  un  buen  clima  laboral  para  reforzar  la  empatía  entre empleador y trabajador y viceversa.',true,2);
-*INSERT INTO lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(1,1.7,1,'Existen medios que permiten el aporte de los trabajadores al empleador en materia de seguridad y salud en el trabajo.',true,1);
-*INSERT INTO lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(1,1.8,1,'Existen mecanismos de reconocimiento del personal proactivo interesado en el mejoramiento continuo de la seguridad y salud en el trabajo.',true,1);
-*INSERT INTO lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(1,1.9,1,'Se tiene evaluado los principales riesgos que ocasionan mayores pérdidas.',true,1);
-*INSERT INTO lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(1,1.10,1,'Se fomenta la participación de los representantes de trabajadores y de las organizaciones sindicales en las decisiones sobre la seguridad y salud en el trabajo.',true,1);
-
-/*lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(2,2.1,2,'Existe una política documentada en materia de seguridad y salud en el trabajo, específica y apropiada para la empresa.',true,4);
-*lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(2,2.2,2,'La política de seguridad y salud en el trabajo está firmada por la máxima autoridad de el CDA.',true,0);
-*lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(2,2.3,2,'Los trabajadores conocen y están comprometidos con lo establecido en la política de seguridad y salud en el trabajo.',true,1);
-*lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(2,2.4,2,'Su contenido comprende:El compromiso de protección de todos los miembros de la  Cumplimiento de la normatividad. Garantía de protección, participación, consulta y participación en los elementos del sistema de gestión de seguridad y salud en el trabajo organización. por parte de los trabajadores y sus representantes. La mejora continua en materia de seguridad y salud en el trabajo Integración del Sistema de Gestión de Seguridad y Salud en el Trabajo con otros sistemas de ser el caso.',true,4);
-
-*lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(2,2.5,3,'Se  toman  decisiones  en  base al  análisis  de  inspecciones,  auditorias, informes de investigación de accidentes, informe de estadísticas,  avances de programas de seguridad y salud en el trabajo y opiniones de trabajadores, dando el seguimiento de las mismas.',true,4);
-*lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(2,2.6,3,'el CDA  delega  funciones  y  autoridad  al  personal  encargado  de implementar el sistema de gestión de Seguridad y Salud en el Trabajo.',true,4);
-
-*lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(2,2.7,4,'el CDA asume el liderazgo  en la gestión de la seguridad y salud en el trabajo.',true,3);
-*lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(2,2.8,4,'el CDA dispone los recursos necesarios para mejorar la gestión de la seguridad y salud en el trabajo.',true,4);
-
-*lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(2,2.9,6,'Existen responsabilidades específicas en seguridad y salud en el trabajo de los niveles de mando de la empresa, entidad pública o privada.',true,4);
-*lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(2,2.10,6,'Se ha destinado presupuesto para implementar o mejorar el sistema de gestión de seguridad y salud el trabajo.',true,0);
-*lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(2,2.11,6,'El Comité o Supervisor de Seguridad y Salud en el Trabajo participa en la definición de estímulos y sanciones.',true,1);
-
-*lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(2,2.12,7,'el CDA ha definido los requisitos de competencia necesarios para cada puesto de trabajo y adopta disposiciones de capacitación en materia de seguridad y salud en el trabajo para que éste asuma sus deberes con responsabilidad.',true,4);
-
-*lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(3,3.1,7,'el CDA ha definido los requisitos de competencia necesarios para cada puesto de trabajo y adopta disposiciones de capacitación en materia de seguridad y salud en el trabajo para que éste asuma sus deberes con responsabilidad.',true,4);
-*lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(3,3.3,7,'el CDA ha definido los requisitos de competencia necesarios para cada puesto de trabajo y adopta disposiciones de capacitación en materia de seguridad y salud en el trabajo para que éste asuma sus deberes con responsabilidad.',true,4);
-*lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(3,3.4,7,'el CDA ha definido los requisitos de competencia necesarios para cada puesto de trabajo y adopta disposiciones de capacitación en materia de seguridad y salud en el trabajo para que éste asuma sus deberes con responsabilidad.',true,4);
-*lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(3,3.5,7,'el CDA ha definido los requisitos de competencia necesarios para cada puesto de trabajo y adopta disposiciones de capacitación en materia de seguridad y salud en el trabajo para que éste asuma sus deberes con responsabilidad.',true,4);
-*lista_verificacion_items(lista_verificacion_id,item,lineamiento_id,indicador,proceso,puntuacion) VALUES(3,3.6,7,'el CDA ha definido los requisitos de competencia necesarios para cada puesto de trabajo y adopta disposiciones de capacitación en materia de seguridad y salud en el trabajo para que éste asuma sus deberes con responsabilidad.',true,4);
-
-*/
-
-
+INSERT INTO planner_safety(titulo,fecha,hora,estado) VALUES('Capacitacion de ergonommia.Josaft La Rosa.Oficina de Ventas','2021/01/07','14:00:00',true);
+INSERT INTO planner_safety(titulo,fecha,hora,estado) VALUES('Capacitacion de ergonommia.Josaft La Rosa.Oficina de Ventas','2021/01/11','13:00:59',true);
+INSERT INTO planner_safety(titulo,fecha,hora,estado) VALUES('Capacitacion de ergonommia.Josaft La Rosa.Oficina de Ventas','2021/01/12','13:00:59',true);
+INSERT INTO planner_safety(titulo,fecha,hora,estado) VALUES('Capacitacion de ergonommia.Josaft La Rosa.Oficina de Ventas','2021/01/14','13:00:59',true);
+INSERT INTO planner_safety(titulo,fecha,hora,estado) VALUES('Capacitacion de ergonommia.Josaft La Rosa.Oficina de Ventas','2021/02/16','13:00:59',true);
+INSERT INTO planner_safety(titulo,fecha,hora,estado) VALUES('Capacitacion de ergonommia.Josaft La Rosa.Oficina de Ventas','2021/02/19','13:00:59',false);
+INSERT INTO planner_safety(titulo,fecha,hora,estado) VALUES('Capacitacion de ergonommia.Josaft La Rosa.Oficina de Ventas','2021/02/25','13:00:59',false);
+INSERT INTO planner_safety(titulo,fecha,hora,estado) VALUES('Capacitacion de ergonommia.Josaft La Rosa.Oficina de Ventas','2021/02/25','13:00:59',false);
+INSERT INTO planner_safety(titulo,fecha,hora,estado) VALUES('Capacitacion de ergonommia.Josaft La Rosa.Oficina de Ventas','2021/02/01','13:00:59',false);
+INSERT INTO planner_safety(titulo,fecha,hora,estado) VALUES('Capacitacion de ergonommia.Josaft La Rosa.Oficina de Ventas','2021/03/10','13:00:59',false);
+INSERT INTO planner_safety(titulo,fecha,hora,estado) VALUES('Capacitacion de ergonommia.Josaft La Rosa.Oficina de Ventas','2021/03/01','13:00:59',false);
+INSERT INTO planner_safety(titulo,fecha,hora,estado) VALUES('Capacitacion de ergonommia.Josaft La Rosa.Oficina de Ventas','2021/03/10','13:00:59',false);
 
 
 

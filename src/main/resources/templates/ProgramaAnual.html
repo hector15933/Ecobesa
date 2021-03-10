@@ -7,7 +7,7 @@
 	
 	<div class="container mt-5">
 		<div class="d-flex justify-content-between align-items-end mb-3">
-			<h3 class="pb-1">Programas Anuales</h3>
+			<h3 class="pb-1">Gestion de Actividades</h3>
 			<a class="btn btn-dark" th:href="@{/programaAnual/form/}">
 				Aperturar Programa Anual</a>
 		</div>
@@ -64,6 +64,15 @@
 							class="btn btn-outline-success btn-sm"  target="_blank"><span
 								class="far fa-file-pdf" title="Reporte"></span>
 							</a> 
+							<a
+										th:href="@{'/programaAnual/ver/' + ${programaAnual.id}(format=pdf)}"
+										class="btn btn-outline-success btn-sm" target="_blank"><span
+											class="far fa-file-pdf" title="Reporte"></span> </a>
+							<a
+										th:href="@{'/programaAnual/ver/' + ${programaAnual.id}(format=pdf)}"
+										class="btn btn-outline-success btn-sm" target="_blank"><span
+											class="far fa-file-pdf" title="Reporte"></span> </a>
+							
 						</td>
 					</tr>
 				</tbody>

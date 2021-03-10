@@ -33,12 +33,17 @@ public class LineaBasePdfView extends AbstractPdfView {
 	protected void buildPdfDocument(Map<String, Object> model, Document document, PdfWriter writer,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		document.setPageSize(PageSize.A3.rotate());
+		document.setPageSize(PageSize.A4.rotate());
 		document.setMargins(-100, -100, 25, 25);
 		document.open();
 
 		LineaBase lineaBase = (LineaBase) model.get("lineaBase");
 		List<ListaVerificacion> listaVerificacion =  lineaBase.getListaVerificacion();
+		
+		
+		Font fuente2 = new Font();
+		fuente2.setColor(255,255,255);
+
 		
 
 		
@@ -92,7 +97,7 @@ public class LineaBasePdfView extends AbstractPdfView {
 		 PdfPTable tabla = new PdfPTable(1);
 		 
 		 PdfPCell cell=null; 
-		 cell=new PdfPCell(new Phrase(lineaBase.getNombre()));
+		 cell=new PdfPCell(new Phrase(lineaBase.getNombre(),fuente2));
 		 cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
 		 cell.setBackgroundColor(new Color(128,128,128)); 
 		 cell.setPadding(20);
@@ -106,8 +111,9 @@ public class LineaBasePdfView extends AbstractPdfView {
 		tablaEnca2.setWidths(new float[] {70,105,35,35,35,70,35});
 			
 		PdfPCell enca01=null; 
-		enca01=new PdfPCell(new Phrase("Razon Social:"));
+		enca01=new PdfPCell(new Phrase("Razon Social:",fuente2));
 		enca01.setHorizontalAlignment(PdfPCell.ALIGN_JUSTIFIED);
+		
 		enca01.setBackgroundColor(new Color(128,128,128)); 
 		
 		PdfPCell enca02=null; 
@@ -116,7 +122,7 @@ public class LineaBasePdfView extends AbstractPdfView {
 		
 		
 		PdfPCell enca03=null; 
-		enca03=new PdfPCell(new Phrase("RUC:"));
+		enca03=new PdfPCell(new Phrase("RUC:",fuente2));
 		enca03.setHorizontalAlignment(PdfPCell.ALIGN_JUSTIFIED);
 		enca03.setBackgroundColor(new Color(128,128,128)); 
 		
@@ -125,7 +131,7 @@ public class LineaBasePdfView extends AbstractPdfView {
 		enca04.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
 		
 		PdfPCell enca05=null; 
-		enca05=new PdfPCell(new Phrase("Domicilio"));
+		enca05=new PdfPCell(new Phrase("Domicilio",fuente2));
 		enca05.setHorizontalAlignment(PdfPCell.ALIGN_JUSTIFIED);
 		enca05.setBackgroundColor(new Color(128,128,128)); 
 		
@@ -134,7 +140,7 @@ public class LineaBasePdfView extends AbstractPdfView {
 		enca06.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
 		
 		PdfPCell enca07=null; 
-		enca07=new PdfPCell(new Phrase("AVANCE TOTAL"));
+		enca07=new PdfPCell(new Phrase("AVANCE TOTAL",fuente2));
 		enca07.setHorizontalAlignment(PdfPCell.ALIGN_JUSTIFIED);
 		enca07.setBackgroundColor(new Color(128,128,128)); 
 			
@@ -152,7 +158,7 @@ public class LineaBasePdfView extends AbstractPdfView {
 		tablaEnca3.setWidths(new float[] {70,105,105,70,35});
 			
 		PdfPCell enca001=null; 
-		enca001=new PdfPCell(new Phrase("Actividad economica principal:"));
+		enca001=new PdfPCell(new Phrase("Actividad economica principal:",fuente2));
 		enca001.setHorizontalAlignment(PdfPCell.ALIGN_JUSTIFIED);
 		enca001.setBackgroundColor(new Color(128,128,128)); 
 		
@@ -162,7 +168,7 @@ public class LineaBasePdfView extends AbstractPdfView {
 		
 		
 		PdfPCell enca003=null; 
-		enca003=new PdfPCell(new Phrase("N° de trabajadores en el centro de labores :"));
+		enca003=new PdfPCell(new Phrase("N° de trabajadores en el centro de labores :",fuente2));
 		enca003.setHorizontalAlignment(PdfPCell.ALIGN_JUSTIFIED);
 		enca003.setBackgroundColor(new Color(128,128,128)); 
 		
@@ -193,39 +199,39 @@ public class LineaBasePdfView extends AbstractPdfView {
 		PdfPCell enca0001=null; 
 		enca0001=new PdfPCell(new Phrase("Item"));
 		enca0001.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
-		enca0001.setBackgroundColor(new Color(128,128,128)); 
+		enca0001.setBackgroundColor(new Color(200,200,200)); 
 		
 		
 		PdfPCell enca0002=null; 
 		enca0002=new PdfPCell(new Phrase("Lineamiento"));
 		enca0002.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
-		enca0002.setBackgroundColor(new Color(128,128,128)); 
+		enca0002.setBackgroundColor(new Color(200,200,200)); 
 		
 		
 		PdfPCell enca0003=null; 
 		enca0003=new PdfPCell(new Phrase("Indicador"));
 		enca0003.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
-		enca0003.setBackgroundColor(new Color(128,128,128)); 
+		enca0003.setBackgroundColor(new Color(200,200,200)); 
 		
 		PdfPCell enca0004=null; 
 		enca0004=new PdfPCell(new Phrase("En proceso"));
 		enca0004.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
-		enca0004.setBackgroundColor(new Color(128,128,128)); 
+		enca0004.setBackgroundColor(new Color(200,200,200)); 
 		
 		PdfPCell enca0005=null; 
 		enca0005=new PdfPCell(new Phrase("Puntuacion"));
 		enca0005.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
-		enca0005.setBackgroundColor(new Color(128,128,128)); 
+		enca0005.setBackgroundColor(new Color(200,200,200)); 
 		
 		PdfPCell enca0006=null; 
 		enca0006=new PdfPCell(new Phrase("Cumplimieton %"));
 		enca0006.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
-		enca0006.setBackgroundColor(new Color(128,128,128)); 
+		enca0006.setBackgroundColor(new Color(200,200,200)); 
 		
 		PdfPCell enca0007=null; 
 		enca0007=new PdfPCell(new Phrase("Observacion"));
 		enca0007.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
-		enca0007.setBackgroundColor(new Color(128,128,128)); 
+		enca0007.setBackgroundColor(new Color(200,200,200)); 
 		
 
 			
@@ -257,14 +263,10 @@ public class LineaBasePdfView extends AbstractPdfView {
 			PdfPCell ecaVerificacion=null; 
 			ecaVerificacion=new PdfPCell(new Phrase(listaVerificacion.get(i).getNombre()));
 			ecaVerificacion.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
-			ecaVerificacion.setBackgroundColor(new Color(128,128,128)); 
+			ecaVerificacion.setBackgroundColor(new Color(200,200,200)); 
 			ecaVerificacion.setPadding(10);
 			
-			PdfPCell ecaVerificacion2=null; 
-			ecaVerificacion2=new PdfPCell(new Phrase(listaVerificacion.get(i).PuntajeParcial()+"%"));
-			ecaVerificacion2.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
-			ecaVerificacion2.setBackgroundColor(new Color(128,128,128)); 
-			ecaVerificacion2.setPadding(10);
+
 			
 			
 			for(int j=0;j<listaVerificacion.get(i).getListaVerificacionItems().size();j++) {
@@ -281,12 +283,12 @@ public class LineaBasePdfView extends AbstractPdfView {
 			
 			
 			tablaCont.addCell(ecaVerificacion);
-			tablaCont.addCell(ecaVerificacion2);
+			
 			
 			document.add(tablaCont);
 			tablaCont.deleteBodyRows();
 			ecaVerificacion=null; 
-			ecaVerificacion2=null;
+		
 			document.add(tablaEnca4);
 			tablaEnca4.deleteBodyRows();
 			document.newPage();

@@ -2,6 +2,8 @@ package com.example.ecobesa.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -71,6 +73,8 @@ public class Fecha implements Serializable{
 	
 	
 	@ManyToOne()
+
+	@ManyToOne()
 	@JoinColumn(name="actividad_id", nullable=false)
 	private Actividad actividad;
 
@@ -112,6 +116,18 @@ public class Fecha implements Serializable{
 	@PrePersist
 	public void asignarEstado() {
 		this.estado=false;
+	}
+	
+	
+	public Set<Integer> semanas(){
+		
+		Set<Integer> numeroSemanas=new HashSet<Integer>();
+		numeroSemanas.add(1);
+		numeroSemanas.add(3);
+		numeroSemanas.add(5);
+		numeroSemanas.add(12);
+		
+		return numeroSemanas;
 	}
 	
 	

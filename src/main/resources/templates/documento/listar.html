@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: head"></head>
+<body>
+
+	<div id="i18n_eliminar_documento"
+		th:text="#{text.documento.eliminarOk}" style="display: none;"></div>
+
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container-fluid py-4">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="card bg-light">
+					<div class="card-header">
+						<h6 th:text="${titulo}"></h6>
+					</div>
+					<div class="card-body ">
+
+
+
+
+
+
+						<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+							<div class="collapse navbar-collapse">
+								<a sec:authorize="hasRole('ROLE_ADMIN')"
+									th:href="@{/documento/form}"
+									class="navbar btn btn-primary btn-xs">crear Documento</a> <!-- a
+									sec:authorize="hasRole('ROLE_ADMIN')"
+									th:href="@{/documento/listar2(format=pdf)}"
+									class="navbar btn btn-success btn-xs">PDF</a-->
+
+
+								<form id="formsearch" class="form-inline ml-auto"
+									th:action="@{/}">
+									<div class="md-form my-0">
+										<select class="form-control col-md-4" id="select">
+											<option value="codigo">Codigo</option>
+											<option value="tipo">Tipo</option>
+											<option value="area">Area</option>
+											<option value="alcance">Alcance</option>
+
+										</select> <input type="search" placeholder="Buscar..."
+											class="form-control" id="btn-search" required> <input
+											type="button" id="vamonos" class="btn  btn-light btn-sm"
+											value="Buscar">
+									</div>
+
+
+								</form>
+
+							</div>
+
+						</nav>
+						<table class="table table-striped table-bordered table-sm">
+							<thead>
+								<tr>
+
+									<th>Id</th>
+									<th>Tipo Documento</th>
+									<th>Codigo</th>
+									<th>Titulo</th>
+									<th>Fecha Elaboracion</th>
+									<th>Fecha Revicion</th>
+									<th>Version</th>
+									<th>Alcance</th>
+									<th>Area</th>
+									<th>Documento</th>
+									<th sec:authorize="hasRole('ROLE_ADMIN')">Acciones</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="documento: ${documentos}">
+
+									<td th:text="${documento.id}"></td>
+									<td th:text="${documento.tipo.nombre}"></td>
+									<td th:text="${documento.codigo}"></td>
+									<td th:text="${documento.titulo}"></td>
+									<td th:text="${#dates.format(documento.fechaElaboracion, 'dd-MMM-yyyy')}" ></td>
+									<td th:text="${#dates.format(documento.fechaRevision, 'dd-MMM-yyyy')}"></td>
+
+									<td th:text="${documento.version}"></td>
+									<td th:text="${documento.alcance.nombre}"></td>
+									<td th:text="${documento.area.nombre}"></td>
+									<td class="form-group"><a
+										th:href="@{'../uploads/' + ${documento.documento}}"
+										class="btn btn-success btn-sm " target="_blank"><span
+											class="far fa-file-pdf " title="Reporte"></span> </a></td>
+									<td sec:authorize="hasRole('ROLE_ADMIN')"><a
+										class="btn  btn-light btn-sm"
+										th:href="@{/documento/listar/} + ${documento.id}">Editar</a></td>
+
+
+
+								</tr>
+							</tbody>
+
+						</table>
+						<nav th:replace="paginator-nav :: paginator"></nav>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+	<input type="hidden" id="urlenviar" th:value="@{/documento/listar/}" />
+	<script th:src="@{/js/searchbar.js}"></script>
+
+</body>
+</html>

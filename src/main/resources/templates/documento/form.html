@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<link rel="stylesheet" th:href="@{/css/dropzone.css}" />
+<body>
+
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container py-4">
+
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+
+
+				<form th:action="@{/documento/form}" th:object="${documento}"
+					method="post" enctype="multipart/form-data">
+
+
+					<div class="form-group row">
+						<label for="tipo" class="col-sm-2 col-form-label">Tipo
+							Documento</label>
+
+						<div class="col-sm-10">
+							<select th:field="*{tipo}" class="form-control"
+								th:errorclass="'form-control alert-danger'">
+								<option th:each="tipoDocument : ${tipoDocumento}"
+									th:value="${tipoDocument.id}" th:text=${tipoDocument.nombre}></option>
+
+							</select> <small class="form-text text-danger"
+								th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}">Puntuacion
+								Error Error</small> <br />
+
+						</div>
+
+					</div>
+					<div class="form-group row">
+						<label for="codigo" class="col-sm-2 col-form-label">Codigo</label>
+						<div class="col-sm-10">
+							<input type="text" th:field="*{codigo}" class="form-control"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></small>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="titulo" class="col-sm-2 col-form-label">Titulo</label>
+						<div class="col-sm-10">
+							<input type="text" th:field="*{titulo}" class="form-control"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"></small>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="fechaElaboracion" class="col-sm-2 col-form-label">Fecha
+							Elaboracion</label>
+						<div class="col-sm-10">
+							<input type="date" th:field="*{fechaElaboracion}"
+								class="form-control" th:errorclass="'form-control alert-danger'" />
+							<small class="form-text text-danger"
+								th:if="${#fields.hasErrors('fechaElaboracion')}"
+								th:errors="*{fechaRevision}"></small>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="fechaRevision" class="col-sm-2 col-form-label">Fecha
+							Revision</label>
+						<div class="col-sm-10">
+							<input type="date" th:field="*{fechaRevision}"
+								class="form-control" th:errorclass="'form-control alert-danger'" />
+							<small class="form-text text-danger"
+								th:if="${#fields.hasErrors('fechaRevision')}"
+								th:errors="*{fechaRevision}"></small>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="version" class="col-sm-2 col-form-label">Version</label>
+						<div class="col-sm-10">
+							<input type="number" th:field="*{version}" class="form-control"
+								th:errorclass="'form-control alert-danger'" value="1" min="1"
+								max="5" /> <small class="form-text text-danger"
+								th:if="${#fields.hasErrors('version')}" th:errors="*{version}"></small>
+							<small class="form-text text-primary">Valores del 1-5</small>
+						</div>
+					</div>
+
+
+					<div class="form-group row">
+						<label for="alcance" class="col-sm-2 col-form-label">Alcance
+							del Documento</label>
+
+						<div class="col-sm-10">
+							<select th:field="*{alcance}" class="form-control"
+								th:errorclass="'form-control alert-danger'">
+								<option th:each="alcanceDocument : ${alcanceDocumento}"
+									th:value="${alcanceDocument.id}"
+									th:text=${alcanceDocument.nombre}></option>
+
+
+							</select> <small class="form-text text-danger"
+								th:if="${#fields.hasErrors('alcance')}" th:errors="*{alcance}">Puntuacion
+								Error Error</small> <br />
+
+						</div>
+
+					</div>
+
+
+					<div class="form-group row">
+						<label for="area" class="col-sm-2 col-form-label">Area</label>
+
+						<div class="col-sm-10">
+							<select th:field="*{area}" class="form-control"
+								th:errorclass="'form-control alert-danger'">
+								<option th:each="areaDocument : ${areaDocumento}"
+									th:value="${areaDocument.id}" th:text=${areaDocument.nombre}></option>
+
+
+							</select> <small class="form-text text-danger"
+								th:if="${#fields.hasErrors('area')}" th:errors="*{area}">Area
+								Error Error</small> <br />
+
+						</div>
+
+					</div>
+					<div class="form-group row ">
+						<label for="file" class="col-sm-2 col-form-label">Documento</label>
+
+						<div class="">
+
+							<div class="col-sm-10 ">
+
+								<input class="dropzone fallback" type="file" name="file" />
+							</div>
+
+						</div>
+					</div>
+
+
+					<div class="form-group row">
+						<div class="col-sm-10">
+							<input type="submit" th:value="${titulo}"
+								class="btn btn-secondary" />
+						</div>
+					</div>
+				</form>
+
+
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+	<script th:src="@{/js/dropzone.js}"></script>
+</body>
+</html>

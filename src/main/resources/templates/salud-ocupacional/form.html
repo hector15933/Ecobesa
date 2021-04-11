@@ -1,0 +1,100 @@
+
+
+<div class="card-body">
+
+	<div th:object="${emo}" th:remove="tag">
+		<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+			<li th:each="err: ${#fields.errors('*')}" th:text="${err}"></li>
+		</ul>
+	</div>
+	<form th:action="@{/salud-ocupacional/form}" th:object="${emo}"
+		method="post" enctype="multipart/form-data">
+
+		<div class="form-group row">
+
+			<div class="col-sm-12">
+				<label class="col-form-label">Fecha </label> <input
+					type="date" th:field="*{fecha}" class="form-control"
+					th:errorclass="'form-control alert-danger'" /> <small
+					class="form-text text-danger" th:if="${#fields.hasErrors('fecha')}"
+					th:errors="*{fecha}"></small>
+			</div>
+	
+	<div class="col-sm-12">
+			<label class="col-form-label">Tipo</label> <select th:field="*{tipo}"
+				class="form-control shadow"
+				th:errorclass="'form-control alert-danger'">
+				<option th:value="Preocupacional" th:text="Preocupacional"></option>
+				<option th:value="Periodico" th:text="Periodico"></option>
+				<option th:value="Salida" th:text="Salida"></option>
+			</select> <small class="form-text text-danger"
+				th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}">Empleador
+				Error Error</small>
+
+		</div>
+		
+
+		<div id="divIncidente1" class="col-sm-12">
+			<label class="col-form-label">Aptitup</label> <select th:field="*{aptitud}"
+				class="form-control shadow"
+				th:errorclass="'form-control alert-danger'">
+				<option th:value="${'Apto'}"
+					th:text="${'Apto'}"></option>
+				<option th:value="${'Apto con restricciones'}" th:text="${'Apto con restricciones'}"></option>
+				<option th:value="${'No apto'}" th:text="${'No apto'}"></option>
+			</select> <small class="form-text text-danger"	
+				th:if="${#fields.hasErrors('aptitud')}" th:errors="*{aptitud}">Gravedad
+				Error Error</small>
+
+		</div>
+		<div class="form-group col-sm-12">
+			<label for="file" class=" col-form-label">Prueba</label>
+						
+							<input type="file" name="file" class="form-control shadow" />
+				
+		</div>
+		<div class="col-sm-12">
+						<label class="col-form-label">Proximo Emo (Numero meses)</label>
+						<input
+					type="number" th:field="*{intervalo}" class="form-control shadow"
+					th:errorclass="'form-control alert-danger'" /> <small
+					class="form-text text-danger" th:if="${#fields.hasErrors('intervalo')}"
+					th:errors="*{intervalo}"></small>
+		</div>
+		<div class="col-sm-6">
+						<label class="col-form-label">Diagnostico</label>
+						<textarea class="form-control shadow mb-3 bg-white rounded"
+							th:field="*{diagnostico}" id="diagnostico" rows="3"></textarea>
+						<small class="form-text text-danger"
+							th:if="${#fields.hasErrors('diagnostico')}"
+							th:errors="*{diagnostico}"> </small>
+		</div>
+			<div class="col-sm-6">
+						<label class="col-form-label">Restricción</label>
+						<textarea class="form-control shadow mb-3 bg-white rounded"
+							th:field="*{restriccion}" id="restriccion" rows="3"></textarea>
+						<small class="form-text text-danger"
+							th:if="${#fields.hasErrors('restriccion')}"
+							th:errors="*{restriccion}"> </small>
+		</div>
+		
+
+
+			<div class="col-sm-12">
+				<input type="submit" th:value="${titulo}" class="btn btn-secondary" />
+			</div>
+
+		<div class="form-group row" style="display: none">
+			<label class="col-sm-2 col-form-label">Empleados</label> <select
+				th:field="*{empleados}" class="form-control bg-light"
+				th:errorclass="'form-control alert-danger'">
+				<option th:value="${idEmpleado.id}" th:text=${idEmpleado.nombres}>
+				</option>
+			</select> <small class="form-text text-danger"
+				th:if="${#fields.hasErrors('empleados')}" th:errors="*{empleados}">Empleados
+				Error Error</small>
+		</div>
+
+	</form>
+</div>
+

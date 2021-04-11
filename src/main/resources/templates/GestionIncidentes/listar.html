@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container py-4">
+
+		<div class="card ">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+
+				<!--h4 class="card-title">
+					<a th:href="@{/entidad/form}" class="btn btn-primary">crear cliente</a>
+				</h4-->
+				
+			
+			<a class="btn btn-outline-success" th:href="@{/GestionIncidentes/form}">
+				Nuevo Incidente</a>
+			<br><br>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Evento</th>
+							<th>Area</th>
+							<th>Fecha</th>
+							<th>Hora</th>
+							<th>Lugar</th>
+							<th>Descripccion</th>
+							<th>Causas</th>
+							<th>PDF</th>
+							<th>Editar</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="entidad: ${entidades}">
+							<td><a class="btn btn-primary btn-xs" th:href="@{/entidad/ver/} + ${entidad.id}" th:text="${entidad.id}"></a></td>
+							<td th:text="${entidad.evento}"></td>
+							<td th:text="${entidad.area.nombre}"></td>
+							<td th:text="${#dates.format(entidad.fecha, 'dd/MM/yyyy')}" ></td>
+							<td th:text="${entidad.hora}"></td>
+							<td th:text="${entidad.lugar}"></td>
+							<td th:text="${entidad.descripcion}"></td>
+							<td th:text="${entidad.causas}"></td>
+							<td class="text--center">
+									<a
+										th:href="@{'/GestionIncidentes/ver/' + ${entidad.id}(format=pdf)}"
+										class="btn btn-outline-success btn-sm" target="_blank"><span
+											class="far fa-file-pdf" title="Reporte"></span> </a>
+								
+							</td>
+							<td><a class="btn btn-primary btn-sm"
+								th:href="@{/GestionIncidentes/form/} + ${entidad.id}" th:text="'editar'"></a></td>
+							<td>
+							
+							</td>
+						</tr>
+						
+						
+					</tbody>
+
+				</table>
+			
+			</div>
+		</div>
+		
+	</div>
+	
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

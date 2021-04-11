@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class AccionesImplementar implements Serializable{
@@ -32,6 +33,10 @@ public class AccionesImplementar implements Serializable{
 	private String donde;
 	
 	private String porque;
+	
+	@ManyToOne
+	private GestionIncidentes gesionIncidentes;
+	
 
 	public Long getId() {
 		return id;
@@ -87,6 +92,14 @@ public class AccionesImplementar implements Serializable{
 
 	public void setPorque(String porque) {
 		this.porque = porque;
+	}
+
+	public GestionIncidentes getGesionIncidentes() {
+		return gesionIncidentes;
+	}
+
+	public void setGesionIncidentes(GestionIncidentes gesionIncidentes) {
+		this.gesionIncidentes = gesionIncidentes;
 	}
 	
 	

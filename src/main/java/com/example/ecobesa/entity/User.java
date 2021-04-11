@@ -48,6 +48,9 @@ public class User implements Serializable{
     @ManyToOne
     private Sede sede;
     
+    
+
+    
     @ManyToMany
     @JoinTable(name = "actividad_users")
     private Set<Actividad> actividad;
@@ -59,6 +62,7 @@ public class User implements Serializable{
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
 
 	public String getNombres() {
 		return nombres;

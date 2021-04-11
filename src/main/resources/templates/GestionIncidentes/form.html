@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<link
+	href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css"
+	rel="stylesheet" />
+<script src='http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet-src.js'></script>
+<link href='http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css'
+	rel='stylesheet' />
+<link rel="stylesheet" href="/static/css/map.css">
+<style>
+body {
+	margin: 0;
+	padding: 0;
+}
+
+#map {
+	height: 500px;
+	width: 100%;
+}
+</style>
+<body>
+
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container py-4">
+
+		<div class="card bg-light ">
+			<div class="card-header">
+				<strong><h4 th:text="${titulo}"></h4></strong>
+			</div>
+			<div class="card-body">
+
+				<div th:object="${entidad}" th:remove="tag">
+					<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+						<li th:each="err: ${#fields.errors('*')}" th:text="${err}"></li>
+					</ul>
+				</div>
+				<form th:action="@{/GestionIncidentes/form}" th:object="${entidad}"
+					method="post" enctype="multipart/form-data">
+
+					<div class="form-group row">
+
+						<div class="col-sm-8">
+							<label class="col-form-label">Empleador</label> <select
+								th:field="*{empleador}" class="form-control shadow"
+								th:errorclass="'form-control alert-danger'">
+								<option th:value="Empresa" th:text="Empresa"></option>
+								<option th:value="Tercerizacion" th:text="Tercerización">
+								</option>
+							</select> <small class="form-text text-danger"
+								th:if="${#fields.hasErrors('empleador')}"
+								th:errors="*{empleador}">Empleador Error Error</small>
+
+						</div>
+						<div class="col-sm-4">
+							<label class="col-form-label">¿Accidente o Incidente?</label> <select
+								th:field="*{accidente}" class="form-control shadow"
+								id="selectFrecuency" onchange="frecuencyChange()"
+								th:errorclass="'form-control alert-danger'">
+								<option th:value="accidente" th:text="Accidente"></option>
+								<option th:value="incidente" th:text="Incidente"></option>
+							</select> <small class="form-text text-danger"
+								th:if="${#fields.hasErrors('area')}" th:errors="*{area}">Incidente
+								Error Error</small>
+
+						</div>
+
+
+						<div class="col-sm-8">
+							<label class="col-form-label">Evento</label> <input type="text"
+								th:field="*{evento}"
+								class="form-control shadow p-3 mb-3 bg-white rounded"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('evento')}" th:errors="*{evento}"></small>
+						</div>
+						<div class="col-sm-4">
+							<label class="col-form-label">Área</label> <select
+								th:field="*{area}" class="form-control shadow"
+								th:errorclass="'form-control alert-danger'">
+								<option th:each="area : ${areas}" th:value="${area.id}"
+									th:text=${area.nombre}></option>
+							</select> <small class="form-text text-danger"
+								th:if="${#fields.hasErrors('area')}" th:errors="*{area}">Sede
+								Error Error</small>
+
+						</div>
+					
+					
+					<div id="divIncidente1" class="col-sm-12">
+						<label class="col-form-label">¿Incidente Peligroso o Incidente?</label> <select
+							th:field="*{gravedad}" class="form-control shadow"
+							th:errorclass="'form-control alert-danger'">
+							<option th:value="${'Incidente '+ 'peligroso'}" th:text="${'Incidente '+ 'peligroso'}"></option>
+							<option th:value="Incidente" th:text="Incidente">
+							</option>
+						</select> <small class="form-text text-danger"
+							th:if="${#fields.hasErrors('gravedad')}" th:errors="*{gravedad}">Gravedad
+							Error Error</small>
+
+					</div>
+					
+					<div id="divAccidente1" class="col-sm-4">
+						<label class="col-form-label">Gravedad del Accidente</label> <select
+							th:field="*{gravedad}" class="form-control shadow"
+							th:errorclass="'form-control alert-danger'">
+							<option th:value="Leve" th:text="Leve"></option>
+							<option th:value="Incapacitante" th:text="Incapacitante">
+							</option>
+							<option th:value="Mortal" th:text="Mortal"></option>
+						</select> <small class="form-text text-danger"
+							th:if="${#fields.hasErrors('gravedad')}" th:errors="*{gravedad}">Gravedad
+							Error Error</small>
+
+					</div>
+					<div id="divAccidente2" class="col-sm-4">
+						<label class="col-form-label">Grado del Accidente</label> <select
+							th:field="*{grado}" class="form-control shadow"
+							th:errorclass="'form-control alert-danger'">
+							<option th:value="TotalTemporal"
+								th:text="${'Total '+ 'Temporal'}"></option>
+							<option th:value="ParcialTemporal"
+								th:text="${'Parcial '+ 'Temporal'}"></option>
+							<option th:value="ParcialPermanente"
+								th:text="${'Parcial '+ 'Permanente'}"></option>
+							<option th:value="TotalPermanente"
+								th:text="${'Total '+ 'Permanente'}"></option>
+						</select> <small class="form-text text-danger"
+							th:if="${#fields.hasErrors('grado')}" th:errors="*{grado}">Grado
+							Error Error</small>
+
+					</div>
+					<div id="divAccidente3" class="col-sm-4">
+						<label class="col-form-label">Numero trabajadores
+							Afectados</label> <input type="number" th:field="*{numeroAfectados}"
+							class="form-control shadow p-3 mb-3 bg-white rounded"
+							th:errorclass="'form-control alert-danger'" /> <small
+							class="form-text text-danger"
+							th:if="${#fields.hasErrors('numeroAfectados')}"
+							th:errors="*{numeroAfectados}"></small>
+					</div>
+
+					<div id="divAccidente4" class="col-sm-8">
+						<label for="usuarios" class="col-form-label"> Trabajadores
+							Accidentados:</label> <select th:field="${entidad.empleados}"
+							class="js-example-basic-multiple col-sm-12" name="states[]"
+							multiple="multiple">
+							<option th:each="empleado : ${empleados2}"
+								th:value="${empleado.id}"
+								th:text="${empleado.dni} +' '+${empleado.nombres} +' '+${empleado.apellidos}"></option>
+						</select>
+
+					</div>
+
+					<div id="divAccidente5" class="col-sm-4">
+						<label class="col-form-label">Dias descanso Medico</label> <input
+							type="number" th:field="*{numeroDescanso}"
+							class="form-control shadow p-3 mb-3 bg-white rounded"
+							th:errorclass="'form-control alert-danger'" /> <small
+							class="form-text text-danger"
+							th:if="${#fields.hasErrors('numeroDescanso')}"
+							th:errors="*{numeroDescanso}"></small>
+					</div>
+
+
+					<div class="col-sm-4">
+						<label class="col-form-label">Fecha</label> <input type="date"
+							th:field="*{fecha}"
+							class="form-control shadow p-3 mb-3 bg-white rounded"
+							th:errorclass="'form-control alert-danger'" /> <small
+							class="form-text text-danger"
+							th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}"></small>
+					</div>
+					<div class="col-sm-4">
+						<label class="col-form-label">Hora</label> <input type="time"
+							th:field="*{hora}"
+							class="form-control shadow p-3 mb-3 bg-white rounded"
+							th:errorclass="'form-control alert-danger'" /> <small
+							class="form-text text-danger"
+							th:if="${#fields.hasErrors('hora')}" th:errors="*{hora}"></small>
+					</div>
+					<div class="col-sm-4">
+						<label class="col-form-label">Lugar</label> <input type="text"
+							th:field="*{lugar}"
+							class="form-control shadow p-3 mb-3 bg-white rounded"
+							th:errorclass="'form-control alert-danger'" /> <small
+							class="form-text text-danger"
+							th:if="${#fields.hasErrors('lugar')}" th:errors="*{lugar}"></small>
+					</div>
+
+
+					<div class="col-sm-8">
+						<label class="col-form-label">Descripción</label>
+						<textarea class="form-control shadow mb-3 bg-white rounded"
+							th:field="*{descripcion}" id="descripcion" rows="3"></textarea>
+						<small class="form-text text-danger"
+							th:if="${#fields.hasErrors('descripcion')}"
+							th:errors="*{descripcion}"> </small>
+					</div>
+					<div class="col-sm-4">
+						<label class="col-form-label">Causas</label>
+						<textarea class="form-control shadow  mb-3 bg-white rounded"
+							th:field="*{causas}" id="causas" rows="3"></textarea>
+						<small class="form-text text-danger"
+							th:if="${#fields.hasErrors('causas')}" th:errors="*{causas}">
+						</small>
+					</div>
+					<div class="col-sm-12">
+						<label for="coordenadas" class="col-sm-2 col-form-label"><strong>
+								Selecciona la ubicación:</strong></label>
+						<div id="map" class="col-sm-12"></div>
+						<input type="hidden" th:field="*{coordenadax}"
+							class="form-control" th:errorclass="'form-control alert-danger'" />
+						<small class="form-text text-danger"
+							th:if="${#fields.hasErrors('coordenadax')}"
+							th:errors="*{coordenadax}"></small> <input type="hidden"
+							th:field="*{coordenaday}" class="form-control"
+							th:errorclass="'form-control alert-danger'" /> <small
+							class="form-text text-danger"
+							th:if="${#fields.hasErrors('coordenaday')}"
+							th:errors="*{coordenaday}"></small>
+
+					</div>
+			</div>
+
+
+
+			<div class="form-group row">
+				<div class="col-sm-6">
+					<input type="submit" value="Nuevo Incidente"
+						class="btn btn-outline-dark" />
+				</div>
+			</div>
+
+			</form>
+		</div>
+	</div>
+	</div>
+	<footer th:replace="layout/layout :: footer"></footer>
+
+	<script th:src="@{../../js/select2.min.js}"></script>
+	<script>
+		$('.input-daterange input').each(function() {
+			$(this).datepicker('clearDates');
+		});
+
+		$(document).ready(function() {
+			$('.js-example-basic-multiple').select2();
+		});
+		$(document).ready(function() {
+			$('.js-example-basic-multiple2').select2();
+		});
+	</script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+	<script th:inline="javascript">
+	
+		$("#divIncidente1").hide();
+		function frecuencyChange() {
+			const val = $("#selectFrecuency").val();
+			if (val == 'accidente') {
+				$("#divIncidente1").hide();
+				$("#divAccidente1").fadeIn();
+				$("#divAccidente2").fadeIn();
+				$("#divAccidente3").fadeIn();
+				$("#divAccidente4").fadeIn();
+				$("#divAccidente5").fadeIn();
+				
+				
+			}
+			if (val == 'incidente') {
+				$("#divIncidente1").fadeIn();
+				$("#divAccidente1").hide();
+				$("#divAccidente2").hide();
+				$("#divAccidente3").hide();
+				$("#divAccidente4").hide();
+				$("#divAccidente5").hide();
+				
+			}
+
+		}
+	</script>
+
+
+
+
+	<script>
+		var map = L.map('map').setView([ -6.7790922, -79.8685248 ], 14);
+
+		// Capas base
+		var osmLayer = L
+				.tileLayer(
+						'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+						{
+							attribution : '&copy; <a href="http://osm.org/copyright">OpenStreetMap<\/a> contributors'
+						}).addTo(map);
+
+		var popup = L.popup();
+
+		function onMapClick(e) {
+			popup.setLatLng(e.latlng) // Sets the geographical point where the popup will open.
+			.setContent(
+					"Has hecho click en la coordenada:<br> "
+							+ e.latlng.lat.toString() + ","
+							+ e.latlng.lng.toString()) // Sets the HTML content of the popup.
+			.openOn(map); // Adds the popup to the map and closes the previous one. 
+			var lat = e.latlng.lat.toString();
+			var lng = e.latlng.lng.toString();
+			$('#coordenadax').val(lat);
+			$('#coordenaday').val(lng);
+			//var marker = L.marker([lat, lng]).addTo(map);
+		}
+
+		map.on('click', onMapClick);
+	</script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: head"></head>
+<body>
+
+	<div id="i18n_eliminar_user" th:text="#{text.user.eliminarOk}"
+		style="display: none;"></div>
+
+	<header th:replace="layout/layout :: header"></header>
+	
+		
+		
+	<div class="container-fluid py-4">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="card bg-light">
+					<div class="card-header">
+						<h2 class="text-center">HISTORIAL CONSULTAS MEDICAS DEL COLABORADOR</h2>
+					</div>
+					<div class="card-body ">
+					
+						<div  class="row">
+							<div class="col-5">
+								<label class="col-form-label">Apellidos:</label> 
+								<input type="text" th:value="${empleado.apellidos}" class="form-control shadow"/>
+								<label class="col-form-label">Direccion:</label> 
+								<input type="text" th:value="${empleado.direccion}" class="form-control shadow"/>
+								<label class="col-form-label">Fecha Nacimiento</label> 
+								<input type="text" th:value="${#dates.format(empleado.fecha_nacimiento, 'dd/MM/yyyy')}" class="form-control shadow"/>
+								<label class="col-form-label">Teléfono:</label> 
+								<input type="text" th:value="${empleado.telefono}" class="form-control shadow"/>
+							</div>
+							<div class="col-5">
+								<label class="col-form-label">Nombres:</label> 
+								<input type="text" th:value="${empleado.nombres}" class="form-control shadow"/>
+								<label class="col-form-label">Provincia:</label> 
+								<input type="text" th:value="${empleado.sede.nombre}" class="form-control shadow"/>
+									<label class="col-form-label">Sexo:</label> 
+								<input th:if="${empleado.sexo==true}" type="text" th:value="${'Masculino'}" class="form-control shadow"/>
+								<input th:unless="${empleado.sexo==true}" type="text" th:value="${'Femenino'}" class="form-control shadow"/>
+								<div class="row">
+									<div class="col-6">
+									<label class="col-form-label">Aptitud Emo </label> 
+									<button th:onclick="modal('/salud-ocupacional/form/[[${empleado.id}]]','INGRESO EMO')"
+											type="button" class="btn btn-warning btn-sm form-control"> Ingresar Emo
+										</button> 
+									</div>
+									<div class="col-6">
+									<label class="col-form-label">Consulta </label> 
+									<button 
+											th:onclick="modal('/salud-ocupacional/form-consulta/[[${empleado.id}]]','Consulta')"
+											type="button" class="btn btn-warning btn-sm form-control"> Ingresar Consulta
+									</button> 
+									</div>
+										
+									
+								</div>
+								
+							</div>
+							
+							
+						
+							<div class="col-2 text-center">
+							
+							<img th:if="${empleado.foto != null && #strings.length(empleado.foto) > 0}" class="img-thumbnail rounded float-left"
+					style="height: 250px;" th:src="@{'../../uploads/' + ${empleado.foto}}"
+					th:alt="${empleado.foto}" />	
+					
+							</div>
+						</div>
+						
+						<hr>	
+						<table class="table table-striped table-bordered table-sm">
+							<thead>
+								<tr>
+									<th>Id</th>
+									<th>Fecha</th>
+									<th>Tipo</th>
+									<th>Motivo</th>
+									<th>Fecha Consulta</th>
+									<th>Hallazgos</th>
+									<th>Diagnostico</th>
+									<th>Concluciones</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="listaVerificacion: ${empleado.consulta}">
+									<td th:text="${listaVerificacion.id}"></td>
+									<td th:text="${#dates.format(listaVerificacion.fecha, 'dd/MM/yyyy')}" ></td>
+									<td th:text="${listaVerificacion.calcularTipo()}"></td>
+									<td th:text="${listaVerificacion.motivo}"></td>
+									<td th:text="${#dates.format(listaVerificacion.fecha, 'dd/MM/yyyy')}" ></td>
+									<td th:text="${listaVerificacion.hallazgo}"></td>
+									<td th:text="${listaVerificacion.diagnostico}"></td>
+									<td th:text="${listaVerificacion.concluciones}"></td>
+								</tr>
+							</tbody>
+
+						</table>	
+							
+				
+					</div>
+				</div>
+
+			</div>
+		</div>
+		</div>
+		
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

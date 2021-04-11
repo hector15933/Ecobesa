@@ -1,0 +1,97 @@
+
+
+<div class="card-body">
+
+	<div th:object="${consulta}" th:remove="tag">
+		<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+			<li th:each="err: ${#fields.errors('*')}" th:text="${err}"></li>
+		</ul>
+	</div>
+	<form th:action="@{/salud-ocupacional/form-consulta}" th:object="${consulta}"
+		method="post" enctype="multipart/form-data">
+
+		<div class="form-group row">
+		
+			<div id="divIncidente1" class="col-sm-12">
+			<label class="col-form-label">Motivo</label> <select th:field="*{motivo}"
+				class="form-control shadow"
+				th:errorclass="'form-control alert-danger'">
+				<option th:value="${'Accidente'}"
+					th:text="${'Accidente'}"></option>
+				<option th:value="${'Incidente'}" th:text="${'Incidente'}"></option>
+				<option th:value="${'Enfermedad Comun'}" th:text="${'Enfermedad Comun'}"></option>
+						<option th:value="${'Enfermedad Ocupacional'}" th:text="${'Enfermedad Ocupacional'}"></option>
+			</select> <small class="form-text text-danger"	
+				th:if="${#fields.hasErrors('motivo')}" th:errors="*{motivo}">Motivo
+				Error Error</small>
+
+		</div>
+			<div class="col-sm-6">
+			<label class="col-form-label">Dias Descanso Medico </label> <input
+					type="number" th:field="*{descansoMedico}" class="form-control shadow"
+					th:errorclass="'form-control alert-danger'" /> <small
+					class="form-text text-danger" th:if="${#fields.hasErrors('descansoMedico')}"
+					th:errors="*{descansoMedico}"></small>			
+		</div>
+		
+			<div class="col-sm-6">
+				<label class="col-form-label">Fecha </label> <input
+					type="date" th:field="*{fecha}" class="form-control shadow"
+					th:errorclass="'form-control alert-danger'" /> <small
+					class="form-text text-danger" th:if="${#fields.hasErrors('fecha')}"
+					th:errors="*{fecha}"></small>
+			</div>
+	
+
+		<div class="col-sm-6">
+						<label class="col-form-label">Hallazgos</label>
+						<textarea class="form-control shadow mb-3 bg-white rounded"
+							th:field="*{hallazgo}" id="hallazgo" rows="3"></textarea>
+						<small class="form-text text-danger"
+							th:if="${#fields.hasErrors('hallazgo')}"
+							th:errors="*{hallazgo}"> </small>
+		</div>
+		<div class="col-sm-6">
+						<label class="col-form-label">Diagnostico</label>
+						<textarea class="form-control shadow mb-3 bg-white rounded"
+							th:field="*{diagnostico}" id="diagnostico" rows="3"></textarea>
+						<small class="form-text text-danger"
+							th:if="${#fields.hasErrors('diagnostico')}"
+							th:errors="*{diagnostico}"> </small>
+		</div>
+			<div class="col-sm-6">
+						<label class="col-form-label">Concluciones</label>
+						<textarea class="form-control shadow mb-3 bg-white rounded"
+							th:field="*{concluciones}" id="restriccion" rows="3"></textarea>
+						<small class="form-text text-danger"
+							th:if="${#fields.hasErrors('concluciones')}"
+							th:errors="*{concluciones}"> </small>
+		</div>
+		<div class="col-sm-6">
+						<label class="col-form-label">Recomendaciones</label>
+						<textarea class="form-control shadow mb-3 bg-white rounded"
+							th:field="*{recomendaciones}" id="recomendaciones" rows="3"></textarea>
+						<small class="form-text text-danger"
+							th:if="${#fields.hasErrors('recomendaciones')}"
+							th:errors="*{recomendaciones}"> </small>
+		</div>
+		
+
+			<div class="col-sm-12">
+				<input type="submit" th:value="${titulo}" class="btn btn-secondary" />
+			</div>
+
+		<div class="form-group row" style="display: none">
+			<label class="col-sm-2 col-form-label">Empleados</label> <select
+				th:field="*{empleados}" class="form-control bg-light"
+				th:errorclass="'form-control alert-danger'">
+				<option th:value="${idEmpleado.id}" th:text=${idEmpleado.nombres}>
+				</option>
+			</select> <small class="form-text text-danger"
+				th:if="${#fields.hasErrors('empleados')}" th:errors="*{empleados}">Empleados
+				Error Error</small>
+		</div>
+
+	</form>
+</div>
+

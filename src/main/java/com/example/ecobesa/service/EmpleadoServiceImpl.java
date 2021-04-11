@@ -53,5 +53,23 @@ public class EmpleadoServiceImpl implements IEmpleadoService{
 		empleadoDao.deleteById(id);
 	}
 
+	@Override
+	public Page<Empleado> findByNombresStartsWith(String nombres, Pageable page) {
+		// TODO Auto-generated method stub
+		return empleadoDao.findByNombresStartsWith(nombres, page);
+	}
+
+	@Override
+	public Page<Empleado> findByApellidosStartsWith(String nombres, Pageable page) {
+		// TODO Auto-generated method stub
+		return empleadoDao.findByApellidosStartsWith(nombres, page);
+	}
+
+	@Override
+	public Page<Empleado> findByDniStartsWith(Integer dni, Pageable page) {
+		// TODO Auto-generated method stub
+		return empleadoDao.findByDniStartsWith(dni, page);
+	}
+
 	
 }

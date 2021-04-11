@@ -13,6 +13,9 @@ public interface IEmpleadoService {
 	public List<Empleado> findAll();
 	public Iterable<Empleado> findAll(Sort sort);
 	public Page<Empleado> findAll(Pageable pageable);
+	public Page<Empleado> findByNombresStartsWith(String nombres, Pageable page);
+	public Page<Empleado> findByApellidosStartsWith(String nombres, Pageable page);
+	public Page<Empleado> findByDniStartsWith(Integer dni, Pageable page);
 	public Empleado findById(Long id);
 	public void save(Empleado empleado);
 	public void delete(Long id);

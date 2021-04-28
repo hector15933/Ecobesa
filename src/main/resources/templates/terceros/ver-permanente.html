@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container py-4">
+
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+			
+				<table class="table table-striped table-bordered table-sm">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Requisitos Legales</th>
+							<th>Si</th>
+							<th>No</th>
+							<th>N/A</th>
+							<th>Evidencia</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="empresa: ${tercero.extencionPermanente}">
+							<td th:text="${empresa.id}"></td>
+							<td th:text="${empresa.nombre}"></td>
+							<td th:text="${empresa.marca}"></td>
+							<td th:text="${empresa.marca}"></td>
+							<td th:text="${empresa.marca}"></td>
+							<td th:text="${empresa.evidencia}"></td>
+							
+							
+						</tr>
+						
+						
+					</tbody>
+
+				</table>
+			
+			
+			</div>
+		</div>
+	
+	
+
+	</div>
+	
+
+		
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

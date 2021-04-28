@@ -1,0 +1,54 @@
+
+
+<div class="card-body">
+
+	<div th:object="${registroEnfermedadOcupacional}" th:remove="tag">
+		<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+			<li th:each="err: ${#fields.errors('*')}" th:text="${err}"></li>
+		</ul>
+	</div>
+	<form th:action="@{/registro-enfermedad-ocupacional/form}" th:object="${registroEnfermedadOcupacional}"
+		method="post" enctype="multipart/form-data">
+
+		<div class="form-group row">
+
+			<div class="col-sm-12">
+				<label for="usuarios" class="col-sm-2 col-form-label"><strong>
+						Seleccione empresa encargada:</strong></label> <select
+					th:field="${registroEnfermedadOcupacional.empresa}" id="select001"
+					class="js-example-basic-multiple col-sm-12" name="states[]">
+					
+					<option th:each="empresa : ${empresas}" th:value="${empresa.id}"
+						th:text="${empresa.razonSocial}"></option>
+				</select>
+			</div>
+
+
+
+			<div class="col-sm-12">
+				<label class="col-form-label">Año </label> <input 
+					th:field="*{anio}" class="form-control" id="primerA"
+					/> <small
+					class="form-text text-danger" th:if="${#fields.hasErrors('anio')}"
+					th:errors="*{anio}"></small>
+			</div>
+
+
+	</div>
+
+			<div class="col-sm-12">
+				<input type="submit" th:value="${titulo}" class="btn btn-secondary" />
+			</div>
+	</form>	
+</div>
+ <script>
+ 	var today = new Date();
+	var year = today.getFullYear(); 
+ 	
+	console.log(year);
+	$('#primerA').val(year);
+	
+</script> 
+ 
+
+

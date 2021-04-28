@@ -1,6 +1,7 @@
 package com.example.ecobesa.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -10,7 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class RegistroEnfermedadOcupacional implements Serializable{
@@ -25,10 +27,11 @@ public class RegistroEnfermedadOcupacional implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String año;
+	@DateTimeFormat(pattern="yyyy")
+	private Date anio;
 	
 	@ManyToOne
-	@JoinColumn(name = "FK_REGISTRO_ENFERMEDAD_OCUPACIONAL", updatable = false, nullable = false)
+	@JoinColumn(name = "FK_EMPRESA", updatable = false, nullable = false)
 	private Empresa empresa;
 	
 	@OneToMany(mappedBy = "registroEnfermedadOcupacional")
@@ -42,12 +45,14 @@ public class RegistroEnfermedadOcupacional implements Serializable{
 		this.id = id;
 	}
 
-	public String getAño() {
-		return año;
+	
+
+	public Date getAnio() {
+		return anio;
 	}
 
-	public void setAño(String año) {
-		this.año = año;
+	public void setAnio(Date anio) {
+		this.anio = anio;
 	}
 
 	public Empresa getEmpresa() {

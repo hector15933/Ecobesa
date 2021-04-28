@@ -1,0 +1,224 @@
+<link
+	href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css"
+	rel="stylesheet" />
+
+<div class="card-body">
+
+	<div th:object="${terceros}" th:remove="tag">
+		<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+			<li th:each="err: ${#fields.errors('*')}" th:text="${err}"></li>
+		</ul>
+	</div>
+	<form th:action="@{/tercero/form}" th:object="${terceros}"
+		method="post" enctype="multipart/form-data">
+
+		<div class="form-group row">
+
+			<div class="col-sm-6">
+				<label class="col-form-label">Razon social </label> <input type="text" required 
+					th:field="*{razonSocial}" class="form-control shadow"
+					th:errorclass="'form-control alert-danger'" /> <small
+					class="form-text text-danger" th:if="${#fields.hasErrors('razonSocial')}"
+					th:errors="*{razonSocial}"></small>
+			</div>
+			
+			<div class="col-sm-6">
+				<label class="col-form-label">Actividad Economica</label> <input type="text" required 
+					th:field="*{actividadEconomica}" class="form-control shadow"
+					th:errorclass="'form-control alert-danger'" /> <small
+					class="form-text text-danger" th:if="${#fields.hasErrors('actividadEconomica')}"
+					th:errors="*{actividadEconomica}"></small>
+			</div>
+			<div class="col-sm-6">
+				<label class="col-form-label">RUC</label> <input type="number" required 
+					th:field="*{ruc}" class="form-control shadow"
+					th:errorclass="'form-control alert-danger'" /> <small
+					class="form-text text-danger" th:if="${#fields.hasErrors('ruc')}"
+					th:errors="*{ruc}"></small>
+			</div>
+			<div class="col-sm-6 ">
+							<label class="col-form-label">Encargado</label> <select
+								th:field="*{encargado}" class="form-control shadow js-example-basic-multiple "
+								th:errorclass="'form-control alert-danger'">
+								<option th:each="user : ${users}" th:value="${user.id}"
+									th:text="${user.dni} +' '+${user.nombres}  +' '+${user.cargo.nombre}"></option>
+							</select> <small class="form-text text-danger"
+								th:if="${#fields.hasErrors('encargado')}" th:errors="*{encargado}">Sede
+								Error Error</small>
+
+			</div>
+
+			<div class="col-sm-6">
+				<label class="col-form-label">Cargo</label> <input type="text" required 
+					th:field="*{cargo}" class="form-control shadow"
+					th:errorclass="'form-control alert-danger'" /> <small
+					class="form-text text-danger" th:if="${#fields.hasErrors('cargo')}"
+					th:errors="*{cargo}"></small>
+			</div>
+			<div class="col-sm-6">
+				<label class="col-form-label">Celular</label> <input type="number" required 
+					th:field="*{celular}" class="form-control shadow"
+					th:errorclass="'form-control alert-danger'" /> <small
+					class="form-text text-danger" th:if="${#fields.hasErrors('celular')}"
+					th:errors="*{celular}"></small>
+			</div>
+			<div class="col-sm-6">
+				<label class="col-form-label">Correo</label> <input type="text" required 
+					th:field="*{correo}" class="form-control shadow"
+					th:errorclass="'form-control alert-danger'" /> <small
+					class="form-text text-danger" th:if="${#fields.hasErrors('correo')}"
+					th:errors="*{correo}"></small>
+			</div>
+
+			<div class="col-sm-6">
+				<label class="col-form-label">tipoServicio</label> <select 
+					th:field="*{tipoServicio}" class="form-control shadow"
+					th:errorclass="'form-control alert-danger'">
+					<option th:value="Permanente" th:text="Permanente"></option>
+					<option th:value="Temporal" th:text="Temporal"></option>
+				
+				</select> <small class="form-text text-danger"
+					th:if="${#fields.hasErrors('tipoServicio')}" th:errors="*{tipoServicio}">Empleador
+					Error Error</small>
+
+			</div>
+
+
+
+			<div class="form-group col-sm-12">
+				<label for="file" class=" col-form-label">Empleados (Adjuntar Excel o PDF)</label> <input required 
+					type="file" name="file" class="form-control shadow" />
+
+			</div>
+		
+			
+				<div class="col-sm-6">
+				<label class="col-form-label">Trabajos de alto riesgo</label> <select 
+					class="form-control shadow" 	th:field="*{altoRiesgo}" id="selectFrecuency" onchange="frecuencyChange()"
+					th:errorclass="'form-control alert-danger'">
+					<option th:value="true" th:text="Si"></option>
+					<option th:value="false" th:text="No"></option>
+				
+				</select> <small class="form-text text-danger"
+					th:if="${#fields.hasErrors('tipoServicio')}" th:errors="*{tipoServicio}">Empleador
+					Error Error</small>
+
+			</div>
+			
+				
+			</div>
+			<div id="altoRiesgo" class="row">
+				
+				<div class="col-sm-6">
+					<label class="col-form-label">Trabajos en sistemas Eléctricos</label> <select 
+						class="form-control shadow" id="" th:field="*{altoRiesgo1}"
+						th:errorclass="'form-control alert-danger'">
+						<option th:value="true" th:text="Si"></option>
+						<option th:value="false" th:text="No"></option>
+					
+					</select> 
+
+				</div>
+				<div class="col-sm-6">
+					<label class="col-form-label">Trabajos a Alturas mayores a 1.8 m.s</label> <select 
+						class="form-control shadow" id="" th:field="*{altoRiesgo2}"
+						th:errorclass="'form-control alert-danger'">
+						<option th:value="true" th:text="Si"></option>
+						<option th:value="false" th:text="No"></option>
+					
+					</select> 
+
+				</div>
+				<div class="col-sm-6">
+					<label class="col-form-label">Trabajos en Espacios Confinados.s</label> <select 
+						class="form-control shadow" id="" th:field="*{altoRiesgo3}"
+						th:errorclass="'form-control alert-danger'">
+						<option th:value="true" th:text="Si"></option>
+						<option th:value="false" th:text="No"></option>
+					
+					</select> 
+
+				</div>
+				<div class="col-sm-6">
+					<label class="col-form-label">TRABAJO DE PERFORACION Y EXCAVACION </label> <select 
+						class="form-control shadow" id="" th:field="*{altoRiesgo4}"
+						th:errorclass="'form-control alert-danger'">
+						<option th:value="true" th:text="Si"></option>
+						<option th:value="false" th:text="No"></option>
+					
+					</select> 
+
+				</div>
+				<div class="col-sm-6">
+					<label class="col-form-label">TRABAJO CON ENERGIA PELIGROSA </label> <select 
+						class="form-control shadow" id="" th:field="*{altoRiesgo5}"
+						th:errorclass="'form-control alert-danger'">
+						<option th:value="true" th:text="Si"></option>
+						<option th:value="false" th:text="No"></option>
+					
+					</select> 
+
+				</div>
+				<div class="col-sm-6">
+					<label class="col-form-label">TRABAJOS CON MATPEL</label> <select 
+						class="form-control shadow" id="" th:field="*{altoRiesgo6}"
+						th:errorclass="'form-control alert-danger'">
+						<option th:value="true" th:text="Si"></option>
+						<option th:value="false" th:text="No"></option>
+					
+					</select> 
+
+				</div>
+				<div class="col-sm-6">
+					<label class="col-form-label">TRABAJOS EN CALIENTE</label> <select 
+						class="form-control shadow" id="" th:field="*{altoRiesgo7}"
+						th:errorclass="'form-control alert-danger'">
+						<option th:value="true" th:text="Si"></option>
+						<option th:value="false" th:text="No"></option>
+					
+					</select>
+
+				</div>
+				<div class="col-sm-6">
+					<label class="col-form-label">IZAJE MONTAJE</label> <select 
+						class="form-control shadow" id="" th:field="*{altoRiesgo8}"
+						th:errorclass="'form-control alert-danger'">
+						<option th:value="true" th:text="Si"></option>
+						<option th:value="false" th:text="No"></option>
+					
+					</select> 
+
+				</div>
+				
+				
+			</div>
+			<div class="col-sm-12">
+				<input type="submit" th:value="${titulo}" class="btn btn-secondary" />
+			</div>
+
+		
+	</form>
+</div>
+
+
+	<script th:inline="javascript">
+		$(document).ready(function() {
+			$('.js-example-basic-multiple').select2();
+		});
+	
+		function frecuencyChange() {
+			const val = $("#selectFrecuency").val();
+			if (val == 'false') {
+				$("#altoRiesgo").hide();
+				
+			}
+			if (val == 'true') {
+				$("#altoRiesgo").fadeIn();
+				
+			}
+
+		}
+	</script>
+<script th:src="@{../../js/select2.min.js}"></script>
+<script
+		src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>

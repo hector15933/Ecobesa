@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container py-4">
+
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+			
+				<table th:each="empresa: ${tercero.extencionTemporal}" class="table table-striped table-bordered table-sm">
+				<h1 th:text="${empresa.nombre}"></h1>
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Actividades de Alto Riesgo</th>
+							<th>Si</th>
+							<th>No</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="empresa2: ${empresa.altoRiesgo}">
+							<td th:text="${empresa2.id}"></td>
+							<td th:text="${empresa2.nombre}"></td>
+							<td th:text="${empresa2.marca}"></td>
+							<td th:text="${empresa2.marca}"></td>
+							
+						</tr>
+						
+						
+					</tbody>
+
+				</table>
+			
+			
+			</div>
+		</div>
+	
+	
+
+	</div>
+	
+
+		
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

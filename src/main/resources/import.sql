@@ -551,4 +551,3 @@ INSERT INTO planner_safety(titulo,fecha,hora,estado) VALUES('Capacitacion de erg
 INSERT INTO planner_safety(titulo,fecha,hora,estado) VALUES('Capacitacion de ergonommia.Josaft La Rosa.Oficina de Ventas','2021/03/10','13:00:59',false);
 
 
-

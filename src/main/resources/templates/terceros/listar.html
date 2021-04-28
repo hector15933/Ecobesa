@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: head"></head>
+<body>
+
+	<div id="i18n_eliminar_user" th:text="#{text.user.eliminarOk}"
+		style="display: none;"></div>
+
+	<header th:replace="layout/layout :: header"></header>
+
+
+
+	<div class="container-fluid py-4">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="card bg-light">
+					<div
+						class="card-header d-flex justify-content-between align-items-end mb-3">
+
+						<h3 class="pb-1">Terceros </h3>
+					
+							<button 
+											th:onclick="modal('/terceros/form','Tercero')"
+											type="button" class="btn btn-primary btn"> Agregar Empresa
+							</button> 
+					</div>
+					
+					<div class="card-body ">
+						
+						<table class="table table-striped table-bordered table-sm">
+							<thead>
+								<tr>
+									<th>Id</th>
+									<th>Razon Social</th>
+									<th>Actividad Economica</th>
+									<th>Ruc</th>
+									<th>Encargado</th>
+									<th>Cargo</th>
+									<th>Celular</th>
+									<th>Correo</th>
+									<th>Tipo Servicios</th>
+									<th>Colaboradores</th>
+							
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="listaVerificacion: ${listaVerificaciones}">
+									<td th:text="${listaVerificacion.id}"></td>
+									<td th:text="${listaVerificacion.razonSocial}"></td>
+									<td th:text="${listaVerificacion.actividadEconomica}"></td>
+									<td th:text="${listaVerificacion.ruc}"></td>
+									<td th:text="${listaVerificacion.encargado}"></td>
+									<td th:text="${listaVerificacion.cargo}"></td>
+									<td th:text="${listaVerificacion.celular}"></td>
+									<td th:text="${listaVerificacion.correo}"></td>
+									<td  class="text-center">
+									
+									<a  th:if="${listaVerificacion.tipoServicio}==${'Permanente'}"
+										th:href="@{/terceros/ver-permanente/} + ${listaVerificacion.id}" > 
+											Permanente
+									</a> <a th:unless="${listaVerificacion.tipoServicio}==${'Permanente'}"
+											th:href="@{/terceros/ver-temporal/} + ${listaVerificacion.id}">
+											Temporal</a>
+									</td>
+									
+									<td class="text-center"><a th:if="${listaVerificacion.listaColaboradores==null}"
+										href="#"> <span class="fas fa-times"
+											title="No hay archivos."></span>
+									</a> <a th:unless="${listaVerificacion.listaColaboradores==null}"
+										th:href="@{'../uploads/' + ${listaVerificacion.listaColaboradores}}">
+											<span class="fas fa-file-pdf "
+											title="Colaboradores ."></span>
+									</a></td>
+									
+								
+								</tr>
+							</tbody>
+
+						</table>
+						<nav th:replace="paginator-nav :: paginator"></nav>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		
+		
+	</div>
+	
+
+	<footer th:replace="layout/layout :: footer"></footer>
+	<input type="hidden" id="urlenviar" th:value="@{/terceros/listar/}" />
+	<script th:src="@{/js/searchbar.js}"></script>
+</body>
+</html>

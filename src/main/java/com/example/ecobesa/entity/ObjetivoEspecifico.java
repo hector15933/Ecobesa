@@ -23,6 +23,7 @@ public class ObjetivoEspecifico implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
 	private String nombre;
+	
 	@ManyToOne
 	@JoinColumn(name="objetivoGeneral_id", nullable=false)
 	private ObjetivoGeneral objetivoGeneral;

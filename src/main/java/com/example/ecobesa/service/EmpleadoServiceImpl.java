@@ -42,9 +42,8 @@ public class EmpleadoServiceImpl implements IEmpleadoService{
 	}
 
 	@Override
-	public void save(Empleado empleado) {
-		// TODO Auto-generated method stub
-		empleadoDao.save(empleado);
+	public Empleado save(Empleado empleado) {
+		return empleadoDao.save(empleado);
 	}
 
 	@Override

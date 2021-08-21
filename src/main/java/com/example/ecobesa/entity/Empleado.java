@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -35,10 +36,16 @@ public class Empleado implements Serializable{
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column(nullable=false)
 	private String nombres;
+	@Column(nullable=false)
 	private String apellidos;
+	@Column(nullable=false)
 	private Integer dni;
+	@Column(unique=true)
+	private String email;
 	private Integer telefono;
+	@Column(nullable=false)
 	private String nacionalidad;
 	private boolean sexo;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -47,8 +54,14 @@ public class Empleado implements Serializable{
 	private Date fecha_ingreso;
 	private String foto;
 	private boolean estado;
+	private Double salario;
 	private String apctitudEmo;
 	private String direccion;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date createAt;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date updateAt;
 	
 	@OneToMany(mappedBy = "empleados")
 	private List<Consulta> consulta;
@@ -302,5 +315,52 @@ public class Empleado implements Serializable{
       }
 		
 	}
+
+
+	public Double getSalario() {
+		return salario;
+	}
+
+
+	public void setSalario(Double salario) {
+		this.salario = salario;
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public Date getCreateAt() {
+		return createAt;
+	}
+
+
+	public void setCreateAt(Date createAt) {
+		this.createAt = createAt;
+	}
+
+
+	public Date getUpdateAt() {
+		return updateAt;
+	}
+
+
+	public void setUpdateAt(Date updateAt) {
+		this.updateAt = updateAt;
+	}
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
+	
 	
 }

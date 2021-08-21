@@ -1,0 +1,384 @@
+
+
+<div class="card-body">
+
+	<div th:object="${riesgos}" th:remove="tag">
+		<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+			<li th:each="err: ${#fields.errors('*')}" th:text="${err}"></li>
+		</ul>
+	</div>
+	<form th:action="@{/riesgos/form}" th:object="${riesgos}"
+		method="post" enctype="multipart/form-data">
+
+		<div class="form-group row">
+		
+				<div class="bg-light col-sm-12 row">
+						<div class="col-sm-4">
+							<label class="col-form-label">PUESTO DE TRABAJO</label>
+						<select th:field="*{cargo}" class="form-control  shadow mb-3 bg-white rounded"
+								th:errorclass="'form-control alert-danger'">
+								<option th:each="tipoDocument : ${listaCargos}"
+									th:value="${tipoDocument.id}" th:text=${tipoDocument.nombre}></option>
+
+							</select> 
+						</div>
+						<div class="col-sm-4">
+							<label class="col-form-label">TIPO DE TAREA</label>
+						<select th:field="*{tipoTareas}" class="form-control  shadow mb-3 bg-white rounded"
+								th:errorclass="'form-control alert-danger'">
+								<option th:each="tipoDocument : ${listaTareas}"
+									th:value="${tipoDocument.id}" th:text=${tipoDocument.nombre}></option>
+
+							</select> 
+						</div>
+						<div class="col-sm-4">
+						<label class="col-form-label">ACTIVIDAD</label>
+						
+						<input
+					type="text" th:field="*{actividad}" class="form-control shadow" required
+					th:errorclass="'form-control alert-danger'" />
+						</div>
+						
+						</div>
+
+<hr>
+		<div class="col-sm-12">
+						<label class="col-form-label">TIPO PELIGRO</label>
+						<select th:field="*{tipo_riesgos}" id="tipo_riesgos" title="seleccione" class="form-control  shadow mb-3 bg-white rounded"
+								th:errorclass="'form-control alert-danger'">
+								<option th:each="tipoDocument : ${tipoRiesgos}"
+									th:value="${tipoDocument.id}" th:text=${tipoDocument.nombre}></option>
+
+							</select> 
+						
+		</div>	
+	
+		<div class="col-sm-12">
+						<label class="col-form-label ">NOMBRE PELIGRO</label>
+						<div class="selector-pais">
+						<select th:field="*{peligro}" id="peligro" class="form-control  shadow mb-3 bg-white rounded"
+								th:errorclass="'form-control alert-danger'">
+								
+
+						</select> </div>
+						
+		</div>
+		<div class="col-sm-6">
+						<label class="col-form-label">EVENTO PELIGROSO</label>
+						<textarea class="form-control shadow mb-3 bg-white rounded"
+							th:field="*{enventoPeligroso}" id="diagnostico" rows="3" required></textarea>
+			
+		</div>
+			<div class="col-sm-6">
+							<label class="col-form-label">CONCECUENCIAS</label>
+							<textarea class="form-control shadow mb-3 bg-white rounded"
+								th:field="*{consecuencias}" id="restriccion" rows="3" required></textarea>
+			</div>
+				<div class="col-sm-6">
+							<label class="col-form-label">VINCULO LEGAL</label>
+							<textarea class="form-control shadow mb-3 bg-white rounded"
+								th:field="*{vinculoLegal}" id="restriccion" rows="3" required></textarea>
+			
+			
+			</div>
+			<div class="form-group col-sm-6">
+					<label for="file" class=" col-form-label">Simbologia</label>	
+					<input type="file" name="file" class="form-control shadow" />
+			</div>
+			
+			<div class="col-sm-4">
+						<label class="col-form-label">Severidad</label>
+						
+						<input id="severidad" min="1" max="4"
+					type="number" th:field="*{severidad}" class="form-control shadow" required
+					th:errorclass="'form-control alert-danger'" />
+		</div>
+		<div class="col-sm-4">
+						<label class="col-form-label">Probabilidad</label>
+						
+						<input id="probabilidad" min="1" max="4"
+					type="number" th:field="*{probabilidad}" class="form-control shadow" required
+					th:errorclass="'form-control alert-danger'" />
+		</div>
+		<div class="col-sm-4">
+						<label class="col-form-label">Nivel de riesgo</label>
+						
+						<input id="nivelRiesgo"
+					type="text" th:field="*{nivelRiesgo}" class="form-control shadow" required readonly
+					th:errorclass="'form-control alert-danger'" />
+					<hr>
+		</div>
+			
+			<div class="col-sm-12 text-center">
+				<table   class="table table-striped table-bordered  table-sm display  order-column text-center table-child">
+					<thead>
+					<tr class="table-child"><th colspan="5" >Riesgo</th></tr>
+					
+					</thead>
+					<tbody>
+					<tr class="">
+						<td  class="font-weight-normal">(1)Potencial incidente con primeros auxilios</td>
+						<td href="#" class="badge-success text-dark btnLeft font-weight-bold" id="bajo1">BAJO (1)</td>
+						<td href="#" class="badge-success text-dark btnLeft font-weight-bold" id="bajo2">BAJO (2)</td>
+						<td href="#" class="badge-success text-dark btnLeft font-weight-bold" id="bajo3">BAJO (3)</td>
+						<td href="#" class="badge-success text-dark btnLeft font-weight-bold" id="bajo4">BAJO (4)</td>
+					</tr>	
+					<tr>
+						<td  class="font-weight-normal">(2)Potencial accidente con incapacidad temporal</td>
+						<td href="#" class="badge-success text-dark btnLeft font-weight-bold" id="bajo22">BAJO (2)</td>
+						<td href="#" class="badge-success text-dark btnLeft  font-weight-bold" id="bajo24">BAJO (4)</td>
+						<td href="#" class="badge-warning text-dark btnLeft font-weight-bold" id="medio26">MEDIO (6)</td>
+						<td href="#" class="badge-warning text-dark btnLeft font-weight-bold" id="medio28">MEDIO (8)</td>
+					</tr>	
+					<tr>
+						<td  class="font-weight-normal">(3)Potencial accidente con incapacidad permanente</td>
+						<td href="#" class="badge-success text-dark btnLeft font-weight-bold" id="bajo33">BAJO (3)</td>
+						<td href="#" class="badge-warning text-dark btnLeft font-weight-bold" id="medio36">MEDIO (6)</td>
+						<td href="#" class="badge-warning text-dark btnLeft font-weight-bold" id="medio39">MEDIO (9)</td>
+						<td href="#" class="badge-danger btnLeft font-weight-bold" id="alto312">ALTO (12)</td>
+					</tr>	
+					<tr>
+						<td  class="font-weight-normal">(4)Potencial accidente fatal</td>
+						<td href="#" class="badge-success text-dark font-weight-bold" id="bajo44">BAJO (4)</td>
+						<td href="#" class="badge-warning text-dark font-weight-bold" id="medio48">MEDIO (8)</td>
+						<td href="#" class="badge-danger font-weight-bold" id="alto412">ALTO (12)</td>
+						<td href="#" class="badge-danger font-weight-bold" id="alto416">ALTO (16)</td>
+					</tr>	
+					<tr>
+						<td></td>
+						<td class="font-weight-normal">(1)Raro Un evento cada diez años</td>
+						<td  class="font-weight-normal">(2)Improbable Un evento cada año (*)</td>
+						<td  class="font-weight-normal">(3)Posible Un evento más de una vez al año (*)</td>
+						<td  class="font-weight-normal">(4)Frecuente Un evento más de una vez al mes (*)</td>
+					</tr>	
+					</tbody>
+				
+				</table>
+			
+			
+				<!--  img style="height: 400px" alt="reportar-hallazgos.png" class="form-contro icon-info" src="../../img/imagen-riesgo.png"-->
+			<hr>
+			</div>
+		<br><br>
+			
+
+			<div class="col-sm-12">
+				<input type="submit" th:value="${titulo}" class="btn btn-secondary" />
+			</div>
+			
+			
+
+
+		</div>
+
+	</form>
+</div>
+
+<script>
+
+
+var nivelRiesgo=0;
+var nivelRiesgoAux="";
+
+$("#probabilidad").change(function () {	
+	nivelRiesgo=$("#probabilidad").val()*$("#severidad").val();
+	console.log(nivelRiesgo);
+	if(nivelRiesgo<6){
+		nivelRiesgoAux="BAJO";
+		$( "#nivelRiesgo").removeClass("bg-warning");
+		$( "#nivelRiesgo").removeClass("bg-danger");
+		$( "#nivelRiesgo").addClass("bg-success");
+		
+	}else if(nivelRiesgo<12){
+		nivelRiesgoAux="MEDIO";
+		$( "#nivelRiesgo").removeClass("bg-success");
+		$( "#nivelRiesgo").removeClass("bg-danger");
+		$( "#nivelRiesgo").addClass("bg-warning");
+	}else{
+		nivelRiesgoAux="ALTO";
+		$( "#nivelRiesgo").removeClass("bg-success");
+		$( "#nivelRiesgo").removeClass("bg-warning");
+		$( "#nivelRiesgo").addClass("bg-danger active");
+	}
+	console.log(nivelRiesgoAux);
+	$( "#nivelRiesgo").val(nivelRiesgoAux);	
+	
+	
+});
+	
+$("#severidad").change(function(){
+	nivelRiesgo=$("#probabilidad").val()*$("#severidad").val();
+	console.log(nivelRiesgo);
+	if(nivelRiesgo<6){
+		nivelRiesgoAux="BAJO";
+		$( "#nivelRiesgo").removeClass("bg-warning");
+		$( "#nivelRiesgo").removeClass("bg-danger");
+		$( "#nivelRiesgo").addClass("bg-success");
+	}else if(nivelRiesgo<12){
+		nivelRiesgoAux="MEDIO";
+		$( "#nivelRiesgo").removeClass("bg-success");
+		$( "#nivelRiesgo").removeClass("bg-danger");
+		$( "#nivelRiesgo").addClass("bg-warning");
+	}else{
+		nivelRiesgoAux="ALTO";
+		$( "#nivelRiesgo").removeClass("bg-success");
+		$( "#nivelRiesgo").removeClass("bg-warning");
+		$( "#nivelRiesgo").addClass("bg-danger active");
+	}
+	console.log(nivelRiesgoAux);
+	$( "#nivelRiesgo").val(nivelRiesgoAux);	
+});
+$("#peligro").empty();
+$.ajax({
+        type: "GET",
+        url: "../tipo-riesgo-child",
+        dataType: 'json',
+        data:{"id":$("#tipo_riesgos").val()},
+        
+        success: function(data)
+        {
+        	//var datos = respJson.nombre;
+        	
+        	$.each(data, function(key, value) {
+				$("#peligro").append('<option name="' + key.id + '">' + value.nombre + '</option>');
+			});
+            
+        }
+});
+
+	
+$("#tipo_riesgos").change(function(){	
+	var table = "";
+	$("#peligro").empty();
+    $.ajax({
+            type: "GET",
+            url: "../tipo-riesgo-child",
+            dataType: 'json',
+            data:{"id":$("#tipo_riesgos").val()},
+            
+            success: function(data)
+            {
+            	//var datos = respJson.nombre;
+            	
+            	$.each(data, function(key, value) {
+    				$("#peligro").append('<option name="' + key.id + '">' + value.nombre + '</option>');
+    			});
+                
+            }
+    });
+
+});
+
+
+$( "#bajo1" ).on( "click", function() {
+	$("#severidad").val(1);
+	$("#probabilidad").val(1);
+	  riesgo();
+	});
+$( "#bajo2" ).on( "click", function() {
+	$("#severidad").val(1);
+	$("#probabilidad").val(2);
+	  riesgo();
+	});
+$( "#bajo3" ).on( "click", function() {
+	$("#severidad").val(1);
+	$("#probabilidad").val(3);
+	  riesgo();
+	});
+$( "#bajo4" ).on( "click", function() {
+	$("#severidad").val(1);
+	$("#probabilidad").val(4);
+	  riesgo();
+	});
+	
+	//===============================
+		
+$( "#bajo22" ).on( "click", function() {
+	$("#severidad").val(1);
+	$("#probabilidad").val(2);
+	  riesgo();
+	});
+$( "#bajo24" ).on( "click", function() {
+	$("#severidad").val(2);
+	$("#probabilidad").val(2);
+	  riesgo();
+	});
+$( "#bajo33" ).on( "click", function() {
+	$("#severidad").val(1);
+	$("#probabilidad").val(3);
+	  riesgo();
+	});
+$( "#bajo44" ).on( "click", function() {
+	$("#severidad").val(1);
+	$("#probabilidad").val(4);
+	  riesgo();
+	});
+	
+	//===============================
+		
+$( "#medio26" ).on( "click", function() {
+	$("#severidad").val(2);
+	$("#probabilidad").val(3);
+	$("#nivelRiesgo").val(6);
+	  riesgo();
+	});
+$( "#medio28" ).on( "click", function() {
+	$("#severidad").val(2);
+	$("#probabilidad").val(4);
+	  riesgo();
+	});
+$( "#medio36" ).on( "click", function() {
+	$("#severidad").val(3);
+	$("#probabilidad").val(2);
+	  riesgo();
+	});
+$( "#medio39" ).on( "click", function() {
+	$("#severidad").val(3);
+	$("#probabilidad").val(3);
+	  riesgo();
+	});
+$( "#medio48" ).on( "click", function() {
+	$("#severidad").val(4);
+	$("#probabilidad").val(2);
+	  riesgo();
+	});
+	//=================
+$( "#alto312" ).on( "click", function() {
+	$("#severidad").val(3);
+	$("#probabilidad").val(4);
+	  riesgo();
+	});
+$( "#alto412" ).on( "click", function() {
+	$("#severidad").val(4);
+	$("#probabilidad").val(3);
+	  riesgo();
+	});
+$( "#alto416" ).on( "click", function() {
+	$("#severidad").val(4);
+	$("#probabilidad").val(4);
+	  riesgo();
+	});
+
+function riesgo(){
+	nivelRiesgo=$("#probabilidad").val()*$("#severidad").val();
+	if(nivelRiesgo<6){
+		nivelRiesgoAux="BAJO";
+		$( "#nivelRiesgo").removeClass("bg-warning");
+		$( "#nivelRiesgo").removeClass("bg-danger");
+		$( "#nivelRiesgo").addClass("bg-success");
+	}else if(nivelRiesgo<12){
+		nivelRiesgoAux="MEDIO";
+		$( "#nivelRiesgo").removeClass("bg-success");
+		$( "#nivelRiesgo").removeClass("bg-danger");
+		$( "#nivelRiesgo").addClass("bg-warning");
+	}else{
+		nivelRiesgoAux="ALTO";
+		$( "#nivelRiesgo").removeClass("bg-success");
+		$( "#nivelRiesgo").removeClass("bg-warning");
+		$( "#nivelRiesgo").addClass("bg-danger active");
+	}
+	console.log(nivelRiesgoAux);
+	$( "#nivelRiesgo").val(nivelRiesgoAux);	
+}
+</script>
+

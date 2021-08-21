@@ -1,0 +1,69 @@
+<div class="card-body">
+
+	<div th:object="${permanente}" th:remove="tag">
+		<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+			<li th:each="err: ${#fields.errors('*')}" th:text="${err}"></li>
+		</ul>
+	</div>
+	<form th:action="@{/terceros/permanente-form}"
+		th:object="${permanente}" method="post" enctype="multipart/form-data">
+
+		<div class="form-group row">
+			
+			<div class="form-group col-sm-12" style="display: none">
+				<label  class=" col-form-label">Requisito Legal</label> <input th:field="*{id}"
+					required type="text"  class="form-control shadow" />
+
+			</div>
+			
+			<div class="form-group col-sm-12">
+				<label  class=" col-form-label">Requisito Legal</label> <input th:field="*{nombre}"
+					required type="text"  class="form-control shadow" />
+
+			</div>
+			
+			<div class="form-group row" style="display: none">
+			
+			<label class="col-sm-2 col-form-label">Empleados</label> <select
+				th:field="*{terceros}" class="form-control bg-light"
+				th:errorclass="'form-control alert-danger'">
+				<option th:value="${tercero.id}" th:text=${tercero.razonSocial}>
+				</option>
+			</select> <small class="form-text text-danger"
+				th:if="${#fields.hasErrors('terceros')}" th:errors="*{terceros}">Empleados
+				Error Error</small>
+			</div>
+			
+			<div class="col-sm-6">
+				<label class="col-form-label">¿Cumple? (Si / No)</label> <select
+					class="form-control shadow" th:field="*{marca}"
+					th:errorclass="'form-control alert-danger'">
+					<option th:value="true" th:text="Si"></option>
+					<option th:value="false" th:text="No"></option>
+
+				</select> <small class="form-text text-danger"
+					th:if="${#fields.hasErrors('marca')}" th:errors="*{marca}">Empleador
+					Error Error</small>
+
+			</div>
+
+			
+	
+			<div class="form-group col-sm-12">
+				<label for="file" class=" col-form-label">Evidencia</label> <input
+					 type="file" name="file" class="form-control shadow" />
+
+			</div>
+
+
+		</div>
+
+
+		<div class="col-sm-12">
+			<input type="submit" th:value="${titulo}" class="btn btn-secondary" />
+		</div>
+
+
+	</form>
+</div>
+

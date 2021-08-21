@@ -1,0 +1,92 @@
+
+
+<div class="card-body">
+
+	<div th:object="${riesgos}" th:remove="tag">
+		<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+			<li th:each="err: ${#fields.errors('*')}" th:text="${err}"></li>
+		</ul>
+	</div>
+	<form th:action="@{/controles-riesgo/form}" th:object="${riesgos}"
+		method="post" enctype="multipart/form-data">
+
+		<div class="form-group row">
+		
+		
+						<div class="col-sm-10">
+							
+
+						</div>
+
+		<div class="col-sm-12">
+						<label class="col-form-label">SEDE</label>
+						<select th:field="*{sede}" class="form-control  shadow mb-3 bg-white rounded"
+								th:errorclass="'form-control alert-danger'">
+								<option th:each="tipoDocument : ${listaSedes}"
+									th:value="${tipoDocument.id}" th:text=${tipoDocument.nombre}></option>
+
+						</select> 
+						
+		</div>	
+		<div class="col-sm-12">
+						<label class="col-form-label">RIESGO</label>
+						<select th:field="*{riesgos}" class="form-control  shadow mb-3 bg-white rounded"
+								th:errorclass="'form-control alert-danger'">
+								<option th:each="tipoDocument : ${listaRiesgos}"
+									th:value="${tipoDocument.id}" th:text=${tipoDocument.enventoPeligroso}></option>
+
+							</select> 
+						
+		</div>	
+		<div class="col-sm-6">
+						<label class="col-form-label">¿QUÉ?</label>
+						<textarea class="form-control shadow mb-3 bg-white rounded"
+							th:field="*{que}" id="diagnostico" rows="3" required></textarea>
+			
+		</div>
+		<div class="col-sm-6">
+						<label class="col-form-label">¿CUÁNDO?</label>
+						<textarea class="form-control shadow mb-3 bg-white rounded"
+							th:field="*{cuando}" id="diagnostico" rows="3" required></textarea>
+			
+		</div>
+		<div class="col-sm-6">
+						<label class="col-form-label">¿CÓMO?</label>
+						<textarea class="form-control shadow mb-3 bg-white rounded"
+							th:field="*{como}" id="diagnostico" rows="3" required></textarea>
+			
+		</div>
+		<div class="col-sm-6">
+						<label class="col-form-label">¿QUIÉN?</label>
+						<textarea class="form-control shadow mb-3 bg-white rounded"
+							th:field="*{quien}" id="diagnostico" rows="3" required></textarea>
+			
+		</div>
+		<div class="col-sm-6">
+						<label class="col-form-label">¿POR QUÉ?</label>
+						<textarea class="form-control shadow mb-3 bg-white rounded"
+							th:field="*{porque}" id="diagnostico" rows="3" required></textarea>
+			
+		</div>
+		<div class="col-sm-6">
+						<label class="col-form-label">¿DÓNDE?</label>
+						<textarea class="form-control shadow mb-3 bg-white rounded"
+							th:field="*{donde}" id="diagnostico" rows="3" required></textarea>
+			
+		</div>
+	
+	
+		
+
+			<div class="col-sm-12">
+				<input type="submit" th:value="${titulo}" class="btn btn-secondary" />
+			</div>
+			
+			
+
+
+		</div>
+
+	</form>
+</div>
+

@@ -14,11 +14,11 @@ public class ExtencionPermanente {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nombre;
-	private String marca;
+	private Boolean marca;
 	private String evidencia;
 	
 	@ManyToOne
-	@JoinColumn(name="tercero_id", nullable=false)
+	@JoinColumn(name="tercero_id")
 	private Terceros terceros;
 	
 	
@@ -46,12 +46,16 @@ public class ExtencionPermanente {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getMarca() {
+	
+
+	public Boolean getMarca() {
 		return marca;
 	}
-	public void setMarca(String marca) {
+
+	public void setMarca(Boolean marca) {
 		this.marca = marca;
 	}
+
 	public String getEvidencia() {
 		return evidencia;
 	}

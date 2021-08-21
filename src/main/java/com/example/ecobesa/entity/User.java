@@ -50,10 +50,6 @@ public class User implements Serializable{
     
     
 
-    
-    @ManyToMany
-    @JoinTable(name = "actividad_users")
-    private Set<Actividad> actividad;
 
 	public Long getId() {
 		return id;
@@ -144,13 +140,6 @@ public class User implements Serializable{
 		this.estado = estado;
 	}
 
-	public Set<Actividad> getActividad() {
-		return actividad;
-	}
-
-	public void setActividad(Set<Actividad> actividad) {
-		this.actividad = actividad;
-	}
 
 	public Cargo getCargo() {
 		return cargo;

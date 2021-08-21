@@ -11,7 +11,7 @@
 			<div class="card-header" th:text="${titulo}"></div>
 			<div class="card-body">
 			
-				<table class="table table-striped table-bordered table-sm">
+				<table class="table  table-striped table-bordered table-sm">
 					<thead>
 						<tr>
 							<th>Id</th>
@@ -20,18 +20,49 @@
 							<th>No</th>
 							<th>N/A</th>
 							<th>Evidencia</th>
+							<th>Editar</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="empresa: ${tercero.extencionPermanente}">
 							<td th:text="${empresa.id}"></td>
-							<td th:text="${empresa.nombre}"></td>
-							<td th:text="${empresa.marca}"></td>
-							<td th:text="${empresa.marca}"></td>
-							<td th:text="${empresa.marca}"></td>
-							<td th:text="${empresa.evidencia}"></td>
+							<td class="col-6" th:text="${empresa.nombre}"></td>
 							
+							<td style="min-width: 50px;">
+							<input th:if="${empresa.marca==true}" type="checkbox"  checked="checked">
+								<input th:unless="${empresa.marca==true}" type="checkbox" >
 							
+							</td>
+							<td style="min-width: 50px;">
+							
+							<input th:if="${empresa.marca==false}" type="checkbox" checked="checked">
+								<input th:unless="${empresa.marca==false}" type="checkbox" >
+								
+							</td>
+							<td style="min-width: 50px;">
+								<input th:if="${empresa.marca==null}" type="checkbox"  checked="checked">
+								<input th:unless="${empresa.marca==null}" type="checkbox" >
+							</td>
+							<td >
+							
+							<span th:if="${empresa.evidencia==null}"
+										href="#"> Sin evidencia</span>
+								 <a th:unless="${empresa.evidencia==null}" class="bg-warning"
+										th:href="@{'../uploads/' + ${empresa.evidencia}}">
+											<span class="fas fa-file-download fa-lg "
+											title="Descargar Evidencia ."></span>
+									</a>
+									
+							
+							</td>
+							
+							<td >
+							<button 
+											th:onclick="modal('/terceros/permanente-form/[[${empresa.id}]]','Tercero')"
+											type="button" class="btn btn-warning btn"> Editar
+							</button> 
+							
+						
 						</tr>
 						
 						

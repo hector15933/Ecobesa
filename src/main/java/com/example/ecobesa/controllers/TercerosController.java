@@ -13,6 +13,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -28,10 +29,12 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.ecobesa.entity.Actividad;
 import com.example.ecobesa.entity.AltoRiesgo;
 import com.example.ecobesa.entity.Empresa;
 import com.example.ecobesa.entity.ExtencionPermanente;
 import com.example.ecobesa.entity.ExtencionTemporal;
+import com.example.ecobesa.entity.Fecha;
 import com.example.ecobesa.entity.Terceros;
 import com.example.ecobesa.paginator.PageRender;
 import com.example.ecobesa.service.IAltoRiesgoService;
@@ -43,6 +46,7 @@ import com.example.ecobesa.service.IUserService;
 
 @Controller
 @SessionAttributes("terceros")
+
 public class TercerosController {
 	
 	@Autowired
@@ -447,5 +451,8 @@ public class TercerosController {
 		return "terceros/ver-temporal";
 	}
 	
+
 	
+	
+
 }

@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: head"></head>
+
+
+<link href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" rel="stylesheet"/>
+<link href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css" rel="stylesheet"/>
+<link href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css" rel="stylesheet"/>
+<link href="https://cdn.datatables.net/fixedheader/3.1.9/css/fixedHeader.dataTables.min.css" rel="stylesheet"/>
+
+
+
+
+<style type="text/css">
+       
+        .cabecera-color {
+            background-color:#67809F !important;
+            color:#FFFFFF;
+            text-align: center;
+        }
+        .font-normal{
+            font-weight: normal;
+        }
+        /* Portrait tablets and small desktops */
+        @media (min-width: 768px) and (max-width: 991px) {
+            .md-text-left{
+                text-align: left !important;
+            }
+        }
+        .table-child {
+  border: black 5px solid;
+}
+.btnLeft:active {
+    
+    cursor: pointer;
+}
+
+    </style>
+<body>
+
+
+	<div id="i18n_eliminar_user" th:text="#{text.user.eliminarOk}"
+		style="display: none;"></div>
+
+	<header th:replace="layout/layout :: header"></header>
+	
+	<div class="container mt-4">
+	    <div id="page-wrapper" class="gray-bg">
+        <div class="wrapper wrapper-content animated fadeIn">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="tabs-container">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li><a id="tab_Famil" class="nav-link" data-toggle="tab" href="#pes_Famil"> RIESGOS </a>
+                            </li>
+                            <li><a id="tab_Clase" class="nav-link" data-toggle="tab" href="#pes_Clase">TIPO DE PELIGRO</a></li>
+                            <li><a id="tab_Prove" class="nav-link" data-toggle="tab" href="#pes_Prove">EVALUACION DEL RIESGO</a>
+                            </li>
+                            <li><a id="tab_Categ" class="nav-link" data-toggle="tab" href="#pes_Categ">TIPOS DE TAREAS</a>
+                            </li>
+                            <li><a id="tab_Marca" class="nav-link" data-toggle="tab" href="#pes_Marca">CONTROLES</a></li>
+                            <li><a id="tab_Tipo" class="nav-link" data-toggle="tab" href="#pes_Tipo">EQUIPO EVALUADOR</a></li>
+                            <!--li><a id="tab_Subti" class="nav-link" data-toggle="tab" href="#pes_Subti">SUBTIPO</a></li>
+                            <li><a id="tab_Varie" class="nav-link" data-toggle="tab" href="#pes_Varie">VARIEDAD</a></li>
+                            <li><a id="tab_Prese" class="nav-link" data-toggle="tab" href="#pes_Prese">PRESENTACIÓN</a>
+                            </li-->
+                        </ul>
+                        <div class="tab-content card bg-light">
+                            <div role="tabpanel" id="pes_Famil" class="tab-pane">
+                                <div class="panel-body">
+                                    <div class="ibox-content">
+                                    <div class="d-flex justify-content-between align-items-end mb-3">
+			<h3 class="pb-1">Gestion de Riesgos</h3>
+			<a href="/riesgos/uploads/simbologia/Libro1.xlsx" class="btn btn-success btn" target="_blank">Matriz: <span class="far fa-file-pdf" title="Reporte"></span> </a>
+			<button onclick="modal('/riesgos/form','Riesgos')" type="button" class="btn btn-primary btn"> Nuevo
+							</button>
+							
+							
+		</div>
+		<label class="col-form-label">CARGO DE TRABAJO</label>
+		<select id="id_cargo" class="form-control  shadow mb-3 bg-white rounded"
+								>
+								<option th:each="tipoDocument : ${listaCargos}"
+									th:value="${tipoDocument.id}" th:text=${tipoDocument.nombre}></option>
+
+							</select> 
+                                       <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="table-responsive">
+                                                    <table id="tbl_ListaFamil"
+                                                            
+                                                            class="table   table-sm display  order-column text-center"  >
+                                                           
+                                                           <thead class="table-bordered">
+                                                           <tr>
+                                                           	<th rowspan="2" class="cabecera-color" id="click-opcion-riesgo">OPCIONES</th>
+                                                           	<th rowspan="2" class="cabecera-color">ID</th>
+                                                           	<th rowspan="2" class="cabecera-color">TIPO DE PELIGRO</th>
+                                                           	<th rowspan="2" class="cabecera-color">NIVEL RIESGO</th>
+                                                           	<th rowspan="2" class="cabecera-color">PELIGRO</th>
+                                                           	<th colspan="2" class="cabecera-color">Riesgo</th>
+                                                    
+                                                           	<th rowspan="2" class="cabecera-color">VINCULO LEGAL</th>
+                                                           	<th rowspan="2" class="cabecera-color">SIMBOLOGIA</th>
+                                                           </tr>
+                                                           <tr>
+                                                           <th  class="cabecera-color">EVENTO PELIGROSO</th>
+                                                           	<th  class="cabecera-color">CONSECUENCIAS</th>
+                                                           	</tr>
+                                                           
+                                                           </thead>
+                                                           
+                                                           
+                                                           
+                                                           </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" id="pes_Clase" class="tab-pane">
+                                <div class="panel-body">
+                                    <div class="ibox-content">
+                                       
+					         <div class="d-flex justify-content-between align-items-end mb-3">
+								<h3 class="pb-1">Tipos de Riesgos</h3>
+								<button onclick="modal('/tipo-riesgos/form','Tipo de Riesgos')" type="button" class="btn btn-primary btn"> Nuevo
+												</button>
+							</div>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="table-responsive">
+                                                    <table id="tbl_ListaClase"
+                                                           class="table table-sm display  table-condensed"
+                                                           width="100%">
+                                                           
+                                                            <thead class="table-bordered">
+                                                            <tr>
+                                                            	<th  class="cabecera-color" id="click-opcion-tipo">OPCIONES</th>
+                                                            	<th  class="cabecera-color">ID</th>
+		                                                          <th  class="cabecera-color">NOMBRE</th>
+		                                                          <th  class="cabecera-color">CODIGO</th>
+                                                           	</tr>
+                                                           
+                                                           </thead>
+                                                           
+                                                           </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" id="pes_Prove" class="tab-pane">
+                                <div class="panel-body">
+                                    <div class="ibox-content">
+                                       
+					         <div class="d-flex justify-content-between align-items-end mb-3">
+								<h3 class="pb-1">Evaluacion del Riesgo</h3>
+								<button onclick="modal('/tipo-riesgos/form','Tipo de Riesgos')" type="button" class="btn btn-primary btn"> Nuevo
+												</button>
+							</div>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="table-responsive">
+                                                    <table id="tbl_ListaEvaluacionRiesgo"
+                                                           class="table table-sm display  table-condensed"
+                                                           width="100%">
+                                                           
+                                                            <thead class="table-bordered">
+                                                            <tr>
+                                                            	<th rowspan="2"  class="cabecera-color" id="click-opcion-tipo">OPCIONES</th>
+                                                            	<th rowspan="2"  class="cabecera-color">INDICE</th>
+                                                            	<th colspan="4"  class="cabecera-color">PROBABILIDAD A+B+C+D</th>
+                                                            	<th rowspan="2"  class="cabecera-color">SEVERIDAD (Consecuencia)</th>
+                                                            	<th colspan="4"  class="cabecera-color">ESTIMACION DEL RIESGO</th>
+                                                            </tr>
+                                                            <tr>	
+		                                                        <th   class="cabecera-color">PERSONAS EXPUESTAS</th>
+		                                                        <th   class="cabecera-color">CONTROLES EXISTENTES</th>
+		                                                        <th   class="cabecera-color">CAPACITACION Y CAPACIDADES HUMANAS</th>
+		                                                        <th   class="cabecera-color">EXPOSICION AL RIESGO</th>
+		                                                        <th   class="cabecera-color">GRADO DEL RIESGO </th>
+		                                                        <th  class="cabecera-color">NIVEL DEL RIESGO</th>		                                                           
+                                                           	</tr>
+                                                           
+                                                           </thead>
+                                                           
+                                                           </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" id="pes_Categ" class="tab-pane">
+                                <div class="panel-body">
+                                    <div class="ibox-content">
+                                       
+                                          <div class="d-flex justify-content-between align-items-end mb-3">
+								<h3 class="pb-1">Tipos de Tareas</h3>
+								<button onclick="modal('/tipo-tareas/form','Tipo de Tareas')" type="button" class="btn btn-primary btn"> Nuevo
+												</button>
+							</div>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="table-responsive">
+                                                    <table id="tbl_ListaCateg"
+                                                           class="table table-sm display  table-condensed"
+                                                           width="100%">
+                                                           
+                                                           <thead class="table-bordered">
+                                                            <tr>
+                                                            	<th  class="cabecera-color" id="click-opcion-tipo">OPCIONES</th>
+                                                            	<th  class="cabecera-color">ID</th>
+		                                                          <th  class="cabecera-color">NOMBRE</th>
+		                                                          <th  class="cabecera-color">CODIGO</th>
+		                                                          <th  class="cabecera-color">DESCRIPCION</th>
+                                                           	</tr>
+                                                           
+                                                           </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" id="pes_Marca" class="tab-pane">
+                                <div class="panel-body">
+                                    <div class="ibox-content">
+                                        <form method="post"  onsubmit="return false;">
+                                            
+                                            <div class="form-group row">
+                                            <div class="col-sm-1"> <label class="col-form-label">Sede:</label></div>
+                                                      
+                                                <div class="col-sm-2">
+                                              
+                                                 
+                                                            <select class="form-control"
+                                                                    name="sel_ListaEstadMarca" id="sel_ListaEstadMarca"
+                                                                    >
+                                                                <option
+                                                                        value="A">Lima
+                                                                </option>
+                                                              
+                                                            </select>
+                                                    
+                                                </div>
+                                            </div>
+                                                
+
+                                        </form>
+                                                                                <div class="d-flex justify-content-between align-items-end mb-3">
+								<h3 class="pb-1">Controles Riesgo</h3>
+								<button onclick="modal('/controles-riesgo/form','Tipo de Tareas')" type="button" class="btn btn-primary btn"> Nuevo
+												</button>
+							</div>
+                                        
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="table-responsive">
+                                                    <table id="tbl_ListaMarca"
+                                                           class="table table-sm display  table-condensed"
+                                                           width="100%">
+                                                           
+                                                             <thead class="table-bordered">
+                                                            <tr>
+                                                            	<th  class="cabecera-color" id="click-opcion-tipo">OPCIONES</th>
+                                                            	<th  class="cabecera-color">ID</th>                                     
+		                                                          <th  class="cabecera-color">¿QUÉ?</th>
+		                                                          <th  class="cabecera-color">¿CUÁNDO?</th>
+		                                                          <th  class="cabecera-color">¿CÓMO?</th>
+		                                                          <th  class="cabecera-color">¿QUIÉN?</th>
+		                                                          <th  class="cabecera-color">¿POR QUÉ?</th>
+		                                                          <th  class="cabecera-color">¿DÓNDE?</th>
+                                                           	</tr>
+                                                           
+                                                           </thead>
+                                                           
+                                                           
+                                                           </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" id="pes_Tipo" class="tab-pane">
+                                <div class="panel-body">
+                                    <div class="ibox-content">
+                                        <div class="d-flex justify-content-between align-items-end mb-3">
+								<h3 class="pb-1">Equipo Evaluador</h3>
+								<button onclick="modal('/equipo-evaluador/form','Tipo de Tareas')" type="button" class="btn btn-primary btn"> Nuevo
+												</button>
+							</div>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="table-responsive">
+                                                    <table id="tbl_ListaTipos"
+                                                           class="table table-sm display  table-condensed"
+                                                           width="100%">
+                                                           
+                                                                                                                  <thead class="table-bordered">
+                                                            <tr>
+                                                            	<th  class="cabecera-color" id="click-opcion-tipo">OPCIONES</th>
+                                                            	<th  class="cabecera-color">ID</th>
+		                                                          <th  class="cabecera-color">NOMBRE</th>
+		                                                          <th  class="cabecera-color">CARGO</th>
+                                                           	</tr>    
+                                                           
+                                                           </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" id="pes_Subti" class="tab-pane">
+                                <div class="panel-body">
+                                    <div class="ibox-content">
+                                        <form method="post" class="form-horizontal" onsubmit="return false;">
+                                            <div class="form-group col-lg-12 col-sm-12 col-xs-12 del-padding-lados">
+                                                <label class="col-lg-1 col-md-1 col-sm-2  col-xs-12 control-label lg-margin-top sm-margin-top md-margin-top">SUBTIPO</label>
+                                                <div class="col-lg-6 col-md-5 col-sm-4 col-xs-12 lg-margin-top sm-margin-top md-margin-top">
+                                                    <input type="text" class="form-control input-sm col-lg-2"
+                                                           style="width:100px" name="tex_CodigSubti" id="tex_CodigSubti"
+                                                           placeholder="N. CORTO">
+                                                    <input type="text" class="form-control input-sm col-lg-10"
+                                                           style="width:200px" name="tex_DescrSubti"
+                                                           id="tex_DescrSubti" placeholder="DESCRIPCIÓN">
+                                                </div>
+                                                <div class="col-lg-3 col-md-7 col-sm-7 col-xs-12">
+                                                    <label class="col-lg-3 col-md-1 col-sm-1 col-xs-12  lg-text-right md-text-left lg-padding-left control-label lg-margin-top sm-margin-top md-margin-top">ESTADO </label>
+                                                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 lg-margin-top sm-margin-top md-margin-top lg-padding-leftRight">
+                                                        <div class="btn-group bootstrap-select form-control input-sm">
+                                                            <select class="form-control input-sm selectpicker"
+                                                                    name="sel_ListaEstadSubti" id="sel_ListaEstadSubti"
+                                                                    tabindex="-98">
+                                                                <option data-content="<span class='label label-primary'>ACTIVO</span>"
+                                                                        value="A">ACTIVO
+                                                                </option>
+                                                                <option data-content="<span class='label label-danger'>INACTIVO</span>"
+                                                                        value="I">INACTIVO
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2 col-md-5 col-sm-5 col-xs-12 lg-margin-top sm-margin-top md-margin-top lg-padding-leftRight">
+                                                    <button type="button" class="btn btn-sm btn-success col-xs-12 "
+                                                            name="bot_NuevoSubti" id="bot_NuevoSubti">
+                                                        <i class="fa fa-file"></i> Nuevo
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="table-responsive">
+                                                    <table id="tbl_ListaSubti"
+                                                           class="table table-striped table-bordered table-hover table-condensed"
+                                                           width="100%"></table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" id="pes_Varie" class="tab-pane">
+                                <div class="panel-body">
+                                    <div class="ibox-content">
+                                        <form method="post" class="form-horizontal" onsubmit="return false;">
+                                            <div class="form-group col-lg-12 col-sm-12 col-xs-12 del-padding-lados">
+                                                <label class="col-lg-1 col-md-1 col-sm-2  col-xs-12 control-label lg-margin-top sm-margin-top md-margin-top">VARIEDAD</label>
+                                                <div class="col-lg-4 col-md-5 col-sm-4 col-xs-12 lg-margin-top sm-margin-top md-margin-top">
+                                                    <input type="text" class="form-control input-sm col-lg-2"
+                                                           style="width:100px" name="tex_CodigVarie" id="tex_CodigVarie"
+                                                           placeholder="N. CORTO">
+                                                    <input type="text" class="form-control input-sm col-lg-10"
+                                                           style="width:250px" name="tex_DescrVarie"
+                                                           id="tex_DescrVarie" placeholder="DESCRIPCIÓN">
+                                                </div>
+                                                <div class="col-lg-5 col-md-7 col-sm-7 col-xs-12">
+                                                    <label class="col-lg-3 col-md-1 col-sm-1 col-xs-12  lg-text-right md-text-left lg-padding-left control-label lg-margin-top sm-margin-top md-margin-top">ESTADO </label>
+                                                    <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12 lg-margin-top sm-margin-top md-margin-top lg-padding-leftRight">
+                                                        <div class="btn-group bootstrap-select form-control input-sm">
+                                                            <select class="form-control input-sm selectpicker"
+                                                                    name="sel_ListaEstadVarie" id="sel_ListaEstadVarie"
+                                                                    tabindex="-98">
+                                                                <option data-content="<span class='label label-primary'>ACTIVO</span>"
+                                                                        value="A">ACTIVO
+                                                                </option>
+                                                                <option data-content="<span class='label label-danger'>INACTIVO</span>"
+                                                                        value="I">INACTIVO
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2 col-md-5 col-sm-5 col-xs-12 lg-margin-top sm-margin-top md-margin-top lg-padding-leftRight">
+                                                    <button type="button" class="btn btn-sm btn-success col-xs-12 "
+                                                            name="bot_NuevaVarie" id="bot_NuevaVarie">
+                                                        <i class="fa fa-file"></i> Nueva
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="table-responsive">
+                                                    <table id="tbl_ListaVarie"
+                                                           class="table table-striped table-bordered table-hover table-condensed"
+                                                           width="100%"></table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" id="pes_Prese" class="tab-pane">
+                                <div class="panel-body">
+                                    <div class="ibox-content">
+                                        <form method="post" class="form-horizontal" onsubmit="return false;">
+
+                                            <div class="form-group col-lg-12 col-sm-12 col-xs-12 del-padding-lados">
+                                                <label class="col-lg-1 col-md-1 col-sm-2  col-xs-12 control-label lg-margin-top sm-margin-top md-margin-top">PRESENTACIÓN</label>
+                                                <div class="col-lg-4 col-md-5 col-sm-4 col-xs-12 lg-margin-top sm-margin-top md-margin-top">
+                                                    <input type="text" class="form-control input-sm col-lg-2 text-uppercase"
+                                                           style="width:100px" name="tex_AbrevPrese" id="tex_AbrevPrese"
+                                                           placeholder="ABREV.">
+                                                    <input type="text" class="form-control input-sm col-lg-10 text-uppercase"
+                                                           style="width:250px" name="tex_DescrPrese"
+                                                           id="tex_DescrPrese" placeholder="DESCRIPCIÓN">
+
+                                                    <%--<input type="text" class="form-control input-sm col-lg-2"--%>
+                                                           <%--name="tex_AbrevPrese" id="tex_AbrevPrese"--%>
+                                                           <%--placeholder="ABREV.">--%>
+                                                    <%--<input type="text" class="form-control input-sm col-lg-10"--%>
+                                                           <%--name="tex_DescrPrese"--%>
+                                                           <%--id="tex_DescrPrese" placeholder="DESCRIPCIÓN">--%>
+                                                </div>
+
+                                                <label class="col-lg-1 col-md-1 col-sm-2  col-xs-12 control-label lg-margin-top sm-margin-top md-margin-top">ENVASE</label>
+                                                <div class="col-lg-2 col-md-5 col-sm-4 col-xs-12 lg-margin-top sm-margin-top md-margin-top">
+                                                    <select class="col-xs-12 form-control input-sm selectpicker " name="cboEnvase" id="cboEnvase" data-live-search="true">
+                                                        <option value='0'>--- TODOS ---</option>
+                                                    </select>
+                                                </div>
+                                                <label class="col-lg-1 col-md-1 col-sm-2  col-xs-12 control-label lg-margin-top sm-margin-top md-margin-top">CAPACIDAD</label>
+                                                <div class="col-lg-2 col-md-5 col-sm-4 col-xs-12 lg-margin-top sm-margin-top md-margin-top">
+                                                    <select class="col-xs-12 form-control input-sm selectpicker " name="cboCantidad" id="cboCantidad" data-live-search="true">
+                                                        <option value='0'>--- TODOS ---</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group col-lg-12 col-sm-12 col-xs-12 del-padding-lados">
+                                                <label class="col-lg-1 col-md-1 col-sm-2  col-xs-12 control-label lg-margin-top sm-margin-top md-margin-top">UNIDAD</label>
+                                                <div class="col-lg-3 col-md-5 col-sm-4 col-xs-12 lg-margin-top sm-margin-top md-margin-top">
+                                                    <select class="col-xs-12 form-control input-sm selectpicker " name="cboUnidad" id="cboUnidad" data-live-search="true">
+                                                        <option value='0'>--- TODOS ---</option>
+                                                    </select>
+                                                </div>
+                                                <label class="col-lg-1 col-md-1 col-sm-2 col-xs-12  lg-text-right md-text-left lg-padding-left control-label lg-margin-top sm-margin-top md-margin-top">ESTADO </label>
+                                                <div class="col-lg-3 col-md-5 col-sm-4 col-xs-12 lg-margin-top sm-margin-top md-margin-top">
+                                                    <div class="btn-group bootstrap-select form-control input-sm">
+                                                        <select class="form-control input-sm selectpicker"
+                                                                name="sel_ListaEstadPrese" id="sel_ListaEstadPrese"
+                                                                tabindex="-98">
+                                                            <option data-content="<span class='label label-primary'>ACTIVO</span>"
+                                                                    value="A">ACTIVO
+                                                            </option>
+                                                            <option data-content="<span class='label label-danger'>INACTIVO</span>"
+                                                                    value="I">INACTIVO
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2 col-md-5 col-sm-5 col-xs-12 lg-margin-top sm-margin-top md-margin-top lg-padding-leftRight">
+                                                    <button type="button" class="btn btn-sm btn-success col-xs-10 "
+                                                            name="bot_ConfigAtrib" id="bot_ConfigAtrib">
+                                                        <i class="fa fa-cog"></i> Conf. Atrib
+                                                    </button>
+                                                </div>
+                                                <div class="col-lg-2 col-md-5 col-sm-5 col-xs-12 lg-margin-top sm-margin-top md-margin-top lg-padding-leftRight">
+                                                    <button type="button" class="btn btn-sm btn-success col-xs-10 "
+                                                            name="bot_NuevaPrese" id="bot_NuevaPrese">
+                                                        <i class="fa fa-file"></i> Nueva
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="table-responsive">
+                                                    <table id="tbl_ListaPrese"
+                                                           class="table table-striped table-bordered table-hover table-condensed"
+                                                           width="100%"></table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<footer th:replace="layout/layout :: footer"></footer>
+	<input type="hidden" id="urlenviar" th:value="@{/riesgos/riesgos/}" />
+	<script th:src="@{/js/searchbar.js}"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+	<script th:src="@{/templates/riesgos.js}"></script>
+	<script th:src="@{/templates/tipo-riesgo.js}"></script>
+	<script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js" ></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js" ></script>
+</body>
+
+</html>

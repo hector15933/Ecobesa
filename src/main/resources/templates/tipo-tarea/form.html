@@ -1,0 +1,62 @@
+
+
+<div class="card-body">
+
+	<div th:object="${riesgos}" th:remove="tag">
+		<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+			<li th:each="err: ${#fields.errors('*')}" th:text="${err}"></li>
+		</ul>
+	</div>
+	<form th:action="@{/riesgos/form}" th:object="${riesgos}"
+		method="post" enctype="multipart/form-data">
+
+		<div class="form-group row">
+		
+		
+						<div class="col-sm-10">
+							
+
+						</div>
+
+
+	
+		<div class="col-sm-12">
+						<label class="col-form-label">NOMBRE </label>
+						
+						<input
+					type="text" th:field="*{nombre}" class="form-control shadow" required
+					th:errorclass="'form-control alert-danger'" />
+		</div>
+		<div class="col-sm-12">
+						<label class="col-form-label">CODIGO </label>
+						
+						<input
+					type="text" th:field="*{codigo}" class="form-control shadow" required
+					th:errorclass="'form-control alert-danger'" />
+						<br><br>
+	
+		</div>
+		<div class="col-sm-12">
+						<label class="col-form-label">DESCRIPCCION </label>
+						
+						<input
+					type="text" th:field="*{descripcion}" class="form-control shadow" required
+					th:errorclass="'form-control alert-danger'" />
+						<br><br>
+	
+		</div>
+	
+			
+
+			<div class="col-sm-12">
+				<input type="submit" th:value="${titulo}" class="btn btn-secondary" />
+			</div>
+			
+			
+
+
+		</div>
+
+	</form>
+</div>
+

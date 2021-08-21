@@ -551,3 +551,124 @@ INSERT INTO planner_safety(titulo,fecha,hora,estado) VALUES('Capacitacion de erg
 INSERT INTO planner_safety(titulo,fecha,hora,estado) VALUES('Capacitacion de ergonommia.Josaft La Rosa.Oficina de Ventas','2021/03/10','13:00:59',false);
 
 
+INSERT INTO tipo_riesgos(nombre,codigo,empresa) VALUES('FISICO','FIS',1);
+INSERT INTO tipo_riesgos(nombre,codigo,empresa) VALUES('QUÍMICO','QUI',1);
+INSERT INTO tipo_riesgos(nombre,codigo,empresa) VALUES('BIOLÓGICO','BIO',1);
+INSERT INTO tipo_riesgos(nombre,codigo,empresa) VALUES('ERGONOMICO','ERG',1);
+INSERT INTO tipo_riesgos(nombre,codigo,empresa) VALUES('MECANICO','MEC',1);
+INSERT INTO tipo_riesgos(nombre,codigo,empresa) VALUES('ELECTRICO','ELE',1);
+INSERT INTO tipo_riesgos(nombre,codigo,empresa) VALUES('LOCATIVO','FEX',1);
+INSERT INTO tipo_riesgos(nombre,codigo,empresa) VALUES('PSICOSOCIAL','PSC',1);
+INSERT INTO tipo_riesgos(nombre,codigo,empresa) VALUES('PSICOLABORAL','PSI',1);
+INSERT INTO tipo_riesgos(nombre,codigo,empresa) VALUES('OTRO','OTR',1);
+
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Sustancias Químicas, Vapores, Compuestos o productos químicos en general','',2);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Polvo (Material Particulado)','',2);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Humos Metalicos','',2);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Gases y Vapores','',2);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Neblinas','',2);
+
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Movimientos Repetitivos','',4);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Espacio Inadecuado de Trabajo','',4);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Iluminación Inadecuada','',4);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Sobreesfuerzo','',4);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Postura Inadecuada','',4);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Carga Estatica (Trabajo de pie, sentado y posturas invariantes)','',4);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Manipulacion manual de carga inadecuada','',4);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Diseño puesto de trabajo ( altura de plano de trabajo, ubicación de controles, equipos)','',4);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Uso en tiempo prolongados de pantalla de visualizacion - PC','',4);
+
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Agentes Biológicos','',3);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Animales / Insectos','',3);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Virus','',3);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Bacterias','',3);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Hongos','',3);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Parasitos','',3);
+
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Contenido de la tarea (Monotonia, Repetitividad)','',9);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Relaciones Humanas(Jefes, colegas, subordinados)','',9);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Organización del tiempo de trabajo (Ritmo, Pausas, Turnos)','',9);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Gestion de personal (Induccion, Capacitacion, Evaluacion y desempeño)','',9);
+
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Ruido','',1);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Vibraciones','',1);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Radiaciones No Ionizantes','',1);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Frío','',1);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Corrientes de aire','',1);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Ventilación','',1);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Humedad','',1);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Presión Atmosférica','',1);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Radiaciones Ionizantes','',1);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Rayos UV','',1);
+
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Carga en Movimiento','',1);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Manipulación de Herramientas/objetos','',5);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Fluidos a Presión, Equipo Presurizado','',5);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Objetos/Equipos','',5);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Partículas en Proyección','',5);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Sistemas de transmision en movimiento','',5);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Recipientes a Presion','',5);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Puntos Ciegos de montacarguistas','',5);
+
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Material Inflamable','',7);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Material Inflamable; Fluidos a Presión, Equipo Presurizado','',7);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Vidrios, objetos punzocortantes','',7);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Superficie de trabajo defectuosas ','',7);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Escaleras, plataformas, anadamios','',7);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Apilamiento de materiales','',7);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Transito por debajo de estructura de baja altura','',7);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Señalizacion de transito peatonal','',7);
+
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Energía Eléctrica','',6);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Electricidad Directa','',6);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Electricidad Indirecta','',6);
+INSERT INTO tipo_riesgo_child(nombre,simbologia,tipo_riesgo) VALUES('Electricidad Estatica','',6);
+
+
+
+INSERT INTO riesgos(tipo_riesgo_id,peligro,evento_peligroso,consecuencias,vinculo_legal,simbologia,probabilidad,severidad,nivel_riesgo,cargo) VALUES(1,'Ruido','Exposición a Ruido','Pérdida Auditiva Inducida por Ruido (Hipoacusia), Nerviosismo','42F (Art.1283 al 1286) ','image8.png',2,4,'MEDIO',1);
+INSERT INTO riesgos(tipo_riesgo_id,peligro,evento_peligroso,consecuencias,vinculo_legal,simbologia,probabilidad,severidad,nivel_riesgo,cargo) VALUES(1,'Ruido','Exposición a Ruido','Pérdida Auditiva Inducida por Ruido (Hipoacusia), Nerviosismo','42F (Art.1283 al 1286) ','image2.png',2,4,'BAJO',1);
+INSERT INTO riesgos(tipo_riesgo_id,peligro,evento_peligroso,consecuencias,vinculo_legal,simbologia,probabilidad,severidad,nivel_riesgo,cargo) VALUES(2,'Ruido','Exposición a Ruido','Pérdida Auditiva Inducida por Ruido (Hipoacusia), Nerviosismo','42F (Art.1283 al 1286) ','image3.png',2,4,'MEDIO',1);
+INSERT INTO riesgos(tipo_riesgo_id,peligro,evento_peligroso,consecuencias,vinculo_legal,simbologia,probabilidad,severidad,nivel_riesgo,cargo) VALUES(1,'Ruido','Exposición a Ruido','Pérdida Auditiva Inducida por Ruido (Hipoacusia), Nerviosismo','42F (Art.1283 al 1286) ','image4.png',2,4,'ALTO',1);
+INSERT INTO riesgos(tipo_riesgo_id,peligro,evento_peligroso,consecuencias,vinculo_legal,simbologia,probabilidad,severidad,nivel_riesgo,cargo) VALUES(1,'Ruido','Exposición a Ruido','Pérdida Auditiva Inducida por Ruido (Hipoacusia), Nerviosismo','42F (Art.1283 al 1286) ','image5.png',2,4,'MEDIO',1);
+INSERT INTO riesgos(tipo_riesgo_id,peligro,evento_peligroso,consecuencias,vinculo_legal,simbologia,probabilidad,severidad,nivel_riesgo,cargo) VALUES(1,'Ruido','Exposición a Ruido','Pérdida Auditiva Inducida por Ruido (Hipoacusia), Nerviosismo','42F (Art.1283 al 1286) ','image7.png',2,4,'BAJO',1);
+INSERT INTO riesgos(tipo_riesgo_id,peligro,evento_peligroso,consecuencias,vinculo_legal,simbologia,probabilidad,severidad,nivel_riesgo,cargo) VALUES(1,'Ruido','Exposición a Ruido','Pérdida Auditiva Inducida por Ruido (Hipoacusia), Nerviosismo','42F (Art.1283 al 1286) ','image8.png',2,4,'MEDIO',1);
+INSERT INTO riesgos(tipo_riesgo_id,peligro,evento_peligroso,consecuencias,vinculo_legal,simbologia,probabilidad,severidad,nivel_riesgo,cargo) VALUES(1,'Ruido','Exposición a Ruido','Pérdida Auditiva Inducida por Ruido (Hipoacusia), Nerviosismo','42F (Art.1283 al 1286) ','image8.png',2,4,'ALTO',1);
+INSERT INTO riesgos(tipo_riesgo_id,peligro,evento_peligroso,consecuencias,vinculo_legal,simbologia,probabilidad,severidad,nivel_riesgo,cargo) VALUES(2,'Ruido','Exposición a Ruido','Pérdida Auditiva Inducida por Ruido (Hipoacusia), Nerviosismo','42F (Art.1283 al 1286) ','image8.png',2,4,'MEDIO',1);
+INSERT INTO riesgos(tipo_riesgo_id,peligro,evento_peligroso,consecuencias,vinculo_legal,simbologia,probabilidad,severidad,nivel_riesgo,cargo) VALUES(1,'Ruido','Exposición a Ruido','Pérdida Auditiva Inducida por Ruido (Hipoacusia), Nerviosismo','42F (Art.1283 al 1286) ','image8.png',2,4,'MEDIO',1);
+INSERT INTO riesgos(tipo_riesgo_id,peligro,evento_peligroso,consecuencias,vinculo_legal,simbologia,probabilidad,severidad,nivel_riesgo,cargo) VALUES(3,'Ruido','Exposición a Ruido','Pérdida Auditiva Inducida por Ruido (Hipoacusia), Nerviosismo','42F (Art.1283 al 1286) ','image8.png',2,4,'MEDIO',1);
+INSERT INTO riesgos(tipo_riesgo_id,peligro,evento_peligroso,consecuencias,vinculo_legal,simbologia,probabilidad,severidad,nivel_riesgo,cargo) VALUES(4,'Ruido','Exposición a Ruido','Pérdida Auditiva Inducida por Ruido (Hipoacusia), Nerviosismo','42F (Art.1283 al 1286) ','image8.png',2,4,'MEDIO',1);
+INSERT INTO riesgos(tipo_riesgo_id,peligro,evento_peligroso,consecuencias,vinculo_legal,simbologia,probabilidad,severidad,nivel_riesgo,cargo) VALUES(5,'Ruido','Exposición a Ruido','Pérdida Auditiva Inducida por Ruido (Hipoacusia), Nerviosismo','42F (Art.1283 al 1286) ','image8.png',2,4,'BAJO',1);
+INSERT INTO riesgos(tipo_riesgo_id,peligro,evento_peligroso,consecuencias,vinculo_legal,simbologia,probabilidad,severidad,nivel_riesgo,cargo) VALUES(1,'Ruido','Exposición a Ruido','Pérdida Auditiva Inducida por Ruido (Hipoacusia), Nerviosismo','42F (Art.1283 al 1286) ','image8.png',2,4,'MEDIO',1);
+INSERT INTO riesgos(tipo_riesgo_id,peligro,evento_peligroso,consecuencias,vinculo_legal,simbologia,probabilidad,severidad,nivel_riesgo,cargo) VALUES(1,'Ruido','Exposición a Ruido','Pérdida Auditiva Inducida por Ruido (Hipoacusia), Nerviosismo','42F (Art.1283 al 1286) ','image8.png',2,4,'MEDIO',2);
+INSERT INTO riesgos(tipo_riesgo_id,peligro,evento_peligroso,consecuencias,vinculo_legal,simbologia,probabilidad,severidad,nivel_riesgo,cargo) VALUES(1,'Ruido','Exposición a Ruido','Pérdida Auditiva Inducida por Ruido (Hipoacusia), Nerviosismo','42F (Art.1283 al 1286) ','image8.png',2,4,'MEDIO',2);
+INSERT INTO riesgos(tipo_riesgo_id,peligro,evento_peligroso,consecuencias,vinculo_legal,simbologia,probabilidad,severidad,nivel_riesgo,cargo) VALUES(1,'Ruido','Exposición a Ruido','Pérdida Auditiva Inducida por Ruido (Hipoacusia), Nerviosismo','42F (Art.1283 al 1286) ','image8.png',2,4,'MEDIO',2);
+INSERT INTO riesgos(tipo_riesgo_id,peligro,evento_peligroso,consecuencias,vinculo_legal,simbologia,probabilidad,severidad,nivel_riesgo,cargo) VALUES(1,'Ruido','Exposición a Ruido','Pérdida Auditiva Inducida por Ruido (Hipoacusia), Nerviosismo','42F (Art.1283 al 1286) ','image8.png',2,4,'ALTO',2);
+INSERT INTO riesgos(tipo_riesgo_id,peligro,evento_peligroso,consecuencias,vinculo_legal,simbologia,probabilidad,severidad,nivel_riesgo,cargo) VALUES(1,'Ruido','Exposición a Ruido','Pérdida Auditiva Inducida por Ruido (Hipoacusia), Nerviosismo','42F (Art.1283 al 1286) ','image8.png',2,4,'MEDIO',2);
+INSERT INTO riesgos(tipo_riesgo_id,peligro,evento_peligroso,consecuencias,vinculo_legal,simbologia,probabilidad,severidad,nivel_riesgo,cargo) VALUES(2,'Ruido','Exposición a Ruido','Pérdida Auditiva Inducida por Ruido (Hipoacusia), Nerviosismo','42F (Art.1283 al 1286) ','image8.png',2,4,'MEDIO',2);
+INSERT INTO riesgos(tipo_riesgo_id,peligro,evento_peligroso,consecuencias,vinculo_legal,simbologia,probabilidad,severidad,nivel_riesgo,cargo) VALUES(3,'Ruido','Exposición a Ruido','Pérdida Auditiva Inducida por Ruido (Hipoacusia), Nerviosismo','42F (Art.1283 al 1286) ','image8.png',2,4,'MEDIO',2);
+INSERT INTO riesgos(tipo_riesgo_id,peligro,evento_peligroso,consecuencias,vinculo_legal,simbologia,probabilidad,severidad,nivel_riesgo,cargo) VALUES(4,'Ruido','Exposición a Ruido','Pérdida Auditiva Inducida por Ruido (Hipoacusia), Nerviosismo','42F (Art.1283 al 1286) ','image8.png',2,4,'MEDIO',3);
+INSERT INTO riesgos(tipo_riesgo_id,peligro,evento_peligroso,consecuencias,vinculo_legal,simbologia,probabilidad,severidad,nivel_riesgo,cargo) VALUES(1,'Ruido','Exposición a Ruido','Pérdida Auditiva Inducida por Ruido (Hipoacusia), Nerviosismo','42F (Art.1283 al 1286) ','image8.png',2,4,'BAJO',3);
+INSERT INTO riesgos(tipo_riesgo_id,peligro,evento_peligroso,consecuencias,vinculo_legal,simbologia,probabilidad,severidad,nivel_riesgo,cargo) VALUES(1,'Ruido','Exposición a Ruido','Pérdida Auditiva Inducida por Ruido (Hipoacusia), Nerviosismo','42F (Art.1283 al 1286) ','image8.png',2,4,'MEDIO',3);
+INSERT INTO riesgos(tipo_riesgo_id,peligro,evento_peligroso,consecuencias,vinculo_legal,simbologia,probabilidad,severidad,nivel_riesgo,cargo) VALUES(2,'Ruido','Exposición a Ruido','Pérdida Auditiva Inducida por Ruido (Hipoacusia), Nerviosismo','42F (Art.1283 al 1286) ','image8.png',2,4,'MEDIO',3);
+INSERT INTO riesgos(tipo_riesgo_id,peligro,evento_peligroso,consecuencias,vinculo_legal,simbologia,probabilidad,severidad,nivel_riesgo,cargo) VALUES(1,'Ruido','Exposición a Ruido','Pérdida Auditiva Inducida por Ruido (Hipoacusia), Nerviosismo','42F (Art.1283 al 1286) ','image8.png',2,4,'MEDIO',3);
+INSERT INTO riesgos(tipo_riesgo_id,peligro,evento_peligroso,consecuencias,vinculo_legal,simbologia,probabilidad,severidad,nivel_riesgo,cargo) VALUES(4,'Ruido','Exposición a Ruido','Pérdida Auditiva Inducida por Ruido (Hipoacusia), Nerviosismo','42F (Art.1283 al 1286) ','image8.png',2,4,'MEDIO',3);
+INSERT INTO riesgos(tipo_riesgo_id,peligro,evento_peligroso,consecuencias,vinculo_legal,simbologia,probabilidad,severidad,nivel_riesgo,cargo) VALUES(5,'Ruido','Exposición a Ruido','Pérdida Auditiva Inducida por Ruido (Hipoacusia), Nerviosismo','42F (Art.1283 al 1286) ','image8.png',2,4,'MEDIO',3);
+INSERT INTO riesgos(tipo_riesgo_id,peligro,evento_peligroso,consecuencias,vinculo_legal,simbologia,probabilidad,severidad,nivel_riesgo,cargo) VALUES(5,'Ruido','Exposición a Ruido','Pérdida Auditiva Inducida por Ruido (Hipoacusia), Nerviosismo','42F (Art.1283 al 1286) ','image8.png',2,4,'MEDIO',3);
+INSERT INTO riesgos(tipo_riesgo_id,peligro,evento_peligroso,consecuencias,vinculo_legal,simbologia,probabilidad,severidad,nivel_riesgo,cargo) VALUES(6,'Ruido','Exposición a Ruido','Pérdida Auditiva Inducida por Ruido (Hipoacusia), Nerviosismo','42F (Art.1283 al 1286) ','image8.png',2,4,'MEDIO',3);
+
+
+
+INSERT INTO evaluacion_riesgo(personas_expuestas,controles_existentes,capacitacion_capacidades_humanas,expocicion_riesgo,severidad_consecuencia,grado_riesgo,nivel_riesgo) VALUES('De 1 a 3','Existen son satisfactorios y suficientes','Personal entrenado conoce el peligro y lo previene','Al menos 1 vez al año (S)','Lesión sin incapacidad (S)','Trivial (T)','4');
+INSERT INTO evaluacion_riesgo(personas_expuestas,controles_existentes,capacitacion_capacidades_humanas,expocicion_riesgo,severidad_consecuencia,grado_riesgo,nivel_riesgo) VALUES('De 4  a 12','Existen parcialmente y nos son satisfactorioo suficientes ','Personal parcialmente entrenado conoce el peligro, pero no toma acciones de control','Eventualmente (SO)','Daño a la salud reversible','Importante (I)','De 17 a 24');
+INSERT INTO evaluacion_riesgo(personas_expuestas,controles_existentes,capacitacion_capacidades_humanas,expocicion_riesgo,severidad_consecuencia,grado_riesgo,nivel_riesgo) VALUES('Más de  12','No existen ','Personal no entrenado,no conoce el peligro,no toma acciones de control','Al menos 1 vez al dia  (S)','Lesión con incapacidad permanente  (S)','Intolerable (IT)','De 25 a 36');
+
+INSERT INTO tipo_tareas(nombre,codigo,descripcion) VALUES('RUTINARIA','R','Son aquellas tareas operacionales, en las que se desarrolla de manera continua de acuerdo a parametros de operación especificas o establecidos previamente.   ');
+INSERT INTO tipo_tareas(nombre,codigo,descripcion) VALUES('NO RUTINARIA','NR',' Son aquellas por la que se detiene la continuidad de la tarea o actividad y están vinculadas a los trabajos de limpieza, reparación y mantenimiento, ejemplo, paradas cortas de máquina por fallas, cambios de formato, arranques y paradas de Planta (al finalizar o iniciar un periodo de producción o en un mantenimiento preventivo), implementación de nuevos procesos de trabajo y otros. ');
+INSERT INTO tipo_tareas(nombre,codigo,descripcion) VALUES('EMERGENCIA','E','Son aquellas no deseadas que pueden ocurrir repentinamente en el desarrollo de actividades rutinarias y no rutinarias requiriendo acciones de mitigación y control inmediato, como por ejemplo un incidente con lesión grave: atrapamientos, atropello, caidas de altura, un incendio/explosión (severidad 3). También se consideras los Desastres Naturales (actividad) con Evacuación a zonas seguras internas (tarea) y Evacuación a zonas seguras externas (tarea), ');
+
+
+INSERT INTO equipo_evaluador(user_id) VALUES (1);
+INSERT INTO equipo_evaluador(user_id) VALUES (2);
+INSERT INTO equipo_evaluador(user_id) VALUES (3);
+INSERT INTO equipo_evaluador(user_id) VALUES (4);

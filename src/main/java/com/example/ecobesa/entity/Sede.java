@@ -27,9 +27,6 @@ public class Sede implements Serializable{
 	
 	private Boolean estado;
 	
-	@OneToMany(mappedBy="sede")
-	private Set<User> user;
-	
 	
 	public Sede() {
 		
@@ -48,13 +45,6 @@ public class Sede implements Serializable{
 		this.nombre = nombre;
 	}
 
-	public Set<User> getUser() {
-		return user;
-	}
-
-	public void setUser(Set<User> user) {
-		this.user = user;
-	}
 
 	public Boolean getEstado() {
 		return estado;

@@ -23,9 +23,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -48,11 +50,7 @@ public class EmpleadoController {
 	@Autowired
 	ISedeService sedeService;
 	
-	@GetMapping(value="/empleados")
-	public String vista(Model model,Map<String, Object> model2) {
-		
-		return "empleados/index";
-	}
+	
 	
 	@GetMapping("/empleados/listar")
 	public List<Empleado> listar() {
@@ -99,66 +97,51 @@ public class EmpleadoController {
 	}
 	
 	
-	@GetMapping(value = "/admin/empleados/show/{id}")
-	public String show(@PathVariable(value = "id") Long id,Model model) {
-		Empleado empleado = empleadoService.findById(id);
-		model.addAttribute("empleado", empleado);
-		return "empleado/show";
-	}
-	
-	@GetMapping(value = "/admin/empleados/crear")
-	public String create(Map<String, Object> model) {
-		Empleado empleado = new Empleado();
-		model.put("empleado", empleado);
-		model.put("sedes", sedeService.findAll());
-		model.put("titulo", "Registrar Nuevo Empleado");
-		model.put("btn", "Registrar");
-		//model.put("Empleados", EmpleadoService.findAll(Sort.by(Sort.Direction.ASC, "apellidos")));
-		return "empleado/form";
-	}
-	
-	@RequestMapping(value="/admin/empleados/editar/{id}")
-	public String edit(@PathVariable(value="id") Long id,Map<String,Object> model) {
-		//Validar que el id exista en la tabla empleados
-		Empleado empleado = empleadoService.findById(id);
-		model.put("titulo", "Editar Empleado");
-		model.put("empleado",empleado);
-		model.put("sedes", sedeService.findAll());
-		model.put("btn","Actualizar");
-		return "empleado/form";
-	}
-	
-	@PostMapping(value = "/admin/empleados")
-	public String guardar(@RequestParam("foto") MultipartFile foto,@Valid Empleado empleado,BindingResult bindingResult, Model model, RedirectAttributes flash) throws IOException {
-		if(empleado.getId()!=null && foto.isEmpty()) {
-			Empleado oldEmpleado = empleadoService.findById(empleado.getId());
-			empleado.setFoto(oldEmpleado.getFoto());
-		}else {
-			if(!foto.isEmpty()) {
-				byte[] fotoBytes = foto.getBytes();
-				StringBuilder builder = new StringBuilder();
-				builder.append("C:\\Spring\\Ecobesa\\src\\main\\resources\\static\\img\\empleados\\");
-				builder.append(foto.getOriginalFilename());
-				Path path=Paths.get(builder.toString());
-				Files.write(path, fotoBytes);
-				empleado.setFoto(foto.getOriginalFilename());
-			}
+	@PutMapping("/empleados/editar/{id}")
+	@ResponseStatus(HttpStatus.CREATED)
+	public ResponseEntity<?> editar(@RequestBody Empleado empleado,@PathVariable Long id){
+		Empleado empleadoActual= empleadoService.findById(id);
+		Empleado empleadoUpdated = null;
+
+		Map<String,Object> response= new HashMap<>();
+		if(empleadoActual == null) {	
+			response.put("mensaje","Error: No se puede editar el  ID: ".concat(id.toString().concat("no existe en la base de datos")));
+			return new ResponseEntity<Map<String,Object>>(response,HttpStatus.NOT_FOUND);
 		}
-		empleadoService.save(empleado);
-		flash.addFlashAttribute("success", "Acción realizada correctamente");
-		return "redirect:/admin/empleados";
+		try {
+			/*empleadoActual.setApellidos(empleado.getApellidos());
+			empleadoActual.setNombres(empleado.getNombres());
+			empleadoActual.setDni(empleado.getDni());
+			empleadoActual.setDireccion(empleado.getDireccion());
+			empleadoActual.setEmail(empleado.getEmail());*/
+			empleadoUpdated= empleadoService.save(empleado);	
+		}catch(DataAccessException e) {
+			response.put("message", "Error al actualizar datos en la base de datos");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String,Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);	
+		}	
+		response.put("message", "Actualizado correctamente");
+		response.put("empleado", empleadoUpdated);
+		
+		return new ResponseEntity<Map<String,Object>>(response,HttpStatus.CREATED);	
 	}
 	
-	@GetMapping(value="/admin/empleados/eliminar/{id}")
-	public String eliminar(@PathVariable(value = "id") Long id,RedirectAttributes flash) {
-		//validar que el id exista en la tabla Empleados
+	@DeleteMapping("/empleados/eliminar/{id}")
+	public ResponseEntity<?> eliminar(@PathVariable Long id){
+		Map<String,Object> response = new HashMap<>();
+		
 		try {
 			empleadoService.delete(id);
-			flash.addFlashAttribute("success", "Empleado eliminado correctamente");
-			return "redirect:/admin/empleados";
-		} catch (Exception e) {
-			flash.addFlashAttribute("error", "Ocurrió un error al tratar de eliminar el usuario");
-			return "redirect:/admin/empleados";
+		}catch(DataAccessException e) {
+			response.put("message", "Error al eliminar datos en la base de datos");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String,Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);	
 		}
+		
+		response.put("message", "Eliminado correctamente");
+		return new ResponseEntity<Map<String,Object>>(response,HttpStatus.OK);	
 	}
+	
+	
+	
 }

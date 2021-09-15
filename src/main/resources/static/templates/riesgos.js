@@ -13,8 +13,6 @@ $(document).ready(function() {
 	        $('#tbl_ListaFamil').dataTable().fnDestroy();
 	    }
 			listarRiesgos2(); 
-	
-		
 	});
 
 	

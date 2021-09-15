@@ -20,8 +20,6 @@ public class EcobesaApplication implements CommandLineRunner{
 
 	public static void main(String[] args) {
 		SpringApplication.run(EcobesaApplication.class, args);
-		
-		
 	}
 	
 	@Override

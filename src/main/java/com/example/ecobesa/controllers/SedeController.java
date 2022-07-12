@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -59,20 +60,25 @@ public class SedeController {
 	}
 	
 	@RequestMapping(value="/sede/listar/{id}")
+	@PreAuthorize("ROLE_USER")
 	public String editar(Model model,@PathVariable(value="id") Long id,Map<String,Object> model2,RedirectAttributes flash) {
-		
-		model.addAttribute("sedes",sedeService.findAll(Sort.by("id")));
-		Sede sede=null;
-		if(id>0){
-			sede = sedeService.findById(id);
-		}else {
-			return "redirect:/admin/sede/listar";
+		try {
+			model.addAttribute("sedes",sedeService.findAll(Sort.by("id")));
+			Sede sede=null;
+			if(id>0){
+				sede = sedeService.findById(id);
+			}else {
+				return "redirect:/admin/sede/listar";
+			}
+			model2.put("sede",sede);
+			flash.addFlashAttribute("success", "Sede Editado correctamente");
+			model.addAttribute("titulo", "Sedes de trabajo / Editar sedes");
+			model2.put("titulo2","Editar Sede de trabajo");
+			model2.put("titulo3", "Editar Sede de Trabajo");	
 		}
-		model2.put("sede",sede);
-		flash.addFlashAttribute("success", "Sede Editado correctamente");
-		model.addAttribute("titulo", "Sedes de trabajo / Editar sedes");
-		model2.put("titulo2","Editar Sede de trabajo");
-		model2.put("titulo3", "Editar Sede de Trabajo");
+		catch (Exception e) {
+			model.addAttribute("titulo", "Sedes");
+		}
 		
 		
 		return "admin/sede/listar";

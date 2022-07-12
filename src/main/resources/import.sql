@@ -108,7 +108,7 @@ INSERT INTO programa_anuales(nombre,id_aprobado_id,id_revisado_id,id_elaborado_i
 INSERT INTO programa_anuales(nombre,id_aprobado_id,id_revisado_id,id_elaborado_id) VALUES('PROGRAMA ANUAL DE SEGURIDAD Y SALUD EN EL TRABAJO 2020 ECOBESA',1,1,1);
 
 
-INSERT INTO empresa(razon_social,actividad_economica,numero_trabajadores,ruc,foto,domicilio,pantalla_inicio) VALUES('EMPRESA COMERCIALIZADORA DE BEBIDAS SOCIEDAD ANÓNIMA CERRADA','COMERCIALIZACIÓN DE BEBIDAS NO ALCOHÓLICAS',14010,'20557079441','111cb499-dbde-4ce6-a1f8-8592ae3b0b79_foto123.jpeg','JR. CAJAMARCA 371 RIMAC , LIMA','94e060f2-d230-4103-94f5-856832c87de2_1594772896-banner-1-4.png');
+INSERT INTO empresa(razon_social,actividad_economica,numero_trabajadores,ruc,foto,domicilio,pantalla_inicio) VALUES('EMPRESA COMERCIALIZADORA DE BEBIDAS SOCIEDAD ANÓNIMA CERRADA','COMERCIALIZACIÓN DE BEBIDAS NO ALCOHÓLICAS',14010,'20557079441','111cb499-dbde-4ce6-a1f8-8592ae3b0b79_foto123.jpeg','JR. CAJAMARCA 371 RIMAC , LIMA','banner_login02.jpg');
 
 INSERT INTO objetivo_generales(nombre,meta,recursos,presupuesto_general,programa_anual_id) VALUES('CUMPLIR CON LA LEGISLACIÓN VIGENTE EN SEGURIDAD Y SALUD EN EL TRABAJO','100% de cumplimiento','Recursos humanos y procedimientos',25000,1)
 INSERT INTO objetivo_generales(nombre,meta,recursos,presupuesto_general,programa_anual_id) VALUES('CUMPLIR CON LOS INDICADORES DE SEGURIDAD EN BASE A LA CANTIDAD DE ACCIDENTES E INCIDENTES DE TRABAJO','100% de cumplimiento','Recursos humanos y procedimientos',25000,1)

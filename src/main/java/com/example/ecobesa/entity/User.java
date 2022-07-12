@@ -20,16 +20,17 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="users")
-public class User implements Serializable{
+public class User implements Serializable {
+	
 	private static final long serialVersionUID = 1L;
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+	private String dni;
     private String nombres;
     private String apellidos;
-    private String dni;
     private String usuario;
     private String password;
 	private String foto;
@@ -44,9 +45,9 @@ public class User implements Serializable{
     @ManyToOne
     private Role role;
     
-    
     @ManyToOne
     private Sede sede;
+    
     
     
 
@@ -165,5 +166,4 @@ public class User implements Serializable{
 		this.sede = sede;
 	}
 	
-    
 }

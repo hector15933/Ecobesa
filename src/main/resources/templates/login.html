@@ -1,85 +1,81 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head th:replace="layout/layout :: head">
-<meta charset="UTF-8">
-<title>Title</title>
+	<meta charset="UTF-8">
+	<title>Title</title>
 </head>
-<style type="text/css">
-.header_empresa {
-	padding: 3.5em;
-	height: 2em;
-	background: #1985ac;
-	padding-left: 10%;
-	padding-right: 10%;
-	box-shadow: 0px 3px 5px #888;
-}
-
-.header_empresa {
-	background-color: #ff4c00;	
-}
-
-.header_img {
-	background-color: #ff4c00;
-}
-
-.header_img {
-	margin: 0 auto;
-	width: 230px;
-	height: 90px;
-	border-bottom-left-radius: 0.5em;
-	border-bottom-right-radius: 0.5em;
-	box-shadow: 0 3px 6px -2px #1d1d1d;
-	align-items: center;
-	justify-content: center;
-	display: -webkit-flex;
-	display: -moz-flex;
-	display: -ms-flex;
-	display: flex;
-}
-
-.profile-img-card {
-	margin: 0 auto 10px;
-	display: block;
-	border-radius: .5em;
-	background: #D1D1D1;
-}
-
-.profile-img-card {
-	margin: 0 auto 10px;
-	display: block;
-	border-radius: .5em;
-	background: #D1D1D1;
-}
-
-.profile-img-card {
-	background-color: #E52320;
-}
-
-.img-fluid {
-	height: 100vh !important;
-	width: 100%;
-}
-
-body.swal2-height-auto {
-	height: auto !important;
-}
-
-@media ( max-width : 767px) {
-	.hidden-xs {
-		display: none !important;
-	}
-}
-</style>
-
-
-
 
 <body class="swal2-shown swal2-height-auto" style="">
 
+	<style type="text/css">
+		.header_empresa {
+			padding: 3.5em;
+			height: 2em;
+			background: #1985ac;
+			padding-left: 10%;
+			padding-right: 10%;
+			box-shadow: 0px 3px 5px #888;
+		}
+		
+		.header_empresa {
+			background-color: #ff4c00;	
+		}
+		
+		.header_img {
+			background-color: #ff4c00;
+		}
+		
+		.header_img {
+			margin: 0 auto;
+			width: 230px;
+			height: 90px;
+			border-bottom-left-radius: 0.5em;
+			border-bottom-right-radius: 0.5em;
+			box-shadow: 0 3px 6px -2px #1d1d1d;
+			align-items: center;
+			justify-content: center;
+			display: -webkit-flex;
+			display: -moz-flex;
+			display: -ms-flex;
+			display: flex;
+		}
+		
+		.profile-img-card {
+			margin: 0 auto 10px;
+			display: block;
+			border-radius: .5em;
+			background: #D1D1D1;
+		}
+		
+		.profile-img-card {
+			margin: 0 auto 10px;
+			display: block;
+			border-radius: .5em;
+			background: #D1D1D1;
+		}
+		
+		.profile-img-card {
+			background-color: #E52320;
+		}
+		
+		.img-fluid {
+			height: 100vh !important;
+			width: 100%;
+		}
+		
+		body.swal2-height-auto {
+			height: auto !important;
+		}
+		
+		@media ( max-width : 767px) {
+			.hidden-xs {
+				display: none !important;
+			}
+		}
+	</style>
+
 	<div class="container-fluid">
-
-
 
 		<div class="row" style="height: 100vh;">
 
@@ -89,10 +85,9 @@ body.swal2-height-auto {
 			alt="CoreUI Logo" >
 			
 			</div-->
-			<div class="col-md-8 col-lg-9 hidden-sm hidden-xs"
-				style="padding: 0; height: 100vh;">
-				<div id="carouselExampleControls" class="carousel slide"
-					data-bs-ride="carousel">
+			<div class="col-md-8 col-lg-9 hidden-sm hidden-xs" style="padding: 0; height: 100vh;">
+				<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+					
 					<!-- Wrapper for slides -->
 
 					<div class="carousel-inner" style="padding: 0; height: 100vh;">
@@ -124,10 +119,11 @@ body.swal2-height-auto {
 						</a>
 
 					</div>
+					
 				</div>
 			</div>
-			<div class="col-md-4 col-lg-3"
-				style="padding: 0; height: 100vh; overflow: auto; background-color: #fff;">
+			
+			<div class="col-md-4 col-lg-3" style="padding: 0; height: 100vh; overflow: auto; background-color: #fff;">
 
 				<div class="header_empresa">
 					<div class="header_img">
@@ -136,12 +132,11 @@ body.swal2-height-auto {
 							th:src="@{'../uploads/' + ${empresaLogo}}">
 					</div>
 				</div>
+				
 				<br>
 				<br>
 				<br>
 				<br>
-
-
 
 				<div class="container">
 					<div class="card-body ">
@@ -157,52 +152,48 @@ body.swal2-height-auto {
 							th:text="${warning}"></div>
 						<div class="alert alert-info" th:if="${info != null}"
 							th:text="${info}"></div>
-						<form th:action="@{/login}" method="post" id="loginForm"
-							class="form-signin text-center mb-3">
+						<form th:action="@{/login}" method="post" id="loginForm" class="form-signin text-center mb-3">
+							
 							<h6 class="text-center">Usuario</h6>
 							<div class="input-group mb-3">
-
-								<input class="form-control bg-secondary" type="text"
-									name="username" autofocus required>
+								<input class="form-control bg-secondary" type="text" name="username" th:value="user123" autofocus required>
 							</div>
+							
 							<h6 class="text-center">Contraseña</h6>
 							<div class="input-group mb-4 ">
-
-
-								<input class="form-control bg-secondary" type="password"
-									name="password" id="password" required>
+								<input class="form-control bg-secondary" type="password" name="password" th:value="123456" id="password" required>
 							</div>
-							<div class="row ">
+							
+							<div class="row">
 								<div class="" style="margin: auto;">
 									<button type="submit" form="loginForm"
 										class="btn btn-lg bg-primary active btn-block btn-signin"
 										style="margin: auto; width: 200px;background:#ff4c00!important">Ingresar</button>
 								</div>
-
 							</div>
 
 						</form>
 					</div>
 				</div>
-				<footer class="footer text-center container">
+				
+				<div class="footer text-center container">
 					
-                        <hr>
-                        <span class="text-muted form-text">Preventiva © 2021  - Todos los derechos reservados.</span>
-                        <br>
-                        <span class=" form-text">
-                       
-                        </span>
-                         <p class="text-center text-muted">Términos, condiciones y políticas de privacidad</p>
-                      
-                        <br>
-                        <img id="profile-img-mini" th:src="@{'../uploads/' + ${empresaLogo}}" style="max-width:35px">
+                    <hr>
+                    <span class="text-muted form-text">Preventiva © 2021  - Todos los derechos reservados.</span>
+                    <br>
+                    <span class=" form-text"></span>
+                 	<p class="text-center text-muted">Términos, condiciones y políticas de privacidad</p>
+                    <br>
+                    <img id="profile-img-mini" th:src="@{'../uploads/' + ${empresaLogo}}" style="max-width:35px">
 
-                    </footer>
+                </div>
 
 			</div>
+			
 		</div>
 
 	</div>
+	
 	<!-- CoreUI and necessary plugins-->
 	<footer th:replace="layout/layout :: footer"></footer>
 	<script
@@ -213,6 +204,7 @@ body.swal2-height-auto {
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
 		integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
 		crossorigin="anonymous"></script>
+		
 </body>
 
 </html>

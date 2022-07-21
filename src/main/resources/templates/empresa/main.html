@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: head">
+
+</head>
+
+<body>
+
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container py-4">
+
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="card">
+					
+					<div class="card-header">
+						<h3 class="pt-1">Empresas</h3>
+					</div>
+					
+					<div class="card-body">
+		
+						<!--h4 class="card-title">
+							<a th:href="@{/empresa/form}" class="btn btn-primary">crear cliente</a>
+						</h4-->
+		
+						<table class="table table-bordered">
+							<thead class="thead-light">
+								<tr>
+									<th>Ruc</th>
+									<th>Razon Social</th>
+									<th>Actividad Economica</th>
+									<th>Domicilio</th>
+									<th>Acciones</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="empresa: ${empresas}">
+									<td th:text="${empresa.getRuc()}"></td>
+									<td th:text="${empresa.getRazonSocial()}"></td>
+									<td th:text="${empresa.getActividadEconomica()}"></td>
+									<td th:text="${empresa.getDomicilio()}"></td>
+									<td>
+										<!-- <a class="btn btn-primary btn-sm" th:href="@{/empresa/form/} + ${empresa.getId()}" th:text="'editar'"></a> -->
+									</td>
+								</tr>
+								
+								
+							</tbody>
+		
+						</table>
+					
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	
+	<footer th:replace="layout/layout :: footer"></footer>
+	
+</body>
+
+</html>

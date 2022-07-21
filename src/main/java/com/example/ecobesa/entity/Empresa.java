@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Empresa implements Serializable{
+public class Empresa implements Serializable {
 
 	/**
 	 * 
@@ -17,26 +17,48 @@ public class Empresa implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name="razon_social")
-	private String razonSocial;
-	
-	private String foto;
-	
-	private String pantallaInicio;
-	
-	@Column(name="actividadEconomica")
-	private String actividadEconomica;
+	private String tipo;
 	
 	private String ruc;
+
+	private String razon_social;
+	
+	private String foto;
+
+	private String pantalla_inicio;
 	
 	private String domicilio;
 	
-	@Column(name="numero_trabajadores")
-	private Integer numeroTrabajadores;
+	private Integer año_inicio_actividad;
+	
+	@Column(name = "actividadEconomica")
+	private String actividad_economica;
+	
+	private String ciiu;
+	
+	private Integer numero_trabajadores;
+
+	private String presenta_actividades_alto_riesgo;
+	
+	private Integer numero_trabajadores_afiliados_sctr;
+	
+	private Integer numero_trabajadores_no_afiliados_sctr;
+	
+	private String nombre_aseguradora;
+	
+	private String representante_legal;
+	
+	private String telefono;
+	
+	private String email;
+	
+
+
+
+
 
 	public Long getId() {
 		return id;
@@ -46,12 +68,20 @@ public class Empresa implements Serializable{
 		this.id = id;
 	}
 
-	public String getRazonSocial() {
-		return razonSocial;
+	public String getTipo() {
+		return tipo;
 	}
 
-	public void setRazonSocial(String razonSocial) {
-		this.razonSocial = razonSocial;
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public String getRazonSocial() {
+		return razon_social;
+	}
+
+	public void setRazonSocial(String razon_social) {
+		this.razon_social = razon_social;
 	}
 
 	public String getFoto() {
@@ -63,11 +93,11 @@ public class Empresa implements Serializable{
 	}
 
 	public String getActividadEconomica() {
-		return actividadEconomica;
+		return actividad_economica;
 	}
 
-	public void setActividadEconomica(String actividadEconomica) {
-		this.actividadEconomica = actividadEconomica;
+	public void setActividadEconomica(String actividad_economica) {
+		this.actividad_economica = actividad_economica;
 	}
 
 	public String getRuc() {
@@ -87,23 +117,80 @@ public class Empresa implements Serializable{
 	}
 
 	public Integer getNumeroTrabajadores() {
-		return numeroTrabajadores;
+		return numero_trabajadores;
+	}
+	public void setNumeroTrabajadores(Integer numero_trabajadores) {
+		this.numero_trabajadores = numero_trabajadores;
 	}
 
-	public void setNumeroTrabajadores(Integer numeroTrabajadores) {
-		this.numeroTrabajadores = numeroTrabajadores;
+	public Integer getAñoInicioActividad() {
+		return año_inicio_actividad;
+	}
+	public void setAñoInicioActividad(Integer año_inicio_actividad) {
+		this.año_inicio_actividad = año_inicio_actividad;
 	}
 
 	public String getPantallaInicio() {
-		return pantallaInicio;
+		return pantalla_inicio;
+	}
+	public void setPantallaInicio(String pantalla_inicio) {
+		this.pantalla_inicio = pantalla_inicio;
 	}
 
-	public void setPantallaInicio(String pantallaInicio) {
-		this.pantallaInicio = pantallaInicio;
+	public String getCiiu() {
+		return ciiu;
+	}
+	public void setCiiu(String ciiu) {
+		this.ciiu = ciiu;
 	}
 
+	public String getPresentaActividadesAlgoRiesgo() {
+		return presenta_actividades_alto_riesgo;
+	}
+	public void setPresentaActividadesAlgoRiesgo(String presenta_actividades_alto_riesgo) {
+		this.presenta_actividades_alto_riesgo = presenta_actividades_alto_riesgo;
+	}
+
+	public Integer getNumeroTrabajadoresAfiliadosSctr() {
+		return numero_trabajadores_afiliados_sctr;
+	}
+	public void setNumeroTrabajadoresAfiliadosSctr(Integer numero_trabajadores_afiliados_sctr) {
+		this.numero_trabajadores_afiliados_sctr = numero_trabajadores_afiliados_sctr;
+	}
+
+	public Integer getNumeroTrabajadoresNoAfiliadosSctr() {
+		return numero_trabajadores_no_afiliados_sctr;
+	}
+	public void setNumeroTrabajadoresNoAfiliadosSctr(Integer numero_trabajadores_no_afiliados_sctr) {
+		this.numero_trabajadores_no_afiliados_sctr = numero_trabajadores_no_afiliados_sctr;
+	}
 	
+	public String getNombreAseguradora() {
+		return nombre_aseguradora;
+	}
+	public void setNombreAseguradora(String nombre_aseguradora) {
+		this.nombre_aseguradora = nombre_aseguradora;
+	}
 	
+	public String getRepresentanteLegal() {
+		return representante_legal;
+	}
+	public void setRepresentanteLegal(String representante_legal) {
+		this.representante_legal = representante_legal;
+	}
 	
+	public String getTelefono() {
+		return telefono;
+	}
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	
 }

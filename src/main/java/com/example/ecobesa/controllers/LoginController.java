@@ -26,6 +26,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.example.ecobesa.service.IEmpresaService;
 import com.example.ecobesa.service.IUploadFileService;
 import com.example.ecobesa.service.IUserService;
+import com.example.ecobesa.entity.Empresa;
 
 @Controller
 public class LoginController {
@@ -58,27 +59,27 @@ public class LoginController {
 	}
 
 
-	@GetMapping({ "/login", "/" })
-	public String login(@RequestParam(value = "error", required = false) String error, Model model, Principal principal,
-			RedirectAttributes flash) {
-		Long id=(long) 1;
+	@GetMapping({ "/login", "/", })
+	public String login(
+		@RequestParam(value = "error", required = false)
+		String error, Model model, Principal principal, RedirectAttributes flash
+	) {
+		Long id= (long) 1;
+		Empresa empresa = empresaService.findById(id);
+		model.addAttribute("pantallaInicio", empresa.getPantallaInicio());
+		model.addAttribute("empresaLogo", empresa.getFoto());
 		
-		model.addAttribute("pantallaInicio", empresaService.findById(id).getPantallaInicio());
-		model.addAttribute("empresaLogo", empresaService.findById(id).getFoto());
-		if (principal != null) {
-
-			return "redirect:/principal";
+		if (principal == null) {
+			if (error != null) {
+				model.addAttribute("error", "El usuario o contraseña incorrecto.");
+			}
+			return "login";
 		}
-
-		if (error != null) {
-			model.addAttribute("error", "Error , Usuario o Contraseña incorrecto");
-
-		}
-
-		return "login";
+		
+		return "redirect:/home";
 	}
 
-	@RequestMapping(value = { "/principal" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/home" }, method = RequestMethod.GET)
 	public ModelAndView overViewPage(HttpServletRequest request,HttpSession session) {
 		Long id=(long) 1;
 		session.setAttribute("RazonSocial", empresaService.findById(id).getFoto());

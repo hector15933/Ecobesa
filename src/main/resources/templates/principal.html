@@ -9,7 +9,6 @@
 	<header th:replace="layout/layout :: header"></header>
 	
 	<div class="container-fluid py-4">
-		<div></div>
 		<div class="row">
 			
 			<div class="col-sm-6">
@@ -82,6 +81,7 @@
 					</ul>
 
 					<div class="tab-content" style="padding: 20px;">
+						
 						<!--Ver controles Preventivos -->
 						<div id="home" class="tab-pane fade">
 							<div class="row">
@@ -195,6 +195,7 @@
 								</div>
 							</div>
 						</div>
+
 						<!--reportar controles Preventivos -->
 						<div id="menu1" class="tab-pane fade active in">
 
@@ -288,6 +289,7 @@
 							</div>
 
 						</div>
+						
 						<!-- Exportar controles preventivo-->
 
 						<div id="menu2" class="tab-pane fade">
@@ -399,15 +401,11 @@
 
 						</div>
 
-
-
-						<!--Fin exportar  -->
 					</div>
 				</div>
 
 			</div>
-			<!-- /.col-->
-			<div class="col-sm-6">
+			<!-- <div class="col-sm-6">
 				<p>
 					<img class="icon-info" src="img/safety-intelligence.png">
 					Safety Intelligence / Reportabilidad
@@ -463,19 +461,18 @@
 						</div>
 					</div>
 				</div>
-			</div>
-			<!-- /.col-->
+			</div> -->
 		</div>
 	</div>
 
 	<script type="text/javascript">
 		window.onload = function() {
 			document.getElementById("active-reportar").click();
-
 		};
 	</script>
-	<!-- CoreUI and necessary plugins-->
+
 	<footer th:replace="layout/layout :: footer"></footer>
+
 </body>
 
 </html>

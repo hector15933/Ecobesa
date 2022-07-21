@@ -1,78 +1,96 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head th:fragment="head">
-<meta charset="Utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ecobesa</title>
-<link rel="stylesheet" th:href="@{/css/coreui.min.css}" />
-<link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css}" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-<link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}" />  
-<!-- <link rel="stylesheet"
-	th:href="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css}"
-	integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw=="
-	crossorigin="anonymous" /-->
-<link
-	th:href="@{https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css}"
-	rel="stylesheet" />
-<style>
-.title-form {
-	margin-top: -2px;
-	border-bottom: 1px solid transparent;
-	margin-bottom: 1rem;
-	margin-top: 1.5rem;
-}
 
-.title-form h5 {
-	font-family: "Montserrat", sans-serif;
-	display: inline-block;
-	margin-bottom: -2px;
-	line-height: 2rem;
-	border-bottom: 2px solid #000000;
-	font-weight: 400;
-}
+	<meta charset="Utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Ecobesa</title>
+	<link rel="stylesheet" th:href="@{/css/coreui.min.css}" />
+	<link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css}" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+	<link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}" />  
+	<!-- <link rel="stylesheet"
+		th:href="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css}"
+		integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw=="
+		crossorigin="anonymous" /-->
+	<link th:href="@{https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css}" rel="stylesheet" />
 
-    
-
-</style>
 </head>
+
 <body>
-		<header th:fragment="header" >
+
+	<style>
+		.title-form {
+			margin-top: -2px;
+			border-bottom: 1px solid transparent;
+			margin-bottom: 1rem;
+			margin-top: 1.5rem;
+		}
+		.title-form h5 {
+			font-family: "Montserrat", sans-serif;
+			display: inline-block;
+			margin-bottom: -2px;
+			line-height: 2rem;
+			border-bottom: 2px solid #000000;
+			font-weight: 400;
+		}
+	</style>
+
+	<header th:fragment="header" >
 		<div class="app-header navbar">
-			<button class="navbar-toggler sidebar-toggler d-lg-none mr-auto"
-			type="button" data-toggle="sidebar-show">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		
 
+			<button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
+				<span class="navbar-toggler-icon"></span>
+			</button>
 		
-		<a class="navbar-brand" href="#"> <img class="navbar-brand-full"
-			  th:src="@{'../uploads/' + ${session.RazonSocial}}" width="80px" 
-			alt="CoreUI Logo"> <img class="navbar-brand-minimized"
-			th:src="@{/img/brand/sygnet.svg}" width="30" height="30"
-			alt="CoreUI Logo">
-		</a>
-		<button class="navbar-toggler sidebar-toggler d-md-down-none"
-			type="button" data-toggle="sidebar-lg-show">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<ul class="nav navbar-nav d-md-down-none">
-			
-			<li class="nav-item px-3"><a class="nav-link" th:href="@{/empresa/listar}">Empresa</a>
-			</li>
-			<li class="nav-item px-3"><a class="nav-link" th:href="@{/principal}">Inicio</a>
-			</li>
-		</ul>
-		<ul class="nav navbar-nav ml-auto" >
-
-			<li class="nav-item dropdown" ><a
-				class=" btn btn-warning btn-sm dropdown-toggle text-white" href="#"
-				id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
-				aria-haspopup="true" aria-expanded="true"
-				style="background: #f19a1f;"> <i class="fa fa-cog"></i><strong>Administracion</strong>
+			<a class="navbar-brand" th:href="@{/home}">
+				<img class="navbar-brand-full" th:src="@{'../uploads/' + ${session.RazonSocial}}" width="80px" alt="CoreUI Logo">
+				<img class="navbar-brand-minimized" th:src="@{/img/brand/sygnet.svg}" width="30" height="30" alt="CoreUI Logo">
 			</a>
-				<div class="dropdown-menu dropdown " aria-labelledby="navbarDropdownMenuLink" style="max-height: 600px; overflow:scroll;">
+
+			<!-- <button class="navbar-toggler sidebar-toggler d-md-down-none"
+				type="button" data-toggle="sidebar-lg-show">
+				<span class="navbar-toggler-icon"></span>
+			</button> -->
+
+			<ul class="nav navbar-nav d-md-down-none">
+				<!-- <li class="nav-item px-3">
+					<a class="nav-link" th:href="@{/empresa/listar}">Empresa</a>
+				</li> -->
+				<li class="nav-item px-3">
+					<a class="nav-link" th:href="@{/home}">Inicio</a>
+				</li>
+			</ul>
+
+			<ul class="nav navbar-nav ml-auto" >
+				<li class="nav-item dropdown" >
+					<a
+						class=" btn btn-warning btn-sm dropdown-toggle text-white" href="#"
+						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="true"
+						style="background: #f19a1f;">
+						<i class="fa fa-cog"></i>
+						<strong>Administracion</strong>
+					</a>
+					<div class="dropdown-menu dropdown " aria-labelledby="navbarDropdownMenuLink" style="max-height: 600px; overflow:scroll;">
+						
+						<!-- MODULO 0 -->
 						<div class="dropdown-header ">
-							<i class="fa fa-bars"></i> <strong>Administrar Modulos</strong>
+							<i class="fa fa-bars"></i>
+							<strong>Modulo 0</strong>
+						</div>
+						<a class="dropdown-item" th:href="@{/modulo_gestion_cchh/datos_basicos}">Datos basicos</a> 
+						<a class="dropdown-item" th:href="@{/modulo_gestion_cchh/empresas}">Empresas</a> 
+						<a class="dropdown-item" th:href="@{/modulo_gestion_cchh/organigrama}">Organigrama</a> 
+						<a class="dropdown-item" th:href="@{/modulo_gestion_cchh/tipos_de_usuario}">Tipos de usuario</a> 
+						<a class="dropdown-item" th:href="@{/modulo_gestion_cchh/usuarios}">Usuarios</a> 
+						<a class="dropdown-item" th:href="@{/modulo_gestion_cchh/areas_de_trabajo}">Areas de trabajo</a> 
+						<a class="dropdown-item" th:href="@{/modulo_gestion_cchh/agrupadores}">Agrupadores</a> 
+						<a class="dropdown-item" th:href="@{/modulo_gestion_cchh/trabajadores}">Trabajadores</a> 
+
+						<div class="dropdown-header ">
+							<i class="fa fa-bars"></i>
+							<strong>Administrar Modulos</strong>
 						</div>
 						<a class="dropdown-item" th:href="@{/programaAnual/listar}">Gestión de Actividades</a> 
 						<a class="dropdown-item" th:href="@{/lineaBase/listar}">Modulo Auditoria</a> 
@@ -83,107 +101,110 @@
 						<a class="dropdown-item" th:href="@{/terceros/listar}">Administracion dee Terceros</a> 
 						<!--<a class="dropdown-item" th:href="@{/admin/empleados}">Dotacion/Trabajadores</a>	
 						<a class="dropdown-item" th:href="@{/admin/usuarios}">Usuarios</a-->
+						
 						<div class="dropdown-header ">
-							<i class="fa fa-bars"></i> <strong>Administrar documentos</strong>
+							<i class="fa fa-bars"></i>
+							<strong>Administrar documentos</strong>
 						</div>
 						<a class="dropdown-item" th:href="@{/documento/listar}">Documentos</a> 
 						<a class="dropdown-item" th:href="@{/documento/areaDocumento/listar}">Area del documento</a> 
 						<a class="dropdown-item" th:href="@{/documento/alcanceDocumento/listar}">Alcance Documentos</a> 
 						<a class="dropdown-item" th:href="@{/documento/tipoDocumento/listar}">Tipo Documentos</a> 
-					
 						<a class="dropdown-item" th:href="@{/documento/listar}">Documentos</a> 
-						
+							
 						<div class="dropdown-header ">
 							<i class="fa fa-bars"></i> <strong>Administrar Personas</strong>
 						</div>
 						<a class="dropdown-item" th:href="@{/admin/cargo/listar}">Cargo</a> 
 						<a class="dropdown-item" th:href="@{/admin/empleados}">Dotacion/Trabajadores</a>	
 						<a class="dropdown-item" th:href="@{/admin/usuarios}">Usuarios</a>
-						
-						<div class="dropdown-header "><i class="fa fa-bars"></i>
-						<strong>Administrar Instalaciones y Proceso</strong>
-					</div>
+							
+						<div class="dropdown-header ">
+							<i class="fa fa-bars"></i>
+							<strong>Administrar Instalaciones y Proceso</strong>
+						</div>
 						<a class="dropdown-item" th:href="@{/admin/sede/listar}">Gerencia /Sede</a> 
 						<a class="dropdown-item" th:href="@{/admin/area/listar}">Area/Lugar de Trabajo</a>
 						
-						<div class="dropdown-header "><i class="fa fa-bars"></i>
-						<strong>Planificacion de Actividades</strong>
-					</div>
+						<div class="dropdown-header ">
+							<i class="fa fa-bars"></i>
+							<strong>Planificacion de Actividades</strong>
+						</div>
 						<a class="dropdown-item" th:href="@{/admin/objetivo/listar}">Administrar Objetivos</a> 
 						<a class="dropdown-item" th:href="@{/admin/programaActividad/listar}">Administrar Programas de trabajo</a>	
 						<a class="dropdown-item" th:href="@{/admin/etiqueta/listar}">Administrar Etiquetas</a>
-						
-					<div class="dropdown-header "><i class="fa fa-bars"></i>
-						<strong>Administrar Evaluacion de Riesgos</strong>
-					</div>
+							
+						<div class="dropdown-header ">
+							<i class="fa fa-bars"></i>
+							<strong>Administrar Evaluacion de Riesgos</strong>
+						</div>
 						<a class="dropdown-item" th:href="@{/riesgos/riesgos}">Evento no Deseado</a> 
-						
-						
-						<!--  div class="dropdown-header "><i class="fa fa-bars"></i>
-						<strong>Administrar Controles Preventivos</strong>
-					</div>
-						<a class="dropdown-item" th:href="@{/cargo/listar}">Nivel de Riesgo</a> 
-						<a class="dropdown-item" th:href="@{/cargo/listar}">Categoria</a> 
-						<a class="dropdown-item" th:href="@{/cargo/listar}">Listas de verificacion</a> 
-						<a class="dropdown-item" th:href="@{/cargo/listar}">Preguntas revision AST</a> 
-						<a class="dropdown-item" th:href="@{/cargo/listar}">Preguntas observacion de conducta</a> 
-						
+							
+							
+							<!--  div class="dropdown-header "><i class="fa fa-bars"></i>
+							<strong>Administrar Controles Preventivos</strong>
+						</div>
+							<a class="dropdown-item" th:href="@{/cargo/listar}">Nivel de Riesgo</a> 
+							<a class="dropdown-item" th:href="@{/cargo/listar}">Categoria</a> 
+							<a class="dropdown-item" th:href="@{/cargo/listar}">Listas de verificacion</a> 
+							<a class="dropdown-item" th:href="@{/cargo/listar}">Preguntas revision AST</a> 
+							<a class="dropdown-item" th:href="@{/cargo/listar}">Preguntas observacion de conducta</a> 
+							
+							<div class="dropdown-header "><i class="fa fa-bars"></i>
+							<strong>Administrar Gestion de Activos QR</strong>
+						</div>
+							<a class="dropdown-item" th:href="@{/cargo/listar}">Categoria de activos</a> 
+							<a class="dropdown-item" th:href="@{/cargo/listar}">Registro de activos</a> 
+							<a class="dropdown-item" th:href="@{/cargo/listar}">Carga Masiva de activos</a> 
+							
 						<div class="dropdown-header "><i class="fa fa-bars"></i>
-						<strong>Administrar Gestion de Activos QR</strong>
+							<strong>Administrar Reportes de Cumplimientos PDF</strong>
+						</div>
+							<a class="dropdown-item" th:href="@{/cargo/listar}">Crear Reportes</a> 
+							<a class="dropdown-item" th:href="@{/cargo/listar}">Agregar Capitulo a reportes</a> 
+							<a class="dropdown-item" th:href="@{/cargo/listar}">Agregar Elementos al Capitulo</a--> 
 					</div>
-						<a class="dropdown-item" th:href="@{/cargo/listar}">Categoria de activos</a> 
-						<a class="dropdown-item" th:href="@{/cargo/listar}">Registro de activos</a> 
-						<a class="dropdown-item" th:href="@{/cargo/listar}">Carga Masiva de activos</a> 
-						
-					<div class="dropdown-header "><i class="fa fa-bars"></i>
-						<strong>Administrar Reportes de Cumplimientos PDF</strong>
-					</div>
-						<a class="dropdown-item" th:href="@{/cargo/listar}">Crear Reportes</a> 
-						<a class="dropdown-item" th:href="@{/cargo/listar}">Agregar Capitulo a reportes</a> 
-						<a class="dropdown-item" th:href="@{/cargo/listar}">Agregar Elementos al Capitulo</a--> 
-				</div></li>
+				</li>
 
 
-			<li class="nav-item d-md-down-none"><a class="nav-link" >
-					<i class="icon-location-pin"></i>
-			</a></li>
-			<li class="nav-item dropdown"><a class="nav-link"
-				data-toggle="dropdown"  role="button" aria-haspopup="true"
-				aria-expanded="false"> <img class="img-avatar"
-					th:src="@{/img/avatars/9.png}" alt="admin@bootstrapmaster.com">
-						<span sec:authorize="isAuthenticated()" sec:authentication="name"></span>
-			</a>
-				<div class="dropdown-menu dropdown-menu-right">
-
-					<div class="dropdown-header text-center">
-						<strong>Settings</strong>
-					</div>
-
-						 <a class="dropdown-item" th:href="@{/logout}"> <i class="fa fa-lock"></i>
-						Logout
+				<li class="nav-item d-md-down-none">
+					<a class="nav-link" >
+						<i class="icon-location-pin"></i>
 					</a>
-	
-			
-				</div></li>
-													
-					<li class="nav-item d-md-down-none" ><a class="nav-link" href="#">
-				</a></li>               
-		</ul>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link" data-toggle="dropdown"  role="button" aria-haspopup="true" aria-expanded="false">
+						<img class="img-avatar" th:src="@{/img/avatars/9.png}" alt="admin@bootstrapmaster.com">
+						<span sec:authorize="isAuthenticated()" sec:authentication="name"></span>
+					</a>
+					<div class="dropdown-menu dropdown-menu-right">
+
+						<div class="dropdown-header text-center">
+							<strong>Perfil de usuario</strong>
+						</div>
+						<a class="dropdown-item" th:href="@{/logout}">
+							<i class="fa fa-lock"></i> Cerrar sesión
+						</a>
+				
+					</div>
+				</li>
+				<li class="nav-item d-md-down-none" >
+					<a class="nav-link" href="#">
+					</a>
+				</li>
+
+			</ul>
 
 
-		<button class="navbar-toggler aside-menu-toggler d-md-down-none"
-			type="button" data-toggle="aside-menu-lg-show">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<button class="navbar-toggler aside-menu-toggler d-lg-none"
-			type="button" data-toggle="aside-menu-show">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<br/>
-		
+			<!-- <button class="navbar-toggler aside-menu-toggler d-md-down-none" type="button" data-toggle="aside-menu-lg-show">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<button class="navbar-toggler aside-menu-toggler d-lg-none" type="button" data-toggle="aside-menu-show">
+				<span class="navbar-toggler-icon"></span>
+			</button> -->
+			<br/>
 		
 		</div>
-		
 		
 		<div class="alert alert-success" th:if="${success != null}" th:text="${success}"></div>
 		<div class="alert alert-danger" th:if="${error != null}" th:text="${error}"></div>
@@ -211,36 +232,37 @@
 		<!--select2 -->
 		<script
 			src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-		</footer>
+	</footer>
 		
-		<!-- Sections -->
-		<!-- Pagination -->
-		<div class="row" th:fragment="pagination(route)">
-			<div class="col-md-2">
-			</div>
-			<div class="col-md-8">
-				<nav aria-label="Pagination">
-					<ul class="pagination justify-content-center mt-2 mt-md-4">
-						<li class="page-item" th:classappend="${actualPage-1==0 ? 'disabled' : ''}">
-							<a class="page-link" th:href="@{|${route}?page=${actualPage-1}|}" aria-label="Previous">
-								<span aria-hidden="true">«</span>
-								<span class="sr-only">Anterior</span>
-							</a>
-						</li>
-						<li class="page-item" th:classappend="${actualPage}==${page} ? 'active' : ''" th:each="page : ${pages}">
-							<a class="page-link" th:href="@{|${route}?page=${page}|}" th:text="${page}"></a>
-						</li>
-						<li class="page-item" th:classappend="${actualPage}==${totalPage} ? 'disabled' : ''">
-							<a class="page-link" th:href="@{|${route}?page=${actualPage+1}|}" aria-label="Next">
-								<span aria-hidden="true">»</span>
-								<span class="sr-only">Siguiente</span>
-							</a>
-						</li>
-					</ul>
-				</nav>
-			</div>
-			<div class="col-md-2">
-			</div>
+	<!-- Sections -->
+	<!-- Pagination -->
+	<div class="row" th:fragment="pagination(route)">
+		<div class="col-md-2">
 		</div>
+		<div class="col-md-8">
+			<nav aria-label="Pagination">
+				<ul class="pagination justify-content-center mt-2 mt-md-4">
+					<li class="page-item" th:classappend="${actualPage-1==0 ? 'disabled' : ''}">
+						<a class="page-link" th:href="@{|${route}?page=${actualPage-1}|}" aria-label="Previous">
+							<span aria-hidden="true">«</span>
+							<span class="sr-only">Anterior</span>
+						</a>
+					</li>
+					<li class="page-item" th:classappend="${actualPage}==${page} ? 'active' : ''" th:each="page : ${pages}">
+						<a class="page-link" th:href="@{|${route}?page=${page}|}" th:text="${page}"></a>
+					</li>
+					<li class="page-item" th:classappend="${actualPage}==${totalPage} ? 'disabled' : ''">
+						<a class="page-link" th:href="@{|${route}?page=${actualPage+1}|}" aria-label="Next">
+							<span aria-hidden="true">»</span>
+							<span class="sr-only">Siguiente</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+		<div class="col-md-2">
+		</div>
+	</div>
+	
 </body>
 </html>

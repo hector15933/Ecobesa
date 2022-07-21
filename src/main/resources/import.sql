@@ -672,3 +672,6 @@ INSERT INTO equipo_evaluador(user_id) VALUES (1);
 INSERT INTO equipo_evaluador(user_id) VALUES (2);
 INSERT INTO equipo_evaluador(user_id) VALUES (3);
 INSERT INTO equipo_evaluador(user_id) VALUES (4);
+
+
+INSERT INTO configuraciones(codigo, nombre, descripcion, realizado) VALUES ('CCHH_MODULE_EXCEL_IS_LOADED', 'El excel del modulo de CCHH ha sido cargado', null, false);

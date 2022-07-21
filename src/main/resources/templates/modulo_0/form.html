@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+<meta charset="UTF-8">
+<title>Title</title>
+</head>
+<body>
+<header th:replace="layout/layout :: header"></header>
+
+	<div class="container py-4">
+
+		<div class="card bg-light ">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+				<form th:action="@{/RequisitosLegales/form}" th:object="${requisitosLegales}" method="post"
+					enctype="multipart/form-data">
+					
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Nombre Norma</label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{nombreNorma}" class="form-control"/> <small
+										class="form-text text-danger"
+										th:if="${#fields.hasErrors('nombreNorma')}" th:errors="*{nombreNorma}">Name
+										Error</small>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Rango Ley:</label>
+						<div class="col-sm-6">
+						<select th:field="*{rangoLey}" class=" form-control">
+							<option th:each="rangoLey : ${rangoLeyes}" th:text="${rangoLey.nombre}" th:value="${rangoLey.id}"></option>
+						</select>
+							</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Aplicable Desde</label>
+						<div class="col-sm-6">
+							<input type="date" th:field="*{aplicableDesde}" class="form-control"/> <small
+										class="form-text text-danger"
+										th:if="${#fields.hasErrors('aplicableDesde')}" th:errors="*{aplicableDesde}">Name
+										Error</small>
+						</div>
+					</div>
+					
+					
+					<div class="form-group row">
+						<label for="file" class="col-sm-2 col-form-label">Subir Norma</label>
+						<div class="col-sm-6">
+							<input type="file" name="file" class="form-control" />
+						</div>
+					</div>
+					
+			
+						<div class="form-group row">
+						<div class="col-sm-6">
+							<input type="submit" th:value="${titulo}" class="btn btn-secondary" />
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

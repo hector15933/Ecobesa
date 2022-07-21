@@ -43,7 +43,7 @@ import com.example.ecobesa.service.IEmpresaService;
 import com.example.ecobesa.service.IRangoLeyService;
 import com.example.ecobesa.service.IRequisitosLegalesService;
 import com.example.ecobesa.service.IUploadFileService;
-import com.example.ecobesa.service.IConfiguracionService;
+// import com.example.ecobesa.service.IConfiguracionService;
 
 
 @Controller
@@ -66,8 +66,8 @@ public class Modulo0Controller {
 	@Autowired
 	private IRangoLeyService rangoLeyService;
 	
-	@Autowired
-	private IConfiguracionService configuracion_srv;
+	// @Autowired
+	// private IConfiguracionService configuracion_srv;
 	
 	
 	
@@ -138,8 +138,8 @@ public class Modulo0Controller {
 	@RequestMapping(value = {"/modulo_gestion_cchh/datos_basicos"}, method = RequestMethod.GET)
 	public String datos_basicos(Model model)
 	{
-		Configuracion config = configuracion_srv.findByCode("CCHH_MODULE_EXCEL_IS_LOADED");
-		model.addAttribute("excel_file_is_loaded", config.isRealizado());
+		// Configuracion config = configuracion_srv.findByCode("CCHH_MODULE_EXCEL_IS_LOADED");
+		// model.addAttribute("excel_file_is_loaded", config.isRealizado());
 		return "modulo_0/datos_basicos";
 	}
 

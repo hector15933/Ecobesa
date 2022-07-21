@@ -47,7 +47,6 @@ import com.example.ecobesa.service.IConfiguracionService;
 
 
 @Controller
-@SessionAttributes("requisitosLegales")
 public class Modulo0Controller {
 	
 	
@@ -138,7 +137,7 @@ public class Modulo0Controller {
 	@RequestMapping(value = {"/modulo_gestion_cchh/datos_basicos"}, method = RequestMethod.GET)
 	public String datos_basicos(Model model)
 	{
-		Configuracion config = configuracion_srv.findByCode("CCHH_MODULE_EXCEL_IS_LOADED");
+		Configuracion config = configuracion_srv.findByCodigo("CCHH_MODULE_EXCEL_IS_LOADED");
 		model.addAttribute("excel_file_is_loaded", config.isRealizado());
 		return "modulo_0/datos_basicos";
 	}

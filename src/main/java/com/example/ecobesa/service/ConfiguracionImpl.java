@@ -7,41 +7,48 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.ecobesa.dao.IAreaDao;
-import com.example.ecobesa.entity.Area;
+import com.example.ecobesa.dao.IConfiguracionDao;
+import com.example.ecobesa.entity.Configuracion;
 
 @Service
-public class ConfiguracionImpl implements IAreaService
+public class ConfiguracionImpl implements IConfiguracionService
 {
-		@Autowired
-		private IAreaDao areaDao;
-		
-		@Override
-		@Transactional(readOnly = true)
-		public List<Area> findAll(Sort sort) {
-			// TODO Auto-generated method stub
-			return (List<Area>)areaDao.findAll(sort);
-		}
+	@Autowired
+	private IConfiguracionDao configuracion_dao;
+	
 
-		
-		@Override
-		@Transactional(readOnly = true)
-		public Area findById(Long id) {
-			// TODO Auto-generated method stub
-			return areaDao.findById(id).orElse(null);
-		}
-		
-		@Override
-		@Transactional()
-		public void save(Area area) {
-			// TODO Auto-generated method stub
-			 areaDao.save(area);
-		}
-		
-		@Override
-		@Transactional
-		public void delete(Long id) {
-			// TODO Auto-generated method stub
-			areaDao.deleteById(id);
-		} 
+	@Override
+	@Transactional(readOnly = true)
+	public List<Configuracion> findAll()
+	{
+		return (List<Configuracion>) configuracion_dao.findAll();
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Configuracion findById(Long id)
+	{
+		return configuracion_dao.findById(id).orElse(null);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Configuracion findByCodigo(String codigo)
+	{
+		return configuracion_dao.findByCodigo(codigo);
+	}
+	
+	@Override
+	@Transactional()
+	public void save(Configuracion configuracion)
+	{
+		configuracion_dao.save(configuracion);
+	}
+	
+	@Override
+	@Transactional()
+	public void delete(Long id)
+	{
+		configuracion_dao.deleteById(id);
+	}
 }

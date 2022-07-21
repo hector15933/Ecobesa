@@ -6,11 +6,11 @@ import com.example.ecobesa.entity.Configuracion;
 public interface IConfiguracionService
 {
 	
-	public List<Configuracion> get();
+	public List<Configuracion> findAll();
 	
-	public Configuracion find(Long id);
+	public Configuracion findById(Long id);
 	
-	public Configuracion findByCode(String code);
+	public Configuracion findByCodigo(String codigo);
 	
 	public void save(Configuracion configuracion);
 	
